@@ -12,14 +12,16 @@
 
 \begin{document}
 \title{\huge \textbf{Overall Software Plan} \\ \LARGE {\textbf{CS 346: Assignment-2A}}}
-\author{\Large Group 10-A}
-\date{210101113-210101119}
+\author{\Large Academic Section Management Software}
+\date{Group 10A : \texttt{210101113-210101119}}
 \maketitle
 
 
-\section{Problem Statement}
+\section{Problem Statement and Stakeholders}
 (Yashraj)
-    
+
+\section{Software Model}
+The adoption of the \textbf{Structured Analysis and Design} (SAD) model for the development of this specific software is justified by the intricate design and the comprehensive requirements that demand careful consideration. This report documents the different components of this model, including the \textit{Data Dictionary} (encompassing Requirements and Assumptions), \textit{Data Flow Diagrams} (DFDs), and \textit{Entity-Relationship} (E-R) Diagrams in the following sections below.
     
 \section{Software Requirements and Assumptions}
 The following are the specifications of the software that has to be developed that has been mentioned in the problem statement: (Agrawal)
@@ -49,6 +51,13 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
         \includegraphics[width=\linewidth]{Grade_Management_DFD.png} 
     \caption{Level-2 DFD of Grade Management Module}
 \end{figure}
+\begin{itemize}
+    \item The \textbf{Grade Recorder} Process first gets the signal from the Admin side to start grade submission.
+    \item The professors are displayed the various courses that they teach and they can upload the grade list of students enrolled coursewise, which are updated duly by the Grade Recorder process into \texttt{Grades} field of each course taken by student in \textbf{Student Database}.
+    \item The \textbf{Grades Viewer} process first gets the signal from the Admin side after which the students are displayed the grades that they got in specific courses.
+    \item The professors can get overall statistics about the grades like Class Average,number of students who got different grades like \texttt{AA,AB,BB} etc.
+    \item This particular module interacts with the databases to fetch and update the results, as shown in the DFD diagram of Grade Management module.
+\end{itemize}
 \subsection{Entity Relationship Diagram}
 (Ketan)
 
