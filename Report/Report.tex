@@ -12,35 +12,93 @@
 
 \begin{document}
 \title{\huge \textbf{Overall Software Plan} \\ \LARGE {\textbf{CS 346: Assignment-2A}}}
-\author{\Large Group 10-A}
-\date{210101113-210101119}
+\author{\Large Academic Section Management Software}
+\date{Group 10A : \texttt{210101113-210101119}}
 \maketitle
 
 
-\section{Problem Statement}
-	Write about PS
+\section{Problem Statement and Stakeholders}
+(Yashraj)
+
+\section{Software Model}
+The adoption of the \textbf{Structured Analysis and Design} (SAD) model for the development of this specific software is justified by the intricate design and the comprehensive requirements that demand careful consideration. This report documents the different components of this model, including the \textit{Data Dictionary} (encompassing Requirements and Assumptions), \textit{Data Flow Diagrams} (DFDs), and \textit{Entity-Relationship} (E-R) Diagrams in the following sections below.
     
-    
-\section{Software Requirements}
-The following are the specifications of the software that has to be developed that has been mentioned in the problem statement:
+\section{Software Requirements and Assumptions}
+The following are the specifications of the software that has to be developed that has been mentioned in the problem statement: (Agrawal)
 \begin{itemize}
     \item Item1
     \item Item2
 \end{itemize}
 
-\section{Section Name}
-Blah Blah blah, \textbf{Bold}, \texttt{Verb}, \textit{Italics}
-\subsection{Subsections}
-Hello hello
+\section{Data Flow Diagrams}
+Short Desc (Yashraj) \textbf{Bold}, \texttt{Verb}, \textit{Italics}
+\subsection{Level-0 DFD}
+(Yashraj)
+\subsection{Level-1 DFD}
+(Yashraj)
 
-\subsection{Feature Enhancement}
-sderr
+\subsection{Level-2 DFDs}
+The following subsections highlight the detailed \textbf{Level-2} Dataflow diagrams of various processes in the Academic system Management software:
+\subsubsection{Admission Management Module}
+(Gupta)
+\subsubsection{Course Management Module}
+\begin{figure}[hbt!]
+    \centering
+        \includegraphics[width=\linewidth]{Course_Management_DFD.png} 
+    \caption{Level-2 DFD of Course Management Module}
+\end{figure}
+\textbf{Course Management Module} primarily consists of three essential processes :
+\begin{enumerate}
+	\item \textbf{Adding New Course} : 
+		\begin{itemize}
+			\item The Admin initiates the addition of a new course.
+			\item Required details such as course name, credits, valid semesters, and assigned faculty are provided.
+			\item The provided course information is then stored in the \textbf{Course Database} for future reference.
+		\end{itemize}
+	\item \textbf{Course Enrollment} :
+		\begin{itemize}
+			\item The Admin triggers the course enrollment process.
+			\item Students access their interface to view available courses.
+			\item Students select a list of courses, including compulsory and department electives.
+			\item The selected courses are validated and added to the \textbf{Course Enrollments} database.
+		\end{itemize}
+	\item \textbf{Time Table Generation} :
+		\begin{itemize}
+			\item The Admin initiates the time table generation process.
+			\item Information from the \textbf{Course Database}, \textbf{Rooms Database}, and \textbf{Faculty Database} is gathered.
+			\item The system generates the timetable and modifies the assigned slots in \textbf{Course Database}.
+			\item The time table is then displayed on the student and faculty interfaces.
+		\end{itemize}
+	
+\end{enumerate}
+
+\subsubsection{Examination Management Module}
+(Pratyush)
+\subsubsection{Grade Management Module}
+\begin{figure}[hbt!]
+    \centering
+        \includegraphics[width=\linewidth]{Grade_Management_DFD.png} 
+    \caption{Level-2 DFD of Grade Management Module}
+\end{figure}
+\begin{itemize}
+    \item The \textbf{Grade Recorder} Process first gets the signal from the Admin side to start grade submission.
+    \item The professors are displayed the various courses that they teach and they can upload the grade list of students enrolled coursewise, which are updated duly by the Grade Recorder process into \texttt{Grades} field of each course taken by student in \textbf{Student Database}.
+    \item The \textbf{Grades Viewer} process first gets the signal from the Admin side after which the students are displayed the grades that they got in specific courses.
+    \item The professors can get overall statistics about the grades like Class Average,number of students who got different grades like \texttt{AA,AB,BB} etc.
+    \item This particular module interacts with the databases to fetch and update the results, as shown in the DFD diagram of Grade Management module.
+\end{itemize}
+\section{Entity Relationship Diagram}
+(Ketan)
+
+\section{Feature Enhancement}
+(Shivam)
 \begin{itemize}
     \item hrtrt
     \item rtrtrtrttrt
 \end{itemize}
         
 \section{User Interface}
+(Shivam Agrawal)
 	The user interface for this software can be developed using \texttt{Visual Basic}. The following are the tentative list of toolbox components needed for the basic implementation (without any feature enhancement):
     \begin{itemize}
         \item \textbf{Text Box:} sdfeerererererer
