@@ -18,7 +18,14 @@
 
 
 \section{Problem Statement and Stakeholders}
-(Yashraj)
+The project aims to develop a comprehensive academic management software solution for the institute. The system will enable users to perform their assigned tasks efficiently. Key functionalities will include Admissions and Registration, Course Management (including timetable generation), and Examination Management.
+
+\subsubsection*{Stakeholders:}
+\begin{itemize}
+    \item \textbf{Admin(Dean, Registrar, Administrators):} Responsible for course management and oversight of financial records.
+    \item \textbf{Faculty:} Responsible for accessing student information and managing courses, including grading.
+    \item \textbf{Students:} Responsible for accessing course information and academic services, as well as submitting fees.
+\end{itemize}
 
 \section{Software Model}
 The adoption of the \textbf{Structured Analysis and Design} (SAD) model for the development of this specific software is justified by the intricate design and the comprehensive requirements that demand careful consideration. This report documents the different components of this model, including the \textit{Data Dictionary} (encompassing Requirements and Assumptions), \textit{Data Flow Diagrams} (DFDs), and \textit{Entity-Relationship} (E-R) Diagrams in the following sections below.
@@ -33,11 +40,30 @@ The following are the specifications of the software that has to be developed th
 \end{itemize}
 
 \section{Data Flow Diagrams}
-Short Desc (Yashraj) \textbf{Bold}, \texttt{Verb}, \textit{Italics}
+This section contains a Data Flow Diagram (DFD) to visualize how information flows within the academic management software. It illustrates the movement of data between modules such as Student Enrollment, Course Management, Grade Management, and Examination Management, as well as interactions among stakeholders such as Administrators, Faculty, and Students.
+
+\subsection*{Data flow:}
+\begin{itemize}
+    \item \textbf{Students} submit enrollment requests, including personal information and desired courses. Approved enrollments are then stored in the system's database.
+    \item \textbf{Administrators} publish course schedules, exam timetables, and other academic information.
+    \item \textbf{Students} register for the courses they are allowed to enroll in.
+    \item \textbf{Students} take exams.
+    \item \textbf{Faculty} members update course information and grades as necessary.
+\end{itemize}
+
 \subsection{Level-0 DFD}
-(Yashraj)
+\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.5]{Level_0_DFD.jpg} 
+    \caption{\textbf{Level-0 DFD} of our Software.}
+\end{figure}
 \subsection{Level-1 DFD}
-(Yashraj)
+\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7]{Level_1_DFD.jpg} 
+    \caption{\textbf{Level-1 DFD} of our Software.}
+\end{figure}
+
 
 \subsection{Level-2 DFDs}
 The following subsections highlight the detailed \textbf{Level-2} Dataflow diagrams of various processes in the Academic system Management software:
