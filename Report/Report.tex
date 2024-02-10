@@ -18,11 +18,19 @@
 
 
 \section{Problem Statement and Stakeholders}
-(Yashraj)
+The project aims to develop a comprehensive academic management software solution for the institute. The system will enable users to perform their assigned tasks efficiently. Key functionalities will include Admissions and Registration, Course Management (including timetable generation), and Examination Management.
+
+\subsubsection*{Stakeholders:}
+\begin{itemize}
+    \item \textbf{Admin(Dean, Registrar, Administrators):} Responsible for course management and oversight of financial records.
+    \item \textbf{Faculty:} Responsible for accessing student information and managing courses, including grading.
+    \item \textbf{Students:} Responsible for accessing course information and academic services, as well as submitting fees.
+\end{itemize}
 
 \section{Software Model}
 The adoption of the \textbf{Structured Analysis and Design} (SAD) model for the development of this specific software is justified by the intricate design and the comprehensive requirements that demand careful consideration. This report documents the different components of this model, including the \textit{Data Dictionary} (encompassing Requirements and Assumptions), \textit{Data Flow Diagrams} (DFDs), and \textit{Entity-Relationship} (E-R) Diagrams in the following sections below.
     
+
 \section{Software Requirements and Assumptions}
 The following are the specifications of the software that has to be developed that has been mentioned in the problem statement: (Agrawal)
 \begin{itemize}
@@ -31,22 +39,70 @@ The following are the specifications of the software that has to be developed th
 \end{itemize}
 
 \section{Data Flow Diagrams}
-Short Desc (Yashraj) \textbf{Bold}, \texttt{Verb}, \textit{Italics}
+This section contains a Data Flow Diagram (DFD) to visualize how information flows within the academic management software. It illustrates the movement of data between modules such as Student Enrollment, Course Management, Grade Management, and Examination Management, as well as interactions among stakeholders such as Administrators, Faculty, and Students.
+
+\subsection*{Data flow:}
+\begin{itemize}
+    \item \textbf{Students} submit enrollment requests, including personal information and desired courses. Approved enrollments are then stored in the system's database.
+    \item \textbf{Administrators} publish course schedules, exam timetables, and other academic information.
+    \item \textbf{Students} register for the courses they are allowed to enroll in.
+    \item \textbf{Students} take exams.
+    \item \textbf{Faculty} members update course information and grades as necessary.
+\end{itemize}
+
 \subsection{Level-0 DFD}
-(Yashraj)
+\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.5]{Level_0_DFD.jpg} 
+    \caption{\textbf{Level-0 DFD} of our Software.}
+\end{figure}
 \subsection{Level-1 DFD}
-(Yashraj)
+\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7]{Level_1_DFD.jpg} 
+    \caption{\textbf{Level-1 DFD} of our Software.}
+\end{figure}
+
 
 \subsection{Level-2 DFDs}
 The following subsections highlight the detailed \textbf{Level-2} Dataflow diagrams of various processes in the Academic system Management software:
 \subsubsection{Admission Management Module}
 (Gupta)
 \subsubsection{Course Management Module}
-(Tanish)
+\begin{figure}[hbt!]
+    \centering
+        \includegraphics[width=\linewidth]{Course_Management_DFD.png} 
+    \caption{Level-2 DFD of Course Management Module}
+\end{figure}
+\textbf{Course Management Module} primarily consists of three essential processes :
+\begin{enumerate}
+	\item \textbf{Adding New Course} : 
+		\begin{itemize}
+			\item The Admin initiates the addition of a new course.
+			\item Required details such as course name, credits, valid semesters, and assigned faculty are provided.
+			\item The provided course information is then stored in the \textbf{Course Database} for future reference.
+		\end{itemize}
+	\item \textbf{Course Enrollment} :
+		\begin{itemize}
+			\item The Admin triggers the course enrollment process.
+			\item Students access their interface to view available courses.
+			\item Students select a list of courses, including compulsory and department electives.
+			\item The selected courses are validated and added to the \textbf{Course Enrollments} database.
+		\end{itemize}
+	\item \textbf{Time Table Generation} :
+		\begin{itemize}
+			\item The Admin initiates the time table generation process.
+			\item Information from the \textbf{Course Database}, \textbf{Rooms Database}, and \textbf{Faculty Database} is gathered.
+			\item The system generates the timetable and modifies the assigned slots in \textbf{Course Database}.
+			\item The time table is then displayed on the student and faculty interfaces.
+		\end{itemize}
+	
+\end{enumerate}
+
 \subsubsection{Examination Management Module}
 (Pratyush)
 \subsubsection{Grade Management Module}
-\begin{figure}[H]
+\begin{figure}[hbt!]
     \centering
         \includegraphics[width=\linewidth]{Grade_Management_DFD.png} 
     \caption{Level-2 DFD of Grade Management Module}
@@ -126,6 +182,7 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
         \item  \textbf{FeesPaid:} How much Fees is paid.
         \item  \textbf{No of Students:} Number of Registered Students.
     \end{itemize}
+    
 \section{Feature Enhancement}
 (Shivam)
 \begin{itemize}
@@ -143,7 +200,7 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
 
     \subsection{Basic Design}
     This is the tentative basic design of the user interface which is to be designed in \textbf{Visual Basic} using the components listed above:
-    \begin{figure}[h]
+    \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\linewidth}
             \includegraphics[width=\linewidth]{Prototype.png} 
