@@ -25,6 +25,8 @@ The adoption of the \textbf{Structured Analysis and Design} (SAD) model for the 
     
 \section{Software Requirements and Assumptions}
 The following are the specifications of the software that has to be developed that has been mentioned in the problem statement: (Agrawal)
+\section{Software Requirements and Assumptions}
+The following are the specifications of the software that has to be developed that has been mentioned in the problem statement: (Agrawal)
 \begin{itemize}
     \item Item1
     \item Item2
@@ -42,11 +44,40 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
 \subsubsection{Admission Management Module}
 (Gupta)
 \subsubsection{Course Management Module}
-(Tanish)
+\begin{figure}[hbt!]
+    \centering
+        \includegraphics[width=\linewidth]{Course_Management_DFD.png} 
+    \caption{Level-2 DFD of Course Management Module}
+\end{figure}
+\textbf{Course Management Module} primarily consists of three essential processes :
+\begin{enumerate}
+	\item \textbf{Adding New Course} : 
+		\begin{itemize}
+			\item The Admin initiates the addition of a new course.
+			\item Required details such as course name, credits, valid semesters, and assigned faculty are provided.
+			\item The provided course information is then stored in the \textbf{Course Database} for future reference.
+		\end{itemize}
+	\item \textbf{Course Enrollment} :
+		\begin{itemize}
+			\item The Admin triggers the course enrollment process.
+			\item Students access their interface to view available courses.
+			\item Students select a list of courses, including compulsory and department electives.
+			\item The selected courses are validated and added to the \textbf{Course Enrollments} database.
+		\end{itemize}
+	\item \textbf{Time Table Generation} :
+		\begin{itemize}
+			\item The Admin initiates the time table generation process.
+			\item Information from the \textbf{Course Database}, \textbf{Rooms Database}, and \textbf{Faculty Database} is gathered.
+			\item The system generates the timetable and modifies the assigned slots in \textbf{Course Database}.
+			\item The time table is then displayed on the student and faculty interfaces.
+		\end{itemize}
+	
+\end{enumerate}
+
 \subsubsection{Examination Management Module}
 (Pratyush)
 \subsubsection{Grade Management Module}
-\begin{figure}[H]
+\begin{figure}[hbt!]
     \centering
         \includegraphics[width=\linewidth]{Grade_Management_DFD.png} 
     \caption{Level-2 DFD of Grade Management Module}
@@ -59,73 +90,8 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
     \item This particular module interacts with the databases to fetch and update the results, as shown in the DFD diagram of Grade Management module.
 \end{itemize}
 \section{Entity Relationship Diagram}
+(Ketan)
 
-\begin{figure}[H]
-    \centering
-        \includegraphics[scale=1.2]{ERDiagram.png} 
-    \caption{\textbf{ER-Diagram}, Each Arrow represents a relation. A multiple-forked arrow represents Many relationships, whereas a single bar arrow represents one-one relationship.}
-\end{figure}
-    
-    \subsection{Student Database}
-        This database is used to store all information regarding students. The description of Each key is as follows:
-        \begin{itemize}
-        \item \textbf{Roll No:} Roll Number of student serves as Primary Key
-        \item  \textbf{Name:} Name of Student
-        \item  \textbf{Year:} Year Of Joining
-        \item  \textbf{Password:} Password Used for authentication Purposes
-        \item  \textbf{Fees:} Amount to be Paid By student
-        \item  \textbf{FeesPaid:} Boolean to store if Fees paid or not
-    \end{itemize}
-    \subsection{Courses Database}
-        This database is used to store all information regarding Courses.  The description of Each key is as follows:
-        \begin{itemize}
-        \item \textbf{CourseID:} Unique Identifier for Each Course. Serves as Primary key.
-        \item  \textbf{FacultyID:} ID of faculty taking this course serves as a Foreign Key to faculty Table.
-        \item  \textbf{RoomID:} ID of Room where this course will be held serves as a Foreign Key to Room Database.
-        \item  \textbf{Slot:} Slot in which this course lectures are held. Assigned by TimeTable generator.
-        \item  \textbf{isLab:} Boolean to store if It is a lab or not.
-        \item  \textbf{Credit:} Credits of this course.
-        \item  \textbf{Sem:} String to store sems in which this course is offered.
-    \end{itemize}
-    \subsection{Courses Taken Database}
-        This database is used to store all information regarding which student took which Course. The pair (Roll No, CourseID) serves as a Primary Key. The description of Each key is as follows:
-        \begin{itemize}
-        \item \textbf{Roll No:} Roll No of student who has taken this course. Serves as Foreign Key to student Database.
-        \item  \textbf{CourseID:} ID of Course taken. Serves as a Foreign Key to Courses Table.
-        \item  \textbf{Grade:} Grade Received by student in that particular Course
-    \end{itemize}
-    \subsection{Faculty Database}
-        This database is used to store all information regarding Faculties.  The description of Each key is as follows:
-        \begin{itemize}
-       \item \textbf{FacultyID:} Unique Identifier for Each Faculty. Serves as Primary key.
-        \item  \textbf{Name:} Name of Faculty
-        \item  \textbf{Password:} Password Used for authentication Purposes
-    \end{itemize}
-     \subsection{Room Database}
-        This database is used to store all information regarding Rooms. The description of Each key is as follows:
-        \begin{itemize}
-       \item \textbf{RoomID:} Unique Identifier for Each Room. Serves as Primary key.
-        \item  \textbf{Name:} Name of Room
-        \item  \textbf{Capacity:} Capacity of Room
-        \item  \textbf{Location:} Location of Room
-    \end{itemize}
-    \subsection{Admin Database}
-        This database is used to store all information regarding Admin who controls the system. The description of Each key is as follows:
-        \begin{itemize}
-       \item \textbf{AdminID:} Unique Identifier for Admins. Serves as Primary key.
-        \item  \textbf{Password:} Password Used for authentication Purposes
-        \item  \textbf{isRegistration:} Boolean to start admission and Registration of new students.
-        \item  \textbf{isCourseRegistration:} Boolean to start course Registration.
-        \item  \textbf{isGradeSubmission:} Boolean to start Grade Submission.
-    \end{itemize}
-    \subsection{Financial Records}
-        This database is used to store all information related to Finances. The description of Each key is as follows:
-        \begin{itemize}
-       \item \textbf{Year:} Year of Financial Record. Serves as Primary key.
-        \item  \textbf{Sem:} Semester
-        \item  \textbf{FeesPaid:} How much Fees is paid.
-        \item  \textbf{No of Students:} Number of Registered Students.
-    \end{itemize}
 \section{Feature Enhancement}
 (Shivam)
 \begin{itemize}
