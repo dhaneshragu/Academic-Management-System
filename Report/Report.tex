@@ -67,7 +67,37 @@ This section contains a Data Flow Diagram (DFD) to visualize how information flo
 \subsection{Level-2 DFDs}
 The following subsections highlight the detailed \textbf{Level-2} Dataflow diagrams of various processes in the Academic system Management software:
 \subsubsection{Admission Management Module}
-(Gupta)
+\begin{figure}[hbt!]
+    \centering
+        \includegraphics[width=\linewidth]{Student_enrollment_level2_DFD.png} 
+    \caption{Level-2 DFD of Admission Management Module}
+\end{figure}
+\textbf{Admission Management Module} primarily consists of three essential processes :
+\begin{enumerate}
+	\item \textbf{Authentication} : 
+		\begin{itemize}
+			\item The Admin configures the password after the JOSAA results and initial username and password is sent to students.
+			\item The students can their passwords.
+			\item The provided password is then updated in the \textbf{Student Database} for future reference.
+		\end{itemize}
+	\item \textbf{Student Enrollment} :
+		\begin{itemize}
+			\item The Admin triggers the course enrollment process.
+			\item The students are first checked for authentication.
+			\item After that students add their name and year.
+			\item Students are then assigned ids.
+			\item The details are then added to the \textbf{Student Database}.
+		\end{itemize}
+	\item \textbf{Fee payment} :
+		\begin{itemize}
+			\item The students are first authenticated.
+			\item Then students pay their fees.
+			\item Information about the fees added to \textbf{Student Database}.
+			\item These financial records about fees are then added to \textbf{Record Database}.
+		\end{itemize}
+	
+\end{enumerate}
+
 \subsubsection{Course Management Module}
 \begin{figure}[hbt!]
     \centering
