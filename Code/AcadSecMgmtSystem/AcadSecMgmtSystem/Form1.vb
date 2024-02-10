@@ -23,5 +23,16 @@ Public Class Form1
         Con.Close()
     End Sub
 
+    Dim myForm As StudentDashboard
+
+    Private Sub Button1_Click( _
+       ByVal sender As System.Object, _
+       ByVal e As System.EventArgs) _
+         Handles Button1.Click
+        If myForm Is Nothing Then
+            myForm = New StudentDashboard
+        End If
+        myForm.Show()
+    End Sub
 
 End Class
