@@ -32,10 +32,20 @@ The adoption of the \textbf{Structured Analysis and Design} (SAD) model for the 
     
 
 \section{Software Requirements and Assumptions}
-The following are the specifications of the software that has to be developed that has been mentioned in the problem statement: (Agrawal)
+The following are the specifications of the software that we are developing as mentioned in the problem statement: (Agrawal)
 \begin{itemize}
-    \item Item1
-    \item Item2
+    \item Login details for students and faculties are pre-defined by the Admin. However, they can be changed by the users during the registration process.
+    \item We have considered only B.Tech CSE students for timetable generation and examination scheduling processes.
+    \item New courses can only be added by the Admin.
+    \item Faculty to Course Mapping is done by the Admin itself, and faculties can only access the details of courses that they have been mapped to.
+    \item Each course has a unique faculty associated with it, who is responsible for uploading the grades of the enrolled students.
+    \item Student Distinction is done only on the basis of their year of study (or semester), ignoring tutorial and lab groups.
+    \item The time period for student enrollment, course registration, accessing grades and fee payment are controlled by the Admin.
+    \item All lectures have a fixed duration of 1 hour and all labs have a fixed duration of 3 hours.
+    \item Lectures are conducted in morning and labs in afternoon for even year and vice-versa for odd year students.
+    \item Students can enroll only in courses available during that semester, and can't change them during the semester.
+    \item Rooms are of two types: lecture halls and core rooms, and are managed only by the Admin.
+    \item Technical support for fee payment is beyond the scope of this software and is only simulated in our system.
 \end{itemize}
 
 \section{Data Flow Diagrams}
@@ -186,8 +196,13 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
 \section{Feature Enhancement}
 (Shivam)
 \begin{itemize}
-    \item hrtrt
-    \item rtrtrtrttrt
+    \item Extend the system to support a broader range of courses and include students from other programs, not limited to B.Tech CSE.
+    \item Allow faculties to provide new courses themselves and approve/reject the enrollment of students.
+    \item Allow for more flexibility in defining the criteria for student distinction, considering tutorial and lab groups.
+    \item Provide administrators with the ability to set variable durations for lectures and labs.
+    \item Extend the system to support multiple faculty members for a single course.
+    \item Implement a system that allows students to request changes to their enrolled courses during the semester under certain conditions.
+    \item Develop a dedicated interface for administrators to manage rooms, including scheduling, capacity planning, and maintenance information.
 \end{itemize}
         
 \section{User Interface}
