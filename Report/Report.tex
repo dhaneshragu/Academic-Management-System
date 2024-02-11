@@ -23,7 +23,7 @@ The assignment aims to develop a comprehensive academic management software solu
 
 \subsubsection*{Stakeholders:}
 \begin{itemize}
-    \item \textbf{Admin(Dean, Registrar, Administrators):} Responsible for course management and oversight of financial records.
+    \item \textbf{Admin (Dean, Registrar, Administrators):} Responsible for course management and oversight of financial records.
     \item \textbf{Faculty:} Responsible for accessing student information and managing courses, including grading.
     \item \textbf{Students:} Responsible for accessing course information and academic services, as well as submitting fees.
 \end{itemize}
@@ -35,6 +35,7 @@ The adoption of the \textbf{Structured Analysis and Design} (SAD) model for the 
 \section{Software Requirements and Assumptions}
 The following are the specifications of the software that we are developing as mentioned in the problem statement:
 \begin{itemize}
+    \item We have used Visual basic as the language to implement the software and MySQL for the database.
     \item Login details for students and faculties are pre-defined by the Admin. However, they can be changed by the users during the registration process.
     \item We have considered only B.Tech CSE students for timetable generation and examination scheduling processes.
     \item New courses can only be added by the Admin.
@@ -109,7 +110,7 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
 \end{enumerate}
 
 \subsubsection{Course Management Module}
-\begin{figure}[H]
+\begin{figure}[hbt!]
     \centering
         \includegraphics[width=\linewidth]{Course_Management_DFD.png} 
     \caption{Level-2 DFD of Course Management Module}
@@ -140,6 +141,7 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
 \end{enumerate}
 
 \subsubsection{Examination Management Module}
+
 \begin{figure}[H]
     \centering
         \includegraphics[width=\linewidth]{ExamManagement_Level2_DFD.png} 
@@ -158,7 +160,7 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
     \item No particular concrete dates will be shown, we can always map the schedule to a concrete one, given a starting date (like 11 Feb 2024).
 \end{enumerate}
 \subsubsection{Grade Management Module}
-\begin{figure}[H]
+\begin{figure}[hbt!]
     \centering
         \includegraphics[width=\linewidth]{Grade_Management_DFD.png} 
     \caption{Level-2 DFD of Grade Management Module}
@@ -240,7 +242,6 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
     \end{itemize}
     
 \section{Feature Enhancement}
-The following points outline the feature enhancements that can be applied to the software in later stages:
 \begin{itemize}
     \item Extend the system to support a broader range of courses and include students from other programs, not limited to B.Tech CSE.
     \item Allow faculties to provide new courses themselves and approve/reject the enrollment of students.
@@ -252,30 +253,72 @@ The following points outline the feature enhancements that can be applied to the
 \end{itemize}
         
 \section{User Interface}
-(Shivam Agrawal)
 	The user interface for this software can be developed using \texttt{Visual Basic}. The following are the tentative list of toolbox components needed for the basic implementation (without any feature enhancement):
     \begin{itemize}
-        \item \textbf{Text Box:} sdfeerererererer
-        \item And so on....
+\item \textbf{Text Box:} Used to get inputs from the user, such as details during registration and login.
+
+    \item \textbf{DataGridView:} Used for displaying data fetched from SQL Server.
+
+    \item \textbf{Button:} Trigger actions or events when clicked, such as submitting a form or initiating a search.
+
+    \item \textbf{Label:} Provides a descriptive text to accompany form elements, enhancing user interface clarity.
+
+    \item \textbf{ComboBox:} Allows users to select options from a drop-down list, suitable for selecting courses or categories.
+
+    \item \textbf{CheckBox:} Enables users to make binary choices, often used for accepting terms or enabling/disabling options.
+
+    \item \textbf{RadioButton:} Presents a set of mutually exclusive options, useful for making a single selection from a list.
+
+    \item \textbf{MenuStrip:} Creates a menu bar that contains menus with various commands or options.
+
+    \item \textbf{TabControl:} Organizes content into tabs, facilitating the display of multiple sets of information.
+
+    \item \textbf{Panel:} Provides a container to group and organize other controls, enhancing layout flexibility.
+
+    \item \textbf{ProgressBar:} Represents the progress of an operation, offering visual feedback to users.
+
+    \item \textbf{ListBox:} Presents a list of items from which users can make multiple selections.
+
+    \item \textbf{PictureBox:} Displays images or icons, enhancing the visual appeal of the user interface.
+
+    \item \textbf{RichTextBox:} Supports formatted text and allows users to enter and edit large amounts of text.
+
+    \item \textbf{Timer:} Executes code at specified intervals, useful for implementing time-based events like course registration and fee payment.
+
+    \item \textbf{ToolTip:} Provides additional information when users hover over a control, improving user guidance.
+
+    % \item \textbf{Database Connection (e.g., SqlConnection):} Establishes a connection to the SQL Server for data retrieval and manipulation.
+
+    % \item \textbf{SQLDataAdapter:} Serves as a bridge between a DataSet and a SQL Server database, facilitating data retrieval.
+
+    % \item \textbf{DataSet:} Represents an in-memory cache of data, supporting disconnected data architecture.
+
+    % \item \textbf{SqlCommand:} Executes SQL queries or stored procedures against a SQL Server database.
+
+    \item \textbf{ErrorProvider:} Displays error icons and messages to alert users about input validation issues.
+
+    \item \textbf{MessageBox:} Pops up a dialog box to communicate messages or alerts to the user.
+
+    % \item \textbf{Event Handler Functions:} Functions that respond to specific events, such as button clicks or form loads.
+
     \end{itemize}
 
     \subsection{Basic Design}
-    This is the tentative basic design of the user interface which is to be designed in \textbf{Visual Basic} using the components listed above:
+    This is the tentative basic design of the user interface which is to be designed in \textbf{Visual Basic} using the components listed above. Kindly note that we have provided the interfaces of only two screens here, the rest are made following a similar design pattern.
     \begin{figure}[H]
         \centering
-        \begin{subfigure}[b]{0.45\linewidth}
-            \includegraphics[width=\linewidth]{Prototype.png} 
-            \caption{Message box output when element is found.}
+        \begin{subfigure}[b]{0.6\linewidth}
+            \includegraphics[width=\linewidth]{LoginForm.png} 
+            \caption{Form displayed when student wants to log into the system.}
             \label{fig:sub1}
         \end{subfigure}
-        \hfill
-        \begin{subfigure}[b]{0.45\linewidth}
-            \includegraphics[width=\linewidth]{Prototype-2.png}
-            \caption{Message box output when element is not found.}
+        \par\bigskip
+        \begin{subfigure}[b]{\linewidth}
+            \includegraphics[width=\linewidth]{StudentDashboard.jpeg}
+            \caption{This is the Student Dashboard where all details about the student will be displayed. This includes student name and roll number, courses taken and fee payment section. }
             \label{fig:sub2}
         \end{subfigure}
         \caption{Basic design of the software application}
         \label{fig:overall}
     \end{figure}
-\subsection{Subsections}
 \end{document}
