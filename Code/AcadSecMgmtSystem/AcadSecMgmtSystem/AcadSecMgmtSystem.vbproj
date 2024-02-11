@@ -178,6 +178,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>acadSecdb.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\icons8-new-48.png" />
+    <None Include="Resources\icons8-course-assign-48.png" />
+    <None Include="Resources\icons8-money-48.png" />
     <None Include="Resources\IITG_logo2.png" />
     <None Include="Resources\IITG_logo1.png" />
     <None Include="Resources\icons8-logout-50.png" />

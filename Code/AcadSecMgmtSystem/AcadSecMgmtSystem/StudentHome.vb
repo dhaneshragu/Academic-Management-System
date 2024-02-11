@@ -5,6 +5,11 @@ Public Class StudentHome
     Dim conString = Globals.getdbConnectionString()
     Dim Con = New SqlConnection(conString)
     Private Sub StudentHome_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+        ' Switch on only if Grades are released by acad section
+        GradeReleasedPanel.Visible = False
+
+        'Just for simulation, to be replaced with real logics
         Dim query = "SELECT * FROM dummy_course_details"
         Con.Open()
 
@@ -29,7 +34,7 @@ Public Class StudentHome
 
     End Sub
 
-    Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles Button2.Click
+    Private Sub Label5_Click(sender As System.Object, e As System.EventArgs) Handles Label5.Click
 
     End Sub
 End Class
