@@ -9,4 +9,16 @@ Public Class Globals
         Return dbConnectionString
     End Function
 
+    'To view the child form in the same window inside a parentPanel
+    Public Shared Sub viewChildForm(ByVal parentpanel As Panel, ByVal childpanel As Form)
+        parentpanel.Controls.Clear()
+        childpanel.TopLevel = False
+        childpanel.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+        childpanel.Dock = DockStyle.Fill
+        'childpanel.AutoSize = True
+        childpanel.BringToFront()
+        parentpanel.Controls.Add(childpanel)
+        childpanel.Show() 'Add to panel and show the child form
+    End Sub
+
 End Class
