@@ -93,13 +93,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>acadSecdbDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="StudentDashboard.Designer.vb">
       <DependentUpon>StudentDashboard.vb</DependentUpon>
     </Compile>
@@ -128,11 +121,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="StudentHome.Designer.vb">
+      <DependentUpon>StudentHome.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StudentHome.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="StudentDashboard.resx">
       <DependentUpon>StudentDashboard.vb</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +140,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentHome.resx">
+      <DependentUpon>StudentHome.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +178,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>acadSecdb.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\IITG_logo2.png" />
+    <None Include="Resources\IITG_logo1.png" />
     <None Include="Resources\icons8-logout-50.png" />
     <None Include="Resources\icons8-exam-50.png" />
     <None Include="Resources\icons8-timetable-50.png" />
