@@ -19,7 +19,7 @@
 
 
 \section{Problem Statement and Stakeholders}
-The assignment aims to develop a comprehensive academic management software solution for the institute. The system will enable users to perform their assigned tasks efficiently. Key functionalities will include Admissions and Registration, Course Management (including timetable generation), and Examination Management.
+The assignment aims to develop a comprehensive academic management software solution for the institute. The system will enable users to perform their assigned tasks efficiently. Key functionalities will include \textbf{Admissions and Registration}, \textbf{Course Management} (including timetable generation), and \textbf{Examination Management}.
 
 \subsubsection*{Stakeholders:}
 \begin{itemize}
@@ -35,19 +35,19 @@ The adoption of the \textbf{Structured Analysis and Design} (SAD) model for the 
 \section{Software Requirements and Assumptions}
 The following are the specifications of the software that we are developing as mentioned in the problem statement:
 \begin{itemize}
-    \item We have used Visual basic as the language to implement the software and MySQL for the database.
-    \item Login details for students and faculties are pre-defined by the Admin. However, they can be changed by the users during the registration process.
-    \item We have considered only B.Tech CSE students for timetable generation and examination scheduling processes.
-    \item New courses can only be added by the Admin.
-    \item Faculty to Course Mapping is done by the Admin itself, and faculties can only access the details of courses that they have been mapped to.
-    \item Each course has a unique faculty associated with it, who is responsible for uploading the grades of the enrolled students.
-    \item Student Distinction is done only on the basis of their year of study (or semester), ignoring tutorial and lab groups.
+    \item We have used \texttt{Visual basic} as the language to implement the software and \textbf{MySQL} for the database.
+    \item Login details for students and faculties are \textbf{pre-defined} by the Admin. However, they can be changed by the users during the registration process.
+    \item We have considered only \textbf{B.Tech CSE students} for timetable generation and examination scheduling processes.
+    \item New courses can \textbf{only} be added by the Admin.
+    \item Faculty to Course Mapping is done by the \textbf{Admin itself}, and faculties can only access the details of courses that they have been mapped to.
+    \item Each course has a \textbf{unique faculty} associated with it, who is responsible for uploading the grades of the enrolled students.
+    \item Student Distinction is done only on the basis of their \textbf{year of study} (or semester), ignoring tutorial and lab groups.
     \item The time period for student enrollment, course registration, accessing grades and fee payment are controlled by the Admin.
-    \item All lectures have a fixed duration of 1 hour and all labs have a fixed duration of 3 hours.
-    \item Lectures are conducted in morning and labs in afternoon for even year and vice-versa for odd year students.
-    \item Students can enroll only in courses available during that semester, and can't change them during the semester.
-    \item Rooms are of two types: lecture halls and core rooms, and are managed only by the Admin.
-    \item Technical support for fee payment is beyond the scope of this software and is only simulated in our system.
+    \item All lectures have a \textbf{fixed duration} of 1 hour and all labs have a fixed duration of 3 hours.
+    \item Lectures are conducted in \textbf{morning} and labs in \textbf{afternoon} for even year and vice-versa for odd year students(except electives).
+    \item Students can enroll only in courses available during that semester, and \textbf{can't change} them during the semester.
+    \item Rooms are of two types: \textbf{lecture halls} and \textbf{core rooms}, and are managed only by the Admin.
+    \item Technical support for fee payment is beyond the scope of this software and is only \textbf{simulated} in our system.
 \end{itemize}
 
 \section{Data Flow Diagrams}
@@ -71,7 +71,7 @@ This section contains a Data Flow Diagram (DFD) to visualize how information flo
 \subsection{Level-1 DFD}
 \begin{figure}[H]
     \centering
-        \includegraphics[scale=0.7]{Level_1_DFD.jpg} 
+        \includegraphics[scale=0.67]{Level_1_DFD.jpg} 
     \caption{\textbf{Level-1 DFD} of our Software.}
 \end{figure}
 
@@ -94,7 +94,7 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
 		\end{itemize}
 	\item \textbf{Student Enrollment} :
 		\begin{itemize}
-			\item The Admin triggers the course enrollment process.
+			\item The Admin triggers the student enrollment process.
 			\item The students are first checked for authentication.
 			\item Students are then assigned ids.
 			\item The details are then added to the \textbf{Student Database}.
@@ -201,7 +201,7 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
         \item  \textbf{Credit:} Credits of this course.
         \item  \textbf{Sem:} String to store sems in which this course is offered.
     \end{itemize}
-    \subsection{Courses Taken Database}
+    \subsection{Course Enrollment Database}
         This database is used to store all information regarding which student took which Course. The pair (Roll No, CourseID) serves as a Primary Key. The description of Each key is as follows:
         \begin{itemize}
         \item \textbf{Roll No:} Roll No of student who has taken this course. Serves as Foreign Key to student Database.
@@ -269,10 +269,6 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
 
     \item \textbf{RadioButton:} Presents a set of mutually exclusive options, useful for making a single selection from a list.
 
-    \item \textbf{MenuStrip:} Creates a menu bar that contains menus with various commands or options.
-
-    \item \textbf{TabControl:} Organizes content into tabs, facilitating the display of multiple sets of information.
-
     \item \textbf{Panel:} Provides a container to group and organize other controls, enhancing layout flexibility.
 
     \item \textbf{ProgressBar:} Represents the progress of an operation, offering visual feedback to users.
@@ -280,12 +276,6 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
     \item \textbf{ListBox:} Presents a list of items from which users can make multiple selections.
 
     \item \textbf{PictureBox:} Displays images or icons, enhancing the visual appeal of the user interface.
-
-    \item \textbf{RichTextBox:} Supports formatted text and allows users to enter and edit large amounts of text.
-
-    \item \textbf{Timer:} Executes code at specified intervals, useful for implementing time-based events like course registration and fee payment.
-
-    \item \textbf{ToolTip:} Provides additional information when users hover over a control, improving user guidance.
 
     % \item \textbf{Database Connection (e.g., SqlConnection):} Establishes a connection to the SQL Server for data retrieval and manipulation.
 
@@ -295,7 +285,6 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
 
     % \item \textbf{SqlCommand:} Executes SQL queries or stored procedures against a SQL Server database.
 
-    \item \textbf{ErrorProvider:} Displays error icons and messages to alert users about input validation issues.
 
     \item \textbf{MessageBox:} Pops up a dialog box to communicate messages or alerts to the user.
 
