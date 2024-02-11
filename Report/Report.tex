@@ -7,8 +7,9 @@
 \usepackage{algorithm} 
 \usepackage{algpseudocode}
 \usepackage{enumerate}
+\usepackage{enumitem}
 \usepackage{float}
-
+\setlist[enumerate]{label*=\arabic*.}
 
 \begin{document}
 \title{\huge \textbf{Overall Software Plan} \\ \LARGE {\textbf{CS 346: Assignment-2A}}}
@@ -140,7 +141,23 @@ The following subsections highlight the detailed \textbf{Level-2} Dataflow diagr
 \end{enumerate}
 
 \subsubsection{Examination Management Module}
-(Pratyush)
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=\linewidth]{ExamManagement_Level2_DFD.png} 
+    \caption{Level-2 DFD of Examination Management Module}
+\end{figure}
+\begin{enumerate}
+    \item The Administrator starts the overall process. When the process finishes, the schedule for a student is displayed on their interface.
+    \item The main item(s) required from 
+        \begin{enumerate}
+            \item \textbf{Course Enrollments Database} is: set of students enrolled in different courses, and is provided by the course management module.
+            \item \textbf{Room Database} is: the available rooms and their capacities.
+            \item \textbf{Courses Database} is: The slot of each course. The slot will fix the day of exam.
+        \end{enumerate}
+    \item The module generates a ``join-like'' table from the information provided, which is the \textbf{Student-Course-Room Database}.
+    \item The student will interact with a interface which will gather their data from the \textbf{Student-Course-Room Database} using the roll number and display it.
+    \item No particular concrete dates will be shown, we can always map the schedule to a concrete one, given a starting date (like 11 Feb 2024).
+\end{enumerate}
 \subsubsection{Grade Management Module}
 \begin{figure}[H]
     \centering
