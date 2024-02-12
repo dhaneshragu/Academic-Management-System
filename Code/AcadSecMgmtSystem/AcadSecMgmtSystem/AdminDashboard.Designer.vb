@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class StudentDashboard
+Partial Class AdminDashboard
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -209,7 +209,7 @@ Partial Class StudentDashboard
         Me.Button3.Text = "Home Page"
         Me.Button3.UseVisualStyleBackColor = False
         '
-        'StudentDashboard
+        'AdminDashboard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -221,7 +221,7 @@ Partial Class StudentDashboard
         Me.Controls.Add(Me.Label23)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "StudentDashboard"
+        Me.Name = "AdminDashboard"
         Me.Text = "Student Dashboard"
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
