@@ -90,16 +90,6 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcadDBdataset.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AcadDBdataset.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="acadSecdbDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>acadSecdbDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="AdminDashboard.Designer.vb">
       <DependentUpon>AdminDashboard.vb</DependentUpon>
     </Compile>
@@ -248,28 +238,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AcadDBdataset.xsc">
-      <DependentUpon>AcadDBdataset.xsd</DependentUpon>
-    </None>
-    <None Include="AcadDBdataset.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>AcadDBdataset.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="AcadDBdataset.xss">
-      <DependentUpon>AcadDBdataset.xsd</DependentUpon>
-    </None>
-    <None Include="acadSecdbDataSet.xsc">
-      <DependentUpon>acadSecdbDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="acadSecdbDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>acadSecdbDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="acadSecdbDataSet.xss">
-      <DependentUpon>acadSecdbDataSet.xsd</DependentUpon>
-    </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -295,13 +263,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="acadSecdb.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="acadSecdb_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>acadSecdb.mdf</DependentUpon>
-    </Content>
     <None Include="Resources\icons8-new-48.png" />
     <None Include="Resources\icons8-course-assign-48.png" />
     <None Include="Resources\icons8-money-48.png" />
