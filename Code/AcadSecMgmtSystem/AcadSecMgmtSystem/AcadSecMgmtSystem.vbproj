@@ -118,6 +118,12 @@
     <Compile Include="LoginDashboard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LoginRegistration.Designer.vb">
+      <DependentUpon>LoginRegistration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoginRegistration.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ProfDashboard.Designer.vb">
       <DependentUpon>ProfDashboard.vb</DependentUpon>
     </Compile>
@@ -195,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginDashboard.resx">
       <DependentUpon>LoginDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginRegistration.resx">
+      <DependentUpon>LoginRegistration.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfDashboard.resx">
       <DependentUpon>ProfDashboard.vb</DependentUpon>
