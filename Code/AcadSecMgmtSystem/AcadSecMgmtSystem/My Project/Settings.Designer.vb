@@ -64,6 +64,29 @@ Namespace My
                 Return CType(Me("dbConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=sql5110.site4now.net;Persist Security Info=True;User ID=db_aa52db_aca"& _ 
+            "ddb_admin;Password=swelab@123;Connect Timeout=50000")>  _
+        Public ReadOnly Property onlineConnString() As String
+            Get
+                Return CType(Me("onlineConnString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=sql5075.site4now.net;Initial Catalog=db_aa52db_mainacaddb;Persist Sec"& _ 
+            "urity Info=True;User ID=db_aa52db_mainacaddb_admin;Password=swelab@123;Connect T"& _ 
+            "imeout=50000")>  _
+        Public ReadOnly Property maindbConnString() As String
+            Get
+                Return CType(Me("maindbConnString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

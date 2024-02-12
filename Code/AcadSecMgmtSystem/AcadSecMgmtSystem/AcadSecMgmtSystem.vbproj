@@ -8,6 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C36E1151-45EE-48D9-BE04-6556F573E08E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
+    <ForceDesignerDPIUnaware>false</ForceDesignerDPIUnaware>
     <StartupObject>AcadSecMgmtSystem.My.MyApplication</StartupObject>
     <RootNamespace>AcadSecMgmtSystem</RootNamespace>
     <AssemblyName>AcadSecMgmtSystem</AssemblyName>
@@ -89,6 +90,11 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcadDBdataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AcadDBdataset.xsd</DependentUpon>
+    </Compile>
     <Compile Include="acadSecdbDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -123,6 +129,11 @@
     </Compile>
     <Compile Include="LoginRegistration.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainacaddbDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mainacaddbDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ProfDashboard.Designer.vb">
       <DependentUpon>ProfDashboard.vb</DependentUpon>
@@ -237,6 +248,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AcadDBdataset.xsc">
+      <DependentUpon>AcadDBdataset.xsd</DependentUpon>
+    </None>
+    <None Include="AcadDBdataset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AcadDBdataset.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AcadDBdataset.xss">
+      <DependentUpon>AcadDBdataset.xsd</DependentUpon>
+    </None>
     <None Include="acadSecdbDataSet.xsc">
       <DependentUpon>acadSecdbDataSet.xsd</DependentUpon>
     </None>
@@ -250,6 +272,17 @@
     </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="mainacaddbDataSet.xsc">
+      <DependentUpon>mainacaddbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="mainacaddbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>mainacaddbDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="mainacaddbDataSet.xss">
+      <DependentUpon>mainacaddbDataSet.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -311,6 +344,9 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

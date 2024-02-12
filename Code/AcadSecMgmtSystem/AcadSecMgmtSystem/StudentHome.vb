@@ -1,5 +1,4 @@
 ﻿Imports System.Data.SqlClient
-Imports MySql.Data.MySqlClient
 Public Class StudentHome
     'Get connection Strings
     Dim conString = Globals.getdbConnectionString()
@@ -31,6 +30,7 @@ Public Class StudentHome
 
         ' Bind the data to DataGridView
         DataGridView1.DataSource = dataTable
+        Con.Close()
 
     End Sub
 
