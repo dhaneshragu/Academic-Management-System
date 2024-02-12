@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
+Imports MySql.Data.MySqlClient
 Public Class StudentHome
-    'Get connection String
+    'Get connection Strings
     Dim conString = Globals.getdbConnectionString()
     Dim Con = New SqlConnection(conString)
     Private Sub StudentHome_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load

@@ -12,19 +12,27 @@ D:\Sem 6\Soft. Eng. Lab\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSe
 D:\Sem 6\Soft. Eng. Lab\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.Resources.resources
 D:\Sem 6\Soft. Eng. Lab\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.vbproj.GenerateResource.Cache
 D:\Sem 6\Soft. Eng. Lab\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.exe
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.AdminDashboard.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.AdminFinancialRecords.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.AdminSetDates.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.LoginDashboard.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.LoginRegistration.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.ProfDashboard.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.ProfGrades.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.ProfTimeTable.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentDashboard.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.Resources.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.LoginInnerScreen.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentExamSchedule.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentHome.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentTimeTable.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.vbproj.GenerateResource.Cache
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\bin\Debug\acadSecdb.mdf
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\bin\Debug\acadSecdb_log.ldf
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\bin\Debug\AcadSecMgmtSystem.exe.config
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\bin\Debug\AcadSecMgmtSystem.exe
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\bin\Debug\AcadSecMgmtSystem.pdb
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\bin\Debug\AcadSecMgmtSystem.xml
-D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentDashboard.resources
-D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.Resources.resources
-D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentHome.resources
-D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.vbproj.GenerateResource.Cache
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.exe
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.xml
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.pdb
-D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.LoginForm.resources
-D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentExamSchedule.resources
-D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentTimeTable.resources
