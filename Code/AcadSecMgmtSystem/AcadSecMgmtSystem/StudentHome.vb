@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class StudentHome
-    'Get connection String
+    'Get connection Strings
     Dim conString = Globals.getdbConnectionString()
     Dim Con = New SqlConnection(conString)
     Private Sub StudentHome_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
@@ -30,6 +30,7 @@ Public Class StudentHome
 
         ' Bind the data to DataGridView
         DataGridView1.DataSource = dataTable
+        Con.Close()
 
     End Sub
 

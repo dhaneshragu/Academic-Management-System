@@ -8,6 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C36E1151-45EE-48D9-BE04-6556F573E08E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
+    <ForceDesignerDPIUnaware>false</ForceDesignerDPIUnaware>
     <StartupObject>AcadSecMgmtSystem.My.MyApplication</StartupObject>
     <RootNamespace>AcadSecMgmtSystem</RootNamespace>
     <AssemblyName>AcadSecMgmtSystem</AssemblyName>
@@ -89,11 +90,6 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="acadSecdbDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>acadSecdbDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="AdminDashboard.Designer.vb">
       <DependentUpon>AdminDashboard.vb</DependentUpon>
     </Compile>
@@ -123,6 +119,11 @@
     </Compile>
     <Compile Include="LoginRegistration.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainacaddbDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mainacaddbDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ProfDashboard.Designer.vb">
       <DependentUpon>ProfDashboard.vb</DependentUpon>
@@ -237,19 +238,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="acadSecdbDataSet.xsc">
-      <DependentUpon>acadSecdbDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="acadSecdbDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>acadSecdbDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="acadSecdbDataSet.xss">
-      <DependentUpon>acadSecdbDataSet.xsd</DependentUpon>
-    </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="mainacaddbDataSet.xsc">
+      <DependentUpon>mainacaddbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="mainacaddbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>mainacaddbDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="mainacaddbDataSet.xss">
+      <DependentUpon>mainacaddbDataSet.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -262,13 +263,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="acadSecdb.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="acadSecdb_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>acadSecdb.mdf</DependentUpon>
-    </Content>
     <None Include="Resources\icons8-new-48.png" />
     <None Include="Resources\icons8-course-assign-48.png" />
     <None Include="Resources\icons8-money-48.png" />
@@ -311,6 +305,9 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

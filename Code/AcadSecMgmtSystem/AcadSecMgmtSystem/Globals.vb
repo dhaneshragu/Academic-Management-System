@@ -2,7 +2,10 @@
 
 'To get the global variables/declarations to be used all over the project
 Public Class Globals
-    Private Shared dbConnectionString As String = ConfigurationManager.ConnectionStrings("ConString").ConnectionString
+    'Private Shared dbConnectionString As String = ConfigurationManager.ConnectionStrings("ConString").ConnectionString
+
+    'Deployed Database
+    Private Shared dbConnectionString As String = ConfigurationManager.ConnectionStrings("maindbConString").ConnectionString
 
     'To get the dbString
     Public Shared Function getdbConnectionString() As String
