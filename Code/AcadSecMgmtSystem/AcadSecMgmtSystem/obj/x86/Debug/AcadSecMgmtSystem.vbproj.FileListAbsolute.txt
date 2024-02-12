@@ -19,10 +19,12 @@ D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgm
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\bin\Debug\AcadSecMgmtSystem.pdb
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\bin\Debug\AcadSecMgmtSystem.xml
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentDashboard.resources
-D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.LoginForm1.resources
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.Resources.resources
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentHome.resources
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.vbproj.GenerateResource.Cache
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.exe
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.xml
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.pdb
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.LoginForm.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentExamSchedule.resources
+D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentTimeTable.resources

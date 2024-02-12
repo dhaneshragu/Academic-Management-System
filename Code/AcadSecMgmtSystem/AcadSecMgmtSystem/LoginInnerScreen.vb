@@ -1,5 +1,5 @@
 ﻿Imports System.Data.SqlClient
-Public Class StudentHome
+Public Class LoginInnerScreen
     'Get connection String
     Dim conString = Globals.getdbConnectionString()
     Dim Con = New SqlConnection(conString)
