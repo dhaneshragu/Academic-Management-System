@@ -1,22 +1,38 @@
 ﻿Public Class LoginDashboard
 
-    Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'View the student home by default - first argument, name of the panel in the parent form, second - name of the child form
-        Globals.viewChildForm(childformpanel, StudentHome)
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        ' Create an instance of LoginInnerScreen
+        Dim innerScreenForm As New LoginInnerScreen()
+
+        ' Set the Role property
+        innerScreenForm.Role = "Admin"
+
+        ' Display the inner form
+        Globals.viewChildForm(childformpanel, innerScreenForm)
+
     End Sub
 
-    Private Sub Button3_Click(sender As System.Object, e As System.EventArgs) Handles Button3.Click
-        'View the student home on clicking the student Button3
-        Globals.viewChildForm(childformpanel, StudentHome)
+    Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        ' Create an instance of LoginInnerScreen
+        Dim innerScreenForm As New LoginInnerScreen()
+
+        ' Set the Role property
+        innerScreenForm.Role = "Professor"
+
+        ' Display the inner form
+        Globals.viewChildForm(childformpanel, innerScreenForm)
+
     End Sub
 
-    Private Sub Button4_Click(sender As System.Object, e As System.EventArgs) Handles Button4.Click
-        'View Student Time table on clicking this button
-        Globals.viewChildForm(childformpanel, StudentTimeTable)
-    End Sub
+    Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        ' Create an instance of LoginInnerScreen
+        Dim innerScreenForm As New LoginInnerScreen()
 
-    Private Sub Button5_Click(sender As System.Object, e As System.EventArgs) Handles Button5.Click
-        'View Student Examination on clicking this button
-        Globals.viewChildForm(childformpanel, StudentExamSchedule)
+        ' Set the Role property
+        innerScreenForm.Role = "Student"
+
+        ' Display the inner form
+        Globals.viewChildForm(childformpanel, innerScreenForm)
+
     End Sub
 End Class

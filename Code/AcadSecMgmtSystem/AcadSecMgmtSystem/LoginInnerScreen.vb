@@ -1,39 +1,42 @@
-﻿Imports System.Data.SqlClient
-Public Class LoginInnerScreen
-    'Get connection String
-    Dim conString = Globals.getdbConnectionString()
-    Dim Con = New SqlConnection(conString)
-    Private Sub StudentHome_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+﻿Public Class LoginInnerScreen
+    Public Property Role As String
 
-        ' Switch on only if Grades are released by acad section
-        GradeReleasedPanel.Visible = False
+    Private Sub LoginInnerScreen_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        ' Display the Role value in the Label5 control
+        Label3.Text = Role
+    End Sub
 
-        'Just for simulation, to be replaced with real logics
-        Dim query = "SELECT * FROM dummy_course_details"
-        Con.Open()
 
-        Dim cmd As New SqlCommand(query, Con)
-        Dim adapter As New SqlDataAdapter(cmd)
+    Private Sub Button3_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
 
-        ' Create a DataTable to store the data
-        Dim dataTable As New DataTable()
+        Dim mainForm As LoginDashboard = TryCast(Me.ParentForm, LoginDashboard)
+        If Role = "Admin" Then
+            ' Open AdminDashboard.vd
+            Dim adminDashboard As New AdminDashboard()
+            adminDashboard.Show()
+        ElseIf Role = "Professor" Then
+            ' Open ProfDashboard.vd
+            Dim profDashboard As New ProfDashboard()
+            profDashboard.Show()
+        ElseIf Role = "Student" Then
+            ' Open StudentDashboard.vd
+            Dim studentDashboard As New StudentDashboard()
+            studentDashboard.Show()
+        End If
+    End Sub
 
-        'Fill the DataTable with data from the SQL table
-        adapter.Fill(dataTable)
+    Private Sub Button3_MouseEnter(ByVal sender As Object, ByVal e As EventArgs) Handles Button3.MouseEnter
+        ' Change the background color when the mouse enters the button
+        Button3.BackColor = Color.RoyalBlue ' Replace with the desired hover color
+    End Sub
 
-        'IMP: Specify the Column Mappings from DataGridView to SQL Table
-        DataGridView1.AutoGenerateColumns = False
-        DataGridView1.Columns(0).DataPropertyName = "Course Code"
-        DataGridView1.Columns(1).DataPropertyName = "Course Name"
-        DataGridView1.Columns(2).DataPropertyName = "credits"
-        DataGridView1.Columns(3).DataPropertyName = "grade"
-
-        ' Bind the data to DataGridView
-        DataGridView1.DataSource = dataTable
+    Private Sub Button3_MouseLeave(ByVal sender As Object, ByVal e As EventArgs) Handles Button3.MouseLeave
+        ' Revert the background color to the original color when the mouse leaves the button
+        Button3.BackColor = Color.LightBlue
 
     End Sub
 
-    Private Sub Label5_Click(sender As System.Object, e As System.EventArgs) Handles Label5.Click
+    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 End Class

@@ -36,3 +36,25 @@ D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgm
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.exe
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.xml
 D:\Files\IITG\Acads\Semester 6\CS 346\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.pdb
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\bin\Debug\AcadSecMgmtSystem.exe.config
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.xml
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.pdb
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\bin\Debug\AcadSecMgmtSystem.exe
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\bin\Debug\AcadSecMgmtSystem.pdb
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\bin\Debug\AcadSecMgmtSystem.xml
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.AdminDashboard.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.AdminFinancialRecords.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.AdminSetDates.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.LoginDashboard.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.LoginRegistration.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.ProfDashboard.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.ProfGrades.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.ProfTimeTable.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentDashboard.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.Resources.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.LoginInnerScreen.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentExamSchedule.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentHome.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.StudentTimeTable.resources
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.vbproj.GenerateResource.Cache
+E:\Tanish\Academics\Sixth Semester\Software Engineering Lab\Assignment 2\Academic-Management-System\Code\AcadSecMgmtSystem\AcadSecMgmtSystem\obj\x86\Debug\AcadSecMgmtSystem.exe
