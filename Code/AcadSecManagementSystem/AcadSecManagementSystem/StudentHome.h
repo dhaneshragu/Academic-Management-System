@@ -53,6 +53,8 @@ namespace AcadSecManagementSystem {
 	internal: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	internal: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
 	internal: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
+	internal: System::Windows::Forms::Panel^  GradeReleasedPanel;
+	internal: System::Windows::Forms::Label^  Label4;
 
 	private:
 		/// <summary>
@@ -68,17 +70,17 @@ namespace AcadSecManagementSystem {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(StudentHome::typeid));
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle10 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle11 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle23 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle25 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle26 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle24 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle27 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle32 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle33 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle28 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle29 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle30 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle31 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->Panel1 = (gcnew System::Windows::Forms::Panel());
 			this->Label3 = (gcnew System::Windows::Forms::Label());
 			this->Label5 = (gcnew System::Windows::Forms::Label());
@@ -96,10 +98,13 @@ namespace AcadSecManagementSystem {
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->GradeReleasedPanel = (gcnew System::Windows::Forms::Panel());
+			this->Label4 = (gcnew System::Windows::Forms::Label());
 			this->Panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataGridView2))->BeginInit();
 			this->Panel2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataGridView1))->BeginInit();
+			this->GradeReleasedPanel->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// Panel1
@@ -182,29 +187,29 @@ namespace AcadSecManagementSystem {
 			this->DataGridView2->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->DataGridView2->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::RaisedHorizontal;
 			this->DataGridView2->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::DarkSlateBlue;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle23->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle23->BackColor = System::Drawing::Color::DarkSlateBlue;
+			dataGridViewCellStyle23->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::DarkSlateBlue;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->DataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle23->ForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle23->SelectionBackColor = System::Drawing::Color::DarkSlateBlue;
+			dataGridViewCellStyle23->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle23->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->DataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
 			this->DataGridView2->ColumnHeadersHeight = 55;
 			this->DataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
 				this->DataGridViewTextBoxColumn4,
 					this->Column5, this->Column6
 			});
-			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle3->BackColor = System::Drawing::Color::Honeydew;
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle25->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle25->BackColor = System::Drawing::Color::Honeydew;
+			dataGridViewCellStyle25->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle3->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::Honeydew;
-			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->DataGridView2->DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle25->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle25->SelectionBackColor = System::Drawing::Color::Honeydew;
+			dataGridViewCellStyle25->SelectionForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle25->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->DataGridView2->DefaultCellStyle = dataGridViewCellStyle25;
 			this->DataGridView2->GridColor = System::Drawing::Color::DimGray;
 			this->DataGridView2->Location = System::Drawing::Point(11, 330);
 			this->DataGridView2->Margin = System::Windows::Forms::Padding(4);
@@ -213,13 +218,13 @@ namespace AcadSecManagementSystem {
 			this->DataGridView2->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 			this->DataGridView2->RowHeadersVisible = false;
 			this->DataGridView2->RowHeadersWidth = 61;
-			dataGridViewCellStyle4->BackColor = System::Drawing::Color::Linen;
-			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle26->BackColor = System::Drawing::Color::Linen;
+			dataGridViewCellStyle26->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle4->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::Linen;
-			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::Color::Black;
-			this->DataGridView2->RowsDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle26->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle26->SelectionBackColor = System::Drawing::Color::Linen;
+			dataGridViewCellStyle26->SelectionForeColor = System::Drawing::Color::Black;
+			this->DataGridView2->RowsDefaultCellStyle = dataGridViewCellStyle26;
 			this->DataGridView2->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::Linen;
 			this->DataGridView2->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 12, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -241,9 +246,9 @@ namespace AcadSecManagementSystem {
 			// 
 			// Column5
 			// 
-			dataGridViewCellStyle2->Format = L"C0";
-			dataGridViewCellStyle2->NullValue = L"1,10,000";
-			this->Column5->DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle24->Format = L"C0";
+			dataGridViewCellStyle24->NullValue = L"1,10,000";
+			this->Column5->DefaultCellStyle = dataGridViewCellStyle24;
 			this->Column5->FillWeight = 129.8477F;
 			this->Column5->HeaderText = L"Fees";
 			this->Column5->Name = L"Column5";
@@ -260,6 +265,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->Panel2->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->Panel2->BackColor = System::Drawing::Color::AliceBlue;
+			this->Panel2->Controls->Add(this->GradeReleasedPanel);
 			this->Panel2->Controls->Add(this->Button3);
 			this->Panel2->Controls->Add(this->Label1);
 			this->Panel2->Controls->Add(this->DataGridView1);
@@ -289,6 +295,7 @@ namespace AcadSecManagementSystem {
 			this->Label1->Font = (gcnew System::Drawing::Font(L"Verdana", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Label1->ForeColor = System::Drawing::Color::DarkCyan;
+			this->Label1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Label1.Image")));
 			this->Label1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->Label1->Location = System::Drawing::Point(102, 94);
 			this->Label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
@@ -314,29 +321,29 @@ namespace AcadSecManagementSystem {
 			this->DataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->DataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::RaisedHorizontal;
 			this->DataGridView1->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle5->BackColor = System::Drawing::Color::DarkSlateBlue;
-			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle27->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle27->BackColor = System::Drawing::Color::DarkSlateBlue;
+			dataGridViewCellStyle27->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle5->ForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::Color::DarkSlateBlue;
-			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->DataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle27->ForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle27->SelectionBackColor = System::Drawing::Color::DarkSlateBlue;
+			dataGridViewCellStyle27->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle27->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->DataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
 			this->DataGridView1->ColumnHeadersHeight = 55;
 			this->DataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4
 			});
-			dataGridViewCellStyle10->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle10->BackColor = System::Drawing::Color::Honeydew;
-			dataGridViewCellStyle10->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle32->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle32->BackColor = System::Drawing::Color::Honeydew;
+			dataGridViewCellStyle32->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle10->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle10->SelectionBackColor = System::Drawing::Color::Honeydew;
-			dataGridViewCellStyle10->SelectionForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle10->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->DataGridView1->DefaultCellStyle = dataGridViewCellStyle10;
+			dataGridViewCellStyle32->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle32->SelectionBackColor = System::Drawing::Color::Honeydew;
+			dataGridViewCellStyle32->SelectionForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle32->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->DataGridView1->DefaultCellStyle = dataGridViewCellStyle32;
 			this->DataGridView1->GridColor = System::Drawing::Color::DimGray;
 			this->DataGridView1->Location = System::Drawing::Point(4, 210);
 			this->DataGridView1->Margin = System::Windows::Forms::Padding(4);
@@ -345,13 +352,13 @@ namespace AcadSecManagementSystem {
 			this->DataGridView1->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 			this->DataGridView1->RowHeadersVisible = false;
 			this->DataGridView1->RowHeadersWidth = 20;
-			dataGridViewCellStyle11->BackColor = System::Drawing::Color::Honeydew;
-			dataGridViewCellStyle11->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle33->BackColor = System::Drawing::Color::Honeydew;
+			dataGridViewCellStyle33->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle11->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle11->SelectionBackColor = System::Drawing::Color::Honeydew;
-			dataGridViewCellStyle11->SelectionForeColor = System::Drawing::Color::Black;
-			this->DataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle11;
+			dataGridViewCellStyle33->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle33->SelectionBackColor = System::Drawing::Color::Honeydew;
+			dataGridViewCellStyle33->SelectionForeColor = System::Drawing::Color::Black;
+			this->DataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle33;
 			this->DataGridView1->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::Honeydew;
 			this->DataGridView1->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 12, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -366,13 +373,13 @@ namespace AcadSecManagementSystem {
 			// 
 			// Column1
 			// 
-			dataGridViewCellStyle6->BackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle28->BackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle28->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle6->ForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
-			this->Column1->DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle28->ForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle28->SelectionBackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle28->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
+			this->Column1->DefaultCellStyle = dataGridViewCellStyle28;
 			this->Column1->FillWeight = 62.34105F;
 			this->Column1->HeaderText = L"Course Code";
 			this->Column1->Name = L"Column1";
@@ -380,13 +387,13 @@ namespace AcadSecManagementSystem {
 			// 
 			// Column2
 			// 
-			dataGridViewCellStyle7->BackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle29->BackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle29->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle7->ForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle7->SelectionBackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle7->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
-			this->Column2->DefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle29->ForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle29->SelectionBackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle29->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
+			this->Column2->DefaultCellStyle = dataGridViewCellStyle29;
 			this->Column2->FillWeight = 215.3528F;
 			this->Column2->HeaderText = L"Course Name";
 			this->Column2->Name = L"Column2";
@@ -394,13 +401,13 @@ namespace AcadSecManagementSystem {
 			// 
 			// Column3
 			// 
-			dataGridViewCellStyle8->BackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle30->BackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle30->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle8->ForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle8->SelectionBackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle8->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
-			this->Column3->DefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle30->ForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle30->SelectionBackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle30->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
+			this->Column3->DefaultCellStyle = dataGridViewCellStyle30;
 			this->Column3->FillWeight = 61.39239F;
 			this->Column3->HeaderText = L"Credits";
 			this->Column3->Name = L"Column3";
@@ -408,17 +415,45 @@ namespace AcadSecManagementSystem {
 			// 
 			// Column4
 			// 
-			dataGridViewCellStyle9->BackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle9->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle31->BackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle31->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle9->ForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle9->SelectionBackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle9->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
-			this->Column4->DefaultCellStyle = dataGridViewCellStyle9;
+			dataGridViewCellStyle31->ForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle31->SelectionBackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle31->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
+			this->Column4->DefaultCellStyle = dataGridViewCellStyle31;
 			this->Column4->FillWeight = 60.9137F;
 			this->Column4->HeaderText = L"Grade";
 			this->Column4->Name = L"Column4";
 			this->Column4->ReadOnly = true;
+			// 
+			// GradeReleasedPanel
+			// 
+			this->GradeReleasedPanel->BackColor = System::Drawing::Color::OldLace;
+			this->GradeReleasedPanel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->GradeReleasedPanel->Controls->Add(this->Label4);
+			this->GradeReleasedPanel->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->GradeReleasedPanel->Location = System::Drawing::Point(100, 19);
+			this->GradeReleasedPanel->Name = L"GradeReleasedPanel";
+			this->GradeReleasedPanel->Size = System::Drawing::Size(394, 62);
+			this->GradeReleasedPanel->TabIndex = 9;
+			// 
+			// Label4
+			// 
+			this->Label4->BackColor = System::Drawing::Color::Transparent;
+			this->Label4->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Label4->ForeColor = System::Drawing::Color::Crimson;
+			this->Label4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Label4.Image")));
+			this->Label4->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->Label4->Location = System::Drawing::Point(13, 5);
+			this->Label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->Label4->Name = L"Label4";
+			this->Label4->Size = System::Drawing::Size(384, 48);
+			this->Label4->TabIndex = 9;
+			this->Label4->Text = L"  Grades have been released !!";
+			this->Label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// StudentHome
 			// 
@@ -443,12 +478,16 @@ namespace AcadSecManagementSystem {
 			this->Panel2->ResumeLayout(false);
 			this->Panel2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataGridView1))->EndInit();
+			this->GradeReleasedPanel->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
 	private: System::Void StudentHome_Load(System::Object^  sender, System::EventArgs^  e) {
+				 // Make this visible only when grades are released from acad section
+				 GradeReleasedPanel->Visible = false;
+
 				 try
 				 {
 					 String^ connString = Constants::getdbConnString();
