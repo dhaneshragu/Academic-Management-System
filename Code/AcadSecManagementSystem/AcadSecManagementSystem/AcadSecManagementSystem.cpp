@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "StudentDashboard.h"
+#include "AdminDashboard.h"
 #include "ProfDashboard.h"
 #include "LoginDashboard.h"
 
@@ -15,6 +16,6 @@ int main(array<System::String ^> ^args)
 	Application::SetCompatibleTextRenderingDefault(false); 
 
 	// Create the main window and run it
-	Application::Run(gcnew LoginDashboard());
+	Application::Run(gcnew AdminDashboard());
 	return 0;
 }

@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AcadSecManagementSystem.cpp" />
+    <ClCompile Include="AdminDashboard.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="ProfDashboard.cpp" />
@@ -103,8 +104,12 @@
     <ClCompile Include="StudentExamSchedule.cpp" />
     <ClCompile Include="StudentHome.cpp" />
     <ClCompile Include="StudentTimetable.cpp" />
+    <ClCompile Include="ViewRecords.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdminDashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Constants.h" />
     <ClInclude Include="LoginDashboard.h">
       <FileType>CppForm</FileType>
@@ -135,11 +140,17 @@
     <ClInclude Include="StudentTimetable.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ViewRecords.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdminDashboard.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProfDashboard.resx">
       <DependentUpon>ProfDashboard.h</DependentUpon>
       <SubType>Designer</SubType>
@@ -171,6 +182,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentTimetable.resx">
       <DependentUpon>StudentTimetable.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewRecords.resx">
+      <DependentUpon>ViewRecords.h</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
