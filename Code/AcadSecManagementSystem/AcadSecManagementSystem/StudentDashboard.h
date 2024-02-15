@@ -2,6 +2,8 @@
 #include "Constants.h"
 #include "StudentHome.h"
 #include "StudentTimetable.h"
+#include "StudentExamSchedule.h"
+
 namespace AcadSecManagementSystem {
 
 	using namespace System;
@@ -171,6 +173,7 @@ namespace AcadSecManagementSystem {
 			this->Button5->TabIndex = 8;
 			this->Button5->Text = L"Exam Schedule";
 			this->Button5->UseVisualStyleBackColor = false;
+			this->Button5->Click += gcnew System::EventHandler(this, &StudentDashboard::Button5_Click);
 			// 
 			// Button4
 			// 
@@ -286,6 +289,10 @@ private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^ 
 }
 private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) {
 			 StudentTimetable ^ InnerForm = gcnew StudentTimetable();
+			 Constants::subViewChildForm(childformpanel, InnerForm);
+}
+private: System::Void Button5_Click(System::Object^  sender, System::EventArgs^  e) {
+			 StudentExamSchedule^ InnerForm = gcnew StudentExamSchedule();
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 }
 };
