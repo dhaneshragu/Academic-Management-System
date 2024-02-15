@@ -56,7 +56,9 @@ namespace AcadSecManagementSystem {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
 	private: System::Windows::Forms::ComboBox^  comboBox1;
 	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::Label^  label1;
+	internal: System::Windows::Forms::Label^  label3;
+	private:
+
 
 
 
@@ -84,6 +86,7 @@ namespace AcadSecManagementSystem {
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(StudentTimetable::typeid));
 			this->DataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -91,7 +94,7 @@ namespace AcadSecManagementSystem {
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -221,7 +224,7 @@ namespace AcadSecManagementSystem {
 				L"Monday", L"Tuesday", L"Wednesday", L"Thrusday",
 					L"Friday"
 			});
-			this->comboBox1->Location = System::Drawing::Point(316, 84);
+			this->comboBox1->Location = System::Drawing::Point(316, 92);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(540, 31);
 			this->comboBox1->TabIndex = 4;
@@ -232,24 +235,29 @@ namespace AcadSecManagementSystem {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 13.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(161, 87);
+			this->label2->Location = System::Drawing::Point(161, 95);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(120, 27);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"Select Day";
 			this->label2->Click += gcnew System::EventHandler(this, &StudentTimetable::label2_Click);
 			// 
-			// label1
+			// label3
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Verdana", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::Color::MidnightBlue;
-			this->label1->Location = System::Drawing::Point(406, 24);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(280, 36);
-			this->label1->TabIndex = 7;
-			this->label1->Text = L"View Your Timetable";
+			this->label3->ForeColor = System::Drawing::Color::DarkCyan;
+			this->label3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label3.Image")));
+			this->label3->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->label3->Location = System::Drawing::Point(310, 16);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Name = L"label3";
+			this->label3->Padding = System::Windows::Forms::Padding(0, 0, 0, 6);
+			this->label3->Size = System::Drawing::Size(413, 42);
+			this->label3->TabIndex = 8;
+			this->label3->Text = L"     View Your Timetable";
+			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// StudentTimetable
 			// 
@@ -257,7 +265,7 @@ namespace AcadSecManagementSystem {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::AliceBlue;
 			this->ClientSize = System::Drawing::Size(1016, 557);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->DataGridView1);
