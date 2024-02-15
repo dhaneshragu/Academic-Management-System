@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Constants.h"
 
-
 namespace Constants
 {
 
@@ -20,15 +19,5 @@ namespace Constants
 		childpanel->BringToFront();
 		parentpanel->Controls->Add(childpanel);
 		childpanel->Show(); // Add to panel and show the child form
-	}
-
-	// Function to convert .NET String^ to C++ string
-	string StringTostring(String ^ x) {
-		return msclr::interop::marshal_as<std::string>(x);
-	}
-	
-	// Function to convert C++ string to .NET String^
-	String ^ stringToString(string x) {
-		return msclr::interop::marshal_as<System::String ^>(x);
 	}
 }
