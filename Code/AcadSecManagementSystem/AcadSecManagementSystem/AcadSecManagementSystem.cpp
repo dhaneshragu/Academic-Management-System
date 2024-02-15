@@ -16,6 +16,6 @@ int main(array<System::String ^> ^args)
 	Application::SetCompatibleTextRenderingDefault(false); 
 
 	// Create the main window and run it
-	Application::Run(gcnew AdminDashboard());
+	Application::Run(gcnew LoginDashboard());
 	return 0;
 }
