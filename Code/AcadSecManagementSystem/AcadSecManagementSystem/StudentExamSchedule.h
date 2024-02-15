@@ -148,7 +148,7 @@ namespace AcadSecManagementSystem {
 			dataGridViewCellStyle6->ForeColor = System::Drawing::Color::Black;
 			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::Honeydew;
 			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
 			this->DataGridView1->DefaultCellStyle = dataGridViewCellStyle6;
 			this->DataGridView1->GridColor = System::Drawing::Color::DimGray;
 			this->DataGridView1->Location = System::Drawing::Point(13, 153);

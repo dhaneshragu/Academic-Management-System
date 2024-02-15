@@ -131,7 +131,7 @@ namespace AcadSecManagementSystem {
 			dataGridViewCellStyle6->ForeColor = System::Drawing::Color::Black;
 			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::Honeydew;
 			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
 			this->DataGridView1->DefaultCellStyle = dataGridViewCellStyle6;
 			this->DataGridView1->GridColor = System::Drawing::Color::DimGray;
 			this->DataGridView1->Location = System::Drawing::Point(98, 178);
@@ -140,7 +140,7 @@ namespace AcadSecManagementSystem {
 			this->DataGridView1->ReadOnly = true;
 			this->DataGridView1->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 			this->DataGridView1->RowHeadersVisible = false;
-			this->DataGridView1->RowHeadersWidth = 20;
+			this->DataGridView1->RowHeadersWidth = 10;
 			dataGridViewCellStyle7->BackColor = System::Drawing::Color::Honeydew;
 			dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
