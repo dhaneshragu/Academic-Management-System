@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "StudentDashboard.h"
 #include "ProfDashboard.h"
+#include "LoginDashboard.h"
 
 using namespace AcadSecManagementSystem;
 
@@ -14,6 +15,6 @@ int main(array<System::String ^> ^args)
 	Application::SetCompatibleTextRenderingDefault(false); 
 
 	// Create the main window and run it
-	Application::Run(gcnew StudentDashboard());
+	Application::Run(gcnew LoginDashboard());
 	return 0;
 }

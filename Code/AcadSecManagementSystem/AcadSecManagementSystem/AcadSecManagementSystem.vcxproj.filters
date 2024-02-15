@@ -45,6 +45,12 @@
     <ClCompile Include="StudentTimetable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LoginDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginInnerScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="StudentExamSchedule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -74,6 +80,12 @@
     <ClInclude Include="StudentTimetable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LoginDashboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginInnerScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="StudentExamSchedule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -100,4 +112,3 @@
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>
-</Project>
