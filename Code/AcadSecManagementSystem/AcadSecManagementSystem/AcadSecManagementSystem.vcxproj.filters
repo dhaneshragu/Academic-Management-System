@@ -14,6 +14,7 @@
     <ClCompile Include="StudentTimetable.cpp" />
     <ClCompile Include="AdminDashboard.cpp" />
     <ClCompile Include="ViewRecords.cpp" />
+    <ClCompile Include="StudentCourseReg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
@@ -29,6 +30,7 @@
     <ClInclude Include="StudentTimetable.h" />
     <ClInclude Include="AdminDashboard.h" />
     <ClInclude Include="ViewRecords.h" />
+    <ClInclude Include="StudentCourseReg.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
@@ -43,6 +45,7 @@
     <EmbeddedResource Include="StudentHome.resx" />
     <EmbeddedResource Include="StudentTimetable.resx" />
     <EmbeddedResource Include="AdminDashboard.resx" />
+    <EmbeddedResource Include="StudentCourseReg.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.ico" />
