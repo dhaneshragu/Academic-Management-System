@@ -1,7 +1,7 @@
 #pragma once
 #include "Constants.h"
 #include "StudentHome.h"
-#include "StudentTimetable.h"
+#include "ProfTimetable.h"
 namespace AcadSecManagementSystem {
 
 	using namespace System;
@@ -13,12 +13,12 @@ namespace AcadSecManagementSystem {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for StudentDashboard
+	/// Summary for ProfDashboard
 	/// </summary>
-	public ref class StudentDashboard : public System::Windows::Forms::Form
+	public ref class ProfDashboard : public System::Windows::Forms::Form
 	{
 	public:
-		StudentDashboard(void)
+		ProfDashboard(void)
 		{
 			InitializeComponent();
 			//
@@ -30,7 +30,7 @@ namespace AcadSecManagementSystem {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~StudentDashboard()
+		~ProfDashboard()
 		{
 			if (components)
 			{
@@ -44,13 +44,13 @@ namespace AcadSecManagementSystem {
 	private: System::Windows::Forms::Panel^  panel2;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 	internal: System::Windows::Forms::Button^  Button6;
-	private: 
+	private:
 	internal: System::Windows::Forms::Button^  Button5;
 	internal: System::Windows::Forms::Button^  Button4;
 	internal: System::Windows::Forms::Button^  Button3;
 	internal: System::Windows::Forms::Label^  Label36;
 	internal: System::Windows::Forms::Panel^  childformpanel;
-	protected: 
+	protected:
 
 	private:
 		/// <summary>
@@ -65,7 +65,7 @@ namespace AcadSecManagementSystem {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(StudentDashboard::typeid));
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(ProfDashboard::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -100,19 +100,20 @@ namespace AcadSecManagementSystem {
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(1157, 7);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(117, 21);
+			this->label3->Size = System::Drawing::Size(97, 21);
 			this->label3->TabIndex = 2;
-			this->label3->Text = L"{Roll Number}";
+			this->label3->Text = L"{FacultyID}";
+			this->label3->Click += gcnew System::EventHandler(this, &ProfDashboard::label3_Click);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(1019, 7);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(130, 21);
+			this->label2->Size = System::Drawing::Size(143, 21);
 			this->label2->TabIndex = 1;
-			this->label2->Text = L"{Stusent Name}";
-			this->label2->Click += gcnew System::EventHandler(this, &StudentDashboard::label2_Click);
+			this->label2->Text = L"{Professor Name}";
+			this->label2->Click += gcnew System::EventHandler(this, &ProfDashboard::label2_Click);
 			// 
 			// label1
 			// 
@@ -169,7 +170,7 @@ namespace AcadSecManagementSystem {
 			this->Button5->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
 			this->Button5->Size = System::Drawing::Size(308, 67);
 			this->Button5->TabIndex = 8;
-			this->Button5->Text = L"Exam Schedule";
+			this->Button5->Text = L" Grades            ";
 			this->Button5->UseVisualStyleBackColor = false;
 			// 
 			// Button4
@@ -187,7 +188,7 @@ namespace AcadSecManagementSystem {
 			this->Button4->TabIndex = 2;
 			this->Button4->Text = L"Time table";
 			this->Button4->UseVisualStyleBackColor = false;
-			this->Button4->Click += gcnew System::EventHandler(this, &StudentDashboard::Button4_Click);
+			this->Button4->Click += gcnew System::EventHandler(this, &ProfDashboard::Button4_Click);
 			// 
 			// Button3
 			// 
@@ -205,7 +206,7 @@ namespace AcadSecManagementSystem {
 			this->Button3->TabIndex = 7;
 			this->Button3->Text = L"Home Page";
 			this->Button3->UseVisualStyleBackColor = false;
-			this->Button3->Click += gcnew System::EventHandler(this, &StudentDashboard::Button3_Click);
+			this->Button3->Click += gcnew System::EventHandler(this, &ProfDashboard::Button3_Click);
 			// 
 			// Label36
 			// 
@@ -217,7 +218,7 @@ namespace AcadSecManagementSystem {
 			this->Label36->Name = L"Label36";
 			this->Label36->Size = System::Drawing::Size(186, 68);
 			this->Label36->TabIndex = 6;
-			this->Label36->Text = L"Student\r\nDashboard";
+			this->Label36->Text = L"Professor\r\nDashboard";
 			this->Label36->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// pictureBox1
@@ -236,9 +237,9 @@ namespace AcadSecManagementSystem {
 			this->childformpanel->Name = L"childformpanel";
 			this->childformpanel->Size = System::Drawing::Size(1017, 558);
 			this->childformpanel->TabIndex = 9;
-			this->childformpanel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &StudentDashboard::childformpanel_Paint);
+			this->childformpanel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &ProfDashboard::childformpanel_Paint);
 			// 
-			// StudentDashboard
+			// ProfDashboard
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 21);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -252,9 +253,9 @@ namespace AcadSecManagementSystem {
 			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
-			this->Name = L"StudentDashboard";
-			this->Text = L"Student Dashboard";
-			this->Load += gcnew System::EventHandler(this, &StudentDashboard::StudentDashboard_Load);
+			this->Name = L"ProfDashboard";
+			this->Text = L"Professor Dashboard";
+			this->Load += gcnew System::EventHandler(this, &ProfDashboard::ProfDashboard_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->panel2->ResumeLayout(false);
@@ -265,29 +266,32 @@ namespace AcadSecManagementSystem {
 		}
 #pragma endregion
 
-private: System::Void childformpanel_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) 
-{
-}
-private:  System::Void StudentDashboard_Load(System::Object^  sender, System::EventArgs^  e) 
-{
+	private: System::Void childformpanel_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e)
+	{
+	}
+	private:  System::Void ProfDashboard_Load(System::Object^  sender, System::EventArgs^  e)
+	{
 
-	// To render the StudentHome() form, replace according to the Inner form that you want to render inside
-	StudentHome ^ InnerForm = gcnew StudentHome();
-	Constants::subViewChildForm(childformpanel, InnerForm);
+				  // To render the StudentHome() form, replace according to the Inner form that you want to render inside
+				  ProfTimetable ^ InnerForm = gcnew ProfTimetable();
+				  Constants::subViewChildForm(childformpanel, InnerForm);
 
-}
-private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) 
-{
-}
-private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {
-			 // To render the StudentHome() form, replace according to the Inner form that you want to render inside
-			 StudentHome ^ InnerForm = gcnew StudentHome();
-			 Constants::subViewChildForm(childformpanel, InnerForm);
-}
-private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) {
-			 StudentTimetable ^ InnerForm = gcnew StudentTimetable();
-			 Constants::subViewChildForm(childformpanel, InnerForm);
-}
+	}
+	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e)
+	{
+	}
+	private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {
+				 // To render the StudentHome() form, replace according to the Inner form that you want to render inside
+				 ProfTimetable ^ InnerForm = gcnew ProfTimetable();
+				 Constants::subViewChildForm(childformpanel, InnerForm);
+	}
+	private: System::Void label3_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) 
+	{
+				 ProfTimetable ^ InnerForm = gcnew ProfTimetable();
+				 Constants::subViewChildForm(childformpanel, InnerForm);
+	}
 };
 }
 

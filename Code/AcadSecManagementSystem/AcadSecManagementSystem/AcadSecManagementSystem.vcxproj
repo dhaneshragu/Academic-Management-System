@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="11.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C4F1958E-E067-4307-AE4F-A64CDC3ECCBC}</ProjectGuid>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>AcadSecManagementSystem</RootNamespace>
   </PropertyGroup>
@@ -22,7 +22,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>Pure</CLRSupport>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -91,6 +91,8 @@
     <ClCompile Include="AcadSecManagementSystem.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="ProfDashboard.cpp" />
+    <ClCompile Include="ProfTimetable.cpp" />
     <ClCompile Include="LoginDashboard.cpp" />
     <ClCompile Include="LoginInnerScreen.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -98,6 +100,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="StudentHome.cpp" />
+    <ClCompile Include="StudentTimetable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
@@ -105,6 +108,12 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="LoginInnerScreen.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ProfDashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ProfTimetable.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="StudentDashboard.h">
@@ -115,11 +124,21 @@
     <ClInclude Include="StudentHome.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="StudentTimetable.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ProfDashboard.resx">
+      <DependentUpon>ProfDashboard.h</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfTimetable.resx">
+      <DependentUpon>ProfTimetable.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginDashboard.resx">
       <DependentUpon>LoginDashboard.h</DependentUpon>
       <SubType>Designer</SubType>
@@ -135,8 +154,10 @@
       <DependentUpon>StudentHome.h</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="StudentTimetable.resx">
+      <DependentUpon>StudentTimetable.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-</Project>

@@ -20,9 +20,13 @@ namespace Constants
 {
 	using namespace System;
 	using namespace System::Windows::Forms;
+	using namespace std;
 
 	String^ getdbConnString();
 	void subViewChildForm(Panel^ parentpanel, Form^ childpanel);
+
+	string StringTostring(String ^ x);
+	String ^ stringToString(string x);
 }
 
 #endif
