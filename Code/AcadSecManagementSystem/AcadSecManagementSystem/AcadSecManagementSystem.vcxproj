@@ -93,6 +93,8 @@
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="ProfDashboard.cpp" />
     <ClCompile Include="ProfTimetable.cpp" />
+    <ClCompile Include="LoginDashboard.cpp" />
+    <ClCompile Include="LoginInnerScreen.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -102,6 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="LoginDashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="LoginInnerScreen.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ProfDashboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -131,6 +139,13 @@
     <EmbeddedResource Include="ProfTimetable.resx">
       <DependentUpon>ProfTimetable.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginDashboard.resx">
+      <DependentUpon>LoginDashboard.h</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginInnerScreen.resx">
+      <DependentUpon>LoginInnerScreen.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StudentDashboard.resX">
       <DependentUpon>StudentDashboard.h</DependentUpon>
       <SubType>Designer</SubType>
@@ -146,4 +161,3 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-</Project>
