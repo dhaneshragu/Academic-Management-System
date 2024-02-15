@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "StudentDashboard.h"
+#include "ProfDashboard.h"
 
 using namespace AcadSecManagementSystem;
 

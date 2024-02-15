@@ -36,6 +36,15 @@
     <ClCompile Include="StudentHome.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ProfDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfTimetable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StudentTimetable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -53,6 +62,15 @@
     <ClInclude Include="StudentHome.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ProfDashboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProfTimetable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StudentTimetable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
@@ -66,7 +84,7 @@
     <EmbeddedResource Include="StudentHome.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginDashboard.resx">
+    <EmbeddedResource Include="ProfDashboard.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>
