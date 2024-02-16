@@ -1,6 +1,8 @@
 #pragma once
 #include "Constants.h"
 #include "StudentDashboard.h"
+#include "AdminDashboard.h"
+#include "ProfDashboard.h"
 
 namespace AcadSecManagementSystem {
 
@@ -223,13 +225,13 @@ private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs
 
 		if (Role == "Admin") {
 			// Replace with Admin Dashboard
-            StudentDashboard^ studentDashboard = gcnew StudentDashboard();
-            studentDashboard->Show();
+			AdminDashboard^ adminDashboard = gcnew AdminDashboard();
+			adminDashboard->Show();
         }
         else if (Role == "Professor") {
 			// Replace with Prof Dashboard
-            StudentDashboard^ studentDashboard = gcnew StudentDashboard();
-            studentDashboard->Show();
+			ProfDashboard^ profDashboard = gcnew ProfDashboard();
+			profDashboard->Show();
         }
         else if (Role == "Student") {
             StudentDashboard^ studentDashboard = gcnew StudentDashboard();
