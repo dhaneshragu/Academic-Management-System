@@ -1,30 +1,30 @@
-code,name,prof_id,Name,EmailID,LTPC,sems_offered,is_compulsory
-CS 101,Introduction to Computing,johnjose,John Jose,johnjose@iitg.ac.in,3 0 0 6,2,1
-CS 110,Computing Laboratory,ranbir,Sanasam Ranbir Singh,ranbir@iitg.ac.in,0 0 3 3,2,1
-BT 101,Introductory Biology,bt,BT Prof,bt@iitg.ac.in,3 0 0 6,2,1
-EE 102,Basic Electronics Lab,ee,EE Prof,ee@iitg.ac.in,0 0 3 3,2,1
-MA 102,Mathematics-II,ma,MA Prof,ma@iitg.ac.in,3 1 0 8,2,1
-ME 101,Engineering Mechanics,me,ME Prof,me@iitg.ac.in,3 1 0 8,2,1
-PH 102,Physics-II,ph,PH Prof,ph@iitg.ac.in,2 1 0 6,2,1
-ME 110,Mechanical Workshop,work,Workshop Prof,work@iitg.ac.in,0 0 3 3,2,1
-CS 224,Hardware Lab,ckarfa,Chandan Karfa,ckarfa@iitg.ac.in,0 1 4 6,4,1
-CS 245,Database Management Systems,pbhaduri,Purandar Bhaduri,pbhaduri@iitg.ac.in,3 0 0 6,4,1
-CS 246,Database Management Systems Lab,saradhi,V. Vijaya Saradhi,saradhi@iitg.ac.in,0 0 4 4,4,1
-CS 205,Formal Languages Automata Theory and Computation,svrao,S. V. Rao,svrao@iitg.ac.in,3 0 0 6,4,1
-CS 207,Design and Analysis of Algorithms,ben,Benny George K,ben@iitg.ac.in,3 0 0 6,4,1
-CS 223,Computer Architecture and Organization,hemangee,Hemangee K. Kapoor,hemangee@iitg.ac.in,3 0 0 6,4,1
-CS 348,Implementation of Programming Languages Lab,pinaki,Pinaki Mitra,pinaki@iitg.ac.in,0 2 3 7,6,1
-CS 345,Software Engineering,pkdas,Pradip Kr. Das,pkdas@iitg.ac.in,2 0 0 4,6,1
-CS 346,Software Engineering Lab,pkdas,Pradip Kr. Das,pkdas@iitg.ac.in,0 0 3 3,6,1
-CS 361,Machine Learning,anand.ashish,Ashish Anand,anand.ashish@iitg.ac.in,3 0 0 6,6,1
-CS 321,Smart Systems Laboratory,jatin,Jatindra Kumar Deka,jatin@iitg.ac.in,0 1 3 5,6,0
-CS 331,Programming Languages Lab,sukumar,Sukumar Nandi,sukumar@iitg.ac.in,0 1 3 5,6,0
-CS 581,Blockchain Science and Technology,ben,Benny George,ben@iitg.ac.in,3 0 0 6,6,0
-CS 508,Optimization Methods,sukantab,Sukanta Bhattacharjee,sukantab@iitg.ac.in,3 0 0 6,6 8,0
-CS 528,High Performance Computing,asahu,Aryabartta Sahu,asahu@iitg.ac.in,3 0 0 6,6 8,0
-CS 544,Topics in Networks,moumita.patra,Moumita Patra,moumita.patra@iitg.ac.in,3 0 0 6,6 8,0
-CS 560,Virtual and Augmented Reality Systems,samit,Samit Bhattacharya,samit@iitg.ac.in,3 0 0 6,6 8,0
-CS 577,C Based VLSI Design,ckarfa,Chandan Karfa,ckarfa@iitg.ac.in,3 0 0 6,6 8,0
-CS 564,Computational Complexity,deepkesh,Deepanjan Kesh,deepkesh@iitg.ac.in,3 0 0 6,6 8,0
-CS 563,Neural Networks for NLP,awekar,Amit Awekar,awekar@iitg.ac.in,3 0 0 6,6 8,0
-CS 561,Artificial Intelligence,r.duttabaruah,Rashmi Dutta Baruah,r.duttabaruah@iitg.ac.in,3 0 0 6,8,0
+code,name,prof_id,LTPC,sems_offered,is_compulsory
+CS 101,Introduction to Computing,johnjose,3 0 0 6,2,1
+CS 110,Computing Laboratory,ranbir,0 0 3 3,2,1
+BT 101,Introductory Biology,bt,3 0 0 6,2,1
+EE 102,Basic Electronics Lab,ee,0 0 3 3,2,1
+MA 102,Mathematics-II,ma,3 1 0 8,2,1
+ME 101,Engineering Mechanics,me,3 1 0 8,2,1
+PH 102,Physics-II,ph,2 1 0 6,2,1
+ME 110,Mechanical Workshop,work,0 0 3 3,2,1
+CS 224,Hardware Lab,ckarfa,0 1 4 6,4,1
+CS 245,Database Management Systems,pbhaduri,3 0 0 6,4,1
+CS 246,Database Management Systems Lab,saradhi,0 0 4 4,4,1
+CS 205,Formal Languages Automata Theory and Computation,svrao,3 0 0 6,4,1
+CS 207,Design and Analysis of Algorithms,ben,3 0 0 6,4,1
+CS 223,Computer Architecture and Organization,hemangee,3 0 0 6,4,1
+CS 348,Implementation of Programming Languages Lab,pinaki,0 2 3 7,6,1
+CS 345,Software Engineering,pkdas,2 0 0 4,6,1
+CS 346,Software Engineering Lab,pkdas,0 0 3 3,6,1
+CS 361,Machine Learning,anand.ashish,3 0 0 6,6,1
+CS 321,Smart Systems Laboratory,jatin,0 1 3 5,6,0
+CS 331,Programming Languages Lab,sukumar,0 1 3 5,6,0
+CS 581,Blockchain Science and Technology,ben,3 0 0 6,6,0
+CS 508,Optimization Methods,sukantab,3 0 0 6,6 8,0
+CS 528,High Performance Computing,asahu,3 0 0 6,6 8,0
+CS 544,Topics in Networks,moumita.patra,3 0 0 6,6 8,0
+CS 560,Virtual and Augmented Reality Systems,samit,3 0 0 6,6 8,0
+CS 577,C Based VLSI Design,ckarfa,3 0 0 6,6 8,0
+CS 564,Computational Complexity,deepkesh,3 0 0 6,6 8,0
+CS 563,Neural Networks for NLP,awekar,3 0 0 6,6 8,0
+CS 561,Artificial Intelligence,r.duttabaruah,3 0 0 6,8,0
