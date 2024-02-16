@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C4F1958E-E067-4307-AE4F-A64CDC3ECCBC}</ProjectGuid>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>AcadSecManagementSystem</RootNamespace>
   </PropertyGroup>
@@ -29,7 +29,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <CLRSupport>Pure</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -93,6 +93,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="ProfDashboard.cpp" />
+    <ClCompile Include="ProfSetDates.cpp" />
     <ClCompile Include="ProfTimetable.cpp" />
     <ClCompile Include="LoginDashboard.cpp" />
     <ClCompile Include="LoginInnerScreen.cpp" />
@@ -118,6 +119,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ProfDashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ProfSetDates.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ProfTimetable.h">
@@ -154,6 +158,9 @@
     <EmbeddedResource Include="ProfDashboard.resx">
       <DependentUpon>ProfDashboard.h</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfSetDates.resx">
+      <DependentUpon>ProfSetDates.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfTimetable.resx">
       <DependentUpon>ProfTimetable.h</DependentUpon>
