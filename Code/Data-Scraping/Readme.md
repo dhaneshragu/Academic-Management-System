@@ -32,4 +32,5 @@
 | CS 561 | 8 |
 
 # Note:
-I haven't populated any data for 7 of us so that we can use it while testing separately and also while presentation demo.
+- I haven't populated any data for 7 of us so that we can use it while testing separately and also while presentation demo.
+- 8th Semester students can choose 4 elective subjects, BTP is not considered.
