@@ -52,7 +52,8 @@ namespace AcadSecManagementSystem {
 	internal: System::Windows::Forms::Button^  Button3;
 	internal: System::Windows::Forms::Label^  Label36;
 	internal: System::Windows::Forms::Panel^  childformpanel;
-	protected: 
+
+	protected:
 
 	private:
 		/// <summary>
@@ -150,7 +151,7 @@ namespace AcadSecManagementSystem {
 			this->Button6->ForeColor = System::Drawing::Color::Black;
 			this->Button6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Button6.Image")));
 			this->Button6->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Button6->Location = System::Drawing::Point(0, 476);
+			this->Button6->Location = System::Drawing::Point(0, 443);
 			this->Button6->Name = L"Button6";
 			this->Button6->Padding = System::Windows::Forms::Padding(15, 0, 35, 0);
 			this->Button6->Size = System::Drawing::Size(264, 67);
@@ -166,7 +167,7 @@ namespace AcadSecManagementSystem {
 			this->Button5->ForeColor = System::Drawing::Color::Black;
 			this->Button5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Button5.Image")));
 			this->Button5->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Button5->Location = System::Drawing::Point(0, 392);
+			this->Button5->Location = System::Drawing::Point(-3, 370);
 			this->Button5->Name = L"Button5";
 			this->Button5->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
 			this->Button5->Size = System::Drawing::Size(308, 67);
@@ -183,7 +184,7 @@ namespace AcadSecManagementSystem {
 			this->Button4->ForeColor = System::Drawing::Color::Black;
 			this->Button4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Button4.Image")));
 			this->Button4->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Button4->Location = System::Drawing::Point(0, 308);
+			this->Button4->Location = System::Drawing::Point(3, 297);
 			this->Button4->Name = L"Button4";
 			this->Button4->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
 			this->Button4->Size = System::Drawing::Size(264, 67);

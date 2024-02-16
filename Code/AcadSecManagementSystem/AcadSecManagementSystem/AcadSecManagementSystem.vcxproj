@@ -92,6 +92,7 @@
     <ClCompile Include="AdminDashboard.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="DetailsUpdateForm.cpp" />
     <ClCompile Include="ProfDashboard.cpp" />
     <ClCompile Include="ProfTimetable.cpp" />
     <ClCompile Include="LoginDashboard.cpp" />
@@ -111,6 +112,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="DetailsUpdateForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="LoginDashboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -150,6 +154,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AdminDashboard.resx">
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailsUpdateForm.resx">
+      <DependentUpon>DetailsUpdateForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfDashboard.resx">
       <DependentUpon>ProfDashboard.h</DependentUpon>

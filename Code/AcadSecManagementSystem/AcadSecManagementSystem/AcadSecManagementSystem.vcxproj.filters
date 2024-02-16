@@ -15,6 +15,7 @@
     <ClCompile Include="AdminDashboard.cpp" />
     <ClCompile Include="ViewRecords.cpp" />
     <ClCompile Include="StudentCourseReg.cpp" />
+    <ClCompile Include="DetailsUpdateForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
@@ -31,6 +32,7 @@
     <ClInclude Include="AdminDashboard.h" />
     <ClInclude Include="ViewRecords.h" />
     <ClInclude Include="StudentCourseReg.h" />
+    <ClInclude Include="DetailsUpdateForm.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
@@ -46,6 +48,7 @@
     <EmbeddedResource Include="StudentTimetable.resx" />
     <EmbeddedResource Include="AdminDashboard.resx" />
     <EmbeddedResource Include="StudentCourseReg.resx" />
+    <EmbeddedResource Include="ViewRecords.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.ico" />
