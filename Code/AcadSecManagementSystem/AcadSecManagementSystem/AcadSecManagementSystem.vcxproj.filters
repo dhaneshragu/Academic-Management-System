@@ -12,6 +12,8 @@
     <ClCompile Include="StudentExamSchedule.cpp" />
     <ClCompile Include="StudentHome.cpp" />
     <ClCompile Include="StudentTimetable.cpp" />
+    <ClCompile Include="AdminDashboard.cpp" />
+    <ClCompile Include="ViewRecords.cpp" />
     <ClCompile Include="StudentCourseReg.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -26,6 +28,8 @@
     <ClInclude Include="StudentExamSchedule.h" />
     <ClInclude Include="StudentHome.h" />
     <ClInclude Include="StudentTimetable.h" />
+    <ClInclude Include="AdminDashboard.h" />
+    <ClInclude Include="ViewRecords.h" />
     <ClInclude Include="StudentCourseReg.h" />
   </ItemGroup>
   <ItemGroup>
@@ -40,6 +44,7 @@
     <EmbeddedResource Include="StudentExamSchedule.resx" />
     <EmbeddedResource Include="StudentHome.resx" />
     <EmbeddedResource Include="StudentTimetable.resx" />
+    <EmbeddedResource Include="AdminDashboard.resx" />
     <EmbeddedResource Include="StudentCourseReg.resx" />
   </ItemGroup>
   <ItemGroup>
