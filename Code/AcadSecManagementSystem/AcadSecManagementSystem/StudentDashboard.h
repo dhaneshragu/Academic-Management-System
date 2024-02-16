@@ -52,7 +52,7 @@ namespace AcadSecManagementSystem {
 	internal: System::Windows::Forms::Button^  Button3;
 	internal: System::Windows::Forms::Label^  Label36;
 	internal: System::Windows::Forms::Panel^  childformpanel;
-
+	internal: System::Windows::Forms::Button^  button1;
 	protected:
 
 	private:
@@ -81,6 +81,7 @@ namespace AcadSecManagementSystem {
 			this->Label36 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->childformpanel = (gcnew System::Windows::Forms::Panel());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -129,6 +130,7 @@ namespace AcadSecManagementSystem {
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::PowderBlue;
+			this->panel2->Controls->Add(this->button1);
 			this->panel2->Controls->Add(this->Button6);
 			this->panel2->Controls->Add(this->Button5);
 			this->panel2->Controls->Add(this->Button4);
@@ -151,10 +153,10 @@ namespace AcadSecManagementSystem {
 			this->Button6->ForeColor = System::Drawing::Color::Black;
 			this->Button6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Button6.Image")));
 			this->Button6->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Button6->Location = System::Drawing::Point(0, 443);
+			this->Button6->Location = System::Drawing::Point(0, 501);
 			this->Button6->Name = L"Button6";
 			this->Button6->Padding = System::Windows::Forms::Padding(15, 0, 35, 0);
-			this->Button6->Size = System::Drawing::Size(264, 67);
+			this->Button6->Size = System::Drawing::Size(264, 55);
 			this->Button6->TabIndex = 9;
 			this->Button6->Text = L"Logout";
 			this->Button6->UseVisualStyleBackColor = false;
@@ -167,10 +169,10 @@ namespace AcadSecManagementSystem {
 			this->Button5->ForeColor = System::Drawing::Color::Black;
 			this->Button5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Button5.Image")));
 			this->Button5->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Button5->Location = System::Drawing::Point(-3, 370);
+			this->Button5->Location = System::Drawing::Point(0, 362);
 			this->Button5->Name = L"Button5";
 			this->Button5->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
-			this->Button5->Size = System::Drawing::Size(308, 67);
+			this->Button5->Size = System::Drawing::Size(308, 60);
 			this->Button5->TabIndex = 8;
 			this->Button5->Text = L"Exam Schedule";
 			this->Button5->UseVisualStyleBackColor = false;
@@ -184,10 +186,10 @@ namespace AcadSecManagementSystem {
 			this->Button4->ForeColor = System::Drawing::Color::Black;
 			this->Button4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Button4.Image")));
 			this->Button4->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Button4->Location = System::Drawing::Point(3, 297);
+			this->Button4->Location = System::Drawing::Point(0, 295);
 			this->Button4->Name = L"Button4";
 			this->Button4->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
-			this->Button4->Size = System::Drawing::Size(264, 67);
+			this->Button4->Size = System::Drawing::Size(264, 53);
 			this->Button4->TabIndex = 2;
 			this->Button4->Text = L"Time table";
 			this->Button4->UseVisualStyleBackColor = false;
@@ -202,10 +204,10 @@ namespace AcadSecManagementSystem {
 			this->Button3->ForeColor = System::Drawing::Color::Black;
 			this->Button3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Button3.Image")));
 			this->Button3->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Button3->Location = System::Drawing::Point(0, 224);
+			this->Button3->Location = System::Drawing::Point(0, 228);
 			this->Button3->Name = L"Button3";
 			this->Button3->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
-			this->Button3->Size = System::Drawing::Size(267, 67);
+			this->Button3->Size = System::Drawing::Size(267, 53);
 			this->Button3->TabIndex = 7;
 			this->Button3->Text = L"Home Page";
 			this->Button3->UseVisualStyleBackColor = false;
@@ -241,6 +243,23 @@ namespace AcadSecManagementSystem {
 			this->childformpanel->Size = System::Drawing::Size(1017, 558);
 			this->childformpanel->TabIndex = 9;
 			this->childformpanel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &StudentDashboard::childformpanel_Paint);
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Transparent;
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->ForeColor = System::Drawing::Color::Black;
+			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
+			this->button1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button1->Location = System::Drawing::Point(-1, 431);
+			this->button1->Name = L"button1";
+			this->button1->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
+			this->button1->Size = System::Drawing::Size(267, 53);
+			this->button1->TabIndex = 10;
+			this->button1->Text = L"       Update Details";
+			this->button1->UseVisualStyleBackColor = false;
 			// 
 			// StudentDashboard
 			// 
