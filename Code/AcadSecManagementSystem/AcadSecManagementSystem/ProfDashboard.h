@@ -2,6 +2,7 @@
 #include "Constants.h"
 #include "StudentHome.h"
 #include "ProfTimetable.h"
+#include "ProfGradesScreen.h"
 
 namespace AcadSecManagementSystem {
 
@@ -174,6 +175,7 @@ namespace AcadSecManagementSystem {
 			this->Button5->TabIndex = 8;
 			this->Button5->Text = L" Grades            ";
 			this->Button5->UseVisualStyleBackColor = false;
+			this->Button5->Click += gcnew System::EventHandler(this, &ProfDashboard::Button5_Click);
 			// 
 			// Button4
 			// 
@@ -293,6 +295,11 @@ namespace AcadSecManagementSystem {
 	{
 				 ProfTimetable ^ InnerForm = gcnew ProfTimetable();
 				 Constants::subViewChildForm(childformpanel, InnerForm);
+	}
+	private: System::Void Button5_Click(System::Object^  sender, System::EventArgs^  e) {
+				 ProfGradesScreen ^ InnerForm = gcnew ProfGradesScreen();
+				 Constants::subViewChildForm(childformpanel, InnerForm);
+
 	}
 };
 }
