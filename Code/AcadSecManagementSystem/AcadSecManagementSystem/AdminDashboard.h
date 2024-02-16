@@ -1,6 +1,7 @@
 #pragma once
 #include "Constants.h"
 #include "ViewRecords.h"
+#include "ProfSetDates.h"
 #include "StudentTimetable.h"
 namespace AcadSecManagementSystem {
 
@@ -245,7 +246,7 @@ namespace AcadSecManagementSystem {
 				 Constants::subViewChildForm(childformpanel, InnerForm);
 	}
 	private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) {
-				 StudentTimetable ^ InnerForm = gcnew StudentTimetable();
+				 ProfSetDates ^ InnerForm = gcnew ProfSetDates();
 				 Constants::subViewChildForm(childformpanel, InnerForm);
 	}
 	private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {

@@ -2,6 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="AcadSecManagementSystem.cpp" />
+    <ClCompile Include="AdminDashboard.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="ProfDashboard.cpp" />
@@ -9,46 +10,55 @@
     <ClCompile Include="LoginDashboard.cpp" />
     <ClCompile Include="LoginInnerScreen.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="StudentCourseReg.cpp" />
     <ClCompile Include="StudentExamSchedule.cpp" />
     <ClCompile Include="StudentHome.cpp" />
     <ClCompile Include="StudentTimetable.cpp" />
-    <ClCompile Include="AdminDashboard.cpp" />
     <ClCompile Include="ViewRecords.cpp" />
-    <ClCompile Include="StudentCourseReg.cpp" />
+    <ClCompile Include="ProfSetDates.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdminDashboard.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="LoginDashboard.h" />
     <ClInclude Include="LoginInnerScreen.h" />
     <ClInclude Include="ProfDashboard.h" />
     <ClInclude Include="ProfTimetable.h" />
+    <ClInclude Include="StudentCourseReg.h" />
     <ClInclude Include="StudentDashboard.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StudentExamSchedule.h" />
     <ClInclude Include="StudentHome.h" />
     <ClInclude Include="StudentTimetable.h" />
-    <ClInclude Include="AdminDashboard.h" />
     <ClInclude Include="ViewRecords.h" />
-    <ClInclude Include="StudentCourseReg.h" />
+    <ClInclude Include="ProfSetDates.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdminDashboard.resx" />
     <EmbeddedResource Include="ProfDashboard.resx" />
     <EmbeddedResource Include="ProfTimetable.resx" />
     <EmbeddedResource Include="LoginDashboard.resx" />
     <EmbeddedResource Include="LoginInnerScreen.resx" />
+    <EmbeddedResource Include="StudentCourseReg.resx" />
     <EmbeddedResource Include="StudentDashboard.resX" />
     <EmbeddedResource Include="StudentExamSchedule.resx" />
     <EmbeddedResource Include="StudentHome.resx" />
     <EmbeddedResource Include="StudentTimetable.resx" />
-    <EmbeddedResource Include="AdminDashboard.resx" />
-    <EmbeddedResource Include="StudentCourseReg.resx" />
+    <EmbeddedResource Include="ViewRecords.resx" />
+    <EmbeddedResource Include="ProfSetDates.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.ico" />
     <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Calender.bmp" />
+    <Image Include="..\..\..\..\..\..\..\..\..\..\Downloads\calender.jpg" />
+    <Image Include="label3.Image.png" />
+    <Image Include="label9.Image.jpg" />
   </ItemGroup>
 </Project>
