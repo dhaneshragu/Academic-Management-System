@@ -1,30 +1,30 @@
-code,name,prof_id,LTPC,sems_offered,is_compulsory
-CS 101,Introduction to Computing,johnjose,3 0 0 6,2,1
-CS 110,Computing Laboratory,ranbir,0 0 3 3,2,1
-BT 101,Introductory Biology,bt,3 0 0 6,2,1
-EE 102,Basic Electronics Lab,ee,0 0 3 3,2,1
-MA 102,Mathematics-II,ma,3 1 0 8,2,1
-ME 101,Engineering Mechanics,me,3 1 0 8,2,1
-PH 102,Physics-II,ph,2 1 0 6,2,1
-ME 110,Mechanical Workshop,work,0 0 3 3,2,1
-CS 224,Hardware Lab,ckarfa,0 1 4 6,4,1
-CS 245,Database Management Systems,pbhaduri,3 0 0 6,4,1
-CS 246,Database Management Systems Lab,saradhi,0 0 4 4,4,1
-CS 205,Formal Languages Automata Theory and Computation,svrao,3 0 0 6,4,1
-CS 207,Design and Analysis of Algorithms,ben,3 0 0 6,4,1
-CS 223,Computer Architecture and Organization,hemangee,3 0 0 6,4,1
-CS 348,Implementation of Programming Languages Lab,pinaki,0 2 3 7,6,1
-CS 345,Software Engineering,pkdas,2 0 0 4,6,1
-CS 346,Software Engineering Lab,pkdas,0 0 3 3,6,1
-CS 361,Machine Learning,anand.ashish,3 0 0 6,6,1
-CS 321,Smart Systems Laboratory,jatin,0 1 3 5,6,0
-CS 331,Programming Languages Lab,sukumar,0 1 3 5,6,0
-CS 581,Blockchain Science and Technology,ben,3 0 0 6,6,0
-CS 508,Optimization Methods,sukantab,3 0 0 6,6 8,0
-CS 528,High Performance Computing,asahu,3 0 0 6,6 8,0
-CS 544,Topics in Networks,moumita.patra,3 0 0 6,6 8,0
-CS 560,Virtual and Augmented Reality Systems,samit,3 0 0 6,6 8,0
-CS 577,C Based VLSI Design,ckarfa,3 0 0 6,6 8,0
-CS 564,Computational Complexity,deepkesh,3 0 0 6,6 8,0
-CS 563,Neural Networks for NLP,awekar,3 0 0 6,6 8,0
-CS 561,Artificial Intelligence,r.duttabaruah,3 0 0 6,8,0
+code,name,prof_id,LTPC,sems_offered,is_compulsory,is_lab
+CS 101,Introduction to Computing,johnjose,3 0 0 6,2,1,0
+CS 110,Computing Laboratory,ranbir,0 0 3 3,2,1,1
+BT 101,Introductory Biology,bt,3 0 0 6,2,1,0
+EE 102,Basic Electronics Lab,ee,0 0 3 3,2,1,0
+MA 102,Mathematics-II,ma,3 1 0 8,2,1,0
+ME 101,Engineering Mechanics,me,3 1 0 8,2,1,0
+PH 102,Physics-II,ph,2 1 0 6,2,1,0
+ME 110,Mechanical Workshop,work,0 0 3 3,2,1,1
+CS 224,Hardware Lab,ckarfa,0 1 4 6,4,1,1
+CS 245,Database Management Systems,pbhaduri,3 0 0 6,4,1,0
+CS 246,Database Management Systems Lab,saradhi,0 0 4 4,4,1,1
+CS 205,Formal Languages Automata Theory and Computation,svrao,3 0 0 6,4,1,0
+CS 207,Design and Analysis of Algorithms,ben,3 0 0 6,4,1,0
+CS 223,Computer Architecture and Organization,hemangee,3 0 0 6,4,1,0
+CS 348,Implementation of Programming Languages Lab,pinaki,0 2 3 7,6,1,1
+CS 345,Software Engineering,pkdas,2 0 0 4,6,1,0
+CS 346,Software Engineering Lab,pkdas,0 0 3 3,6,1,1
+CS 361,Machine Learning,anand.ashish,3 0 0 6,6,1,0
+CS 321,Smart Systems Laboratory,jatin,0 1 3 5,6,0,1
+CS 331,Programming Languages Lab,sukumar,0 1 3 5,6,0,1
+CS 581,Blockchain Science and Technology,ben,3 0 0 6,6,0,0
+CS 508,Optimization Methods,sukantab,3 0 0 6,6 8,0,0
+CS 528,High Performance Computing,asahu,3 0 0 6,6 8,0,0
+CS 544,Topics in Networks,moumita.patra,3 0 0 6,6 8,0,0
+CS 560,Virtual and Augmented Reality Systems,samit,3 0 0 6,6 8,0,0
+CS 577,C Based VLSI Design,ckarfa,3 0 0 6,6 8,0,0
+CS 564,Computational Complexity,deepkesh,3 0 0 6,6 8,0,0
+CS 563,Neural Networks for NLP,awekar,3 0 0 6,6 8,0,0
+CS 561,Artificial Intelligence,r.duttabaruah,3 0 0 6,8,0,0
