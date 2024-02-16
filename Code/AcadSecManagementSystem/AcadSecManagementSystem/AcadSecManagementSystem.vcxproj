@@ -195,6 +195,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\..\..\..\..\..\Downloads\calender.jpg" />
+    <Image Include="Calender.bmp" />
+    <Image Include="label3.Image.png" />
+    <Image Include="label9.Image.jpg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

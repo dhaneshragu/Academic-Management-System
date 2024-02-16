@@ -49,9 +49,16 @@
     <EmbeddedResource Include="StudentHome.resx" />
     <EmbeddedResource Include="StudentTimetable.resx" />
     <EmbeddedResource Include="ViewRecords.resx" />
+    <EmbeddedResource Include="ProfSetDates.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.ico" />
     <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Calender.bmp" />
+    <Image Include="..\..\..\..\..\..\..\..\..\..\Downloads\calender.jpg" />
+    <Image Include="label3.Image.png" />
+    <Image Include="label9.Image.jpg" />
   </ItemGroup>
 </Project>

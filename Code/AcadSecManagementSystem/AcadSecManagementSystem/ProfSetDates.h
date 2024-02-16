@@ -55,6 +55,9 @@ namespace AcadSecManagementSystem {
 	private: System::Windows::Forms::Button^  buttonExamTT;
 	private: System::Windows::Forms::RadioButton^  NoFeePayment;
 	private: System::Windows::Forms::RadioButton^  YesFeePayment;
+	private: System::Windows::Forms::Label^  label9;
+	private: System::Windows::Forms::Button^  buttonSave;
+	private: System::Windows::Forms::Button^  buttonReset;
 	protected:
 
 	protected:
@@ -90,6 +93,7 @@ namespace AcadSecManagementSystem {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(ProfSetDates::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -110,11 +114,15 @@ namespace AcadSecManagementSystem {
 			this->buttonExamTT = (gcnew System::Windows::Forms::Button());
 			this->NoFeePayment = (gcnew System::Windows::Forms::RadioButton());
 			this->YesFeePayment = (gcnew System::Windows::Forms::RadioButton());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->buttonSave = (gcnew System::Windows::Forms::Button());
+			this->buttonReset = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
+			this->label1->ForeColor = System::Drawing::Color::Blue;
 			this->label1->Location = System::Drawing::Point(245, 120);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(210, 24);
@@ -124,6 +132,7 @@ namespace AcadSecManagementSystem {
 			// label2
 			// 
 			this->label2->AutoSize = true;
+			this->label2->ForeColor = System::Drawing::Color::Blue;
 			this->label2->Location = System::Drawing::Point(287, 164);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(121, 24);
@@ -133,6 +142,7 @@ namespace AcadSecManagementSystem {
 			// label3
 			// 
 			this->label3->AutoSize = true;
+			this->label3->ForeColor = System::Drawing::Color::Blue;
 			this->label3->Location = System::Drawing::Point(235, 208);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(235, 24);
@@ -142,6 +152,7 @@ namespace AcadSecManagementSystem {
 			// label4
 			// 
 			this->label4->AutoSize = true;
+			this->label4->ForeColor = System::Drawing::Color::Blue;
 			this->label4->Location = System::Drawing::Point(267, 292);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(173, 24);
@@ -151,6 +162,7 @@ namespace AcadSecManagementSystem {
 			// label5
 			// 
 			this->label5->AutoSize = true;
+			this->label5->ForeColor = System::Drawing::Color::Blue;
 			this->label5->Location = System::Drawing::Point(265, 337);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(175, 24);
@@ -160,6 +172,7 @@ namespace AcadSecManagementSystem {
 			// label6
 			// 
 			this->label6->AutoSize = true;
+			this->label6->ForeColor = System::Drawing::Color::Blue;
 			this->label6->Location = System::Drawing::Point(273, 425);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(154, 24);
@@ -169,6 +182,7 @@ namespace AcadSecManagementSystem {
 			// label7
 			// 
 			this->label7->AutoSize = true;
+			this->label7->ForeColor = System::Drawing::Color::Blue;
 			this->label7->Location = System::Drawing::Point(300, 384);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(100, 24);
@@ -178,6 +192,7 @@ namespace AcadSecManagementSystem {
 			// label8
 			// 
 			this->label8->AutoSize = true;
+			this->label8->ForeColor = System::Drawing::Color::Blue;
 			this->label8->Location = System::Drawing::Point(287, 249);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(124, 24);
@@ -306,12 +321,48 @@ namespace AcadSecManagementSystem {
 			this->YesFeePayment->Text = L"Yes";
 			this->YesFeePayment->UseVisualStyleBackColor = true;
 			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 20.8F, System::Drawing::FontStyle::Bold));
+			this->label9->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label9.Image")));
+			this->label9->ImageAlign = System::Drawing::ContentAlignment::TopLeft;
+			this->label9->Location = System::Drawing::Point(395, 38);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(249, 43);
+			this->label9->TabIndex = 22;
+			this->label9->Text = L"       Set Dates";
+			this->label9->Click += gcnew System::EventHandler(this, &ProfSetDates::label9_Click);
+			// 
+			// buttonSave
+			// 
+			this->buttonSave->BackColor = System::Drawing::Color::GreenYellow;
+			this->buttonSave->Location = System::Drawing::Point(516, 483);
+			this->buttonSave->Name = L"buttonSave";
+			this->buttonSave->Size = System::Drawing::Size(138, 47);
+			this->buttonSave->TabIndex = 23;
+			this->buttonSave->Text = L"Save";
+			this->buttonSave->UseVisualStyleBackColor = false;
+			// 
+			// buttonReset
+			// 
+			this->buttonReset->BackColor = System::Drawing::Color::Tomato;
+			this->buttonReset->Location = System::Drawing::Point(334, 483);
+			this->buttonReset->Name = L"buttonReset";
+			this->buttonReset->Size = System::Drawing::Size(138, 47);
+			this->buttonReset->TabIndex = 24;
+			this->buttonReset->Text = L"Reset";
+			this->buttonReset->UseVisualStyleBackColor = false;
+			// 
 			// ProfSetDates
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(10, 23);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::AliceBlue;
 			this->ClientSize = System::Drawing::Size(1016, 557);
+			this->Controls->Add(this->buttonReset);
+			this->Controls->Add(this->buttonSave);
+			this->Controls->Add(this->label9);
 			this->Controls->Add(this->NoFeePayment);
 			this->Controls->Add(this->YesFeePayment);
 			this->Controls->Add(this->buttonExamTT);
@@ -343,5 +394,7 @@ namespace AcadSecManagementSystem {
 
 		}
 #pragma endregion
+private: System::Void label9_Click(System::Object^  sender, System::EventArgs^  e) {
+}
 };
 }
