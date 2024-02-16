@@ -37,11 +37,11 @@ namespace AcadSecManagementSystem {
 		}
 	internal: System::Windows::Forms::Panel^  Panel4;
 	protected:
-	internal: System::Windows::Forms::Label^  Fees_Label;
+
 	internal: System::Windows::Forms::PictureBox^  PictureBox3;
 	internal: System::Windows::Forms::Label^  Label8;
 	internal: System::Windows::Forms::Panel^  Panel2;
-	internal: System::Windows::Forms::Label^  Faculty_Label;
+
 	internal: System::Windows::Forms::PictureBox^  PictureBox1;
 	internal: System::Windows::Forms::Label^  Label1;
 	internal: System::Windows::Forms::Panel^  Panel3;
@@ -50,6 +50,9 @@ namespace AcadSecManagementSystem {
 	internal: System::Windows::Forms::Label^  Label7;
 	private: System::Windows::Forms::ComboBox^  comboBox1;
 	private: System::Windows::Forms::Label^  label2;
+	internal: System::Windows::Forms::Label^  label4;
+	private:
+	internal: System::Windows::Forms::Label^  label3;
 	internal:
 
 	protected:
@@ -87,11 +90,9 @@ namespace AcadSecManagementSystem {
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(ViewRecords::typeid));
 			this->Panel4 = (gcnew System::Windows::Forms::Panel());
-			this->Fees_Label = (gcnew System::Windows::Forms::Label());
 			this->PictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->Label8 = (gcnew System::Windows::Forms::Label());
 			this->Panel2 = (gcnew System::Windows::Forms::Panel());
-			this->Faculty_Label = (gcnew System::Windows::Forms::Label());
 			this->PictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->Label1 = (gcnew System::Windows::Forms::Label());
 			this->Panel3 = (gcnew System::Windows::Forms::Panel());
@@ -100,6 +101,8 @@ namespace AcadSecManagementSystem {
 			this->Label7 = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->Panel4->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBox3))->BeginInit();
 			this->Panel2->SuspendLayout();
@@ -112,7 +115,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->Panel4->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->Panel4->BackColor = System::Drawing::Color::White;
-			this->Panel4->Controls->Add(this->Fees_Label);
+			this->Panel4->Controls->Add(this->label4);
 			this->Panel4->Controls->Add(this->PictureBox3);
 			this->Panel4->Controls->Add(this->Label8);
 			this->Panel4->Location = System::Drawing::Point(586, 49);
@@ -120,15 +123,6 @@ namespace AcadSecManagementSystem {
 			this->Panel4->Name = L"Panel4";
 			this->Panel4->Size = System::Drawing::Size(379, 225);
 			this->Panel4->TabIndex = 15;
-			// 
-			// Fees_Label
-			// 
-			this->Fees_Label->AutoSize = true;
-			this->Fees_Label->Location = System::Drawing::Point(171, 126);
-			this->Fees_Label->Name = L"Fees_Label";
-			this->Fees_Label->Size = System::Drawing::Size(156, 24);
-			this->Fees_Label->TabIndex = 6;
-			this->Fees_Label->Text = L"{Fees collected}";
 			// 
 			// PictureBox3
 			// 
@@ -159,7 +153,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->Panel2->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->Panel2->BackColor = System::Drawing::Color::White;
-			this->Panel2->Controls->Add(this->Faculty_Label);
+			this->Panel2->Controls->Add(this->label3);
 			this->Panel2->Controls->Add(this->PictureBox1);
 			this->Panel2->Controls->Add(this->Label1);
 			this->Panel2->Location = System::Drawing::Point(586, 304);
@@ -167,15 +161,6 @@ namespace AcadSecManagementSystem {
 			this->Panel2->Name = L"Panel2";
 			this->Panel2->Size = System::Drawing::Size(379, 225);
 			this->Panel2->TabIndex = 16;
-			// 
-			// Faculty_Label
-			// 
-			this->Faculty_Label->AutoSize = true;
-			this->Faculty_Label->Location = System::Drawing::Point(171, 126);
-			this->Faculty_Label->Name = L"Faculty_Label";
-			this->Faculty_Label->Size = System::Drawing::Size(161, 24);
-			this->Faculty_Label->TabIndex = 6;
-			this->Faculty_Label->Text = L"{Num of Faculty}";
 			// 
 			// PictureBox1
 			// 
@@ -218,11 +203,13 @@ namespace AcadSecManagementSystem {
 			// Students_Label
 			// 
 			this->Students_Label->AutoSize = true;
-			this->Students_Label->Location = System::Drawing::Point(171, 126);
+			this->Students_Label->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Students_Label->Location = System::Drawing::Point(182, 111);
 			this->Students_Label->Name = L"Students_Label";
-			this->Students_Label->Size = System::Drawing::Size(174, 24);
+			this->Students_Label->Size = System::Drawing::Size(134, 49);
 			this->Students_Label->TabIndex = 6;
-			this->Students_Label->Text = L"{Num of Students}";
+			this->Students_Label->Text = L"{Num}";
 			// 
 			// PictureBox2
 			// 
@@ -252,10 +239,7 @@ namespace AcadSecManagementSystem {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
-				L"2019", L"2020", L"2021", L"2022",
-					L"2023"
-			});
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"2019", L"2020", L"2021", L"2022", L"2023" });
 			this->comboBox1->Location = System::Drawing::Point(290, 49);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(152, 31);
@@ -272,6 +256,28 @@ namespace AcadSecManagementSystem {
 			this->label2->TabIndex = 19;
 			this->label2->Text = L"Select Year";
 			this->label2->Click += gcnew System::EventHandler(this, &ViewRecords::label2_Click);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(193, 111);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(134, 49);
+			this->label3->TabIndex = 7;
+			this->label3->Text = L"{Num}";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(193, 108);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(134, 49);
+			this->label4->TabIndex = 7;
+			this->label4->Text = L"{Num}";
 			// 
 			// ViewRecords
 			// 
