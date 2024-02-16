@@ -173,7 +173,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->label6->AutoSize = true;
 			this->label6->ForeColor = System::Drawing::Color::Blue;
-			this->label6->Location = System::Drawing::Point(301, 405);
+			this->label6->Location = System::Drawing::Point(301, 410);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(167, 24);
 			this->label6->TabIndex = 5;
@@ -183,7 +183,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->label7->AutoSize = true;
 			this->label7->ForeColor = System::Drawing::Color::Blue;
-			this->label7->Location = System::Drawing::Point(288, 362);
+			this->label7->Location = System::Drawing::Point(288, 367);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(180, 24);
 			this->label7->TabIndex = 6;
@@ -283,7 +283,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->buttonTT->BackColor = System::Drawing::Color::Lime;
 			this->buttonTT->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonTT->Location = System::Drawing::Point(515, 356);
+			this->buttonTT->Location = System::Drawing::Point(515, 361);
 			this->buttonTT->Name = L"buttonTT";
 			this->buttonTT->Size = System::Drawing::Size(124, 34);
 			this->buttonTT->TabIndex = 16;
@@ -295,7 +295,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->buttonExamTT->BackColor = System::Drawing::Color::Lime;
 			this->buttonExamTT->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonExamTT->Location = System::Drawing::Point(515, 399);
+			this->buttonExamTT->Location = System::Drawing::Point(515, 404);
 			this->buttonExamTT->Name = L"buttonExamTT";
 			this->buttonExamTT->Size = System::Drawing::Size(124, 34);
 			this->buttonExamTT->TabIndex = 19;
@@ -394,6 +394,7 @@ namespace AcadSecManagementSystem {
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"ProfSetDates";
 			this->Text = L"ProfSetDates";
+			this->Load += gcnew System::EventHandler(this, &ProfSetDates::ProfSetDates_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -403,6 +404,8 @@ private: System::Void label9_Click(System::Object^  sender, System::EventArgs^  
 }
 
 private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void ProfSetDates_Load(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }
