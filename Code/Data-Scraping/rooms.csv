@@ -3,8 +3,8 @@ RoomId,RoomName,Capacity,Location
 2,L2,40,Lecture Hall-2
 3,L3,40,Lecture Hall-3
 4,1G1,36,Core-1 Gallery
-5	1G2,36,Core-1 Gallery
-6	2003,28,Core-2 Room
-7	2104,28,Core-2 Room
-8	5G1,44,Core-5 Gallery
-9	5G4,60,Core-5 Gallery
+5,1G2,36,Core-1 Gallery
+6,2003,28,Core-2 Room
+7,2104,28,Core-2 Room
+8,5G1,44,Core-5 Gallery
+9,5G4,60,Core-5 Gallery
