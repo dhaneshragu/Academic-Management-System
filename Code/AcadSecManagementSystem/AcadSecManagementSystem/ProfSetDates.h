@@ -1,5 +1,17 @@
 #pragma once
 #include "Constants.h"
+#include <map>
+#include <vector>
+#include <set>
+#include <algorithm>
+#include <string.h>
+#include <sstream>
+#include <string>
+#include <stdlib.h>
+#include <cstring> 
+using namespace std;
+
+
 namespace AcadSecManagementSystem {
 
 	using namespace System;
@@ -402,8 +414,118 @@ namespace AcadSecManagementSystem {
 #pragma endregion
 private: System::Void label9_Click(System::Object^  sender, System::EventArgs^  e) {
 }
+		 void MarshalString(String ^ s, string& os) {
+			 using namespace Runtime::InteropServices;
+			 const char* chars =
+				 (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			 os = chars;
+			 Marshal::FreeHGlobal(IntPtr((void*)chars));
+		 }
+private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+				 
+				 try
+				 {
+					 String^ connString = Constants::getdbConnString();
+					 SqlConnection con(connString);
+					 con.Open();
+					 String^ query = "SELECT * FROM dummy_course_details";
 
-private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^  e) {
+					 // Create a SqlCommand
+					 SqlCommand cmd(query, %con);
+
+					 // Create a DataTable
+					 DataTable^ dataTable = gcnew DataTable();
+
+					 // Create a SqlDataAdapter and fill the DataTable
+					 SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
+					 adapter->Fill(dataTable);
+
+					 int n = dataTable->Rows->Count;
+					 
+					 DataRow^ row = dataTable->Rows[n-1];
+					 map<string,set<string>> allotmentLeft;
+					 map<string, set<string>> proffessorsAlloted;
+					 set<string> morning;
+					 set<string> evening;
+					 morning.insert("A");
+					 morning.insert("B");
+					 morning.insert("C");
+					 morning.insert("D");
+					 morning.insert("F");
+					 morning.insert("G");
+
+					 evening.insert("A1");
+					 evening.insert("B1");
+					 evening.insert("C1");
+					 evening.insert("D1");
+					 evening.insert("F1");
+					 evening.insert("G1");
+					 
+					 allotmentLeft.insert({ "2", morning });
+					 allotmentLeft.insert({ "4", evening });
+					 allotmentLeft.insert({ "6", morning });
+					 allotmentLeft.insert({ "8", evening });
+
+					 for (int i = 0; i < n; i++)
+					 {
+						 DataRow^ row = dataTable->Rows[i];
+						 if (row["Is Compulsory"]->ToString() == "1")
+						 {
+							 //MessageBox::Show(row["Course Code"]->ToString());
+							 string semOffered;
+							 string ProfId;
+							 MarshalString(row["Sem Offered"]->ToString(), semOffered);
+							 MarshalString(row["Prof Id"]->ToString(), ProfId);
+							 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
+							 {
+								 MessageBox::Show("Inserting For Prof");
+								 set<string> st;
+								 proffessorsAlloted.insert({ ProfId, st });
+							 }
+							 if (allotmentLeft.find(semOffered) == allotmentLeft.end())
+							 {
+								 MessageBox::Show("No allotment Found");
+								 String^ str2 = gcnew String(semOffered.c_str());
+								 MessageBox::Show(str2);
+							 }
+							 auto slot = (*allotmentLeft.find(semOffered)).second.begin();
+							 while (slot != (*allotmentLeft.find(semOffered)).second.end())
+							 {
+								 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
+								 {
+									 MessageBox::Show("Prof Id Not Found");
+								 }
+								 if ((*proffessorsAlloted.find(ProfId)).second.find(*slot) == (*proffessorsAlloted.find(ProfId)).second.end())
+								 {
+									(*proffessorsAlloted.find(ProfId)).second.insert(*slot);
+									 row->BeginEdit();
+									 String^ tempSlot = gcnew String((*slot).c_str());
+									 row["Slot"] = tempSlot;
+									 row->EndEdit();
+									 row->AcceptChanges();
+									 allotmentLeft.find(semOffered)->second.erase(slot);
+									 MessageBox::Show(row["Course Code"]->ToString() + " : " + row["Slot"]->ToString());
+									 break;
+								 }
+								 slot++;
+							 }
+
+						 }
+					 }
+					 dataTable->AcceptChanges();
+					 //cout << (row.Item["Course Code"].ToString()) << endl;
+					 //cout << row["Course Code"]->ToString() << endl;
+					 //printf("%s\n", row["Course Code"]->ToString());
+					 //OutputDebugString(L"My output string.");
+					 //Console::WriteLine("In console %s\n", row["Course Code"]->ToString());
+					 //buttonTT->Text = row["Course Code"]->ToString();
+
+				 }
+				 catch (Exception^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+				 }
 }
 private: System::Void ProfSetDates_Load(System::Object^  sender, System::EventArgs^  e) {
 }
