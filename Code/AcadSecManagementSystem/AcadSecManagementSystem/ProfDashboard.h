@@ -20,13 +20,23 @@ namespace AcadSecManagementSystem {
 	/// </summary>
 	public ref class ProfDashboard : public System::Windows::Forms::Form
 	{
+		
 	public:
+		Form ^obj;
 		ProfDashboard(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
+		}
+		ProfDashboard(Form ^obj1)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			obj = obj1;
 		}
 
 	protected:
@@ -149,6 +159,7 @@ namespace AcadSecManagementSystem {
 			this->Button6->TabIndex = 9;
 			this->Button6->Text = L"Logout";
 			this->Button6->UseVisualStyleBackColor = false;
+			this->Button6->Click += gcnew System::EventHandler(this, &ProfDashboard::Button6_Click);
 			// 
 			// Button5
 			// 
@@ -249,6 +260,7 @@ namespace AcadSecManagementSystem {
 			this->MinimizeBox = false;
 			this->Name = L"ProfDashboard";
 			this->Text = L"Professor Dashboard";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &ProfDashboard::YourForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &ProfDashboard::ProfDashboard_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
@@ -291,6 +303,14 @@ namespace AcadSecManagementSystem {
 				 Constants::subViewChildForm(childformpanel, InnerForm);
 
 	}
+	private: System::Void YourForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+						  Application::Exit();
+	}
+	
+private: System::Void Button6_Click(System::Object^  sender, System::EventArgs^  e) {
+			 this->Hide();
+			 obj->Show();
+}
 };
 }
 

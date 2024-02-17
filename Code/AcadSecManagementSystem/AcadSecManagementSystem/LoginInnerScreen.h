@@ -20,9 +20,18 @@ namespace AcadSecManagementSystem {
 	public ref class LoginInnerScreen : public System::Windows::Forms::Form
 	{
 	public:
+		Form ^obj;
 		property System::String^ Role;
 		LoginInnerScreen(void)
 		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+		}
+		LoginInnerScreen(Form ^obj1)
+		{
+			obj = obj1;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -222,19 +231,20 @@ private: System::Void Button1_MouseLeave(System::Object^ sender, System::EventAr
 private: System::Void Label5_Click_1(System::Object^  sender, System::EventArgs^  e) {
 		 }
 private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
-
+		
+		obj->Hide();
 		if (Role == "Admin") {
 			// Replace with Admin Dashboard
-			AdminDashboard^ adminDashboard = gcnew AdminDashboard();
+			AdminDashboard^ adminDashboard = gcnew AdminDashboard(obj);
 			adminDashboard->Show();
         }
         else if (Role == "Professor") {
 			// Replace with Prof Dashboard
-			ProfDashboard^ profDashboard = gcnew ProfDashboard();
+			ProfDashboard^ profDashboard = gcnew ProfDashboard(obj);
 			profDashboard->Show();
         }
         else if (Role == "Student") {
-            StudentDashboard^ studentDashboard = gcnew StudentDashboard();
+            StudentDashboard^ studentDashboard = gcnew StudentDashboard(obj);
             studentDashboard->Show();
         }
 
