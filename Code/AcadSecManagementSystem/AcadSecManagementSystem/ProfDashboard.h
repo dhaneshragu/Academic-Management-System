@@ -23,6 +23,8 @@ namespace AcadSecManagementSystem {
 		
 	public:
 		Form ^obj;
+		property System::String^ Name;
+		property System::String^ Faculty_ID;
 		ProfDashboard(void)
 		{
 			InitializeComponent();
@@ -277,7 +279,8 @@ namespace AcadSecManagementSystem {
 	}
 	private:  System::Void ProfDashboard_Load(System::Object^  sender, System::EventArgs^  e)
 	{
-
+				  label2->Text = Name;
+				  label3->Text = Faculty_ID;
 				  // To render the StudentHome() form, replace according to the Inner form that you want to render inside
 				  ProfTimetable ^ InnerForm = gcnew ProfTimetable();
 				  Constants::subViewChildForm(childformpanel, InnerForm);
