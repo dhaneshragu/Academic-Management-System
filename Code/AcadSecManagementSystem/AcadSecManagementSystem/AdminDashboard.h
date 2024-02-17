@@ -20,6 +20,7 @@ namespace AcadSecManagementSystem {
 	{
 	public:
 		Form ^obj;
+		property String ^ adminID;
 		AdminDashboard(void)
 		{
 			InitializeComponent();
@@ -245,6 +246,7 @@ namespace AcadSecManagementSystem {
 	{
 
 				  // To render the ViewRecords() form, replace according to the Inner form that you want to render inside
+				  label3->Text = adminID;
 				  ViewRecords ^ InnerForm = gcnew ViewRecords();
 				  Constants::subViewChildForm(childformpanel, InnerForm);
 
