@@ -117,3 +117,15 @@ int GetUserYear(String^ ID, String ^role)
 		connection->Close();
 	}
 }
+
+bool ContainsNonNumericCharacters(String^ str)
+{
+	for each (Char c in str)
+	{
+		if (!Char::IsDigit(c))
+		{
+			return true; // Found a non-numeric character
+		}
+	}
+	return false; // All characters are numeric
+}

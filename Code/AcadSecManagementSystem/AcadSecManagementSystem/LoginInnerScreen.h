@@ -277,6 +277,7 @@ private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs
 				obj->Hide();
 				label4->Visible = false;
 				AdminDashboard^ adminDashboard = gcnew AdminDashboard(obj);
+				adminDashboard->adminID = adminID;
 				adminDashboard->Show();
 				
 			}
@@ -316,6 +317,7 @@ private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs
 		
         }
 		else if (Role == "Student") {
+
 			String^ studentID = textBox1->Text;
 			String^ password = textBox2->Text;
 			
@@ -326,7 +328,7 @@ private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs
 				return; // Stop further processing
 			}
 
-			if (ValidateLogin(studentID, password, Role)) {
+			if (!ContainsNonNumericCharacters(studentID)&&ValidateLogin(studentID, password, Role)) {
 				obj->Hide();
 				label4->Visible = false;
 				StudentDashboard^ studDashboard = gcnew StudentDashboard(obj);
