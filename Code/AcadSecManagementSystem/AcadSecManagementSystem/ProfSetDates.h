@@ -1,5 +1,17 @@
 #pragma once
 #include "Constants.h"
+#include <map>
+#include <vector>
+#include <set>
+#include <algorithm>
+#include <string.h>
+#include <sstream>
+#include <string>
+#include <stdlib.h>
+#include <cstring> 
+using namespace std;
+
+
 namespace AcadSecManagementSystem {
 
 	using namespace System;
@@ -402,8 +414,338 @@ namespace AcadSecManagementSystem {
 #pragma endregion
 private: System::Void label9_Click(System::Object^  sender, System::EventArgs^  e) {
 }
+		 void MarshalString(String ^ s, string& os) {
+			 using namespace Runtime::InteropServices;
+			 const char* chars =
+				 (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			 os = chars;
+			 Marshal::FreeHGlobal(IntPtr((void*)chars));
+		 }
+private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+				 
+				 try
+				 {
+					 String^ connString = Constants::getdbConnString();
+					//  SqlConnection con(connString);
+					//  con.Open();
+					 String^ query = "SELECT * FROM Courses";
 
-private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^  e) {
+					 SqlConnection^ cn = gcnew SqlConnection();
+					//  DataSet *CustomersDataSet = new DataSet();
+					 SqlDataAdapter^ da;
+					 SqlCommand^ DAUpdateCmd;
+
+					 cn->ConnectionString = connString;
+					 cn->Open();
+
+					 da = gcnew SqlDataAdapter(query, cn);
+
+					 // Create a SqlCommand
+					//  SqlCommand cmd(query, %con);
+
+					//  cmdBuilder = gcnew SqlCommandBuilder(da);
+
+					 // Create a DataTable
+					 DataTable^ dataTable = gcnew DataTable();
+
+					 // Create a SqlDataAdapter and fill the DataTable
+					//  SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
+					//  adapter->Fill(dataTable);
+
+					 String^ updatequery = "UPDATE Courses SET slot = @slot WHERE course_ID = @CourseCode";
+					 DAUpdateCmd = gcnew SqlCommand(updatequery, da->SelectCommand->Connection);
+					 DAUpdateCmd->Parameters->Add("@slot", SqlDbType::VarChar, 50, "slot");
+					 DAUpdateCmd->Parameters->Add("@CourseCode", SqlDbType::VarChar, 50, "course_ID");
+					 
+
+					 da->UpdateCommand = DAUpdateCmd;
+
+					 da->Fill(dataTable);
+
+					 int n = dataTable->Rows->Count;
+					 
+					 DataRow^ row = dataTable->Rows[n-1];
+					 map<string,set<string>> courseAllotmentLeft;
+					 map<string, set<string>> labAllotmentLeft;
+					 map<string, set<string>> proffessorsAlloted;
+					 set<string> morning;
+					 set<string> evening;
+					 set<string> morninglab;
+					 set<string> eveninglab;
+					 morning.insert("A");
+					 morning.insert("B");
+					 morning.insert("C");
+					 morning.insert("D");
+					 morning.insert("F");
+					 morning.insert("G");
+
+					 evening.insert("A1");
+					 evening.insert("B1");
+					 evening.insert("C1");
+					 evening.insert("D1");
+					 evening.insert("F1");
+					 evening.insert("G1");
+
+					 morninglab.insert("ML1");
+					 morninglab.insert("ML2");
+					 morninglab.insert("ML3");
+					 morninglab.insert("ML4");
+					 morninglab.insert("ML5");
+
+					 eveninglab.insert("AL1");
+					 eveninglab.insert("AL2");
+					 eveninglab.insert("AL3");
+					 eveninglab.insert("AL4");
+					 eveninglab.insert("AL5");
+					 
+					 courseAllotmentLeft.insert({ "2", morning });
+					 courseAllotmentLeft.insert({ "4", evening });
+					 courseAllotmentLeft.insert({ "6", morning });
+					 courseAllotmentLeft.insert({ "8", evening });
+
+					 labAllotmentLeft.insert({ "2", eveninglab });
+					 labAllotmentLeft.insert({ "4", morninglab });
+					 labAllotmentLeft.insert({ "6", eveninglab });
+					 labAllotmentLeft.insert({ "8", morninglab });
+
+					//  For compulsoory courses
+
+					 for (int i = 0; i < n; i++)
+					 {
+						 DataRow^ row = dataTable->Rows[i];
+						//  MessageBox::Show("Course: " + row["course_ID"]->ToString() + " : " + row["is_compulsory"]->ToString() + " : " + row["is_lab"]->ToString());
+						 if (row["is_compulsory"]->ToString() == "True" && row["is_lab"]->ToString() == "False")
+						 {
+							//  MessageBox::Show("Course: " + row["course_ID"]->ToString());
+							 string semOffered;
+							 string ProfId;
+							 MarshalString(row["sem_offered"]->ToString(), semOffered);
+							 MarshalString(row["prof_ID"]->ToString(), ProfId);
+							 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
+							 {
+								//  MessageBox::Show("Inserting For Prof");
+								 set<string> st;
+								 proffessorsAlloted.insert({ ProfId, st });
+							 }
+							 if (courseAllotmentLeft.find(semOffered) == courseAllotmentLeft.end())
+							 {
+								 MessageBox::Show("No allotment Found");
+								 String^ str2 = gcnew String(semOffered.c_str());
+								 MessageBox::Show(str2);
+							 }
+							 auto slot = (*courseAllotmentLeft.find(semOffered)).second.begin();
+							 while (slot != (*courseAllotmentLeft.find(semOffered)).second.end())
+							 {
+								 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
+								 {
+									 MessageBox::Show("prof_ID Not Found");
+								 }
+								 if ((*proffessorsAlloted.find(ProfId)).second.find(*slot) == (*proffessorsAlloted.find(ProfId)).second.end())
+								 {
+									(*proffessorsAlloted.find(ProfId)).second.insert(*slot);
+									//  row->BeginEdit();
+									 String^ tempslot = gcnew String((*slot).c_str());
+									 row["slot"] = tempslot;
+									//  row->EndEdit();
+									//  row->AcceptChanges();
+									 courseAllotmentLeft.find(semOffered)->second.erase(slot);
+									//  MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
+									 break;
+								 }
+								 slot++;
+							 }
+
+						 }
+
+						 else if (row["is_compulsory"]->ToString() == "True" && row["is_lab"]->ToString() == "True")
+						 {
+							//  MessageBox::Show("Lab: "+ row["course_ID"]->ToString());
+							 string semOffered;
+							 string ProfId;
+							 MarshalString(row["sem_offered"]->ToString(), semOffered);
+							 MarshalString(row["prof_ID"]->ToString(), ProfId);
+							 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
+							 {
+								//  MessageBox::Show("Inserting For Prof");
+								 set<string> st;
+								 proffessorsAlloted.insert({ ProfId, st });
+							 }
+							 if (labAllotmentLeft.find(semOffered) == labAllotmentLeft.end())
+							 {
+								 MessageBox::Show("No allotment Found");
+								 String^ str2 = gcnew String(semOffered.c_str());
+								 MessageBox::Show(str2);
+							 }
+							//  find the last slot available for the prof
+							 auto slot = (*labAllotmentLeft.find(semOffered)).second.begin();
+							 while (slot != (*labAllotmentLeft.find(semOffered)).second.end())
+							 {
+								 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
+								 {
+									 MessageBox::Show("prof_ID Not Found");
+								 }
+								 if ((*proffessorsAlloted.find(ProfId)).second.find(*slot) == (*proffessorsAlloted.find(ProfId)).second.end())
+								 {
+									 (*proffessorsAlloted.find(ProfId)).second.insert(*slot);
+									 //  row->BeginEdit();
+									 String^ tempslot = gcnew String((*slot).c_str());
+									 row["slot"] = tempslot;
+									 //  row->EndEdit();
+									 //  row->AcceptChanges();
+									 labAllotmentLeft.find(semOffered)->second.erase(slot);
+									 //  MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
+									 break;
+								 }
+								 slot++;
+							 }
+						 }
+
+					 }
+
+					//  For elective courses
+
+					 for (int i = 0; i < n; i++)
+					 {
+						 DataRow^ row = dataTable->Rows[i];
+						//  MessageBox::Show("Course: " + row["course_ID"]->ToString() + " : " + row["is_compulsory"]->ToString() + " : " + row["is_lab"]->ToString());
+						 if (row["is_compulsory"]->ToString() == "False" && row["is_lab"]->ToString() == "False") 
+						 {
+							 //  MessageBox::Show("Course: " + row["course_ID"]->ToString());
+							 string semOffered;
+							 string ProfId;
+							 MarshalString(row["sem_offered"]->ToString(), semOffered);
+							 MarshalString(row["prof_ID"]->ToString(), ProfId);
+							//  create a new string with the last character of sem_offered
+							 string sem = semOffered;
+							 sem = sem.substr(sem.length() - 1, 1);
+							//  check if slot is available for the sem
+							if ((*courseAllotmentLeft.find(sem)).second.size() == 0)
+							{
+								// MessageBox::Show("No allotment Found for sem: " + gcnew String(sem.c_str()));
+								// MessageBox::Show("Trying for sem: " + gcnew String(semOffered.c_str()));
+								sem = semOffered;
+								sem = sem.substr(0, 1);
+							}
+							
+							//  MessageBox::Show("Sem: " + gcnew String(sem.c_str()) + " Course: " + row["course_ID"]->ToString());
+							if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
+							{
+								// MessageBox::Show("Inserting For Prof");
+								set<string> st;
+								proffessorsAlloted.insert({ ProfId, st });
+							}
+							if (courseAllotmentLeft.find(sem) == courseAllotmentLeft.end())
+							{
+								MessageBox::Show("No allotment Found");
+								String^ str2 = gcnew String((sem).c_str());
+								MessageBox::Show(str2);
+							}
+							auto slot = (*courseAllotmentLeft.find(sem)).second.begin();
+							while (slot != (*courseAllotmentLeft.find(sem)).second.end())
+							{
+								if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
+								{
+									MessageBox::Show("prof_ID Not Found");
+								}
+								if ((*proffessorsAlloted.find(ProfId)).second.find(*slot) == (*proffessorsAlloted.find(ProfId)).second.end())
+								{
+									(*proffessorsAlloted.find(ProfId)).second.insert(*slot);
+									//  row->BeginEdit();
+									String^ tempslot = gcnew String((*slot).c_str());
+									// MessageBox::Show("Inserting Slot " + tempslot + " for " + row["course_ID"]->ToString());
+									row["slot"] = tempslot;
+									//  row->EndEdit();
+									//  row->AcceptChanges();
+									courseAllotmentLeft.find(sem)->second.erase(slot);
+									//  MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
+									break;
+								}
+								slot++;
+							}
+						 }
+
+						 else if (row["is_compulsory"]->ToString() == "False" && row["is_lab"]->ToString() == "True")
+						 {
+							//   MessageBox::Show("Lab: "+ row["course_ID"]->ToString());
+							 string semOffered;
+							 string ProfId;
+							 MarshalString(row["sem_offered"]->ToString(), semOffered);
+							 MarshalString(row["prof_ID"]->ToString(), ProfId);
+							 string sem = semOffered;
+							 sem = sem.substr(sem.length() - 1, 1);
+							 //  check if slot is available for the sem
+							 if ((*labAllotmentLeft.find(sem)).second.size() == 0)
+							 {
+								 sem = semOffered;
+								 sem = sem.substr(0, 1);
+							 }
+
+							//  MessageBox::Show("Sem: " + gcnew String(sem.c_str()));
+							 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
+							 {
+								 // MessageBox::Show("Inserting For Prof");
+								 set<string> st;
+								 proffessorsAlloted.insert({ ProfId, st });
+							 }
+							 if (labAllotmentLeft.find(sem) == labAllotmentLeft.end())
+							 {
+								 MessageBox::Show("No allotment Found");
+								 String^ str2 = gcnew String((sem).c_str());
+								 MessageBox::Show(str2);
+							 }
+							 //  find the last slot available for the prof
+							 auto slot = (*labAllotmentLeft.find(sem)).second.begin();
+							 while (slot != (*labAllotmentLeft.find(sem)).second.end())
+							 {
+								 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
+								 {
+									 MessageBox::Show("prof_ID Not Found");
+								 }
+								 if ((*proffessorsAlloted.find(ProfId)).second.find(*slot) == (*proffessorsAlloted.find(ProfId)).second.end())
+								 {
+									 (*proffessorsAlloted.find(ProfId)).second.insert(*slot);
+									 //  row->BeginEdit();
+									 String^ tempslot = gcnew String((*slot).c_str());
+									//  MessageBox::Show("Inserting Slot " + tempslot + " for " + row["course_ID"]->ToString());
+									 row["slot"] = tempslot;
+									 //  row->EndEdit();
+									 //  row->AcceptChanges();
+									 labAllotmentLeft.find(sem)->second.erase(slot);
+									//   MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
+									 break;
+								 }
+								 slot++;
+							 }
+						 } 
+					 }
+					//  dataTable->AcceptChanges();
+					//  print the updated data
+					//  for (int i = 0; i < n; i++)
+					//  {
+					// 	 DataRow^ row = dataTable->Rows[i];
+					// 	 MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
+					//  }
+
+					// Update the sql database with dataTable
+					 da->Update(dataTable);
+					 cn->Close();
+					 MessageBox::Show("Updating Database Complete");
+
+
+
+					 //cout << (row.Item["course_ID"].ToString()) << endl;
+					 //cout << row["course_ID"]->ToString() << endl;
+					 //printf("%s\n", row["course_ID"]->ToString());
+					 //OutputDebugString(L"My output string.");
+					 //Console::WriteLine("In console %s\n", row["course_ID"]->ToString());
+					 //buttonTT->Text = row["course_ID"]->ToString();
+
+				 }
+				 catch (Exception^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+				 }
 }
 private: System::Void ProfSetDates_Load(System::Object^  sender, System::EventArgs^  e) {
 }
