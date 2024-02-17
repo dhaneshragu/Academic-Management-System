@@ -4,7 +4,6 @@
 #include "StudentTimetable.h"
 #include "StudentExamSchedule.h"
 #include "DetailsUpdateForm.h"
-
 namespace AcadSecManagementSystem {
 
 	using namespace System;
@@ -313,6 +312,9 @@ private:  System::Void StudentDashboard_Load(System::Object^  sender, System::Ev
 {
 			label2->Text = UserName;
 			label3->Text = RollNumber;
+			int Year = year;
+			int sem = (*yearTosem.find(Year)).second;
+			label1->Text = "Semester - "+ Convert::ToString(sem);
 			StudentHome ^ InnerForm = gcnew StudentHome(UserName,RollNumber);
 			Constants::subViewChildForm(childformpanel, InnerForm);
 

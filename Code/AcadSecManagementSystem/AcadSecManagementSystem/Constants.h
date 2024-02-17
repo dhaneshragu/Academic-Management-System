@@ -6,7 +6,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <cstring> 
-
+static std::map<int, int> yearTosem = { { 2020, 8 }, { 2021, 6 }, { 2022, 4 }, { 2023, 2 } };
 namespace Constants
 {
 	

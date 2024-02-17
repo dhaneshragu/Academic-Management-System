@@ -499,7 +499,7 @@ namespace AcadSecManagementSystem {
 				 // Make this visible only when grades are released from acad section
 				 Label5->Text = UserName;
 				 GradeReleasedPanel->Visible = false;
-				 
+				 /*
 				 try
 				 {
 					 String^ connString = Constants::getdbConnString();
@@ -532,6 +532,7 @@ namespace AcadSecManagementSystem {
 				 {
 					 MessageBox::Show(ex->Message);
 				 }
+				 */
 	}
 };
 }
