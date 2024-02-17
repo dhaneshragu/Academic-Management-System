@@ -322,6 +322,7 @@ namespace AcadSecManagementSystem {
 				 
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+				 this->grades_stats->Series["# of Grades"]->Points->Clear();
 				 this->grades_stats->Series["# of Grades"]->Points->AddXY("AS",12);
 				 this->grades_stats->Series["# of Grades"]->Points->AddXY("AA", 32);
 				 this->grades_stats->Series["# of Grades"]->Points->AddXY("AB", 21);
