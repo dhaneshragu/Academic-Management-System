@@ -240,7 +240,7 @@ private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  
 }
 private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 
-			 LoginInnerScreen ^ InnerForm = gcnew LoginInnerScreen();
+			 LoginInnerScreen ^ InnerForm = gcnew LoginInnerScreen(this);
 			 InnerForm->Role = "Admin";
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 }
@@ -257,12 +257,12 @@ private: System::Void panel2_Paint(System::Object^  sender, System::Windows::For
 private: System::Void Button6_Click(System::Object^  sender, System::EventArgs^  e) {
 		 }
 private: System::Void Button5_Click(System::Object^  sender, System::EventArgs^  e) {
-			 LoginInnerScreen ^ InnerForm = gcnew LoginInnerScreen();
+			 LoginInnerScreen ^ InnerForm = gcnew LoginInnerScreen(this);
 			 InnerForm->Role = "Student";
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 		 }
 private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) {
-			 LoginInnerScreen ^ InnerForm = gcnew LoginInnerScreen();
+			 LoginInnerScreen ^ InnerForm = gcnew LoginInnerScreen(this);
 			 InnerForm->Role = "Professor";
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 		 }
