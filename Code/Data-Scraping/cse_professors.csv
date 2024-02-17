@@ -1,29 +1,35 @@
-Name,EmailID
-Ashish Anand,anand.ashish@iitg.ac.in
-Tamarapalli Venkatesh,t.venkat@iitg.ac.in
-Arijit Sur,arijit@iitg.ac.in
-Sanasam Ranbir Singh,ranbir@iitg.ac.in
-V. Vijaya Saradhi,saradhi@iitg.ac.in
-G. Sajith,sajith@iitg.ac.in
-Aryabartta Sahu,asahu@iitg.ac.in
-S. V. Rao,svrao@iitg.ac.in
-Moumita Patra,moumita.patra@iitg.ac.in
-Sukumar Nandi,sukumar@iitg.ac.in
-Shivashankar B. Nair,sbnair@iitg.ac.in
-Pinaki Mitra,pinaki@iitg.ac.in
-Manas Khatua,manaskhatua@iitg.ac.in
-Deepanjan Kesh,deepkesh@iitg.ac.in
-Sushanta Karmakar,sushantak@iitg.ac.in
-Chandan Karfa,ckarfa@iitg.ac.in
-Hemangee K. Kapoor,hemangee@iitg.ac.in
-Benny George K,ben@iitg.ac.in
-John Jose,johnjose@iitg.ac.in
-R. Inkulu,rinkulu@iitg.ac.in
-Diganta Goswami,dgoswami@iitg.ac.in
-Jatindra Kumar Deka,jatin@iitg.ac.in
-Pradip Kr. Das,pkdas@iitg.ac.in
-Samit Bhattacharya,samit@iitg.ac.in
-Sukanta Bhattacharjee,sukantab@iitg.ac.in
-Purandar Bhaduri,pbhaduri@iitg.ac.in
-Rashmi Dutta Baruah,r.duttabaruah@iitg.ac.in
-Amit Awekar,awekar@iitg.ac.in
+Name,EmailID,prof_id
+Ashish Anand,anand.ashish@iitg.ac.in,anand.ashish
+Tamarapalli Venkatesh,t.venkat@iitg.ac.in,t.venkat
+Arijit Sur,arijit@iitg.ac.in,arijit
+Sanasam Ranbir Singh,ranbir@iitg.ac.in,ranbir
+V. Vijaya Saradhi,saradhi@iitg.ac.in,saradhi
+G. Sajith,sajith@iitg.ac.in,sajith
+Aryabartta Sahu,asahu@iitg.ac.in,asahu
+S. V. Rao,svrao@iitg.ac.in,svrao
+Moumita Patra,moumita.patra@iitg.ac.in,moumita.patra
+Sukumar Nandi,sukumar@iitg.ac.in,sukumar
+Shivashankar B. Nair,sbnair@iitg.ac.in,sbnair
+Pinaki Mitra,pinaki@iitg.ac.in,pinaki
+Manas Khatua,manaskhatua@iitg.ac.in,manaskhatua
+Deepanjan Kesh,deepkesh@iitg.ac.in,deepkesh
+Sushanta Karmakar,sushantak@iitg.ac.in,sushantak
+Chandan Karfa,ckarfa@iitg.ac.in,ckarfa
+Hemangee K. Kapoor,hemangee@iitg.ac.in,hemangee
+Benny George K,ben@iitg.ac.in,ben
+John Jose,johnjose@iitg.ac.in,johnjose
+R. Inkulu,rinkulu@iitg.ac.in,rinkulu
+Diganta Goswami,dgoswami@iitg.ac.in,dgoswami
+Jatindra Kumar Deka,jatin@iitg.ac.in,jatin
+Pradip Kr. Das,pkdas@iitg.ac.in,pkdas
+Samit Bhattacharya,samit@iitg.ac.in,samit
+Sukanta Bhattacharjee,sukantab@iitg.ac.in,sukantab
+Purandar Bhaduri,pbhaduri@iitg.ac.in,pbhaduri
+Rashmi Dutta Baruah,r.duttabaruah@iitg.ac.in,r.duttabaruah
+Amit Awekar,awekar@iitg.ac.in,awekar
+BT Prof,bt@iitg.ac.in,bt
+EE Prof,ee@iitg.ac.in,ee
+MA Prof,ma@iitg.ac.in,ma
+ME Prof,me@iitg.ac.in,me
+PH Prof,ph@iitg.ac.in,ph
+Workshop Prof,work@iitg.ac.in,work

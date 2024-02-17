@@ -19,6 +19,7 @@ namespace AcadSecManagementSystem {
 	public ref class AdminDashboard : public System::Windows::Forms::Form
 	{
 	public:
+		Form ^obj;
 		AdminDashboard(void)
 		{
 			InitializeComponent();
@@ -26,7 +27,16 @@ namespace AcadSecManagementSystem {
 			//TODO: Add the constructor code here
 			//
 		}
-
+		AdminDashboard(Form ^obj1)
+		{
+			
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			obj = obj1;
+			
+		}
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -97,7 +107,7 @@ namespace AcadSecManagementSystem {
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(1157, 7);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(117, 21);
+			this->label3->Size = System::Drawing::Size(96, 21);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"{Admin ID}";
 			// 
@@ -150,6 +160,7 @@ namespace AcadSecManagementSystem {
 			this->Button6->TabIndex = 9;
 			this->Button6->Text = L"Logout";
 			this->Button6->UseVisualStyleBackColor = false;
+			this->Button6->Click += gcnew System::EventHandler(this, &AdminDashboard::Button6_Click);
 			// 
 			// Button4
 			// 
@@ -215,6 +226,7 @@ namespace AcadSecManagementSystem {
 			this->MinimizeBox = false;
 			this->Name = L"AdminDashboard";
 			this->Text = L"Admin Dashboard";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &AdminDashboard::YourForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &AdminDashboard::AdminDashboard_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
@@ -251,6 +263,13 @@ namespace AcadSecManagementSystem {
 	}
 	private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 	}
-	};
+	private: System::Void YourForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+				 Application::Exit();
+	}
+	private: System::Void Button6_Click(System::Object^  sender, System::EventArgs^  e) {
+				 this->Hide();
+				 obj->Show();
+	}
+};
 }
 
