@@ -4,7 +4,6 @@
 #include "StudentTimetable.h"
 #include "StudentExamSchedule.h"
 #include "DetailsUpdateForm.h"
-
 namespace AcadSecManagementSystem {
 
 	using namespace System;
@@ -22,6 +21,10 @@ namespace AcadSecManagementSystem {
 	{
 	public:
 		Form ^obj;
+		property System::String^ UserName;
+		property System::String^ RollNumber;
+		int year;
+
 		StudentDashboard(void)
 		{
 			InitializeComponent();
@@ -112,7 +115,7 @@ namespace AcadSecManagementSystem {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(1157, 7);
+			this->label3->Location = System::Drawing::Point(1156, 7);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(117, 21);
 			this->label3->TabIndex = 2;
@@ -121,11 +124,12 @@ namespace AcadSecManagementSystem {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(1019, 7);
+			this->label2->Location = System::Drawing::Point(993, 7);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(130, 21);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"{Stusent Name}";
+			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->label2->Click += gcnew System::EventHandler(this, &StudentDashboard::label2_Click);
 			// 
 			// label1
@@ -306,10 +310,13 @@ private: System::Void childformpanel_Paint(System::Object^  sender, System::Wind
 }
 private:  System::Void StudentDashboard_Load(System::Object^  sender, System::EventArgs^  e) 
 {
-
-	// To render the StudentHome() form, replace according to the Inner form that you want to render inside
-	StudentHome ^ InnerForm = gcnew StudentHome();
-	Constants::subViewChildForm(childformpanel, InnerForm);
+			label2->Text = UserName;
+			label3->Text = RollNumber;
+			int Year = year;
+			int sem = (*yearTosem.find(Year)).second;
+			label1->Text = "Semester - "+ Convert::ToString(sem);
+			StudentHome ^ InnerForm = gcnew StudentHome(UserName,RollNumber);
+			Constants::subViewChildForm(childformpanel, InnerForm);
 
 }
 private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) 
@@ -317,7 +324,7 @@ private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  
 }
 private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 // To render the StudentHome() form, replace according to the Inner form that you want to render inside
-			 StudentHome ^ InnerForm = gcnew StudentHome();
+			 StudentHome ^ InnerForm = gcnew StudentHome(UserName, RollNumber);
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 }
 private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) {

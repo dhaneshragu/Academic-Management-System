@@ -94,6 +94,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="DetailsUpdateForm.cpp" />
+    <ClCompile Include="loginHandle.cpp" />
     <ClCompile Include="ProfGradesScreen.cpp" />
     <ClCompile Include="ProfDashboard.cpp" />
     <ClCompile Include="ProfSetDates.cpp" />
@@ -121,6 +122,7 @@
     <ClInclude Include="LoginDashboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="loginHandle.h" />
     <ClInclude Include="LoginInnerScreen.h">
       <FileType>CppForm</FileType>
     </ClInclude>

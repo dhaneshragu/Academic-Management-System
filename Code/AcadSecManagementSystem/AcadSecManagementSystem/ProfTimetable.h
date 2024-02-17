@@ -286,8 +286,10 @@ namespace AcadSecManagementSystem {
 #pragma endregion
 	private: System::Void ProfTimetable_Load(System::Object^  sender, System::EventArgs^  e) {
 
+				 /*
 				 try
 				 {
+
 					 String^ connString = Constants::getdbConnString();
 					 SqlConnection con(connString);
 					 con.Open();
@@ -318,6 +320,7 @@ namespace AcadSecManagementSystem {
 				 {
 					 MessageBox::Show(ex->Message);
 				 }
+				 */
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 	}

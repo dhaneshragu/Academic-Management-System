@@ -19,6 +19,7 @@
     <ClCompile Include="DetailsUpdateForm.cpp" />
     <ClCompile Include="ProfSetDates.cpp" />
     <ClCompile Include="ProfGradesScreen.cpp" />
+    <ClCompile Include="loginHandle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdminDashboard.h" />
@@ -39,6 +40,7 @@
     <ClInclude Include="DetailsUpdateForm.h" />
     <ClInclude Include="ProfSetDates.h" />
     <ClInclude Include="ProfGradesScreen.h" />
+    <ClInclude Include="loginHandle.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
@@ -59,8 +61,8 @@
     <EmbeddedResource Include="ViewRecords.resx" />
     <EmbeddedResource Include="ViewRecords.resx" />
     <EmbeddedResource Include="ProfSetDates.resx" />
-    <EmbeddedResource 
-    Include="ProfGradesScreen.resx" />
+    <EmbeddedResource Include="ProfGradesScreen.resx" />
+    <EmbeddedResource Include="DetailsUpdateForm.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.ico" />
