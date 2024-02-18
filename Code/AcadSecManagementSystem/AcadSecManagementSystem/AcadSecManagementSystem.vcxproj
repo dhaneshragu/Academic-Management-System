@@ -109,6 +109,7 @@
     <ClCompile Include="StudentExamSchedule.cpp" />
     <ClCompile Include="StudentHome.cpp" />
     <ClCompile Include="StudentTimetable.cpp" />
+    <ClCompile Include="updateform.cpp" />
     <ClCompile Include="ViewRecords.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +156,7 @@
     <ClInclude Include="StudentTimetable.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="updateform.h" />
     <ClInclude Include="ViewRecords.h">
       <FileType>CppForm</FileType>
     </ClInclude>
