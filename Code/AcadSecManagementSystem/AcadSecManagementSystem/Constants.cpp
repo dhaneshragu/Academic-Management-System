@@ -32,4 +32,14 @@ namespace Constants
 		parentpanel->Controls->Add(childpanel);
 		childpanel->Show(); // Add to panel and show the child form
 	}
+
+	// To convert String^ to string
+	std::string StrCnvstr(System::String ^ x) {
+		return msclr::interop::marshal_as<std::string>(x);
+	}
+
+	// To convert string to String^
+	System::String ^ strCnvStr(std::string x) {
+		return msclr::interop::marshal_as<System::String ^>(x);
+	}
 }

@@ -316,7 +316,7 @@ private:  System::Void StudentDashboard_Load(System::Object^  sender, System::Ev
 			int Year = year;
 			int sem = (*yearTosem.find(Year)).second;
 			label1->Text = "Semester - "+ Convert::ToString(sem);
-			StudentHome ^ InnerForm = gcnew StudentHome(UserName,RollNumber);
+			StudentHome ^ InnerForm = gcnew StudentHome(UserName, RollNumber, this->childformpanel, Convert::ToString(sem));
 			Constants::subViewChildForm(childformpanel, InnerForm);
 
 }
@@ -325,7 +325,9 @@ private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  
 }
 private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 // To render the StudentHome() form, replace according to the Inner form that you want to render inside
-			 StudentHome ^ InnerForm = gcnew StudentHome(UserName, RollNumber);
+			 int Year = year;
+			 int sem = (*yearTosem.find(Year)).second;
+			 StudentHome ^ InnerForm = gcnew StudentHome(UserName, RollNumber, this->childformpanel, Convert::ToString(sem));
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 }
 private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) {
