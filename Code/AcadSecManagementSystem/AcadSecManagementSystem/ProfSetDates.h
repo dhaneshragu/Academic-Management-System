@@ -673,12 +673,12 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 							 MarshalString(row["sem_offered"]->ToString(), semOffered);
 							 MarshalString(row["prof_ID"]->ToString(), ProfId);
 							 string sem = semOffered;
-							 sem = sem.substr(sem.length() - 1, 1);
+							 sem = sem.substr(0, 1);
 							 //  check if slot is available for the sem
 							 if ((*labAllotmentLeft.find(sem)).second.size() == 0)
 							 {
 								 sem = semOffered;
-								 sem = sem.substr(0, 1);
+								 sem = sem.substr(sem.length() - 1, 1);
 							 }
 
 							//  MessageBox::Show("Sem: " + gcnew String(sem.c_str()));
@@ -695,8 +695,8 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 								 MessageBox::Show(str2);
 							 }
 							 //  find the last slot available for the prof
-							 auto slot = (*labAllotmentLeft.find(sem)).second.rbegin();
-							 while (slot != (*labAllotmentLeft.find(sem)).second.rend())
+							 auto slot = (*labAllotmentLeft.find(sem)).second.begin();
+							 while (slot != (*labAllotmentLeft.find(sem)).second.end())
 							 {
 								 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
 								 {
@@ -711,7 +711,7 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 									 row["slot"] = tempslot;
 									 //  row->EndEdit();
 									 //  row->AcceptChanges();
-									 labAllotmentLeft.find(sem)->second.erase(labAllotmentLeft.find(sem)->second.find(*slot));
+									 // labAllotmentLeft.find(sem)->second.erase(labAllotmentLeft.find(sem)->second.find(*slot));
 									//   MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
 									 break;
 								 }
