@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C36E1151-45EE-48D9-BE04-6556F573E08E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <ForceDesignerDPIUnaware>false</ForceDesignerDPIUnaware>
+    <StartupObject>AcadSecMgmtSystem.My.MyApplication</StartupObject>
+    <RootNamespace>AcadSecMgmtSystem</RootNamespace>
+    <AssemblyName>AcadSecMgmtSystem</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>AcadSecMgmtSystem.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>AcadSecMgmtSystem.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminDashboard.Designer.vb">
+      <DependentUpon>AdminDashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashboard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminFinancialRecords.Designer.vb">
+      <DependentUpon>AdminFinancialRecords.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminFinancialRecords.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminSetDates.Designer.vb">
+      <DependentUpon>AdminSetDates.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminSetDates.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginDashboard.Designer.vb">
+      <DependentUpon>LoginDashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoginDashboard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginRegistration.Designer.vb">
+      <DependentUpon>LoginRegistration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoginRegistration.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainacaddbDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mainacaddbDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ProfDashboard.Designer.vb">
+      <DependentUpon>ProfDashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProfDashboard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfGrades.Designer.vb">
+      <DependentUpon>ProfGrades.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProfGrades.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfTimeTable.Designer.vb">
+      <DependentUpon>ProfTimeTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProfTimeTable.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentDashboard.Designer.vb">
+      <DependentUpon>StudentDashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StudentDashboard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Globals.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="LoginInnerScreen.Designer.vb">
+      <DependentUpon>LoginInnerScreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoginInnerScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentExamSchedule.Designer.vb">
+      <DependentUpon>StudentExamSchedule.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StudentExamSchedule.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentHome.Designer.vb">
+      <DependentUpon>StudentHome.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StudentHome.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentTimeTable.Designer.vb">
+      <DependentUpon>StudentTimeTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StudentTimeTable.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AdminDashboard.resx">
+      <DependentUpon>AdminDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminFinancialRecords.resx">
+      <DependentUpon>AdminFinancialRecords.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminSetDates.resx">
+      <DependentUpon>AdminSetDates.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginDashboard.resx">
+      <DependentUpon>LoginDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginRegistration.resx">
+      <DependentUpon>LoginRegistration.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfDashboard.resx">
+      <DependentUpon>ProfDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfGrades.resx">
+      <DependentUpon>ProfGrades.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfTimeTable.resx">
+      <DependentUpon>ProfTimeTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentDashboard.resx">
+      <DependentUpon>StudentDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginInnerScreen.resx">
+      <DependentUpon>LoginInnerScreen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentExamSchedule.resx">
+      <DependentUpon>StudentExamSchedule.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentHome.resx">
+      <DependentUpon>StudentHome.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentTimeTable.resx">
+      <DependentUpon>StudentTimeTable.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="mainacaddbDataSet.xsc">
+      <DependentUpon>mainacaddbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="mainacaddbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>mainacaddbDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="mainacaddbDataSet.xss">
+      <DependentUpon>mainacaddbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-new-48.png" />
+    <None Include="Resources\icons8-course-assign-48.png" />
+    <None Include="Resources\icons8-money-48.png" />
+    <None Include="Resources\IITG_logo2.png" />
+    <None Include="Resources\IITG_logo1.png" />
+    <None Include="Resources\icons8-logout-50.png" />
+    <None Include="Resources\icons8-exam-50.png" />
+    <None Include="Resources\icons8-timetable-50.png" />
+    <None Include="Resources\icons8-home-50.png" />
+    <None Include="Resources\home-icon.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.10.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2008 Express</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
