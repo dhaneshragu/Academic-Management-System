@@ -23,6 +23,9 @@ namespace Constants
 
 	String^ getdbConnString();
 	void subViewChildForm(Panel^ parentpanel, Form^ childpanel);
+
+	std::string StrCnvstr(System::String ^ x);
+	System::String ^ strCnvStr(std::string x);
 }
 
 #endif

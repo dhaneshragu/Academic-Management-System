@@ -94,6 +94,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="DetailsUpdateForm.cpp" />
+    <ClCompile Include="FourthYearCourseReg.cpp" />
     <ClCompile Include="ProfGradesScreen.cpp" />
     <ClCompile Include="ProfDashboard.cpp" />
     <ClCompile Include="ProfSetDates.cpp" />
@@ -116,6 +117,9 @@
     </ClInclude>
     <ClInclude Include="Constants.h" />
     <ClInclude Include="DetailsUpdateForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FourthYearCourseReg.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="LoginDashboard.h">
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DetailsUpdateForm.resx">
       <DependentUpon>DetailsUpdateForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FourthYearCourseReg.resx">
+      <DependentUpon>FourthYearCourseReg.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfGradesScreen.resx">
       <DependentUpon>ProfGradesScreen.h</DependentUpon>

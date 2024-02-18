@@ -308,7 +308,7 @@ private:  System::Void StudentDashboard_Load(System::Object^  sender, System::Ev
 {
 
 	// To render the StudentHome() form, replace according to the Inner form that you want to render inside
-	StudentHome ^ InnerForm = gcnew StudentHome();
+    StudentHome ^ InnerForm = gcnew StudentHome(this->childformpanel);
 	Constants::subViewChildForm(childformpanel, InnerForm);
 
 }
@@ -317,7 +317,7 @@ private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  
 }
 private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 // To render the StudentHome() form, replace according to the Inner form that you want to render inside
-			 StudentHome ^ InnerForm = gcnew StudentHome();
+			 StudentHome ^ InnerForm = gcnew StudentHome(this->childformpanel);
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 }
 private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) {
