@@ -547,6 +547,7 @@ namespace AcadSecManagementSystem {
 					 MessageBox::Show(ex->Message);
 				 }
 
+
 				  //Check if Admin has started Course Registration and change the button
 				 if (getisCourseReg())
 				 {
