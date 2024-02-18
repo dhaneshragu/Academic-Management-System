@@ -508,40 +508,46 @@ namespace AcadSecManagementSystem {
 				 Button3->Enabled = false;
 				 Button2->Enabled = false;
 
-				 //try
-				 //{
-					// String^ connString = Constants::getdbConnString();
-					// SqlConnection^ con = gcnew SqlConnection(connString);
-					// con->Open();
-					// String^ query = "SELECT * FROM dummy_course_details";
+				 bool isViewGrades = getisGradesViewing();
+				 if (isViewGrades) GradeReleasedPanel->Visible = true;
 
-					// // Create a SqlCommand
-					// SqlCommand cmd(query, con);
+				 try
+				 {
+					 String^ connString = Constants::getdbConnString();
+					 SqlConnection^ con = gcnew SqlConnection(connString);
+					 con->Open();
+					 String^ query = "SELECT Courses.[course_ID], Courses.[course_name], Courses.[LTPC], " +
+						 "(CASE WHEN (SELECT view_grades FROM Admin) = 1 THEN '--' ELSE [Courses Taken].[grades] END) AS grades " +
+						 "FROM Courses " +
+						 "INNER JOIN [Courses Taken] ON Courses.course_ID = [Courses Taken].course_ID " +
+						 "WHERE [Courses Taken].roll_no = " + RollNumber;
+					 // Create a SqlCommand
+					 SqlCommand cmd(query, con);
 
-					// // Create a DataTable
-					// DataTable^ dataTable = gcnew DataTable();
+					 // Create a DataTable
+					 DataTable^ dataTable = gcnew DataTable();
 
-					// // Create a SqlDataAdapter and fill the DataTable
-					// SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
-					// adapter->Fill(dataTable);
+					 // Create a SqlDataAdapter and fill the DataTable
+					 SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
+					 adapter->Fill(dataTable);
 
-					// // IMPORTANT: Specify the Column Mappings from DataGridView to SQL Table
-					// DataGridView1->AutoGenerateColumns = false;
-					// DataGridView1->Columns[0]->DataPropertyName = "Course Code";
-					// DataGridView1->Columns[1]->DataPropertyName = "Course Name";
-					// DataGridView1->Columns[2]->DataPropertyName = "credits";
-					// DataGridView1->Columns[3]->DataPropertyName = "grade";
+					 // IMPORTANT: Specify the Column Mappings from DataGridView to SQL Table
+					 DataGridView1->AutoGenerateColumns = false;
+					 DataGridView1->Columns[0]->DataPropertyName = "course_ID";
+					 DataGridView1->Columns[1]->DataPropertyName = "course_name";
+					 DataGridView1->Columns[2]->DataPropertyName = "LTPC";
+					 DataGridView1->Columns[3]->DataPropertyName = "grades";
 
-					// // use the 'dataTable' as data source
-					// DataGridView1->DataSource = dataTable;
-					// con->Close();
-				 //}
-				 //catch (Exception^ ex)
-				 //{
-					// MessageBox::Show(ex->Message);
-				 //}
+					 // use the 'dataTable' as data source
+					 DataGridView1->DataSource = dataTable;
+					 con->Close();
+				 }
+				 catch (Exception^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+				 }
 
-				 // Check if Admin has started Course Registration and change the button
+				  //Check if Admin has started Course Registration and change the button
 				 if (getisCourseReg())
 				 {
 					 Button3->Text = "Course Registration Opened";
@@ -580,6 +586,37 @@ namespace AcadSecManagementSystem {
 					con->Close();
 				}
 				return isCourseReg;
+	}
+
+			 // To get if Grades viewing started by admin
+	private: bool getisGradesViewing()
+	{
+				 bool isCourseReg = false;
+				 String^ queryString = "SELECT view_grades FROM Admin";
+				 String^ connString = Constants::getdbConnString();
+				 SqlConnection^ con = gcnew SqlConnection(connString);
+				 SqlCommand^ command = gcnew SqlCommand(queryString, con);
+
+				 try
+				 {
+					 con->Open();
+
+					 SqlDataReader^ reader = command->ExecuteReader();
+					 if (reader->Read())
+					 {
+						 isCourseReg = reader->GetBoolean(0);
+						 return isCourseReg;
+					 }
+				 }
+				 catch (Exception^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+				 }
+				 finally
+				 {
+					 con->Close();
+				 }
+				 return isCourseReg;
 	}
 private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 if (Semester == "8")
