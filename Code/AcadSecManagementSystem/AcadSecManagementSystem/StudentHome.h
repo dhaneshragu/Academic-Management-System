@@ -17,18 +17,24 @@ namespace AcadSecManagementSystem {
 	/// </summary>
 	public ref class StudentHome : public System::Windows::Forms::Form
 	{
+		property System::String^ UserName;
+		property System::String^ RollNumber;
+		property System::String^ Semester;
 	public:
 		Panel^ OuterPanel;
-		// Constructor without obj parameter
-		StudentHome(Panel^ obj)
-		{
-			// Get the reference to OuterPanel for Course Registration Parameter
-			InitializeComponent();
-			OuterPanel = obj;
-
-		}
 		StudentHome(void){
 			InitializeComponent();
+		}
+		StudentHome(String^ Username_1,String^ Roll_1,Panel^ obj, String^ Semester_1)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			UserName = Username_1;
+			RollNumber = Roll_1;
+			OuterPanel = obj;
+			Semester = Semester_1;
 		}
 
 	protected:
@@ -121,7 +127,7 @@ namespace AcadSecManagementSystem {
 			this->Panel1->Controls->Add(this->Label5);
 			this->Panel1->Location = System::Drawing::Point(21, 22);
 			this->Panel1->Name = L"Panel1";
-			this->Panel1->Size = System::Drawing::Size(314, 127);
+			this->Panel1->Size = System::Drawing::Size(377, 127);
 			this->Panel1->TabIndex = 11;
 			// 
 			// Label3
@@ -146,7 +152,7 @@ namespace AcadSecManagementSystem {
 			this->Label5->Location = System::Drawing::Point(4, 60);
 			this->Label5->Margin = System::Windows::Forms::Padding(0, 0, 4, 0);
 			this->Label5->Name = L"Label5";
-			this->Label5->Size = System::Drawing::Size(306, 55);
+			this->Label5->Size = System::Drawing::Size(369, 67);
 			this->Label5->TabIndex = 9;
 			this->Label5->Text = L"{Name}!";
 			// 
@@ -290,6 +296,7 @@ namespace AcadSecManagementSystem {
 			this->GradeReleasedPanel->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->GradeReleasedPanel->Location = System::Drawing::Point(100, 18);
+			this->GradeReleasedPanel->Location = System::Drawing::Point(100, 19);
 			this->GradeReleasedPanel->Name = L"GradeReleasedPanel";
 			this->GradeReleasedPanel->Size = System::Drawing::Size(394, 62);
 			this->GradeReleasedPanel->TabIndex = 9;
@@ -494,6 +501,7 @@ namespace AcadSecManagementSystem {
 #pragma endregion
 	private: System::Void StudentHome_Load(System::Object^  sender, System::EventArgs^  e) {
 				 // Make this visible only when grades are released from acad section
+				 Label5->Text = UserName;
 				 GradeReleasedPanel->Visible = false;
 				 
 				 //Disable the FeePayment button and Course Registration button
@@ -540,6 +548,7 @@ namespace AcadSecManagementSystem {
 					 Button3->BackColor = System::Drawing::Color::LightGreen;
 					 Button3->Enabled = true;
 				 }
+			
 	}
 
 	// To get if Course Registration is started by admin
@@ -573,15 +582,14 @@ namespace AcadSecManagementSystem {
 				return isCourseReg;
 	}
 private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {
-			 String ^ Sem = "8";
-			 if (Sem == "8")
+			 if (Semester == "8")
 			 {
-				 FourthYearCourseReg^ InnerForm = gcnew FourthYearCourseReg();
+				 FourthYearCourseReg^ InnerForm = gcnew FourthYearCourseReg(Convert::ToInt32(RollNumber));
 				 Constants::subViewChildForm(OuterPanel, InnerForm);
 			 }
 			 else
 			 {
-				 StudentCourseReg^ InnerForm = gcnew StudentCourseReg();
+				 StudentCourseReg^ InnerForm = gcnew StudentCourseReg(Convert::ToInt32(RollNumber), Semester);
 				 Constants::subViewChildForm(OuterPanel, InnerForm);
 			 }
 }

@@ -227,7 +227,7 @@ namespace AcadSecManagementSystem {
 			});
 			this->comboBox1->Location = System::Drawing::Point(316, 97);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(540, 31);
+			this->comboBox1->Size = System::Drawing::Size(540, 34);
 			this->comboBox1->TabIndex = 4;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &ProfTimetable::comboBox1_SelectedIndexChanged);
 			// 
@@ -238,7 +238,7 @@ namespace AcadSecManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(161, 100);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(120, 27);
+			this->label2->Size = System::Drawing::Size(136, 32);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"Select Day";
 			this->label2->Click += gcnew System::EventHandler(this, &ProfTimetable::label2_Click);
@@ -255,14 +255,15 @@ namespace AcadSecManagementSystem {
 			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
 			this->label3->Padding = System::Windows::Forms::Padding(0, 0, 0, 6);
-			this->label3->Size = System::Drawing::Size(413, 42);
+			this->label3->Size = System::Drawing::Size(476, 47);
 			this->label3->TabIndex = 9;
 			this->label3->Text = L"     View Your Timetable";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label3->Click += gcnew System::EventHandler(this, &ProfTimetable::label3_Click);
 			// 
 			// ProfTimetable
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(10, 23);
+			this->AutoScaleDimensions = System::Drawing::SizeF(12, 26);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::AliceBlue;
 			this->ClientSize = System::Drawing::Size(1016, 557);
@@ -285,8 +286,10 @@ namespace AcadSecManagementSystem {
 #pragma endregion
 	private: System::Void ProfTimetable_Load(System::Object^  sender, System::EventArgs^  e) {
 
+				 /*
 				 try
 				 {
+
 					 String^ connString = Constants::getdbConnString();
 					 SqlConnection con(connString);
 					 con.Open();
@@ -317,12 +320,15 @@ namespace AcadSecManagementSystem {
 				 {
 					 MessageBox::Show(ex->Message);
 				 }
+				 */
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 	}
 	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 private: System::Void DataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+}
+private: System::Void label3_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }

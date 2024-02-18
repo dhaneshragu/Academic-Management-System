@@ -20,6 +20,8 @@
     <ClCompile Include="ProfSetDates.cpp" />
     <ClCompile Include="ProfGradesScreen.cpp" />
     <ClCompile Include="FourthYearCourseReg.cpp" />
+    <ClCompile Include="loginHandle.cpp" />
+    <ClCompile Include="updateform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdminDashboard.h" />
@@ -41,6 +43,8 @@
     <ClInclude Include="ProfSetDates.h" />
     <ClInclude Include="ProfGradesScreen.h" />
     <ClInclude Include="FourthYearCourseReg.h" />
+    <ClInclude Include="loginHandle.h" />
+    <ClInclude Include="updateform.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />

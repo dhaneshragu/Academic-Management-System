@@ -3,8 +3,6 @@
 #include <map>
 #include<set>
 #include <vector>
-#include <sqltypes.h>
-#include <msclr\marshal_cppstd.h>
 namespace AcadSecManagementSystem {
 
 	using namespace System;
@@ -28,13 +26,19 @@ namespace AcadSecManagementSystem {
 
 	public:
 		String^ Sem = "8";
-		FourthYearCourseReg(void)
+		FourthYearCourseReg(int RollNumber)
 		{
 			InitializeComponent();
+			RollNo = RollNumber;
 			//
 			//TODO: Add the constructor code here
 			//
 		}
+		FourthYearCourseReg(void)
+		{
+			InitializeComponent();
+		}
+
 
 
 	protected:
@@ -797,6 +801,17 @@ namespace AcadSecManagementSystem {
 								 // Add to Database
 								 InsertIntoDB(RollNo, comboBox1->SelectedItem->ToString());
 							 }
+							 else
+							 {
+								 comboBox1->SelectedIndex = -1;
+								 if (chosenElectiveSlots->ContainsKey(slot))
+								 {
+									 chosenElectiveSlots->Remove(slot);
+								 }
+								 this->label11->Text = "Departmental Elective - I";
+								 this->label21->Text = "";
+								 clickedButton->Text = "Drop";
+							 }
 						 }
 						 else
 						 {
@@ -810,8 +825,9 @@ namespace AcadSecManagementSystem {
 								 {
 									 chosenElectiveSlots->Remove(slot);
 								 }
-								 this->label11->Text = "Departmental Elective - II";
+								 this->label11->Text = "Departmental Elective - I";
 								 this->label21->Text = "";
+								 clickedButton->Text = "Drop";
 							 }
 							 else
 							 {
@@ -824,6 +840,7 @@ namespace AcadSecManagementSystem {
 								 }
 								 this->label11->Text = "Departmental Elective - I";
 								 this->label21->Text = "";
+								 clickedButton->Text = "Drop";
 
 							 }
 						 }
@@ -842,6 +859,17 @@ namespace AcadSecManagementSystem {
 								 // Add to Database
 								 InsertIntoDB(RollNo, comboBox2->SelectedItem->ToString());
 							 }
+							 else
+							 {
+								 comboBox2->SelectedIndex = -1;
+								 if (chosenElectiveSlots->ContainsKey(slot))
+								 {
+									 chosenElectiveSlots->Remove(slot);
+								 }
+								 this->label9->Text = "Departmental Elective - II";
+								 this->label23->Text = "";
+								 clickedButton->Text = "Drop";
+							 }
 						 }
 						 else
 						 {
@@ -857,6 +885,7 @@ namespace AcadSecManagementSystem {
 								 }
 								 this->label9->Text = "Departmental Elective - II";
 								 this->label23->Text = "";
+								 clickedButton->Text = "Drop";
 							 }
 							 else
 							 {
@@ -869,6 +898,7 @@ namespace AcadSecManagementSystem {
 								 }
 								 this->label9->Text = "Departmental Elective - II";
 								 this->label23->Text = "";
+								 clickedButton->Text = "Drop";
 
 							 }
 						 }
@@ -886,6 +916,16 @@ namespace AcadSecManagementSystem {
 								 // Add to Database
 								 InsertIntoDB(RollNo, comboBox3->SelectedItem->ToString());
 							 }
+							 else{
+								 comboBox3->SelectedIndex = -1;
+								 if (chosenElectiveSlots->ContainsKey(slot))
+								 {
+									 chosenElectiveSlots->Remove(slot);
+								 }
+								 this->label10->Text = "Departmental Elective - III";
+								 this->label22->Text = "";
+								 clickedButton->Text = "Drop";
+							 }
 						 }
 						 else
 						 {
@@ -901,6 +941,7 @@ namespace AcadSecManagementSystem {
 								 }
 								 this->label10->Text = "Departmental Elective - III";
 								 this->label22->Text = "";
+								 clickedButton->Text = "Drop";
 							 }
 							 else
 							 {
@@ -913,6 +954,7 @@ namespace AcadSecManagementSystem {
 								 }
 								 this->label10->Text = "Departmental Elective - III";
 								 this->label22->Text = "";
+								 clickedButton->Text = "Drop";
 
 							 }
 						 }
@@ -930,6 +972,17 @@ namespace AcadSecManagementSystem {
 								 // Add to Database
 								 InsertIntoDB(RollNo, comboBox4->SelectedItem->ToString());
 							 }
+							 else
+							 {
+								 comboBox3->SelectedIndex = -1;
+								 if (chosenElectiveSlots->ContainsKey(slot))
+								 {
+									 chosenElectiveSlots->Remove(slot);
+								 }
+								 this->label16->Text = "Departmental Elective - IV";
+								 this->label24->Text = "";
+								 clickedButton->Text = "Drop";
+							 }
 						 }
 						 else
 						 {
@@ -945,6 +998,7 @@ namespace AcadSecManagementSystem {
 								 }
 								 this->label16->Text = "Departmental Elective - IV";
 								 this->label24->Text = "";
+								 clickedButton->Text = "Drop";
 							 }
 							 else
 							 {
@@ -957,6 +1011,7 @@ namespace AcadSecManagementSystem {
 								 }
 								 this->label16->Text = "Departmental Elective - IV";
 								 this->label24->Text = "";
+								 clickedButton->Text = "Drop";
 
 							 }
 						 }

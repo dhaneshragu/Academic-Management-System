@@ -23,6 +23,8 @@ namespace AcadSecManagementSystem {
 		
 	public:
 		Form ^obj;
+		property System::String^ Name;
+		property System::String^ Faculty_ID;
 		ProfDashboard(void)
 		{
 			InitializeComponent();
@@ -106,6 +108,7 @@ namespace AcadSecManagementSystem {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(1289, 35);
 			this->panel1->TabIndex = 0;
+			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &ProfDashboard::panel1_Paint);
 			// 
 			// label3
 			// 
@@ -277,7 +280,8 @@ namespace AcadSecManagementSystem {
 	}
 	private:  System::Void ProfDashboard_Load(System::Object^  sender, System::EventArgs^  e)
 	{
-
+				  label2->Text = Name;
+				  label3->Text = Faculty_ID;
 				  // To render the StudentHome() form, replace according to the Inner form that you want to render inside
 				  ProfTimetable ^ InnerForm = gcnew ProfTimetable();
 				  Constants::subViewChildForm(childformpanel, InnerForm);
@@ -288,7 +292,8 @@ namespace AcadSecManagementSystem {
 	}
 	private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {
 				 // To render the UpdateDetails() form, replace according to the Inner form that you want to render inside
-				 DetailsUpdateForm ^ InnerForm = gcnew DetailsUpdateForm();
+				 String ^Role = "Professor";
+				 DetailsUpdateForm ^ InnerForm = gcnew DetailsUpdateForm(Faculty_ID, Role);
 				 Constants::subViewChildForm(childformpanel, InnerForm);
 	}
 	private: System::Void label3_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -310,6 +315,8 @@ namespace AcadSecManagementSystem {
 private: System::Void Button6_Click(System::Object^  sender, System::EventArgs^  e) {
 			 this->Hide();
 			 obj->Show();
+}
+private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 }
 };
 }

@@ -3,7 +3,6 @@
 #include <map>
 #include<set>
 #include <vector>
-#include <msclr\marshal_cppstd.h>
 namespace AcadSecManagementSystem {
 
 	using namespace System;
@@ -33,9 +32,13 @@ namespace AcadSecManagementSystem {
 		StudentCourseReg(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+		}
+
+		StudentCourseReg(int RollNumber, String^ Semester)
+		{
+			InitializeComponent();
+			Sem = Semester;
+			RollNo = RollNumber;
 		}
 
 
@@ -192,13 +195,13 @@ namespace AcadSecManagementSystem {
 			System::Windows::Forms::Label^  label6;
 			System::Windows::Forms::Button^  button3;
 			System::Windows::Forms::Label^  label9;
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle36 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle40 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle41 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle42 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle37 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle38 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle39 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(StudentCourseReg::typeid));
 			this->DataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -303,56 +306,56 @@ namespace AcadSecManagementSystem {
 			this->DataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->DataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::RaisedHorizontal;
 			this->DataGridView1->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle36->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle36->BackColor = System::Drawing::Color::DarkSlateBlue;
-			dataGridViewCellStyle36->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::DarkSlateBlue;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle36->ForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle36->SelectionBackColor = System::Drawing::Color::DarkSlateBlue;
-			dataGridViewCellStyle36->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle36->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->DataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle36;
+			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::DarkSlateBlue;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->DataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->DataGridView1->ColumnHeadersHeight = 52;
 			this->DataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Column1,
 					this->Column2, this->Instructor, this->Slot, this->Column4
 			});
-			dataGridViewCellStyle40->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle40->BackColor = System::Drawing::Color::Honeydew;
-			dataGridViewCellStyle40->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle5->BackColor = System::Drawing::Color::Honeydew;
+			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle40->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle40->SelectionBackColor = System::Drawing::Color::Honeydew;
-			dataGridViewCellStyle40->SelectionForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle40->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->DataGridView1->DefaultCellStyle = dataGridViewCellStyle40;
+			dataGridViewCellStyle5->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::Color::Honeydew;
+			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->DataGridView1->DefaultCellStyle = dataGridViewCellStyle5;
 			this->DataGridView1->GridColor = System::Drawing::Color::DimGray;
 			this->DataGridView1->Location = System::Drawing::Point(13, 138);
 			this->DataGridView1->Margin = System::Windows::Forms::Padding(4);
 			this->DataGridView1->Name = L"DataGridView1";
 			this->DataGridView1->ReadOnly = true;
 			this->DataGridView1->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle41->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle41->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle41->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle6->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle41->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle41->Padding = System::Windows::Forms::Padding(4);
-			dataGridViewCellStyle41->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle41->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle41->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->DataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle41;
+			dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle6->Padding = System::Windows::Forms::Padding(4);
+			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->DataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this->DataGridView1->RowHeadersVisible = false;
 			this->DataGridView1->RowHeadersWidth = 20;
-			dataGridViewCellStyle42->BackColor = System::Drawing::Color::Honeydew;
-			dataGridViewCellStyle42->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle7->BackColor = System::Drawing::Color::Honeydew;
+			dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle42->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle42->Padding = System::Windows::Forms::Padding(6);
-			dataGridViewCellStyle42->SelectionBackColor = System::Drawing::Color::Honeydew;
-			dataGridViewCellStyle42->SelectionForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle42->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->DataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle42;
+			dataGridViewCellStyle7->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle7->Padding = System::Windows::Forms::Padding(6);
+			dataGridViewCellStyle7->SelectionBackColor = System::Drawing::Color::Honeydew;
+			dataGridViewCellStyle7->SelectionForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle7->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->DataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle7;
 			this->DataGridView1->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::Honeydew;
 			this->DataGridView1->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 12, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -364,19 +367,19 @@ namespace AcadSecManagementSystem {
 			this->DataGridView1->RowTemplate->DividerHeight = 1;
 			this->DataGridView1->RowTemplate->Height = 30;
 			this->DataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->DataGridView1->Size = System::Drawing::Size(628, 353);
+			this->DataGridView1->Size = System::Drawing::Size(625, 353);
 			this->DataGridView1->TabIndex = 3;
 			this->DataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &StudentCourseReg::DataGridView1_CellContentClick);
 			// 
 			// Column1
 			// 
-			dataGridViewCellStyle37->BackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle37->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle2->BackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle37->ForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle37->SelectionBackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle37->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
-			this->Column1->DefaultCellStyle = dataGridViewCellStyle37;
+			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
+			this->Column1->DefaultCellStyle = dataGridViewCellStyle2;
 			this->Column1->FillWeight = 78.44669F;
 			this->Column1->HeaderText = L"Course Code";
 			this->Column1->Name = L"Column1";
@@ -384,13 +387,13 @@ namespace AcadSecManagementSystem {
 			// 
 			// Column2
 			// 
-			dataGridViewCellStyle38->BackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle38->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle3->BackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle38->ForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle38->SelectionBackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle38->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
-			this->Column2->DefaultCellStyle = dataGridViewCellStyle38;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
+			this->Column2->DefaultCellStyle = dataGridViewCellStyle3;
 			this->Column2->FillWeight = 213.3627F;
 			this->Column2->HeaderText = L"Course Name";
 			this->Column2->Name = L"Column2";
@@ -413,14 +416,14 @@ namespace AcadSecManagementSystem {
 			// Column4
 			// 
 			this->Column4->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
-			dataGridViewCellStyle39->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle39->BackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle39->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle4->BackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Verdana", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle39->ForeColor = System::Drawing::Color::WhiteSmoke;
-			dataGridViewCellStyle39->SelectionBackColor = System::Drawing::Color::DarkCyan;
-			dataGridViewCellStyle39->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
-			this->Column4->DefaultCellStyle = dataGridViewCellStyle39;
+			dataGridViewCellStyle4->ForeColor = System::Drawing::Color::WhiteSmoke;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::DarkCyan;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::Color::WhiteSmoke;
+			this->Column4->DefaultCellStyle = dataGridViewCellStyle4;
 			this->Column4->FillWeight = 68.74165F;
 			this->Column4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->Column4->HeaderText = L"Register";
@@ -468,9 +471,9 @@ namespace AcadSecManagementSystem {
 			this->thirdyearpanel->Controls->Add(button2);
 			this->thirdyearpanel->Controls->Add(label3);
 			this->thirdyearpanel->Controls->Add(this->label5);
-			this->thirdyearpanel->Location = System::Drawing::Point(661, 87);
+			this->thirdyearpanel->Location = System::Drawing::Point(645, 87);
 			this->thirdyearpanel->Name = L"thirdyearpanel";
-			this->thirdyearpanel->Size = System::Drawing::Size(343, 455);
+			this->thirdyearpanel->Size = System::Drawing::Size(359, 455);
 			this->thirdyearpanel->TabIndex = 5;
 			// 
 			// label7
@@ -487,7 +490,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->label8->AutoSize = true;
 			this->label8->ForeColor = System::Drawing::Color::Navy;
-			this->label8->Location = System::Drawing::Point(85, 326);
+			this->label8->Location = System::Drawing::Point(82, 326);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(246, 24);
 			this->label8->TabIndex = 34;
@@ -516,7 +519,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->label4->AutoSize = true;
 			this->label4->ForeColor = System::Drawing::Color::Navy;
-			this->label4->Location = System::Drawing::Point(84, 197);
+			this->label4->Location = System::Drawing::Point(81, 197);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(241, 24);
 			this->label4->TabIndex = 29;
@@ -545,7 +548,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->de1label->AutoSize = true;
 			this->de1label->ForeColor = System::Drawing::Color::Navy;
-			this->de1label->Location = System::Drawing::Point(82, 79);
+			this->de1label->Location = System::Drawing::Point(80, 79);
 			this->de1label->Name = L"de1label";
 			this->de1label->Size = System::Drawing::Size(211, 24);
 			this->de1label->TabIndex = 24;
@@ -970,6 +973,17 @@ private: System::Void CommonButtonClickHandler(System::Object^ sender, System::E
 							// Add to Database
 							InsertIntoDB(RollNo, comboBox1->SelectedItem->ToString());
 						}
+						else
+						{
+							comboBox1->SelectedIndex = -1;
+							if (chosenElectiveSlots->ContainsKey(slot))
+							{
+								chosenElectiveSlots->Remove(slot);
+							}
+							this->label4->Text = "Departmental Elective - II";
+							this->label2->Text = "";
+							clickedButton->Text = "Drop";
+						}
 					}
 					else
 					{
@@ -985,6 +999,7 @@ private: System::Void CommonButtonClickHandler(System::Object^ sender, System::E
 							}
 							this->label4->Text = "Departmental Elective - II";
 							this->label2->Text = "";
+							clickedButton->Text = "Drop";
 						}
 						else
 						{
@@ -997,6 +1012,7 @@ private: System::Void CommonButtonClickHandler(System::Object^ sender, System::E
 							}
 							this->label4->Text = "Departmental Elective - II";
 							this->label2->Text = "";
+							clickedButton->Text = "Drop";
 						
 						}
 					}
@@ -1015,6 +1031,17 @@ private: System::Void CommonButtonClickHandler(System::Object^ sender, System::E
 							// Add to Database
 							InsertIntoDB(RollNo, comboBox2->SelectedItem->ToString());
 						}
+						else
+						{
+							comboBox2->SelectedIndex = -1;
+							if (chosenElectiveSlots->ContainsKey(slot))
+							{
+								chosenElectiveSlots->Remove(slot);
+							}
+							this->de1label->Text = "Laboratory Elective I";
+							this->label18->Text = "";
+							clickedButton->Text = "Drop";
+						}
 					}
 					else
 					{
@@ -1030,6 +1057,7 @@ private: System::Void CommonButtonClickHandler(System::Object^ sender, System::E
 							}
 							this->de1label->Text = "Laboratory Elective I";
 							this->label18->Text = "";
+							clickedButton->Text = "Drop";
 						}
 						else
 						{
@@ -1042,6 +1070,7 @@ private: System::Void CommonButtonClickHandler(System::Object^ sender, System::E
 							}
 							this->de1label->Text = "Laboratory Elective I";
 							this->label18->Text = "";
+							clickedButton->Text = "Drop";
 						
 						}
 					}
@@ -1059,6 +1088,17 @@ private: System::Void CommonButtonClickHandler(System::Object^ sender, System::E
 								// Add to Database
 								InsertIntoDB(RollNo, comboBox3->SelectedItem->ToString());
 							}
+							else
+							{
+								comboBox3->SelectedIndex = -1;
+								if (chosenElectiveSlots->ContainsKey(slot))
+								{
+									chosenElectiveSlots->Remove(slot);
+								}
+								this->label8->Text = "Departmental Elective - III";
+								this->label7->Text = "";
+								clickedButton->Text = "Drop";
+							}
 						}
 						else
 						{
@@ -1074,6 +1114,7 @@ private: System::Void CommonButtonClickHandler(System::Object^ sender, System::E
 								}
 								this->label8->Text = "Departmental Elective - III";
 								this->label7->Text = "";
+								clickedButton->Text = "Drop";
 							}
 							else
 							{
@@ -1086,6 +1127,7 @@ private: System::Void CommonButtonClickHandler(System::Object^ sender, System::E
 								}
 								this->label8->Text = "Departmental Elective - III";
 								this->label7->Text = "";
+								clickedButton->Text = "Drop";
 							
 							}
 						}

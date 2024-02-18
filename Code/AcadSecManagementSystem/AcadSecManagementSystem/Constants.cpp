@@ -1,9 +1,21 @@
 #include "stdafx.h"
+
+#pragma once
+#using <mscorlib.dll>
+#using <System.Data.dll>
+#using <System.dll>
+
+// Include necessary headers for Windows Forms
+
+#include<Windows.h>
+#include <msclr/marshal.h>
+#include <msclr/marshal_cppstd.h>
+// Include necessary headers for C++ types
 #include "Constants.h"
+
 
 namespace Constants
 {
-
 	String^ getdbConnString()
 	{
 		String^ f = "Data Source=sql5075.site4now.net;Initial Catalog=db_aa52db_mainacaddb;Persist Security Info=True;User ID=db_aa52db_mainacaddb_admin;Password=swelab@123;Connect Timeout=60";

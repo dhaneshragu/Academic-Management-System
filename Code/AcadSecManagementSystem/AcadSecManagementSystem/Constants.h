@@ -1,23 +1,15 @@
-#pragma once
-#using <mscorlib.dll>
-#using <System.Data.dll>
-#using <System.dll>
-
-// Include necessary headers for Windows Forms
-#include <Windows.h>
-#include <msclr/marshal.h>
-#include <msclr/marshal_cppstd.h>
-
-// Include necessary headers for C++ types
-#include <string>
-#include <map>
-#include <iostream>
-
 #ifndef CONSTANTS
 #define CONSTANTS
 
+#include <string>
+#include <map>
+#include <iostream>
+#include <stdlib.h>
+#include <cstring> 
+static std::map<int, int> yearTosem = { { 2020, 8 }, { 2021, 6 }, { 2022, 4 }, { 2023, 2 } };
 namespace Constants
 {
+	
 	using namespace System;
 	using namespace System::Windows::Forms;
 
