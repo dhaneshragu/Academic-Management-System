@@ -331,7 +331,7 @@ private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^ 
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 }
 private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) {
-			 StudentTimetable ^ InnerForm = gcnew StudentTimetable();
+			 StudentTimetable ^ InnerForm = gcnew StudentTimetable(RollNumber);
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 }
 private: System::Void Button5_Click(System::Object^  sender, System::EventArgs^  e) {
