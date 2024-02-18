@@ -9,9 +9,9 @@
 #include <string>
 #include <stdlib.h>
 #include <cstring> 
+#include "updateform.h"
 using namespace std;
-
-
+static map<string, string>detailsAd;
 namespace AcadSecManagementSystem {
 
 	using namespace System;
@@ -70,6 +70,17 @@ namespace AcadSecManagementSystem {
 	private: System::Windows::Forms::Label^  label9;
 	private: System::Windows::Forms::Button^  buttonSave;
 	private: System::Windows::Forms::Button^  buttonReset;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::GroupBox^  groupBox4;
+	private: System::Windows::Forms::GroupBox^  groupBox2;
+	private: System::Windows::Forms::GroupBox^  groupBox3;
+	private: System::Windows::Forms::CheckBox^  checkBox1;
+
+
+	private: System::Windows::Forms::CheckBox^  checkBox2;
+
+
+
 	protected:
 
 	protected:
@@ -129,6 +140,16 @@ namespace AcadSecManagementSystem {
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->buttonSave = (gcnew System::Windows::Forms::Button());
 			this->buttonReset = (gcnew System::Windows::Forms::Button());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
+			this->checkBox2 = (gcnew System::Windows::Forms::CheckBox());
+			this->groupBox1->SuspendLayout();
+			this->groupBox4->SuspendLayout();
+			this->groupBox2->SuspendLayout();
+			this->groupBox3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -214,7 +235,7 @@ namespace AcadSecManagementSystem {
 			// YesGradeCollection
 			// 
 			this->YesGradeCollection->AutoSize = true;
-			this->YesGradeCollection->Location = System::Drawing::Point(509, 103);
+			this->YesGradeCollection->Location = System::Drawing::Point(24, 13);
 			this->YesGradeCollection->Name = L"YesGradeCollection";
 			this->YesGradeCollection->Size = System::Drawing::Size(61, 28);
 			this->YesGradeCollection->TabIndex = 8;
@@ -225,7 +246,7 @@ namespace AcadSecManagementSystem {
 			// NoGradeCollection
 			// 
 			this->NoGradeCollection->AutoSize = true;
-			this->NoGradeCollection->Location = System::Drawing::Point(674, 103);
+			this->NoGradeCollection->Location = System::Drawing::Point(189, 13);
 			this->NoGradeCollection->Name = L"NoGradeCollection";
 			this->NoGradeCollection->Size = System::Drawing::Size(55, 28);
 			this->NoGradeCollection->TabIndex = 9;
@@ -236,7 +257,7 @@ namespace AcadSecManagementSystem {
 			// NoViewGrades
 			// 
 			this->NoViewGrades->AutoSize = true;
-			this->NoViewGrades->Location = System::Drawing::Point(674, 146);
+			this->NoViewGrades->Location = System::Drawing::Point(189, 18);
 			this->NoViewGrades->Name = L"NoViewGrades";
 			this->NoViewGrades->Size = System::Drawing::Size(55, 28);
 			this->NoViewGrades->TabIndex = 11;
@@ -247,7 +268,7 @@ namespace AcadSecManagementSystem {
 			// YesViewGrades
 			// 
 			this->YesViewGrades->AutoSize = true;
-			this->YesViewGrades->Location = System::Drawing::Point(509, 146);
+			this->YesViewGrades->Location = System::Drawing::Point(24, 18);
 			this->YesViewGrades->Name = L"YesViewGrades";
 			this->YesViewGrades->Size = System::Drawing::Size(61, 28);
 			this->YesViewGrades->TabIndex = 10;
@@ -258,22 +279,20 @@ namespace AcadSecManagementSystem {
 			// NoCourseEnr
 			// 
 			this->NoCourseEnr->AutoSize = true;
-			this->NoCourseEnr->Location = System::Drawing::Point(674, 190);
+			this->NoCourseEnr->Location = System::Drawing::Point(189, 16);
 			this->NoCourseEnr->Name = L"NoCourseEnr";
 			this->NoCourseEnr->Size = System::Drawing::Size(55, 28);
 			this->NoCourseEnr->TabIndex = 13;
-			this->NoCourseEnr->TabStop = true;
 			this->NoCourseEnr->Text = L"No";
 			this->NoCourseEnr->UseVisualStyleBackColor = true;
 			// 
 			// YesCourseEnr
 			// 
 			this->YesCourseEnr->AutoSize = true;
-			this->YesCourseEnr->Location = System::Drawing::Point(509, 190);
+			this->YesCourseEnr->Location = System::Drawing::Point(24, 15);
 			this->YesCourseEnr->Name = L"YesCourseEnr";
 			this->YesCourseEnr->Size = System::Drawing::Size(61, 28);
 			this->YesCourseEnr->TabIndex = 12;
-			this->YesCourseEnr->TabStop = true;
 			this->YesCourseEnr->Text = L"Yes";
 			this->YesCourseEnr->UseVisualStyleBackColor = true;
 			// 
@@ -317,7 +336,7 @@ namespace AcadSecManagementSystem {
 			// NoFeePayment
 			// 
 			this->NoFeePayment->AutoSize = true;
-			this->NoFeePayment->Location = System::Drawing::Point(674, 231);
+			this->NoFeePayment->Location = System::Drawing::Point(189, 19);
 			this->NoFeePayment->Name = L"NoFeePayment";
 			this->NoFeePayment->Size = System::Drawing::Size(55, 28);
 			this->NoFeePayment->TabIndex = 21;
@@ -328,7 +347,7 @@ namespace AcadSecManagementSystem {
 			// YesFeePayment
 			// 
 			this->YesFeePayment->AutoSize = true;
-			this->YesFeePayment->Location = System::Drawing::Point(509, 231);
+			this->YesFeePayment->Location = System::Drawing::Point(24, 19);
 			this->YesFeePayment->Name = L"YesFeePayment";
 			this->YesFeePayment->Size = System::Drawing::Size(61, 28);
 			this->YesFeePayment->TabIndex = 20;
@@ -354,22 +373,84 @@ namespace AcadSecManagementSystem {
 			// buttonSave
 			// 
 			this->buttonSave->BackColor = System::Drawing::Color::GreenYellow;
-			this->buttonSave->Location = System::Drawing::Point(344, 480);
+			this->buttonSave->Location = System::Drawing::Point(369, 480);
 			this->buttonSave->Name = L"buttonSave";
 			this->buttonSave->Size = System::Drawing::Size(138, 47);
 			this->buttonSave->TabIndex = 23;
 			this->buttonSave->Text = L"Save";
 			this->buttonSave->UseVisualStyleBackColor = false;
+			this->buttonSave->Click += gcnew System::EventHandler(this, &ProfSetDates::buttonSave_Click);
 			// 
 			// buttonReset
 			// 
 			this->buttonReset->BackColor = System::Drawing::Color::Tomato;
-			this->buttonReset->Location = System::Drawing::Point(509, 480);
+			this->buttonReset->Location = System::Drawing::Point(515, 480);
 			this->buttonReset->Name = L"buttonReset";
 			this->buttonReset->Size = System::Drawing::Size(138, 47);
 			this->buttonReset->TabIndex = 24;
 			this->buttonReset->Text = L"Reset";
 			this->buttonReset->UseVisualStyleBackColor = false;
+			this->buttonReset->Click += gcnew System::EventHandler(this, &ProfSetDates::buttonReset_Click);
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->NoGradeCollection);
+			this->groupBox1->Controls->Add(this->YesGradeCollection);
+			this->groupBox1->Location = System::Drawing::Point(485, 87);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(279, 53);
+			this->groupBox1->TabIndex = 25;
+			this->groupBox1->TabStop = false;
+			// 
+			// groupBox4
+			// 
+			this->groupBox4->Controls->Add(this->YesViewGrades);
+			this->groupBox4->Controls->Add(this->NoViewGrades);
+			this->groupBox4->Location = System::Drawing::Point(485, 129);
+			this->groupBox4->Name = L"groupBox4";
+			this->groupBox4->Size = System::Drawing::Size(279, 53);
+			this->groupBox4->TabIndex = 27;
+			this->groupBox4->TabStop = false;
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->YesCourseEnr);
+			this->groupBox2->Controls->Add(this->NoCourseEnr);
+			this->groupBox2->Location = System::Drawing::Point(485, 174);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(279, 53);
+			this->groupBox2->TabIndex = 28;
+			this->groupBox2->TabStop = false;
+			// 
+			// groupBox3
+			// 
+			this->groupBox3->Controls->Add(this->YesFeePayment);
+			this->groupBox3->Controls->Add(this->NoFeePayment);
+			this->groupBox3->Location = System::Drawing::Point(485, 214);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(279, 53);
+			this->groupBox3->TabIndex = 29;
+			this->groupBox3->TabStop = false;
+			// 
+			// checkBox1
+			// 
+			this->checkBox1->AutoSize = true;
+			this->checkBox1->Location = System::Drawing::Point(740, 273);
+			this->checkBox1->Name = L"checkBox1";
+			this->checkBox1->Size = System::Drawing::Size(61, 28);
+			this->checkBox1->TabIndex = 30;
+			this->checkBox1->Text = L"Set";
+			this->checkBox1->UseVisualStyleBackColor = true;
+			// 
+			// checkBox2
+			// 
+			this->checkBox2->AutoSize = true;
+			this->checkBox2->Location = System::Drawing::Point(740, 317);
+			this->checkBox2->Name = L"checkBox2";
+			this->checkBox2->Size = System::Drawing::Size(61, 28);
+			this->checkBox2->TabIndex = 31;
+			this->checkBox2->Text = L"Set";
+			this->checkBox2->UseVisualStyleBackColor = true;
 			// 
 			// ProfSetDates
 			// 
@@ -377,21 +458,19 @@ namespace AcadSecManagementSystem {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::AliceBlue;
 			this->ClientSize = System::Drawing::Size(1016, 557);
+			this->Controls->Add(this->checkBox2);
+			this->Controls->Add(this->checkBox1);
+			this->Controls->Add(this->groupBox3);
+			this->Controls->Add(this->groupBox2);
+			this->Controls->Add(this->groupBox4);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->buttonReset);
 			this->Controls->Add(this->buttonSave);
 			this->Controls->Add(this->label9);
-			this->Controls->Add(this->NoFeePayment);
-			this->Controls->Add(this->YesFeePayment);
 			this->Controls->Add(this->buttonExamTT);
 			this->Controls->Add(this->buttonTT);
 			this->Controls->Add(this->dateEndsem);
 			this->Controls->Add(this->dateMidsem);
-			this->Controls->Add(this->NoCourseEnr);
-			this->Controls->Add(this->YesCourseEnr);
-			this->Controls->Add(this->NoViewGrades);
-			this->Controls->Add(this->YesViewGrades);
-			this->Controls->Add(this->NoGradeCollection);
-			this->Controls->Add(this->YesGradeCollection);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
@@ -407,6 +486,14 @@ namespace AcadSecManagementSystem {
 			this->Name = L"ProfSetDates";
 			this->Text = L"ProfSetDates";
 			this->Load += gcnew System::EventHandler(this, &ProfSetDates::ProfSetDates_Load);
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
+			this->groupBox4->ResumeLayout(false);
+			this->groupBox4->PerformLayout();
+			this->groupBox2->ResumeLayout(false);
+			this->groupBox2->PerformLayout();
+			this->groupBox3->ResumeLayout(false);
+			this->groupBox3->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -748,6 +835,230 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 				 }
 }
 private: System::Void ProfSetDates_Load(System::Object^  sender, System::EventArgs^  e) {
+			 
+			 detailsAd = getDetails();
+			 if (detailsAd["midsem_start_date"].length())
+				 dateMidsem->Value = ParseDateString(detailsAd["midsem_start_date"]);
+			 else
+				 MarshalString(dateMidsem->Value.ToString(), detailsAd["midsem_start_date"]);
+			 if (detailsAd["endsem_start_date"].length())
+			 dateEndsem->Value = ParseDateString(detailsAd["endsem_start_date"]);
+			 else
+				 MarshalString(dateEndsem->Value.ToString(), detailsAd["endsem_start_date"]);
+			 if (detailsAd["is_grade_submission"]=="True")
+			 {
+				 YesGradeCollection->Checked = true;
+			 }
+			 else
+			 {
+				 NoGradeCollection->Checked = true;
+			 }
+			 if (detailsAd["view_grades"] == "True")
+			 {
+				 YesViewGrades->Checked = true;
+			 }
+			 else
+			 {
+				 NoViewGrades->Checked = true;
+			 }
+			 if (detailsAd["is_course_registration"] == "True")
+			 {
+				 YesCourseEnr->Checked = true;
+			 }
+			 else
+			 {
+				 NoCourseEnr->Checked = true;
+			 }
+			 if (detailsAd["start_fee_payment"] == "True")
+			 {
+				 YesFeePayment->Checked = true;
+			 }
+			 else
+			 {
+				 NoFeePayment->Checked = true;
+			 }		 
+			 
+
+}
+	
+private: std::map<std::string,std::string> getDetails()
+{
+			 String^ queryString = "SELECT * FROM Admin";
+			 String^ connString = Constants::getdbConnString();
+			 SqlConnection^ con = gcnew SqlConnection(connString);
+			 SqlCommand^ command = gcnew SqlCommand(queryString, con);
+			 std::map<string, string>details;
+			 try
+			 {
+				 con->Open();
+
+				 SqlDataReader^ reader = command->ExecuteReader();
+				 if (reader->Read())
+				 {
+					 for (int i = 0; i < reader->FieldCount; ++i) {
+
+
+						 String^ columnName = reader->GetName(i);
+						 int columnIndex = reader->GetOrdinal(columnName);
+						 Object^ columnValue = reader->GetSqlValue(columnIndex);
+						 String^ columnValueStr = columnValue->ToString();
+						 //Convert String^ to String (remove the ^)
+						 string columnNameStr;
+						 string columnValueStrNative;
+						 MarshalString(columnName, columnNameStr);
+						 MarshalString(columnValueStr, columnValueStrNative);
+						 // Insert into std::map
+						 details.insert({ columnNameStr, columnValueStrNative });
+					 }
+				 }
+			 }
+			 catch (Exception^ ex)
+			 {
+				 MessageBox::Show(ex->Message);
+			 }
+			 finally
+			 {
+				 con->Close();
+			 }
+			 return details;
+}
+private: System::Void buttonSave_Click(System::Object^  sender, System::EventArgs^  e) {
+			 bool flag = 1;
+			 System::Windows::Forms::DialogResult result = MessageBox::Show("Are you sure you want to make these changes?", "Confirmation", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+			 if (result == System::Windows::Forms::DialogResult::No) {
+				 flag = 0;  // User clicked No, so do not proceed with the update
+			 }
+			 if (flag)
+			 {
+				 String ^gradeCollection="False";
+				 String ^courseReg="False";
+				 String ^feePayment="False";
+				 String ^gradeView="False";
+				 String ^midSemDate ="NULL";
+				 String ^endSemDate ="NULL";
+				 if (YesGradeCollection->Checked)
+					 gradeCollection = "True";
+				 if (YesFeePayment->Checked)
+					 feePayment = "True";
+				 if (YesCourseEnr->Checked)
+					 courseReg = "True";
+				 if (YesViewGrades->Checked)
+					 gradeView = "True";
+				 if (checkBox1->Checked)
+					 midSemDate = dateMidsem->Value.ToString("yyyy-MM-dd");
+				 if (checkBox2->Checked)
+					 endSemDate = dateEndsem->Value.ToString("yyyy-MM-dd");
+				 updateAdminDetails(gradeCollection,courseReg,feePayment,gradeView,midSemDate,endSemDate);
+			 }
+			 detailsAd = getDetails();
+			 if (detailsAd["midsem_start_date"].length())
+				 dateMidsem->Value = ParseDateString(detailsAd["midsem_start_date"]);
+			 else
+				 MarshalString(dateMidsem->Value.ToString(), detailsAd["midsem_start_date"]);
+			 if (detailsAd["endsem_start_date"].length())
+				 dateEndsem->Value = ParseDateString(detailsAd["endsem_start_date"]);
+			 else
+				 MarshalString(dateEndsem->Value.ToString(), detailsAd["endsem_start_date"]);
+			 if (detailsAd["is_grade_submission"] == "True")
+			 {
+				 YesGradeCollection->Checked = true;
+			 }
+			 else
+			 {
+				 NoGradeCollection->Checked = true;
+			 }
+			 if (detailsAd["view_grades"] == "True")
+			 {
+				 YesViewGrades->Checked = true;
+			 }
+			 else
+			 {
+				 NoViewGrades->Checked = true;
+			 }
+			 if (detailsAd["is_course_registration"] == "True")
+			 {
+				 YesCourseEnr->Checked = true;
+			 }
+			 else
+			 {
+				 NoCourseEnr->Checked = true;
+			 }
+			 if (detailsAd["start_fee_payment"] == "True")
+			 {
+				 YesFeePayment->Checked = true;
+			 }
+			 else
+			 {
+				 NoFeePayment->Checked = true;
+			 }
+}
+private: void updateAdminDetails(String ^gradeCollection, String ^ courseReg, String ^feePayment, String ^gradeView, String ^ midSemDate, String ^endSemDate)
+{
+			 String^ queryString = "UPDATE [Admin] SET is_course_registration = @courseReg, is_grade_submission = @gradeCollection, view_grades = @gradeView, start_fee_payment = @feePayment";
+			 if (midSemDate != "NULL")
+				 queryString += ",midsem_start_date = @midSemDate";
+			 if (endSemDate != "NULL")
+				 queryString += ",endsem_start_date = @endSemDate";
+			 String^ connString = Constants::getdbConnString();
+			 SqlConnection^ con = gcnew SqlConnection(connString);
+			 SqlCommand^ command = gcnew SqlCommand(queryString, con);
+			 command->Parameters->AddWithValue("@gradeCollection", gradeCollection);
+			 command->Parameters->AddWithValue("@courseReg", courseReg);
+			 command->Parameters->AddWithValue("@feePayment", feePayment);
+			 command->Parameters->AddWithValue("@gradeView", gradeView);
+			 command->Parameters->AddWithValue("@midSemDate", midSemDate);
+			 command->Parameters->AddWithValue("@endSemDate", endSemDate);
+			 try {
+				 con->Open();
+				 command->ExecuteNonQuery();
+				 Console::WriteLine("User details updated successfully.");
+			 }
+			 catch (Exception^ ex) {
+				 Console::WriteLine("Error: " + ex->Message);
+				 System::Windows::Forms::DialogResult result = MessageBox::Show("Are you sure you want to make these changes?"+ex->Message, "Confirmation", MessageBoxButtons::OK, MessageBoxIcon::Question);
+			 }
+			 con->Close();
+
+}
+private: System::Void buttonReset_Click(System::Object^  sender, System::EventArgs^  e) {
+			 if (detailsAd["midsem_start_date"].length())
+				 dateMidsem->Value = ParseDateString(detailsAd["midsem_start_date"]);
+			 if (detailsAd["endsem_start_date"].length())
+				 dateEndsem->Value = ParseDateString(detailsAd["endsem_start_date"]);
+			 if (detailsAd["is_grade_summision"] == "True")
+			 {
+				 YesGradeCollection->Checked = true;
+			 }
+			 else
+			 {
+				 NoGradeCollection->Checked = true;
+			 }
+			 if (detailsAd["view_grades"] == "True")
+			 {
+				 YesViewGrades->Checked = true;
+			 }
+			 else
+			 {
+				 NoViewGrades->Checked = true;
+			 }
+			 if (detailsAd["is_course_registration"] == "True")
+			 {
+				 YesCourseEnr->Checked = true;
+			 }
+			 else
+			 {
+				 NoCourseEnr->Checked = true;
+			 }
+			 if (detailsAd["start_fee_payment"] == "True")
+			 {
+				 YesFeePayment->Checked = true;
+			 }
+			 else
+			 {
+				 NoFeePayment->Checked = true;
+			 }
+
+
 }
 };
 }
