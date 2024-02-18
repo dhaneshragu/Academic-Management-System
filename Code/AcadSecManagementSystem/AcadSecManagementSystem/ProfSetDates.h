@@ -396,6 +396,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->groupBox1->Controls->Add(this->NoGradeCollection);
 			this->groupBox1->Controls->Add(this->YesGradeCollection);
+			this->groupBox1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->groupBox1->Location = System::Drawing::Point(485, 87);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(279, 53);
@@ -406,6 +407,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->groupBox4->Controls->Add(this->YesViewGrades);
 			this->groupBox4->Controls->Add(this->NoViewGrades);
+			this->groupBox4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->groupBox4->Location = System::Drawing::Point(485, 129);
 			this->groupBox4->Name = L"groupBox4";
 			this->groupBox4->Size = System::Drawing::Size(279, 53);
@@ -416,6 +418,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->groupBox2->Controls->Add(this->YesCourseEnr);
 			this->groupBox2->Controls->Add(this->NoCourseEnr);
+			this->groupBox2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->groupBox2->Location = System::Drawing::Point(485, 174);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(279, 53);
@@ -426,6 +429,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->groupBox3->Controls->Add(this->YesFeePayment);
 			this->groupBox3->Controls->Add(this->NoFeePayment);
+			this->groupBox3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->groupBox3->Location = System::Drawing::Point(485, 214);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Size = System::Drawing::Size(279, 53);

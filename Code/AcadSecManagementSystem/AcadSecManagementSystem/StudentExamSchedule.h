@@ -291,38 +291,38 @@ namespace AcadSecManagementSystem {
 #pragma endregion
 	private: System::Void StudentExamSchedule_Load(System::Object^  sender, System::EventArgs^  e) {
 
-				 try
-				 {
-					 String^ connString = Constants::getdbConnString();
-					 SqlConnection con(connString);
-					 con.Open();
-					 String^ query = "SELECT * FROM dummy_course_details";
+				 //try
+				 //{
+					// String^ connString = Constants::getdbConnString();
+					// SqlConnection con(connString);
+					// con.Open();
+					// String^ query = "SELECT * FROM dummy_course_details";
 
-					 // Create a SqlCommand
-					 SqlCommand cmd(query, %con);
+					// // Create a SqlCommand
+					// SqlCommand cmd(query, %con);
 
-					 // Create a DataTable
-					 DataTable^ dataTable = gcnew DataTable();
+					// // Create a DataTable
+					// DataTable^ dataTable = gcnew DataTable();
 
-					 // Create a SqlDataAdapter and fill the DataTable
-					 SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
-					 adapter->Fill(dataTable);
+					// // Create a SqlDataAdapter and fill the DataTable
+					// SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
+					// adapter->Fill(dataTable);
 
-					 // IMPORTANT: Specify the Column Mappings from DataGridView to SQL Table
-					 DataGridView1->AutoGenerateColumns = false;
-					 DataGridView1->Columns[2]->DataPropertyName = "Time";
-					 DataGridView1->Columns[0]->DataPropertyName = "Course Code";
-					 DataGridView1->Columns[1]->DataPropertyName = "Course Name";
-					 DataGridView1->Columns[3]->DataPropertyName = "Venue";
+					// // IMPORTANT: Specify the Column Mappings from DataGridView to SQL Table
+					// DataGridView1->AutoGenerateColumns = false;
+					// DataGridView1->Columns[2]->DataPropertyName = "Time";
+					// DataGridView1->Columns[0]->DataPropertyName = "Course Code";
+					// DataGridView1->Columns[1]->DataPropertyName = "Course Name";
+					// DataGridView1->Columns[3]->DataPropertyName = "Venue";
 
-					 // use the 'dataTable' as data source
-					 DataGridView1->DataSource = dataTable;
-					 con.Close();
-				 }
-				 catch (Exception^ ex)
-				 {
-					 MessageBox::Show(ex->Message);
-				 }
+					// // use the 'dataTable' as data source
+					// DataGridView1->DataSource = dataTable;
+					// con.Close();
+				 //}
+				 //catch (Exception^ ex)
+				 //{
+					// MessageBox::Show(ex->Message);
+				 //}
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 	}
