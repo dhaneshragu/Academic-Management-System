@@ -641,8 +641,8 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 								String^ str2 = gcnew String((sem).c_str());
 								MessageBox::Show(str2);
 							}
-							auto slot = (*courseAllotmentLeft.find(sem)).second.begin();
-							while (slot != (*courseAllotmentLeft.find(sem)).second.end())
+							auto slot = (*courseAllotmentLeft.find(sem)).second.rbegin();
+							while (slot != (*courseAllotmentLeft.find(sem)).second.rend())
 							{
 								if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
 								{
@@ -657,7 +657,7 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 									row["slot"] = tempslot;
 									//  row->EndEdit();
 									//  row->AcceptChanges();
-									courseAllotmentLeft.find(sem)->second.erase(slot);
+									courseAllotmentLeft.find(sem)->second.erase(courseAllotmentLeft.find(sem)->second.find(*slot));
 									//  MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
 									break;
 								}
@@ -673,12 +673,12 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 							 MarshalString(row["sem_offered"]->ToString(), semOffered);
 							 MarshalString(row["prof_ID"]->ToString(), ProfId);
 							 string sem = semOffered;
-							 sem = sem.substr(sem.length() - 1, 1);
+							 sem = sem.substr(0, 1);
 							 //  check if slot is available for the sem
 							 if ((*labAllotmentLeft.find(sem)).second.size() == 0)
 							 {
 								 sem = semOffered;
-								 sem = sem.substr(0, 1);
+								 sem = sem.substr(sem.length() - 1, 1);
 							 }
 
 							//  MessageBox::Show("Sem: " + gcnew String(sem.c_str()));
@@ -711,7 +711,7 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 									 row["slot"] = tempslot;
 									 //  row->EndEdit();
 									 //  row->AcceptChanges();
-									 labAllotmentLeft.find(sem)->second.erase(slot);
+									 // labAllotmentLeft.find(sem)->second.erase(labAllotmentLeft.find(sem)->second.find(*slot));
 									//   MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
 									 break;
 								 }
