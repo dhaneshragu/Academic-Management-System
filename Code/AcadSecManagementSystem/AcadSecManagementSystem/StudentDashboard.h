@@ -111,6 +111,7 @@ namespace AcadSecManagementSystem {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(1289, 35);
 			this->panel1->TabIndex = 0;
+			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &StudentDashboard::panel1_Paint);
 			// 
 			// label3
 			// 
@@ -337,7 +338,8 @@ private: System::Void Button5_Click(System::Object^  sender, System::EventArgs^ 
 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
-			DetailsUpdateForm^ InnerForm = gcnew DetailsUpdateForm();
+			 String ^ Role = "Student";
+			DetailsUpdateForm^ InnerForm = gcnew DetailsUpdateForm(RollNumber,Role);
 			Constants::subViewChildForm(childformpanel, InnerForm);
 }
 private: System::Void YourForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
@@ -347,6 +349,8 @@ private: System::Void YourForm_FormClosing(System::Object^ sender, System::Windo
 private: System::Void Button6_Click(System::Object^  sender, System::EventArgs^  e) {
 			 this->Hide();
 			 obj->Show();
+}
+private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 }
 };
 }
