@@ -1,5 +1,15 @@
 #pragma once
 #include "Constants.h"
+#include <map>
+#include <vector>
+#include <set>
+#include <algorithm>
+#include <string.h>
+#include <sstream>
+#include <string>
+#include <stdlib.h>
+#include <cstring>
+using namespace std;
 namespace AcadSecManagementSystem {
 
 	using namespace System;
@@ -15,6 +25,7 @@ namespace AcadSecManagementSystem {
 	/// </summary>
 	public ref class ViewRecords : public System::Windows::Forms::Form
 	{
+		Form^ obj;
 	public:
 		ViewRecords(void)
 		{
@@ -22,6 +33,11 @@ namespace AcadSecManagementSystem {
 			//
 			//TODO: Add the constructor code here
 			//
+		}
+		ViewRecords(Form^obj1)
+		{
+			InitializeComponent();
+			obj = obj1;
 		}
 
 	protected:
@@ -50,9 +66,12 @@ namespace AcadSecManagementSystem {
 	internal: System::Windows::Forms::Label^  Label7;
 	private: System::Windows::Forms::ComboBox^  comboBox1;
 	private: System::Windows::Forms::Label^  label2;
-	internal: System::Windows::Forms::Label^  label4;
+	internal: System::Windows::Forms::Label^  Fees_label;
+	internal: System::Windows::Forms::Label^  Faculty_Label;
 	private:
-	internal: System::Windows::Forms::Label^  label3;
+
+	private:
+
 	internal:
 
 	protected:
@@ -90,9 +109,11 @@ namespace AcadSecManagementSystem {
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(ViewRecords::typeid));
 			this->Panel4 = (gcnew System::Windows::Forms::Panel());
+			this->Fees_label = (gcnew System::Windows::Forms::Label());
 			this->PictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->Label8 = (gcnew System::Windows::Forms::Label());
 			this->Panel2 = (gcnew System::Windows::Forms::Panel());
+			this->Faculty_Label = (gcnew System::Windows::Forms::Label());
 			this->PictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->Label1 = (gcnew System::Windows::Forms::Label());
 			this->Panel3 = (gcnew System::Windows::Forms::Panel());
@@ -101,8 +122,6 @@ namespace AcadSecManagementSystem {
 			this->Label7 = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->Panel4->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBox3))->BeginInit();
 			this->Panel2->SuspendLayout();
@@ -115,7 +134,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->Panel4->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->Panel4->BackColor = System::Drawing::Color::White;
-			this->Panel4->Controls->Add(this->label4);
+			this->Panel4->Controls->Add(this->Fees_label);
 			this->Panel4->Controls->Add(this->PictureBox3);
 			this->Panel4->Controls->Add(this->Label8);
 			this->Panel4->Location = System::Drawing::Point(586, 49);
@@ -123,6 +142,17 @@ namespace AcadSecManagementSystem {
 			this->Panel4->Name = L"Panel4";
 			this->Panel4->Size = System::Drawing::Size(379, 225);
 			this->Panel4->TabIndex = 15;
+			// 
+			// Fees_label
+			// 
+			this->Fees_label->AutoSize = true;
+			this->Fees_label->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Fees_label->Location = System::Drawing::Point(193, 108);
+			this->Fees_label->Name = L"Fees_label";
+			this->Fees_label->Size = System::Drawing::Size(134, 49);
+			this->Fees_label->TabIndex = 7;
+			this->Fees_label->Text = L"{Num}";
 			// 
 			// PictureBox3
 			// 
@@ -153,7 +183,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->Panel2->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->Panel2->BackColor = System::Drawing::Color::White;
-			this->Panel2->Controls->Add(this->label3);
+			this->Panel2->Controls->Add(this->Faculty_Label);
 			this->Panel2->Controls->Add(this->PictureBox1);
 			this->Panel2->Controls->Add(this->Label1);
 			this->Panel2->Location = System::Drawing::Point(586, 304);
@@ -161,6 +191,17 @@ namespace AcadSecManagementSystem {
 			this->Panel2->Name = L"Panel2";
 			this->Panel2->Size = System::Drawing::Size(379, 225);
 			this->Panel2->TabIndex = 16;
+			// 
+			// Faculty_Label
+			// 
+			this->Faculty_Label->AutoSize = true;
+			this->Faculty_Label->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Faculty_Label->Location = System::Drawing::Point(193, 111);
+			this->Faculty_Label->Name = L"Faculty_Label";
+			this->Faculty_Label->Size = System::Drawing::Size(134, 49);
+			this->Faculty_Label->TabIndex = 7;
+			this->Faculty_Label->Text = L"{Num}";
 			// 
 			// PictureBox1
 			// 
@@ -239,11 +280,13 @@ namespace AcadSecManagementSystem {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"2019", L"2020", L"2021", L"2022", L"2023" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2020", L"2021", L"2022", L"2023" });
 			this->comboBox1->Location = System::Drawing::Point(290, 49);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(152, 31);
 			this->comboBox1->TabIndex = 18;
+			this->comboBox1->SelectedIndex = 0;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &ViewRecords::comboBox1_SelectedIndexChanged);
 			// 
 			// label2
 			// 
@@ -255,29 +298,6 @@ namespace AcadSecManagementSystem {
 			this->label2->Size = System::Drawing::Size(128, 27);
 			this->label2->TabIndex = 19;
 			this->label2->Text = L"Select Year";
-			this->label2->Click += gcnew System::EventHandler(this, &ViewRecords::label2_Click);
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(193, 111);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(134, 49);
-			this->label3->TabIndex = 7;
-			this->label3->Text = L"{Num}";
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(193, 108);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(134, 49);
-			this->label4->TabIndex = 7;
-			this->label4->Text = L"{Num}";
 			// 
 			// ViewRecords
 			// 
@@ -310,11 +330,83 @@ namespace AcadSecManagementSystem {
 			this->PerformLayout();
 
 		}
+
+		void MarshalString(String ^ s, string& os) {
+			using namespace Runtime::InteropServices;
+			const char* chars =
+				(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			os = chars;
+			Marshal::FreeHGlobal(IntPtr((void*)chars));
+		}
 #pragma endregion
 	private: System::Void ViewRecords_Load(System::Object^  sender, System::EventArgs^  e) {
+				 String^ selectedValue = safe_cast<String^>(comboBox1->SelectedItem);
+				 string selectedVal;
+				 MarshalString(selectedValue, selectedVal);
+				 int year = stoi(selectedVal);
+				 int result;
+				 try
+				 {
+					 String^ connString = Constants::getdbConnString();
+					 SqlConnection^ cn = gcnew SqlConnection(connString);
+					 cn->Open();
+					 String^ query = "SELECT fees_paid FROM dbo.[Financial Records] WHERE year=" + year;
+					 SqlCommand^ command = gcnew SqlCommand(query, cn);
+					 result = safe_cast<int>(command->ExecuteScalar());
 
+					 Fees_label->Text = result.ToString();
+
+					 String^ query1 = "SELECT no_of_students FROM dbo.[Financial Records] WHERE year=" + year;
+					 SqlCommand^ command1 = gcnew SqlCommand(query1, cn);
+					 result = safe_cast<int>(command1->ExecuteScalar());
+
+					 Students_Label->Text = result.ToString();
+
+					 String^ query2 = "SELECT no_of_teachers FROM dbo.[Financial Records] WHERE year=" + year;
+					 SqlCommand^ command2 = gcnew SqlCommand(query2, cn);
+					 result = safe_cast<int>(command2->ExecuteScalar());
+
+					 Faculty_Label->Text = result.ToString();
+				 }
+				 catch (Exception^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+				 }
 	}
-	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+				 ComboBox^ combobox = dynamic_cast<ComboBox^>(sender);
+				 String^ selectedValue = safe_cast<String^>(combobox->SelectedItem);
+				 string selectedVal;
+				 MarshalString(selectedValue, selectedVal);
+				 int year = stoi(selectedVal);
+				 int result;
+				 try
+				 {
+					 String^ connString = Constants::getdbConnString();
+					 SqlConnection^ cn = gcnew SqlConnection(connString);
+					 cn->Open();
+					 String^ query = "SELECT fees_paid FROM dbo.[Financial Records] WHERE year="+year;
+					 SqlCommand^ command = gcnew SqlCommand(query, cn);
+					 result = safe_cast<int>(command->ExecuteScalar());
+
+					 Fees_label->Text = result.ToString();
+
+					 String^ query1 = "SELECT no_of_students FROM dbo.[Financial Records] WHERE year="+year;
+					 SqlCommand^ command1 = gcnew SqlCommand(query1, cn);
+					 result = safe_cast<int>(command1->ExecuteScalar());
+
+					 Students_Label->Text = result.ToString();
+
+					 String^ query2 = "SELECT no_of_teachers FROM dbo.[Financial Records] WHERE year="+year;
+					 SqlCommand^ command2 = gcnew SqlCommand(query2, cn);
+					 result = safe_cast<int>(command2->ExecuteScalar());
+
+					 Faculty_Label->Text = result.ToString();
+				 }
+				 catch (Exception^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+				 }
 	}
-	};
+};
 }
