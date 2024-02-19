@@ -35,9 +35,9 @@ bool ValidateLogin(String^ ID, String^ password,String^ role) {
 		if (role == "Student")
 		{
 			// Perform the database query to validate student login
-			String^ query = "SELECT COUNT(*) FROM dbo.[Student Database] WHERE roll_no = @studentID AND password = @password";
+			String^ query = "SELECT COUNT(*) FROM dbo.[Student Database] WHERE email_id = @studentID AND password = @password";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
-			command->Parameters->AddWithValue("@studentID", ID);
+			command->Parameters->AddWithValue("@studentID", ID+"@iitg.ac.in");
 			command->Parameters->AddWithValue("@password", password);
 			result = safe_cast<int>(command->ExecuteScalar());
 		}
@@ -72,9 +72,9 @@ String^ GetUserName(String^ ID, String ^role)
 		if (role == "Student")
 		{
 			// Perform the database query to validate student login
-			String^ query = "SELECT name FROM dbo.[Student Database] WHERE roll_no = @studentID";
+			String^ query = "SELECT name FROM dbo.[Student Database] WHERE email_id = @studentID";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
-			command->Parameters->AddWithValue("@studentID", ID);
+			command->Parameters->AddWithValue("@studentID", ID+"@iitg.ac.in");
 			result = safe_cast<String ^>(command->ExecuteScalar());
 		}
 
@@ -88,7 +88,38 @@ String^ GetUserName(String^ ID, String ^role)
 		connection->Close();
 	}
 }
+String^ GetRoll(String^ ID)
+{
+	String^ connectionString = Constants::getdbConnString();
 
+	SqlConnection^ connection = gcnew SqlConnection(connectionString);
+
+	try {
+		connection->Open();
+		String^ result;
+		
+			// Perform the database query to validate student login
+			String^ query = "SELECT roll_no FROM dbo.[Student Database] WHERE email_id = @studentID";
+			SqlCommand^ command = gcnew SqlCommand(query, connection);
+			command->Parameters->AddWithValue("@studentID", ID+"@iitg.ac.in");
+			SqlDataReader^ reader = command->ExecuteReader();
+			if(reader->Read())
+			{
+				int columnIndex = reader->GetOrdinal("roll_no");
+				Object^ columnValue = reader->GetSqlValue(columnIndex);
+				String^ result = columnValue->ToString();
+				return result;
+			}	
+		
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show("Error connecting to the database 1: " + ex->Message, "Database Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		return nullptr;
+	}
+	finally {
+		connection->Close();
+	}
+}
 int GetUserYear(String^ ID, String ^role)
 {
 	String^ connectionString = Constants::getdbConnString();
@@ -101,16 +132,16 @@ int GetUserYear(String^ ID, String ^role)
 		if (role == "Student")
 		{
 			// Perform the database query to validate student login
-			String^ query = "SELECT year FROM dbo.[Student Database] WHERE roll_no = @studentID";
+			String^ query = "SELECT year FROM dbo.[Student Database] WHERE email_id = @studentID";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
-			command->Parameters->AddWithValue("@studentID", ID);
+			command->Parameters->AddWithValue("@studentID", ID+"@iitg.ac.in");
 			result = safe_cast<int>(command->ExecuteScalar());
 		}
 
 		return result;
 	}
 	catch (Exception^ ex) {
-		MessageBox::Show("Error connecting to the database: " + ex->Message, "Database Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		MessageBox::Show("Error connecting to the database : " + ex->Message, "Database Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		return 0;
 	}
 	finally {

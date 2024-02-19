@@ -17,4 +17,5 @@ bool ValidateLogin(String^ ID, String^ password,String^ role);
 String^ GetUserName(String^ ID, String ^role);
 int GetUserYear(String^ ID, String ^role);
 bool ContainsNonNumericCharacters(String^ str);
+String^ GetRoll(String^ ID);
 #endif
