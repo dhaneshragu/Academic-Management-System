@@ -158,9 +158,9 @@ namespace AcadSecManagementSystem {
 			this->button2->Location = System::Drawing::Point(133, 128);
 			this->button2->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(188, 45);
+			this->button2->Size = System::Drawing::Size(210, 45);
 			this->button2->TabIndex = 29;
-			this->button2->Text = L"Download Grades";
+			this->button2->Text = L"Download Enrolled List";
 			this->button2->UseVisualStyleBackColor = false;
 			// 
 			// label1
@@ -170,9 +170,9 @@ namespace AcadSecManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(232, 79);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(166, 29);
+			this->label1->Size = System::Drawing::Size(182, 29);
 			this->label1->TabIndex = 31;
-			this->label1->Text = L"Select Course";
+			this->label1->Text = L"Select Course :";
 			// 
 			// label3
 			// 
