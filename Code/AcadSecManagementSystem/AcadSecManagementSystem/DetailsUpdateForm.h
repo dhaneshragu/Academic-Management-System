@@ -315,7 +315,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->button1->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->button1->BackColor = System::Drawing::Color::LightBlue;
-			this->button1->Location = System::Drawing::Point(398, 415);
+			this->button1->Location = System::Drawing::Point(410, 409);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(184, 55);
 			this->button1->TabIndex = 36;
