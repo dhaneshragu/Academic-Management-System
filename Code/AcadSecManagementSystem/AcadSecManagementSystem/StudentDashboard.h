@@ -3,7 +3,7 @@
 #include "StudentHome.h"
 #include "StudentTimetable.h"
 #include "StudentExamSchedule.h"
-
+#include "DetailsUpdateForm.h"
 namespace AcadSecManagementSystem {
 
 	using namespace System;
@@ -20,12 +20,25 @@ namespace AcadSecManagementSystem {
 	public ref class StudentDashboard : public System::Windows::Forms::Form
 	{
 	public:
+		Form ^obj;
+		property System::String^ UserName;
+		property System::String^ RollNumber;
+		int year;
+
 		StudentDashboard(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
+		}
+		StudentDashboard(Form ^obj1)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			obj = obj1;
 		}
 
 	protected:
@@ -52,7 +65,8 @@ namespace AcadSecManagementSystem {
 	internal: System::Windows::Forms::Button^  Button3;
 	internal: System::Windows::Forms::Label^  Label36;
 	internal: System::Windows::Forms::Panel^  childformpanel;
-	protected: 
+	internal: System::Windows::Forms::Button^  button1;
+	protected:
 
 	private:
 		/// <summary>
@@ -73,6 +87,7 @@ namespace AcadSecManagementSystem {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->Button6 = (gcnew System::Windows::Forms::Button());
 			this->Button5 = (gcnew System::Windows::Forms::Button());
 			this->Button4 = (gcnew System::Windows::Forms::Button());
@@ -96,11 +111,12 @@ namespace AcadSecManagementSystem {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(1289, 35);
 			this->panel1->TabIndex = 0;
+			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &StudentDashboard::panel1_Paint);
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(1157, 7);
+			this->label3->Location = System::Drawing::Point(1156, 7);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(117, 21);
 			this->label3->TabIndex = 2;
@@ -109,11 +125,12 @@ namespace AcadSecManagementSystem {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(1019, 7);
+			this->label2->Location = System::Drawing::Point(993, 7);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(130, 21);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"{Stusent Name}";
+			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->label2->Click += gcnew System::EventHandler(this, &StudentDashboard::label2_Click);
 			// 
 			// label1
@@ -128,6 +145,7 @@ namespace AcadSecManagementSystem {
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::PowderBlue;
+			this->panel2->Controls->Add(this->button1);
 			this->panel2->Controls->Add(this->Button6);
 			this->panel2->Controls->Add(this->Button5);
 			this->panel2->Controls->Add(this->Button4);
@@ -142,6 +160,24 @@ namespace AcadSecManagementSystem {
 			this->panel2->Size = System::Drawing::Size(264, 572);
 			this->panel2->TabIndex = 1;
 			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Transparent;
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->ForeColor = System::Drawing::Color::Black;
+			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
+			this->button1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button1->Location = System::Drawing::Point(-1, 431);
+			this->button1->Name = L"button1";
+			this->button1->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
+			this->button1->Size = System::Drawing::Size(267, 53);
+			this->button1->TabIndex = 10;
+			this->button1->Text = L"       Update Details";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &StudentDashboard::button1_Click);
+			// 
 			// Button6
 			// 
 			this->Button6->BackColor = System::Drawing::Color::Transparent;
@@ -150,13 +186,14 @@ namespace AcadSecManagementSystem {
 			this->Button6->ForeColor = System::Drawing::Color::Black;
 			this->Button6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Button6.Image")));
 			this->Button6->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Button6->Location = System::Drawing::Point(0, 476);
+			this->Button6->Location = System::Drawing::Point(0, 501);
 			this->Button6->Name = L"Button6";
 			this->Button6->Padding = System::Windows::Forms::Padding(15, 0, 35, 0);
-			this->Button6->Size = System::Drawing::Size(264, 67);
+			this->Button6->Size = System::Drawing::Size(264, 55);
 			this->Button6->TabIndex = 9;
 			this->Button6->Text = L"Logout";
 			this->Button6->UseVisualStyleBackColor = false;
+			this->Button6->Click += gcnew System::EventHandler(this, &StudentDashboard::Button6_Click);
 			// 
 			// Button5
 			// 
@@ -166,10 +203,10 @@ namespace AcadSecManagementSystem {
 			this->Button5->ForeColor = System::Drawing::Color::Black;
 			this->Button5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Button5.Image")));
 			this->Button5->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Button5->Location = System::Drawing::Point(0, 392);
+			this->Button5->Location = System::Drawing::Point(0, 362);
 			this->Button5->Name = L"Button5";
 			this->Button5->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
-			this->Button5->Size = System::Drawing::Size(308, 67);
+			this->Button5->Size = System::Drawing::Size(308, 60);
 			this->Button5->TabIndex = 8;
 			this->Button5->Text = L"Exam Schedule";
 			this->Button5->UseVisualStyleBackColor = false;
@@ -183,10 +220,10 @@ namespace AcadSecManagementSystem {
 			this->Button4->ForeColor = System::Drawing::Color::Black;
 			this->Button4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Button4.Image")));
 			this->Button4->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Button4->Location = System::Drawing::Point(0, 308);
+			this->Button4->Location = System::Drawing::Point(0, 295);
 			this->Button4->Name = L"Button4";
 			this->Button4->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
-			this->Button4->Size = System::Drawing::Size(264, 67);
+			this->Button4->Size = System::Drawing::Size(264, 53);
 			this->Button4->TabIndex = 2;
 			this->Button4->Text = L"Time table";
 			this->Button4->UseVisualStyleBackColor = false;
@@ -201,10 +238,10 @@ namespace AcadSecManagementSystem {
 			this->Button3->ForeColor = System::Drawing::Color::Black;
 			this->Button3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Button3.Image")));
 			this->Button3->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Button3->Location = System::Drawing::Point(0, 224);
+			this->Button3->Location = System::Drawing::Point(0, 228);
 			this->Button3->Name = L"Button3";
 			this->Button3->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
-			this->Button3->Size = System::Drawing::Size(267, 67);
+			this->Button3->Size = System::Drawing::Size(267, 53);
 			this->Button3->TabIndex = 7;
 			this->Button3->Text = L"Home Page";
 			this->Button3->UseVisualStyleBackColor = false;
@@ -257,6 +294,7 @@ namespace AcadSecManagementSystem {
 			this->MinimizeBox = false;
 			this->Name = L"StudentDashboard";
 			this->Text = L"Student Dashboard";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &StudentDashboard::YourForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &StudentDashboard::StudentDashboard_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
@@ -273,10 +311,13 @@ private: System::Void childformpanel_Paint(System::Object^  sender, System::Wind
 }
 private:  System::Void StudentDashboard_Load(System::Object^  sender, System::EventArgs^  e) 
 {
-
-	// To render the StudentHome() form, replace according to the Inner form that you want to render inside
-	StudentHome ^ InnerForm = gcnew StudentHome();
-	Constants::subViewChildForm(childformpanel, InnerForm);
+			label2->Text = UserName;
+			label3->Text = RollNumber;
+			int Year = year;
+			int sem = (*yearTosem.find(Year)).second;
+			label1->Text = "Semester - "+ Convert::ToString(sem);
+			StudentHome ^ InnerForm = gcnew StudentHome(UserName, RollNumber, this->childformpanel, Convert::ToString(sem));
+			Constants::subViewChildForm(childformpanel, InnerForm);
 
 }
 private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) 
@@ -284,16 +325,34 @@ private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  
 }
 private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 // To render the StudentHome() form, replace according to the Inner form that you want to render inside
-			 StudentHome ^ InnerForm = gcnew StudentHome();
+			 int Year = year;
+			 int sem = (*yearTosem.find(Year)).second;
+			 StudentHome ^ InnerForm = gcnew StudentHome(UserName, RollNumber, this->childformpanel, Convert::ToString(sem));
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 }
 private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) {
-			 StudentTimetable ^ InnerForm = gcnew StudentTimetable();
+			 StudentTimetable ^ InnerForm = gcnew StudentTimetable(RollNumber);
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 }
 private: System::Void Button5_Click(System::Object^  sender, System::EventArgs^  e) {
 			 StudentExamSchedule^ InnerForm = gcnew StudentExamSchedule();
 			 Constants::subViewChildForm(childformpanel, InnerForm);
+}
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+
+			 String ^ Role = "Student";
+			DetailsUpdateForm^ InnerForm = gcnew DetailsUpdateForm(RollNumber,Role);
+			Constants::subViewChildForm(childformpanel, InnerForm);
+}
+private: System::Void YourForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+			 Application::Exit();
+			 
+}
+private: System::Void Button6_Click(System::Object^  sender, System::EventArgs^  e) {
+			 this->Hide();
+			 obj->Show();
+}
+private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 }
 };
 }

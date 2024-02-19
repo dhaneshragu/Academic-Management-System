@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "StudentDashboard.h"
+#include "AdminDashboard.h"
 #include "ProfDashboard.h"
 #include "LoginDashboard.h"
 

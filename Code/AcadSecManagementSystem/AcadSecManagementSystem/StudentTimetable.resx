@@ -117,4 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAABCtJREFUaEPtmW9M1AUYx29s2hDonxB3aHLZ2ppbx1296EUvDBEEDjkPIdG0dK62
+        yuXQWCAWg2Qeh6RCJahId97FeSXOTdebsC3Gi7be6YaN6k3rTe/KrFYvvv1+8CDR77nnnh8sWe0+22cD
+        juf2eW6/fwNHhgwZ/qdktd6YyDp0Aypbr4/TmJpRt2/iktsHlcVe2+/vYEMFaUwNGypIY3q4SEkaU8NF
+        StKYHi5SksbUcJGSNKbnsegPsCONqfkysBt2pDE9XKQkjanhIiVpTA8XKUljarhISRrTwx3nkjSmhjvO
+        JWlMDxcpSWNquEhJGtPDRUrSmBouUpLG9HCRkjSmhouUpDE9XKQkjanhIiVpTA8XKdnijEy0uM5jxphh
+        fNo3iz4iRwwTs45zkZKUpYeLlGxxRSles8AFNlKSsvRwkZL/+QVOlozN6B1Dn/fanL45+32fo//JGblI
+        ScrSw0VKZhZII2Xp4SIlMydxGilLDxcpmVkgjZSlh4uUXMwCo4afFHuRKPYgtsaDKGl+bf7MfI2y9HCR
+        kgtdIGnEDT9SggM161HdWgtfXyMejezC2uGd8B5/DpUHq9FU9QzWJRuWU5oOLlLS7gLmpx43Pt1m/3r4
+        BnaiOLkHaxK78fDIi1gdfwGrY7uwKvo8iiI74BreDudQ4zcFZ7bVUV56uEhJewskEHF7sH2fH+6P96aP
+        P9eIwrPb8NCZBuQP1Pc42tuzKDM1XKSknQWaXB8uKL5gsB4FA1uR/0GwmzJTw0VKahd4w3i9rjK0iPg6
+        rHwviJV9gS2UysNFSuoWGMG+Vaex7tSri4p/sD+AB07UfudoF05sLlJSs0Cz8X2wust2fKHhsa+S8I+2
+        zcSfrMX9Jzbjvl5/A+Va4f72I6l5mDvm+RSl7W224+OTYzD5/ucf5+LfrUFeb3WMcq1wkZKaBcKeK3ji
+        1GuW+JILr6BoeIcYf/uP37D54qE78ff2+pHbU3WTcq1wkZKaBbo9l7E2sndevP/q27j95++If30NrqFG
+        dXxeTxVyw5W3KNcKd5xLas6B151n4T63Z95h47/yFn41FjCJ3xxD4ekGVXxeuBI5oYqfKNcKFympWWC/
+        cwiPH3/JcswHr3bcWSI2+ZkqPje0CSuOlk9SrhUuUlKzwAFXBE837WdP2JrLh/GLETyLuVDg4uGU8TlH
+        K5B9ZON5yrVi/t+LC+W9/kWLMzqebgHzMrqlojPldd5/qW16CU38iq5yZHduqKfcu8jgy8uM+Kl/xs/e
+        pMqTzShLHEwf/86Gb8Ub2b+J+VTJxc+7SUnxR8qwvOPZAL3d0mA+VS40/p6O0hC9zRJiPBLnvx8M247v
+        LO1WPU7fLcynSiN+Kv0xXza15IdNSowT23wwM59t8sJVk+YdNie06ZZ5nc/u2hibvtoMPrWMfvtvOBx/
+        Ac5/qqtEN0VSAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

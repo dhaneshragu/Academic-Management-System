@@ -56,7 +56,7 @@ namespace AcadSecManagementSystem {
 
 
 
-	private: System::Windows::Forms::Label^  label1;
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
@@ -64,6 +64,8 @@ namespace AcadSecManagementSystem {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column7;
+	internal: System::Windows::Forms::Label^  label3;
+	private:
 
 	private:
 
@@ -108,7 +110,7 @@ namespace AcadSecManagementSystem {
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -148,7 +150,7 @@ namespace AcadSecManagementSystem {
 			dataGridViewCellStyle6->ForeColor = System::Drawing::Color::Black;
 			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::Honeydew;
 			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
 			this->DataGridView1->DefaultCellStyle = dataGridViewCellStyle6;
 			this->DataGridView1->GridColor = System::Drawing::Color::DimGray;
 			this->DataGridView1->Location = System::Drawing::Point(13, 153);
@@ -249,19 +251,22 @@ namespace AcadSecManagementSystem {
 			this->Column7->Name = L"Column7";
 			this->Column7->ReadOnly = true;
 			// 
-			// label1
+			// label3
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Verdana", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::Color::MidnightBlue;
-			this->label1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label1.Image")));
-			this->label1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->label1->Location = System::Drawing::Point(337, 59);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(318, 43);
-			this->label1->TabIndex = 7;
-			this->label1->Text = L"      Exam Schedule";
+			this->label3->ForeColor = System::Drawing::Color::DarkCyan;
+			this->label3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label3.Image")));
+			this->label3->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->label3->Location = System::Drawing::Point(289, 44);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Name = L"label3";
+			this->label3->Padding = System::Windows::Forms::Padding(0, 0, 0, 6);
+			this->label3->Size = System::Drawing::Size(409, 42);
+			this->label3->TabIndex = 10;
+			this->label3->Text = L"     Your Exam Schedule";
+			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// StudentExamSchedule
 			// 
@@ -269,7 +274,7 @@ namespace AcadSecManagementSystem {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::AliceBlue;
 			this->ClientSize = System::Drawing::Size(1016, 557);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->DataGridView1);
 			this->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -286,38 +291,38 @@ namespace AcadSecManagementSystem {
 #pragma endregion
 	private: System::Void StudentExamSchedule_Load(System::Object^  sender, System::EventArgs^  e) {
 
-				 try
-				 {
-					 String^ connString = Constants::getdbConnString();
-					 SqlConnection con(connString);
-					 con.Open();
-					 String^ query = "SELECT * FROM dummy_course_details";
+				 //try
+				 //{
+					// String^ connString = Constants::getdbConnString();
+					// SqlConnection con(connString);
+					// con.Open();
+					// String^ query = "SELECT * FROM dummy_course_details";
 
-					 // Create a SqlCommand
-					 SqlCommand cmd(query, %con);
+					// // Create a SqlCommand
+					// SqlCommand cmd(query, %con);
 
-					 // Create a DataTable
-					 DataTable^ dataTable = gcnew DataTable();
+					// // Create a DataTable
+					// DataTable^ dataTable = gcnew DataTable();
 
-					 // Create a SqlDataAdapter and fill the DataTable
-					 SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
-					 adapter->Fill(dataTable);
+					// // Create a SqlDataAdapter and fill the DataTable
+					// SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
+					// adapter->Fill(dataTable);
 
-					 // IMPORTANT: Specify the Column Mappings from DataGridView to SQL Table
-					 DataGridView1->AutoGenerateColumns = false;
-					 DataGridView1->Columns[2]->DataPropertyName = "Time";
-					 DataGridView1->Columns[0]->DataPropertyName = "Course Code";
-					 DataGridView1->Columns[1]->DataPropertyName = "Course Name";
-					 DataGridView1->Columns[3]->DataPropertyName = "Venue";
+					// // IMPORTANT: Specify the Column Mappings from DataGridView to SQL Table
+					// DataGridView1->AutoGenerateColumns = false;
+					// DataGridView1->Columns[2]->DataPropertyName = "Time";
+					// DataGridView1->Columns[0]->DataPropertyName = "Course Code";
+					// DataGridView1->Columns[1]->DataPropertyName = "Course Name";
+					// DataGridView1->Columns[3]->DataPropertyName = "Venue";
 
-					 // use the 'dataTable' as data source
-					 DataGridView1->DataSource = dataTable;
-					 con.Close();
-				 }
-				 catch (Exception^ ex)
-				 {
-					 MessageBox::Show(ex->Message);
-				 }
+					// // use the 'dataTable' as data source
+					// DataGridView1->DataSource = dataTable;
+					// con.Close();
+				 //}
+				 //catch (Exception^ ex)
+				 //{
+					// MessageBox::Show(ex->Message);
+				 //}
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 	}
