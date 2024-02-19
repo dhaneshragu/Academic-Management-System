@@ -113,9 +113,11 @@ namespace AcadSecManagementSystem {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(1157, 7);
+			this->label3->Font = (gcnew System::Drawing::Font(L"Tahoma", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(1147, 7);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(97, 21);
+			this->label3->Size = System::Drawing::Size(115, 21);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"{FacultyID}";
 			this->label3->Click += gcnew System::EventHandler(this, &ProfDashboard::label3_Click);
@@ -123,9 +125,11 @@ namespace AcadSecManagementSystem {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(974, 7);
+			this->label2->Font = (gcnew System::Drawing::Font(L"Tahoma", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(12, 7);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(143, 21);
+			this->label2->Size = System::Drawing::Size(168, 21);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"{Professor Name}";
 			this->label2->Click += gcnew System::EventHandler(this, &ProfDashboard::label2_Click);
@@ -282,8 +286,9 @@ namespace AcadSecManagementSystem {
 	{
 				  label2->Text = Name;
 				  label3->Text = Faculty_ID;
-				  // To render the StudentHome() form, replace according to the Inner form that you want to render inside
-				  ProfTimetable ^ InnerForm = gcnew ProfTimetable(Faculty_ID);
+				  // To render the Details Update Form of Prof, replace according to the Inner form that you want to render inside
+				  String ^Role = "Professor";
+				  DetailsUpdateForm ^ InnerForm = gcnew DetailsUpdateForm(Faculty_ID, Role);
 				  Constants::subViewChildForm(childformpanel, InnerForm);
 
 	}
