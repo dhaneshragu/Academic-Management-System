@@ -283,7 +283,7 @@ namespace AcadSecManagementSystem {
 				  label2->Text = Name;
 				  label3->Text = Faculty_ID;
 				  // To render the StudentHome() form, replace according to the Inner form that you want to render inside
-				  ProfTimetable ^ InnerForm = gcnew ProfTimetable();
+				  ProfTimetable ^ InnerForm = gcnew ProfTimetable(Faculty_ID);
 				  Constants::subViewChildForm(childformpanel, InnerForm);
 
 	}
@@ -300,7 +300,7 @@ namespace AcadSecManagementSystem {
 	}
 	private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
-				 ProfTimetable ^ InnerForm = gcnew ProfTimetable();
+				 ProfTimetable ^ InnerForm = gcnew ProfTimetable(Faculty_ID);
 				 Constants::subViewChildForm(childformpanel, InnerForm);
 	}
 	private: System::Void Button5_Click(System::Object^  sender, System::EventArgs^  e) {
