@@ -337,12 +337,35 @@ private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^ 
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 }
 private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) {
-			 StudentTimetable ^ InnerForm = gcnew StudentTimetable(RollNumber);
-			 Constants::subViewChildForm(childformpanel, InnerForm);
+			 if (getisViewTimeTable() && getisFeesPaid())
+			 {
+				 StudentTimetable ^ InnerForm = gcnew StudentTimetable(RollNumber);
+				 Constants::subViewChildForm(childformpanel, InnerForm);
+			 }
+			 else if (!getisFeesPaid())
+			 {
+				 MessageBox::Show("Fees not paid");
+			 }
+			 else
+			 {
+				 MessageBox::Show("Time Table not generated");
+			 }
 }
 private: System::Void Button5_Click(System::Object^  sender, System::EventArgs^  e) {
-			 StudentExamSchedule^ InnerForm = gcnew StudentExamSchedule(RollNumber);
-			 Constants::subViewChildForm(childformpanel, InnerForm);
+			 if (getisMidEndDateSet() && getisFeesPaid())
+			 {
+				 StudentExamSchedule^ InnerForm = gcnew StudentExamSchedule(RollNumber);
+				 Constants::subViewChildForm(childformpanel, InnerForm);
+			 }
+			 else if (!getisFeesPaid())
+			 {
+				 MessageBox::Show("Fees not paid");
+			 }
+			 else
+			 {
+				 MessageBox::Show("Midsem Endsem date not set yet");
+			 }
+			 
 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
@@ -359,6 +382,109 @@ private: System::Void Button6_Click(System::Object^  sender, System::EventArgs^ 
 			 obj->Show();
 }
 private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+}
+private: bool getisViewTimeTable()
+{
+			 bool isViewTimeTable = false;
+			 String^ queryString = "SELECT view_timetable FROM Admin";
+			 String^ connString = Constants::getdbConnString();
+			 SqlConnection^ con = gcnew SqlConnection(connString);
+			 SqlCommand^ command = gcnew SqlCommand(queryString, con);
+
+			 try
+			 {
+				 con->Open();
+
+				 SqlDataReader^ reader = command->ExecuteReader();
+				 if (reader->Read())
+				 {
+					 isViewTimeTable = reader->GetBoolean(0);
+					 return isViewTimeTable;
+				 }
+			 }
+			 catch (Exception^ ex)
+			 {
+				 MessageBox::Show(ex->Message);
+			 }
+			 finally
+			 {
+				 con->Close();
+			 }
+			 return isViewTimeTable;
+}
+
+private: bool getisMidEndDateSet()
+{
+			 bool isMidEndDateSet = false;
+			 String^ queryString = "SELECT midsem_start_date FROM Admin";
+			 String^ queryString1 = "SELECT endsem_start_date FROM Admin";
+			 String^ connString = Constants::getdbConnString();
+			 SqlConnection^ con = gcnew SqlConnection(connString);
+			 SqlCommand^ command = gcnew SqlCommand(queryString, con);
+			 SqlCommand^ command1 = gcnew SqlCommand(queryString1, con);
+
+			 try
+			 {
+				 SqlDataReader^ reader = command->ExecuteReader();
+				 if (reader->Read())
+				 {
+					 if (reader->IsDBNull(0))
+					 {
+						 return false;
+					 }
+					 else
+					 {
+						 SqlDataReader^ reader1 = command1->ExecuteReader();
+						 if (reader1->IsDBNull(0))
+						 {
+							 return false;
+						 }
+						 else
+						 {
+							 return true;
+						 }
+					 }
+				 }
+			 }
+			 catch (Exception^ ex)
+			 {
+				 MessageBox::Show(ex->Message);
+			 }
+			 finally
+			 {
+				 con->Close();
+			 }
+			 return isMidEndDateSet;
+}
+
+private: bool getisFeesPaid()
+{
+				bool isFeesPaid = false;
+				String^ queryString = "SELECT fees_paid FROM [Student Database] where roll_no = " + RollNumber;
+				String^ connString = Constants::getdbConnString();
+				SqlConnection^ con = gcnew SqlConnection(connString);
+				SqlCommand^ command = gcnew SqlCommand(queryString, con);
+
+				try
+				{
+					con->Open();
+
+					SqlDataReader^ reader = command->ExecuteReader();
+					if (reader->Read())
+					{
+						isFeesPaid = reader->GetBoolean(0);
+						return isFeesPaid;
+					}
+				}
+				catch (Exception^ ex)
+				{
+					MessageBox::Show(ex->Message);
+				}
+				finally
+				{
+					con->Close();
+				}
+				return isFeesPaid;
 }
 };
 }

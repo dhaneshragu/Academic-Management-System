@@ -305,11 +305,18 @@ namespace AcadSecManagementSystem {
 	}
 	private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
-				 ProfTimetable ^ InnerForm = gcnew ProfTimetable(Faculty_ID);
-				 Constants::subViewChildForm(childformpanel, InnerForm);
+				 if (getisViewTimeTable())
+				 {
+					 ProfTimetable ^ InnerForm = gcnew ProfTimetable(Faculty_ID);
+					 Constants::subViewChildForm(childformpanel, InnerForm);
+				 }
+				 else
+				 {
+					 MessageBox::Show("TimeTable not generated yet");
+				 }
 	}
 	private: System::Void Button5_Click(System::Object^  sender, System::EventArgs^  e) {
-				 ProfGradesScreen ^ InnerForm = gcnew ProfGradesScreen();
+				 ProfGradesScreen ^ InnerForm = gcnew ProfGradesScreen(Faculty_ID);
 				 Constants::subViewChildForm(childformpanel, InnerForm);
 
 	}
@@ -322,6 +329,35 @@ private: System::Void Button6_Click(System::Object^  sender, System::EventArgs^ 
 			 obj->Show();
 }
 private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+}
+private: bool getisViewTimeTable()
+{
+			 bool isViewTimeTable = false;
+			 String^ queryString = "SELECT view_timetable FROM Admin";
+			 String^ connString = Constants::getdbConnString();
+			 SqlConnection^ con = gcnew SqlConnection(connString);
+			 SqlCommand^ command = gcnew SqlCommand(queryString, con);
+
+			 try
+			 {
+				 con->Open();
+
+				 SqlDataReader^ reader = command->ExecuteReader();
+				 if (reader->Read())
+				 {
+					 isViewTimeTable = reader->GetBoolean(0);
+					 return isViewTimeTable;
+				 }
+			 }
+			 catch (Exception^ ex)
+			 {
+				 MessageBox::Show(ex->Message);
+			 }
+			 finally
+			 {
+				 con->Close();
+			 }
+			 return isViewTimeTable;
 }
 };
 }
