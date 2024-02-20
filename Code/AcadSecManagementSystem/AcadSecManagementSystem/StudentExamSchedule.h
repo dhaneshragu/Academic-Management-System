@@ -16,12 +16,21 @@ namespace AcadSecManagementSystem {
 	public ref class StudentExamSchedule : public System::Windows::Forms::Form
 	{
 	public:
+		property String ^roll_no;
 		StudentExamSchedule(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
+		}
+		StudentExamSchedule(String ^rollno)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			roll_no = rollno;
 		}
 
 	protected:
@@ -291,38 +300,48 @@ namespace AcadSecManagementSystem {
 #pragma endregion
 	private: System::Void StudentExamSchedule_Load(System::Object^  sender, System::EventArgs^  e) {
 
-				 //try
-				 //{
-					// String^ connString = Constants::getdbConnString();
-					// SqlConnection con(connString);
-					// con.Open();
-					// String^ query = "SELECT * FROM dummy_course_details";
+				 try
+				{
+					String^ connString = Constants::getdbConnString();
+					SqlConnection con(connString);
+					con.Open();
+					String^ query = "SELECT [Courses].course_ID as CID, course_name, slot, [Room].name as venue FROM [Courses] JOIN [Courses Taken] ON [Courses].course_ID = [Courses Taken].course_ID JOIN [Room] ON [Room].room_ID = [Courses Taken].examination_venue WHERE roll_no = '" + roll_no + "' AND is_lab = 'FALSE'" ;
 
-					// // Create a SqlCommand
-					// SqlCommand cmd(query, %con);
+					// Create a SqlCommand
+					SqlCommand cmd(query, %con);
 
-					// // Create a DataTable
-					// DataTable^ dataTable = gcnew DataTable();
+					// Create a DataTable
+					DataTable^ dataTable = gcnew DataTable();
 
-					// // Create a SqlDataAdapter and fill the DataTable
-					// SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
-					// adapter->Fill(dataTable);
+					// Create a SqlDataAdapter and fill the DataTable
+					SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
+					adapter->Fill(dataTable);
 
-					// // IMPORTANT: Specify the Column Mappings from DataGridView to SQL Table
-					// DataGridView1->AutoGenerateColumns = false;
-					// DataGridView1->Columns[2]->DataPropertyName = "Time";
-					// DataGridView1->Columns[0]->DataPropertyName = "Course Code";
-					// DataGridView1->Columns[1]->DataPropertyName = "Course Name";
-					// DataGridView1->Columns[3]->DataPropertyName = "Venue";
+					// MessageBox::Show(dataTable->Rows->Count.ToString());
 
-					// // use the 'dataTable' as data source
-					// DataGridView1->DataSource = dataTable;
-					// con.Close();
-				 //}
-				 //catch (Exception^ ex)
-				 //{
-					// MessageBox::Show(ex->Message);
-				 //}
+					//for each (DataRow^ row in dataTable->Rows) {
+					// // Example modification: Change the value of the "Name" column
+					// String^ slotstr = dynamic_cast<String^>(row["slot"]);
+					// string slotcppstr;
+					// MarshalString(slotstr, slotcppstr);
+					// row["slot"] = ConvertToSystemString( TodaySlotToTime[slotcppstr] );
+					//}
+
+
+					// IMPORTANT: Specify the Column Mappings from DataGridView to SQL Table
+					DataGridView1->AutoGenerateColumns = false;
+					DataGridView1->Columns[0]->DataPropertyName = "CID";
+					DataGridView1->Columns[1]->DataPropertyName = "course_name";
+					DataGridView1->Columns[2]->DataPropertyName = "venue";
+
+					// use the 'dataTable' as data source
+					DataGridView1->DataSource = dataTable;
+					con.Close();
+				}
+				catch (Exception^ ex)
+				{
+					MessageBox::Show(ex->Message);
+				}
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 	}

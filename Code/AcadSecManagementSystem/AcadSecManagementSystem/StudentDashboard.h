@@ -341,7 +341,7 @@ private: System::Void Button4_Click(System::Object^  sender, System::EventArgs^ 
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 }
 private: System::Void Button5_Click(System::Object^  sender, System::EventArgs^  e) {
-			 StudentExamSchedule^ InnerForm = gcnew StudentExamSchedule();
+			 StudentExamSchedule^ InnerForm = gcnew StudentExamSchedule(RollNumber);
 			 Constants::subViewChildForm(childformpanel, InnerForm);
 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
