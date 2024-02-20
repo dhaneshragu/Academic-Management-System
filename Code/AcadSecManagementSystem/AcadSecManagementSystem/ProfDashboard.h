@@ -309,7 +309,7 @@ namespace AcadSecManagementSystem {
 				 Constants::subViewChildForm(childformpanel, InnerForm);
 	}
 	private: System::Void Button5_Click(System::Object^  sender, System::EventArgs^  e) {
-				 ProfGradesScreen ^ InnerForm = gcnew ProfGradesScreen();
+				 ProfGradesScreen ^ InnerForm = gcnew ProfGradesScreen(Faculty_ID);
 				 Constants::subViewChildForm(childformpanel, InnerForm);
 
 	}
