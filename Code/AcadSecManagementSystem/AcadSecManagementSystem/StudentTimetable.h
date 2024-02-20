@@ -185,6 +185,7 @@ namespace AcadSecManagementSystem {
 			this->DataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->DataGridView1->Size = System::Drawing::Size(839, 341);
 			this->DataGridView1->TabIndex = 3;
+			this->DataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &StudentTimetable::DataGridView1_CellContentClick);
 			// 
 			// Column1
 			// 
@@ -555,5 +556,7 @@ namespace AcadSecManagementSystem {
 	}
 	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-	};
+	private: System::Void DataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+	}
+};
 }

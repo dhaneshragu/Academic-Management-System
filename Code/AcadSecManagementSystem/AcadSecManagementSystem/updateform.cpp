@@ -2,6 +2,10 @@
 #include "Constants.h"
 #include "updateform.h"
 #include <regex>
+#include <iostream>
+#include <sstream>
+#include <ctime>	
+#include <iomanip>
 using namespace std;
 
 
@@ -169,4 +173,79 @@ bool IsValidPhoneNumber(String^ phoneNo) {
 	MarshalString(phoneNo, phoneNoStr);
 
 	return std::regex_match(phoneNoStr, pattern);
+}
+std::string splitStringAndReturnFirstPart(const std::string& inputString) {
+	// Find the position of the first space in the input string
+	size_t spacePosition = inputString.find(' ');
+
+	// Check if a space was found
+	if (spacePosition != std::string::npos) {
+		// Return the substring before the first space
+		return inputString.substr(0, spacePosition);
+	}
+	else {
+		// Return the entire input string if no space is found
+		return inputString;
+	}
+}
+bool isLeapYear(int year) {
+	return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+bool isValidDate(int day, int month, int year) {
+	if (month < 1 || month > 12 || day < 1) {
+		return false;
+	}
+
+	int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+	if (isLeapYear(year)) {
+		daysInMonth[2] = 29;
+	}
+
+	return day <= daysInMonth[month];
+}
+
+std::string getNextDate(const std::string &currentDate, int daysAhead) {
+	std::istringstream dateStream(currentDate);
+	char dash;
+	int day, month, year;
+	dateStream >> day >> dash >> month >> dash >> year;
+
+	if (!isValidDate(day, month, year)) {
+		return "Invalid date!";
+	}
+
+	int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+	if (isLeapYear(year)) {
+		daysInMonth[2] = 29;
+	}
+
+	while (daysAhead > 0) {
+		daysInMonth[2] = isLeapYear(year) ? 29 : 28;
+
+		if (day < daysInMonth[month]) {
+			day++;
+		}
+		else {
+			day = 1;
+			if (month < 12) {
+				month++;
+			}
+			else {
+				month = 1;
+				year++;
+			}
+		}
+
+		daysAhead--;
+	}
+
+	std::ostringstream result;
+	result << std::setw(2) << std::setfill('0') << day << '-';
+	result << std::setw(2) << std::setfill('0') << month << '-';
+	result << year;
+
+	return result.str();
 }
