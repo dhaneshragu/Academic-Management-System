@@ -3,6 +3,7 @@
 #include <map>
 #include <vector>
 #include <set>
+#include <tuple>
 #include <algorithm>
 #include <string.h>
 #include <sstream>
@@ -317,204 +318,235 @@ namespace AcadSecManagementSystem {
 	String^ ConvertToSystemString(const std::string& str) {
 		return gcnew String(str.c_str());
 	}
+
+	// Chronological sort
+	static bool chronoSort(tuple<string, string, string, string>&a, tuple<string, string, string, string>&b){
+		string time1 = get<0>(a);
+		string time2 = get<0>(b);
+		int sizeTime1 = time1.size();
+		int sizeTime2 = time2.size();
+		if (time1[sizeTime1 - 2] != time2[sizeTime2 - 2]) return time1[sizeTime1 - 2] < time2[sizeTime2 - 2];
+		if (time1[sizeTime1 - 2] == 'A') return time1 < time2;
+		if (time1[0] == '1' && time1[1] == '2') return true;
+		if (time2[0] == '1' && time2[1] == '2') return false;
+		return time1 < time2;
+	}
+
+	// Remove the automatic sort through header click.
+	void RemoveAutoSorting(DataGridView^ dataGridView) {
+		for each (DataGridViewColumn^ column in dataGridView->Columns) {
+			column->SortMode = DataGridViewColumnSortMode::NotSortable;
+		}
+	}
+
+	// First Load of the inner panel
 	private: System::Void StudentTimetable_Load(System::Object^  sender, System::EventArgs^  e) {
+
+		RemoveAutoSorting(DataGridView1);
+
 		// Try testing the connection to Database here itself.For the first time, Monday time table will be shown.
+		// Day wise slot to Timings map (Here for Monday only).
 		map<string, map<string, string>> DayWiseSlotToTime;
-		DayWiseSlotToTime["Monday"]["A"] = "7:55 - 8:50 AM";
-		DayWiseSlotToTime["Monday"]["B"] = "9:00 - 9:55 AM";
+		DayWiseSlotToTime["Monday"]["A"] = "07:55 - 08:50 AM";
+		DayWiseSlotToTime["Monday"]["B"] = "09:00 - 09:55 AM";
 		DayWiseSlotToTime["Monday"]["C"] = "10:00 - 10:55 AM";
 		DayWiseSlotToTime["Monday"]["D"] = "11:00 - 11:55 AM";
 		DayWiseSlotToTime["Monday"]["F"] = "12:00 - 12:55 PM";
-		DayWiseSlotToTime["Monday"]["F1"] = "1:00 - 1:55 PM";
-		DayWiseSlotToTime["Monday"]["D1"] = "2:00 - 2:55 PM";
-		DayWiseSlotToTime["Monday"]["C1"] = "3:00 - 3:55 PM";
-		DayWiseSlotToTime["Monday"]["B1"] = "4:00 - 4:55 PM";
-		DayWiseSlotToTime["Monday"]["A1"] = "5:00 - 5:55 PM";
-		DayWiseSlotToTime["Monday"]["ML1"] = "9:00 - 11:55 AM";
-		DayWiseSlotToTime["Monday"]["AL1"] = "2:00 - 4:55 PM";
+		DayWiseSlotToTime["Monday"]["F1"] = "01:00 - 01:55 PM";
+		DayWiseSlotToTime["Monday"]["D1"] = "02:00 - 02:55 PM";
+		DayWiseSlotToTime["Monday"]["C1"] = "03:00 - 03:55 PM";
+		DayWiseSlotToTime["Monday"]["B1"] = "04:00 - 04:55 PM";
+		DayWiseSlotToTime["Monday"]["A1"] = "05:00 - 05:55 PM";
+		DayWiseSlotToTime["Monday"]["ML1"] = "09:00 - 11:55 AM";
+		DayWiseSlotToTime["Monday"]["AL1"] = "02:00 - 04:55 PM";
 		try
 		{
+			// Usual connection management.
 			String^ connString = Constants::getdbConnString();
-			SqlConnection con(connString);
-			con.Open();
+			SqlConnection^ con = gcnew SqlConnection (connString);
+			con->Open();
+
+			// Query to retrieve Time table information.
 			String^ query = "SELECT course_ID,course_name,slot,room_ID FROM [Courses] WHERE course_ID IN (SELECT course_ID FROM [Courses Taken] WHERE roll_no = '" + roll_no + "');";
 
-			// Create a SqlCommand
-			SqlCommand cmd(query, %con);
-
-			// Create a DataTable
-			DataTable^ dataTable = gcnew DataTable();
-
-			// Create a SqlDataAdapter and fill the DataTable
-			SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
-			adapter->Fill(dataTable);
+			// Monday's (Default) Map.
 			map <string, string> TodaySlotToTime = DayWiseSlotToTime["Monday"];
-			for (int i = 0; i < dataTable->Rows->Count; ++i) {
-				DataRow^ row = dataTable->Rows[i];
-				String^ slotstr = dynamic_cast<String^>(row["slot"]);
-				string slotcppstr;
-				MarshalString(slotstr, slotcppstr);
-				if (TodaySlotToTime.find(slotcppstr) != TodaySlotToTime.end()) {
-					row["slot"] = ConvertToSystemString(TodaySlotToTime[slotcppstr]);
-				}
-				else{
-					dataTable->Rows->RemoveAt(i);
-					i--;
-				}
+			
+			// Reading line by line the data from the result of the query.
+			SqlCommand^ command = gcnew SqlCommand(query, con);
+			SqlDataReader^ reader = command->ExecuteReader();
+			vector<tuple<string, string, string, string> > dailyScheduleList;
+			
+			// Mapping Slot to time.
+			// @TODO : Map RoomID to room name.
+			// Plan : Create another query to fetch [Room] from DB and store required info in local map, then directly map.
+			while (reader->Read()){
+				String^ courseID = reader["course_ID"]->ToString();
+				String^ course_name = reader["course_name"]->ToString();
+				String^ slot = reader["slot"]->ToString();
+				String^ roomID = reader["room_ID"]->ToString();
+				if (roomID->Length == 0) roomID = " ";
+				string slotcppstr, course_IDcppstr, course_namecppstr, roomIDcppstr;
+				MarshalString(slot, slotcppstr);
+				MarshalString(courseID, course_IDcppstr);
+				MarshalString(course_name, course_namecppstr);
+				MarshalString(roomID, roomIDcppstr);
+				// If the slot is not at all present in the day, it is not added to selected schedule.
+				if (TodaySlotToTime.find(slotcppstr) == TodaySlotToTime.end()) continue;
+				dailyScheduleList.push_back(make_tuple(TodaySlotToTime[slotcppstr], course_IDcppstr, course_namecppstr, roomIDcppstr));
 			}
 
-			//for each (DataRow^ row in dataTable->Rows) {
-			// // Example modification: Change the value of the "Name" column
-			// String^ slotstr = dynamic_cast<String^>(row["slot"]);
-			// string slotcppstr;
-			// MarshalString(slotstr, slotcppstr);
-			// row["slot"] = ConvertToSystemString( TodaySlotToTime[slotcppstr] );
-			//}
+			// Chronologically sorting the schedule.
+			sort(dailyScheduleList.begin(), dailyScheduleList.end(), chronoSort);
 
-
-			// IMPORTANT: Specify the Column Mappings from DataGridView to SQL Table
-			DataGridView1->AutoGenerateColumns = false;
-			DataGridView1->Columns[0]->DataPropertyName = "slot";
-			DataGridView1->Columns[1]->DataPropertyName = "course_ID";
-			DataGridView1->Columns[2]->DataPropertyName = "course_name";
-			DataGridView1->Columns[3]->DataPropertyName = "room_ID";
-
-			// use the 'dataTable' as data source
-			DataGridView1->DataSource = dataTable;
-
+			// Updating the view.
+			for (auto i : dailyScheduleList){
+				array<String^>^ row = { ConvertToSystemString(get<0>(i)), ConvertToSystemString(get<1>(i)), ConvertToSystemString(get<2>(i)), ConvertToSystemString(get<3>(i)) };
+				DataGridView1->Rows->Add(row);
+			}
 			
-			con.Close();
+			// Usual connection management.
+			con->Close();
 		}
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
 		}
 	}
-	// Conversion
 	
-	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-		
-		map<string, map<string, string>> DayWiseSlotToTime;
-		DayWiseSlotToTime["Monday"]["A"] = "7:55 - 8:50 AM";
-		DayWiseSlotToTime["Monday"]["B"] = "9:00 - 9:55 AM";
-		DayWiseSlotToTime["Monday"]["C"] = "10:00 - 10:55 AM";
-		DayWiseSlotToTime["Monday"]["D"] = "11:00 - 11:55 AM";
-		DayWiseSlotToTime["Monday"]["F"] = "12:00 - 12:55 PM";
-		DayWiseSlotToTime["Monday"]["F1"] = "1:00 - 1:55 PM";
-		DayWiseSlotToTime["Monday"]["D1"] = "2:00 - 2:55 PM";
-		DayWiseSlotToTime["Monday"]["C1"] = "3:00 - 3:55 PM";
-		DayWiseSlotToTime["Monday"]["B1"] = "4:00 - 4:55 PM";
-		DayWiseSlotToTime["Monday"]["A1"] = "5:00 - 5:55 PM";
-		DayWiseSlotToTime["Monday"]["ML1"] = "9:00 - 11:55 AM";
-		DayWiseSlotToTime["Monday"]["AL1"] = "2:00 - 4:55 PM";
 
-		DayWiseSlotToTime["Tuesday"]["E"] = "7:55 - 8:50 AM";
-		DayWiseSlotToTime["Tuesday"]["A"] = "9:00 - 9:55 AM";
+	// Remove all rows of Data grid.
+	void ClearDataGridView(DataGridView^ dataGridView) {
+		if (dataGridView->RowCount > 0) {
+			for (int i = dataGridView->RowCount - 1; i >= 0; i--) {
+				dataGridView->Rows->RemoveAt(i);
+			}
+		}
+	}
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+		// Day wise slot to Timings map.
+		map<string, map<string, string>> DayWiseSlotToTime;
+		DayWiseSlotToTime["Monday"]["A"]   = "07:55 - 08:50 AM";
+		DayWiseSlotToTime["Monday"]["B"]   = "09:00 - 09:55 AM";
+		DayWiseSlotToTime["Monday"]["C"]   = "10:00 - 10:55 AM";
+		DayWiseSlotToTime["Monday"]["D"]   = "11:00 - 11:55 AM";
+		DayWiseSlotToTime["Monday"]["F"]   = "12:00 - 12:55 PM";
+		DayWiseSlotToTime["Monday"]["F1"]  = "01:00 - 01:55 PM";
+		DayWiseSlotToTime["Monday"]["D1"]  = "02:00 - 02:55 PM";
+		DayWiseSlotToTime["Monday"]["C1"]  = "03:00 - 03:55 PM";
+		DayWiseSlotToTime["Monday"]["B1"]  = "04:00 - 04:55 PM";
+		DayWiseSlotToTime["Monday"]["A1"]  = "05:00 - 05:55 PM";
+		DayWiseSlotToTime["Monday"]["ML1"] = "09:00 - 11:55 AM";
+		DayWiseSlotToTime["Monday"]["AL1"] = "02:00 - 04:55 PM";
+
+		DayWiseSlotToTime["Tuesday"]["E"] = "07:55 - 08:50 AM";
+		DayWiseSlotToTime["Tuesday"]["A"] = "09:00 - 09:55 AM";
 		DayWiseSlotToTime["Tuesday"]["B"] = "10:00 - 10:55 AM";
 		DayWiseSlotToTime["Tuesday"]["C"] = "11:00 - 11:55 AM";
 		DayWiseSlotToTime["Tuesday"]["F"] = "12:00 - 12:55 PM";
-		DayWiseSlotToTime["Tuesday"]["F1"] = "1:00 - 1:55 PM";
-		DayWiseSlotToTime["Tuesday"]["C1"] = "2:00 - 2:55 PM";
-		DayWiseSlotToTime["Tuesday"]["B1"] = "3:00 - 3:55 PM";
-		DayWiseSlotToTime["Tuesday"]["A1"] = "4:00 - 4:55 PM";
-		DayWiseSlotToTime["Tuesday"]["E1"] = "5:00 - 5:55 PM";
-		DayWiseSlotToTime["Tuesday"]["ML2"] = "9:00 - 11:55 AM";
-		DayWiseSlotToTime["Tuesday"]["AL2"] = "2:00 - 4:55 PM";
+		DayWiseSlotToTime["Tuesday"]["F1"] = "01:00 - 01:55 PM";
+		DayWiseSlotToTime["Tuesday"]["C1"] = "02:00 - 02:55 PM";
+		DayWiseSlotToTime["Tuesday"]["B1"] = "03:00 - 03:55 PM";
+		DayWiseSlotToTime["Tuesday"]["A1"] = "04:00 - 04:55 PM";
+		DayWiseSlotToTime["Tuesday"]["E1"] = "05:00 - 05:55 PM";
+		DayWiseSlotToTime["Tuesday"]["ML2"] = "09:00 - 11:55 AM";
+		DayWiseSlotToTime["Tuesday"]["AL2"] = "02:00 - 04:55 PM";
 
-		DayWiseSlotToTime["Wednesday"]["D"] = "7:55 - 8:50 AM";
-		DayWiseSlotToTime["Wednesday"]["E"] = "9:00 - 9:55 AM";
+		DayWiseSlotToTime["Wednesday"]["D"] = "07:55 - 08:50 AM";
+		DayWiseSlotToTime["Wednesday"]["E"] = "09:00 - 09:55 AM";
 		DayWiseSlotToTime["Wednesday"]["A"] = "10:00 - 10:55 AM";
 		DayWiseSlotToTime["Wednesday"]["B"] = "11:00 - 11:55 AM";
 		DayWiseSlotToTime["Wednesday"]["G"] = "12:00 - 12:55 PM";
-		DayWiseSlotToTime["Wednesday"]["G1"] = "1:00 - 1:55 PM";
-		DayWiseSlotToTime["Wednesday"]["B1"] = "2:00 - 2:55 PM";
-		DayWiseSlotToTime["Wednesday"]["A1"] = "3:00 - 3:55 PM";
-		DayWiseSlotToTime["Wednesday"]["E1"] = "4:00 - 4:55 PM";
-		DayWiseSlotToTime["Wednesday"]["D1"] = "5:00 - 5:55 PM";
-		DayWiseSlotToTime["Wednesday"]["ML3"] = "9:00 - 11:55 AM";
-		DayWiseSlotToTime["Wednesday"]["AL3"] = "2:00 - 4:55 PM";
+		DayWiseSlotToTime["Wednesday"]["G1"] = "01:00 - 01:55 PM";
+		DayWiseSlotToTime["Wednesday"]["B1"] = "02:00 - 02:55 PM";
+		DayWiseSlotToTime["Wednesday"]["A1"] = "03:00 - 03:55 PM";
+		DayWiseSlotToTime["Wednesday"]["E1"] = "04:00 - 04:55 PM";
+		DayWiseSlotToTime["Wednesday"]["D1"] = "05:00 - 05:55 PM";
+		DayWiseSlotToTime["Wednesday"]["ML3"] = "09:00 - 11:55 AM";
+		DayWiseSlotToTime["Wednesday"]["AL3"] = "02:00 - 04:55 PM";
 
-		DayWiseSlotToTime["Thursday"]["C"] = "7:55 - 8:50 AM";
-		DayWiseSlotToTime["Thursday"]["D"] = "9:00 - 9:55 AM";
+		DayWiseSlotToTime["Thursday"]["C"] = "07:55 - 08:50 AM";
+		DayWiseSlotToTime["Thursday"]["D"] = "09:00 - 09:55 AM";
 		DayWiseSlotToTime["Thursday"]["E"] = "10:00 - 10:55 AM";
 		DayWiseSlotToTime["Thursday"]["A"] = "11:00 - 11:55 AM";
 		DayWiseSlotToTime["Thursday"]["G"] = "12:00 - 12:55 PM";
-		DayWiseSlotToTime["Thursday"]["G1"] = "1:00 - 1:55 PM";
-		DayWiseSlotToTime["Thursday"]["A1"] = "2:00 - 2:55 PM";
-		DayWiseSlotToTime["Thursday"]["E1"] = "3:00 - 3:55 PM";
-		DayWiseSlotToTime["Thursday"]["D1"] = "4:00 - 4:55 PM";
-		DayWiseSlotToTime["Thursday"]["C1"] = "5:00 - 5:55 PM";
-		DayWiseSlotToTime["Thursday"]["ML4"] = "9:00 - 11:55 AM";
-		DayWiseSlotToTime["Thursday"]["AL4"] = "2:00 - 4:55 PM";
+		DayWiseSlotToTime["Thursday"]["G1"] = "01:00 - 01:55 PM";
+		DayWiseSlotToTime["Thursday"]["A1"] = "02:00 - 02:55 PM";
+		DayWiseSlotToTime["Thursday"]["E1"] = "03:00 - 03:55 PM";
+		DayWiseSlotToTime["Thursday"]["D1"] = "04:00 - 04:55 PM";
+		DayWiseSlotToTime["Thursday"]["C1"] = "05:00 - 05:55 PM";
+		DayWiseSlotToTime["Thursday"]["ML4"] = "09:00 - 11:55 AM";
+		DayWiseSlotToTime["Thursday"]["AL4"] = "02:00 - 04:55 PM";
 
-		DayWiseSlotToTime["Friday"]["B"] = "7:55 - 8:50 AM";
-		DayWiseSlotToTime["Friday"]["C"] = "9:00 - 9:55 AM";
+		DayWiseSlotToTime["Friday"]["B"] = "07:55 - 08:50 AM";
+		DayWiseSlotToTime["Friday"]["C"] = "09:00 - 09:55 AM";
 		DayWiseSlotToTime["Friday"]["D"] = "10:00 - 10:55 AM";
 		DayWiseSlotToTime["Friday"]["F"] = "11:00 - 11:55 AM";
 		DayWiseSlotToTime["Friday"]["G"] = "12:00 - 12:55 PM";
-		DayWiseSlotToTime["Friday"]["G1"] = "1:00 - 1:55 PM";
-		DayWiseSlotToTime["Friday"]["F1"] = "2:00 - 2:55 PM";
-		DayWiseSlotToTime["Friday"]["D1"] = "3:00 - 3:55 PM";
-		DayWiseSlotToTime["Friday"]["C1"] = "4:00 - 4:55 PM";
-		DayWiseSlotToTime["Friday"]["B1"] = "5:00 - 5:55 PM";
-		DayWiseSlotToTime["Friday"]["ML5"] = "9:00 - 11:55 AM";
-		DayWiseSlotToTime["Friday"]["AL5"] = "2:00 - 4:55 PM";
+		DayWiseSlotToTime["Friday"]["G1"] = "01:00 - 01:55 PM";
+		DayWiseSlotToTime["Friday"]["F1"] = "02:00 - 02:55 PM";
+		DayWiseSlotToTime["Friday"]["D1"] = "03:00 - 03:55 PM";
+		DayWiseSlotToTime["Friday"]["C1"] = "04:00 - 04:55 PM";
+		DayWiseSlotToTime["Friday"]["B1"] = "05:00 - 05:55 PM";
+		DayWiseSlotToTime["Friday"]["ML5"] = "09:00 - 11:55 AM";
+		DayWiseSlotToTime["Friday"]["AL5"] = "02:00 - 04:55 PM";
 		try
 		{
+			// Extracting the selected value from the dropdown list.
 			ComboBox^ combobox = dynamic_cast<ComboBox^>(sender);
 			String^ selectedValue = safe_cast<String^>(combobox->SelectedItem);
 			string selectedVal;
 			MarshalString(selectedValue, selectedVal);
+
+			// The corresponding map for the selected day.
 			map <string, string> TodaySlotToTime = DayWiseSlotToTime[selectedVal];
-					 
+			
+			// Usual connection management.
 			String^ connString = Constants::getdbConnString();
-			SqlConnection con(connString);
-			con.Open();
+			SqlConnection^ con = gcnew SqlConnection (connString);
+			con->Open();
+			
+			// Query to retrieve Time table information.
 			String^ query = "SELECT course_ID,course_name,slot,room_ID FROM [Courses] WHERE course_ID IN (SELECT course_ID FROM [Courses Taken] WHERE roll_no = '" + roll_no+ "');";
-
-			// Create a SqlCommand
-			SqlCommand cmd(query, %con);
-
-			// Create a DataTable
-			DataTable^ dataTable = gcnew DataTable();
-
-			// Create a SqlDataAdapter and fill the DataTable
-			SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
-			adapter->Fill(dataTable);
-
-			for (int i = 0; i < dataTable->Rows->Count; ++i) {
-				DataRow^ row = dataTable->Rows[i];
-				String^ slotstr = dynamic_cast<String^>(row["slot"]);
-				string slotcppstr;
-				MarshalString(slotstr, slotcppstr);
-				if (TodaySlotToTime.find(slotcppstr) != TodaySlotToTime.end()) {
-					row["slot"] = ConvertToSystemString(TodaySlotToTime[slotcppstr]);
-				}
-				else{
-					dataTable->Rows->RemoveAt(i);
-					i--;
-				}
+			
+			// Reading line by line the data from the result of the query.
+			SqlCommand^ command = gcnew SqlCommand(query, con);
+			SqlDataReader^ reader = command->ExecuteReader();
+			vector<tuple<string, string, string, string> > dailyScheduleList;
+			
+			// Mapping Slot to time.
+			// @TODO : Map RoomID to room name.
+			// Plan : Create another query to fetch [Room] from DB and store required info in local map, then directly map.
+			while (reader->Read()){
+				String^ courseID = reader["course_ID"]->ToString();
+				String^ course_name = reader["course_name"]->ToString();
+				String^ slot = reader["slot"]->ToString();
+				String^ roomID = reader["room_ID"]->ToString();
+				if (roomID->Length == 0) roomID = " ";
+				string slotcppstr, course_IDcppstr, course_namecppstr,roomIDcppstr;
+				MarshalString(slot, slotcppstr);
+				MarshalString(courseID, course_IDcppstr);
+				MarshalString(course_name, course_namecppstr);
+				MarshalString(roomID, roomIDcppstr);
+				// If the slot is not at all present in the day, it is not added to selected schedule.
+				if (TodaySlotToTime.find(slotcppstr) == TodaySlotToTime.end()) continue;
+				dailyScheduleList.push_back(make_tuple(TodaySlotToTime[slotcppstr],course_IDcppstr,course_namecppstr,roomIDcppstr));
 			}
-
-			//for each (DataRow^ row in dataTable->Rows) {
-			// // Example modification: Change the value of the "Name" column
-			// String^ slotstr = dynamic_cast<String^>(row["slot"]);
-			// string slotcppstr;
-			// MarshalString(slotstr, slotcppstr);
-			// row["slot"] = ConvertToSystemString( TodaySlotToTime[slotcppstr] );
-			//}
-
-
-			// IMPORTANT: Specify the Column Mappings from DataGridView to SQL Table
-			DataGridView1->AutoGenerateColumns = false;
-			DataGridView1->Columns[0]->DataPropertyName = "slot";
-			DataGridView1->Columns[1]->DataPropertyName = "course_ID";
-			DataGridView1->Columns[2]->DataPropertyName = "course_name";
-			DataGridView1->Columns[3]->DataPropertyName = "room_ID";
-
-			// use the 'dataTable' as data source
-			DataGridView1->DataSource = dataTable;
-			con.Close();
+			
+			// Chronologically sorting the schedule.
+			sort(dailyScheduleList.begin(), dailyScheduleList.end(), chronoSort);
+			
+			// Clearing the view.
+			ClearDataGridView(DataGridView1);
+			
+			// Updating the view.
+			for (auto i : dailyScheduleList){
+				array<String^>^ row = { ConvertToSystemString(get<0>(i)), ConvertToSystemString(get<1>(i)), ConvertToSystemString(get<2>(i)), ConvertToSystemString(get<3>(i)) };
+				DataGridView1->Rows->Add(row);
+			}
+			
+			// Usual connection management.
+			con->Close();
 		}
 		catch (Exception^ ex)
 		{
