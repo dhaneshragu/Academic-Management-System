@@ -547,6 +547,53 @@ namespace AcadSecManagementSystem {
 					 MessageBox::Show(ex->Message);
 				 }
 
+				 try
+				 {
+					 String^ connString = Constants::getdbConnString();
+					 SqlConnection^ con = gcnew SqlConnection(connString);
+					 con->Open();
+					 String^ query = "select year, fees, fees_paid from [Student Database] where roll_no = " + RollNumber;
+					 // Create a SqlCommand
+					 SqlCommand cmd(query, con);
+
+					 // Create a DataTable
+					 DataTable^ dataTable = gcnew DataTable();
+
+					 // Create a SqlDataAdapter and fill the DataTable
+					 SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
+					 adapter->Fill(dataTable);
+
+					 // IMPORTANT: Specify the Column Mappings from DataGridView to SQL Table
+					 DataGridView2->AutoGenerateColumns = false;
+					 DataGridView2->Columns[0]->DataPropertyName = "year";
+					 DataGridView2->Columns[1]->DataPropertyName = "fees";
+					 DataGridView2->Columns[2]->DataPropertyName = "payment_status";
+
+					 dataTable->Columns->Add("payment_status", String::typeid);
+
+					 // Iterate over the rows to calculate semester and update fees_paid status
+					for each (DataRow ^row in dataTable->Rows)
+					{
+						int year = Convert::ToInt32(row["year"]);
+						// Calculate the semester based on the year
+						int semester = (2024 - year) * 2;
+						row["year"] = semester;
+
+						// Update fees_paid to "Paid" or "Not Paid"
+						bool fees_paid = Convert::ToBoolean(row["fees_paid"]);
+						row["payment_status"] = fees_paid ? "Paid" : "Not Paid";
+					}
+
+					 dataTable->Columns->Remove("fees_paid");
+
+					 // use the 'dataTable' as data source
+					 DataGridView2->DataSource = dataTable;
+					 con->Close();
+				 }
+				 catch (Exception^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+				 }
 
 				  //Check if Admin has started Course Registration and change the button
 				 if (getisCourseReg())
