@@ -186,6 +186,7 @@ namespace AcadSecManagementSystem {
 			this->Button2->TabIndex = 13;
 			this->Button2->Text = L"Fee Payment closed";
 			this->Button2->UseVisualStyleBackColor = false;
+			this->Button2->Click += gcnew System::EventHandler(this, &StudentHome::Button2_Click);
 			// 
 			// DataGridView2
 			// 
@@ -295,7 +296,6 @@ namespace AcadSecManagementSystem {
 			this->GradeReleasedPanel->Controls->Add(this->Label4);
 			this->GradeReleasedPanel->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->GradeReleasedPanel->Location = System::Drawing::Point(100, 18);
 			this->GradeReleasedPanel->Location = System::Drawing::Point(100, 19);
 			this->GradeReleasedPanel->Name = L"GradeReleasedPanel";
 			this->GradeReleasedPanel->Size = System::Drawing::Size(394, 62);
@@ -555,7 +555,46 @@ namespace AcadSecManagementSystem {
 					 Button3->BackColor = System::Drawing::Color::LightGreen;
 					 Button3->Enabled = true;
 				 }
+
+				 //Check if Admin has started Fee payment and change the button
+				 if (getisFeePayment())
+				 {
+					 Button2->Text = "Fee Payment Started";
+					 Button2->BackColor = System::Drawing::Color::LightGreen;
+					 Button2->Enabled = true;
+				 }
 			
+	}
+
+	// To get if Fee payment is started by admin
+	private: bool getisFeePayment()
+	{
+				 bool isFeePayment = false;
+				 String^ queryString = "SELECT start_fee_payment FROM Admin";
+				 String^ connString = Constants::getdbConnString();
+				 SqlConnection^ con = gcnew SqlConnection(connString);
+				 SqlCommand^ command = gcnew SqlCommand(queryString, con);
+
+				 try
+				 {
+					 con->Open();
+
+					 SqlDataReader^ reader = command->ExecuteReader();
+					 if (reader->Read())
+					 {
+						 isFeePayment = reader->GetBoolean(0);
+						 return isFeePayment;
+					 }
+				 }
+				 catch (Exception^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+				 }
+				 finally
+				 {
+					 con->Close();
+				 }
+				 return isFeePayment;
 	}
 
 	// To get if Course Registration is started by admin
@@ -619,16 +658,83 @@ namespace AcadSecManagementSystem {
 				 }
 				 return isCourseReg;
 	}
+
+			 // To get if Fee already paid by student
+	private: bool getisFeesPaid()
+	{
+				 bool isFeesPaid = false;
+				 String^ queryString = "SELECT fees_paid FROM [Student Database] where roll_no = "+RollNumber;
+				 String^ connString = Constants::getdbConnString();
+				 SqlConnection^ con = gcnew SqlConnection(connString);
+				 SqlCommand^ command = gcnew SqlCommand(queryString, con);
+
+				 try
+				 {
+					 con->Open();
+
+					 SqlDataReader^ reader = command->ExecuteReader();
+					 if (reader->Read())
+					 {
+						 isFeesPaid = reader->GetBoolean(0);
+						 return isFeesPaid;
+					 }
+				 }
+				 catch (Exception^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+				 }
+				 finally
+				 {
+					 con->Close();
+				 }
+				 return isFeesPaid;
+	}
+
 private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {
-			 if (Semester == "8")
+			 if (getisFeesPaid())
 			 {
-				 FourthYearCourseReg^ InnerForm = gcnew FourthYearCourseReg(Convert::ToInt32(RollNumber));
-				 Constants::subViewChildForm(OuterPanel, InnerForm);
+				 if (Semester == "8")
+				 {
+					 FourthYearCourseReg^ InnerForm = gcnew FourthYearCourseReg(Convert::ToInt32(RollNumber));
+					 Constants::subViewChildForm(OuterPanel, InnerForm);
+				 }
+				 else
+				 {
+					 StudentCourseReg^ InnerForm = gcnew StudentCourseReg(Convert::ToInt32(RollNumber), Semester);
+					 Constants::subViewChildForm(OuterPanel, InnerForm);
+				 }
 			 }
 			 else
 			 {
-				 StudentCourseReg^ InnerForm = gcnew StudentCourseReg(Convert::ToInt32(RollNumber), Semester);
-				 Constants::subViewChildForm(OuterPanel, InnerForm);
+				 MessageBox::Show("Fees not paid yet");
+			 }
+}
+private: System::Void Button2_Click(System::Object^  sender, System::EventArgs^  e) {
+			 if (!getisFeesPaid())
+			 {
+				 MessageBox::Show("Fees Paid Successfully", "Fee Payment", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				 try
+				 {
+					 String^ connString = Constants::getdbConnString();
+					 SqlConnection^ con = gcnew SqlConnection(connString);
+					 con->Open();
+					 String^ query = "Update [Student Database] set fees_paid = " + 1 + " where roll_no =" + RollNumber;
+					 // Create a SqlCommand
+					 SqlCommand cmd(query, con);
+					 int rowsAffected = cmd.ExecuteNonQuery();
+					 String^ query2 = "SELECT fees FROM dbo.[Student Database] WHERE roll_no= " + RollNumber;
+					 SqlCommand^ command2 = gcnew SqlCommand(query2, con);
+					 int result = safe_cast<int>(command2->ExecuteScalar());
+					 String^ query1 = "Update [Financial Records] set fees_paid = fees_paid + " + result + " where year =" + 2023;
+					 // Create a SqlCommand
+					 SqlCommand cmd1(query1, con);
+					 rowsAffected = cmd1.ExecuteNonQuery();
+					 con->Close();
+				 }
+				 catch (Exception^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+				 }
 			 }
 }
 };

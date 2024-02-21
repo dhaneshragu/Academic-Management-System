@@ -19,4 +19,6 @@ System::DateTime ParseDateString(std::string dateString);
 void MarshalString(String ^ s, std::string& os);
 void updateUserDetails(String ^rollnumber, String ^ address, String ^password, String ^phoneNo, String ^dateOfBirth, String ^ Role);
 bool IsValidPhoneNumber(String^ phoneNo);
+std::string splitStringAndReturnFirstPart(const std::string& inputString);
+std::string getNextDate(const std::string &currentDate, int daysAhead);
 #endif

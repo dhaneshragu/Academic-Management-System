@@ -328,12 +328,12 @@ private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs
 				return; // Stop further processing
 			}
 
-			if (!ContainsNonNumericCharacters(studentID)&&ValidateLogin(studentID, password, Role)) {
+			if (ValidateLogin(studentID, password, Role)) {
 				obj->Hide();
 				label4->Visible = false;
 				StudentDashboard^ studDashboard = gcnew StudentDashboard(obj);
 				studDashboard->UserName = GetUserName(studentID, Role);
-				studDashboard->RollNumber = studentID;
+				studDashboard->RollNumber = GetRoll(studentID);
 				studDashboard->year = GetUserYear(studentID, Role);
 				studDashboard->Show();
 			}
