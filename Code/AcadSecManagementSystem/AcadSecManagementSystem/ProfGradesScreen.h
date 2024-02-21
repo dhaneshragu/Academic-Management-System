@@ -339,9 +339,9 @@ namespace AcadSecManagementSystem {
 				 if (grade == "BC") return 7;
 				 if (grade == "CC") return 6;
 				 if (grade == "CD") return 5;
-				 if (grade == "AA") return 4;
+				 if (grade == "DD") return 4;
 				 if (grade == "F") return 0;
-				 return 0;
+				 return -1;
 
 	}
 
@@ -529,6 +529,40 @@ namespace AcadSecManagementSystem {
 				 }
 	}
 
+	private: bool checkCSVContent(std::vector<std::vector<std::string>> csvData){
+				 if (csvData.size() <= 0) {
+					 MessageBox::Show("file is empty");
+					 return 0;
+				 }
+				 for (int i = 0; i < csvData.size(); i++){
+					 if (csvData[i].size() != 2){
+						MessageBox::Show("file is different no of columns");
+						return 0;
+					}
+				 }
+				 if (csvData[0][0] != "Roll No" || csvData[0][1]!="Grade"){
+					 MessageBox::Show("Wrong column name in file");
+					 return 0;
+				 }
+				 for (int i = 1; i < csvData.size(); i++){
+					 if (getGrades(Constants::strCnvStr(csvData[i][1])) == -1){
+						 MessageBox::Show("Wrong data in file");
+						 return 0;
+					 }
+					 if (csvData[i][0].size() != 9){
+						 MessageBox::Show("Wrong data in file");
+						 return 0;
+					 }
+					 for (int j = 0; j < 9; j++){
+						 if (csvData[i][0][j]>'9' || csvData[i][0][j] < '0'){
+							 MessageBox::Show("Wrong data in file");
+							 return 0;
+						 }
+					 }
+				 }
+				 return 1;
+	}
+
 
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 				 if (comboBox1->SelectedItem != nullptr) {
@@ -542,8 +576,10 @@ namespace AcadSecManagementSystem {
 					 if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
 						 try{
 							 std::vector<std::vector<std::string>> csvData = readCSV(Constants::StrCnvstr(openFileDialog1->FileName->ToString()));
-							 updateGrades(csvData, this->comboBox1->SelectedItem->ToString());
-							 MessageBox::Show("Grades CSV Uploaded");
+							 if (checkCSVContent(csvData)){
+								 updateGrades(csvData, this->comboBox1->SelectedItem->ToString());
+								 MessageBox::Show("Grades CSV Uploaded");
+							 }
 						 }
 						 catch(Exception^ ex){
 							 MessageBox::Show("Error reading file: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -564,3 +600,4 @@ namespace AcadSecManagementSystem {
 	}
 };
 }
+
