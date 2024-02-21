@@ -367,6 +367,32 @@ namespace AcadSecManagementSystem {
 			String^ connString = Constants::getdbConnString();
 			SqlConnection^ con = gcnew SqlConnection(connString);
 			con->Open();
+			
+			// Room Info
+			map<string, string> idToName;
+
+			// Query for retrieving Room info
+			String^ queryForRoom = "SELECT room_ID,name,location FROM [Room];";
+
+			SqlCommand^ commandForRoom = gcnew SqlCommand(queryForRoom, con);
+			SqlDataReader^ readerForRoom = commandForRoom->ExecuteReader();
+
+			// Map ID to name
+			while (readerForRoom->Read()){
+				String^ room_ID = readerForRoom["room_ID"]->ToString();
+				String^ roomName = readerForRoom["name"]->ToString();
+				String^ roomLocation = readerForRoom["location"]->ToString();
+				roomName = roomName + ", " + roomLocation;
+				string room_IDcppstr, roomNamecppstr;
+				MarshalString(room_ID, room_IDcppstr);
+				MarshalString(roomName, roomNamecppstr);
+				idToName[room_IDcppstr] = roomNamecppstr;
+			}
+
+			// Closing reader
+			readerForRoom->Close();
+			
+			// Query to retrieve courses offered by faculty
 			String^ query = "SELECT slot,course_ID,course_name,room_ID FROM [Courses] WHERE prof_ID = '" + faculty_ID +"'";;
 			
 			// Monday's (Default) Map.
@@ -393,8 +419,11 @@ namespace AcadSecManagementSystem {
 				MarshalString(roomID, roomIDcppstr);
 				// If the slot is not at all present in the day, it is not added to selected schedule.
 				if (TodaySlotToTime.find(slotcppstr) == TodaySlotToTime.end()) continue;
-				dailyScheduleList.push_back(make_tuple(TodaySlotToTime[slotcppstr], course_IDcppstr, course_namecppstr, roomIDcppstr));
+				dailyScheduleList.push_back(make_tuple(TodaySlotToTime[slotcppstr], course_IDcppstr, course_namecppstr,idToName[ roomIDcppstr]));
 			}
+
+			// Closing reader
+			reader->Close();
 
 			// Chronologically sorting the schedule.
 			sort(dailyScheduleList.begin(), dailyScheduleList.end(), chronoSort);
@@ -505,8 +534,31 @@ namespace AcadSecManagementSystem {
 					 String^ connString = Constants::getdbConnString();
 					 SqlConnection^ con = gcnew SqlConnection(connString);
 					 con->Open();
+					 // Room Info
+					 map<string, string> idToName;
 
-					 // Query to retrieve Time table information.
+					 // Query for retrieving Room info
+					 String^ queryForRoom = "SELECT room_ID,name,location FROM [Room];";
+
+					 SqlCommand^ commandForRoom = gcnew SqlCommand(queryForRoom, con);
+					 SqlDataReader^ readerForRoom = commandForRoom->ExecuteReader();
+
+					 // Map ID to name
+					 while (readerForRoom->Read()){
+						 String^ room_ID = readerForRoom["room_ID"]->ToString();
+						 String^ roomName = readerForRoom["name"]->ToString();
+						 String^ roomLocation = readerForRoom["location"]->ToString();
+						 roomName = roomName + ", " + roomLocation;
+						 string room_IDcppstr, roomNamecppstr;
+						 MarshalString(room_ID, room_IDcppstr);
+						 MarshalString(roomName, roomNamecppstr);
+						 idToName[room_IDcppstr] = roomNamecppstr;
+					 }
+
+					 // Closing reader
+					 readerForRoom->Close();
+
+					 // Query to retrieve courses offered by faculty
 					 String^ query = "SELECT slot,course_ID,course_name,room_ID FROM [Courses] WHERE prof_ID = '" + faculty_ID + "'";;
 
 					 // Reading line by line the data from the result of the query.
@@ -530,8 +582,11 @@ namespace AcadSecManagementSystem {
 						 MarshalString(roomID, roomIDcppstr);
 						 // If the slot is not at all present in the day, it is not added to selected schedule.
 						 if (TodaySlotToTime.find(slotcppstr) == TodaySlotToTime.end()) continue;
-						 dailyScheduleList.push_back(make_tuple(TodaySlotToTime[slotcppstr], course_IDcppstr, course_namecppstr, roomIDcppstr));
+						 dailyScheduleList.push_back(make_tuple(TodaySlotToTime[slotcppstr], course_IDcppstr, course_namecppstr,idToName[ roomIDcppstr]));
 					 }
+
+					 // Closing reader
+					 reader->Close();
 
 					 // Chronologically sorting the schedule.
 					 sort(dailyScheduleList.begin(), dailyScheduleList.end(), chronoSort);
