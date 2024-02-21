@@ -521,17 +521,20 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 					//  SqlConnection con(connString);
 					//  con.Open();
 					 String^ query = "SELECT * FROM Courses";
+					 String^ query2 = "SELECT * FROM Admin";
 
 					 SqlConnection^ cn = gcnew SqlConnection();
 					//  DataSet *CustomersDataSet = new DataSet();
 					 SqlDataAdapter^ da;
+					 SqlDataAdapter^ da2;
 					 SqlCommand^ DAUpdateCmd;
+					 SqlCommand^ DAUpdateCmd2;
 
 					 cn->ConnectionString = connString;
 					 cn->Open();
 
 					 da = gcnew SqlDataAdapter(query, cn);
-
+					 da2 = gcnew SqlDataAdapter(query2, cn);
 					 // Create a SqlCommand
 					//  SqlCommand cmd(query, %con);
 
@@ -539,20 +542,26 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 
 					 // Create a DataTable
 					 DataTable^ dataTable = gcnew DataTable();
+					 DataTable^ dataTable2 = gcnew DataTable();
 
 					 // Create a SqlDataAdapter and fill the DataTable
 					//  SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
 					//  adapter->Fill(dataTable);
 
-					 String^ updatequery = "UPDATE Courses SET slot = @slot WHERE course_ID = @CourseCode";
+					 String^ updatequery = "UPDATE Courses SET slot = @slot, room_ID=@room_ID WHERE course_ID = @CourseCode";
+					 String^ updatequery2 = "UPDATE Admin SET view_timetable = True";
 					 DAUpdateCmd = gcnew SqlCommand(updatequery, da->SelectCommand->Connection);
+					 DAUpdateCmd2 = gcnew SqlCommand(updatequery2, da2->SelectCommand->Connection);
 					 DAUpdateCmd->Parameters->Add("@slot", SqlDbType::VarChar, 50, "slot");
 					 DAUpdateCmd->Parameters->Add("@CourseCode", SqlDbType::VarChar, 50, "course_ID");
+					 DAUpdateCmd->Parameters->Add("@room_ID", SqlDbType::VarChar, 50, "room_ID");
 					 
 
 					 da->UpdateCommand = DAUpdateCmd;
+					 da2->UpdateCommand = DAUpdateCmd2;
 
 					 da->Fill(dataTable);
+					 da2->Fill(dataTable2);
 
 					 int n = dataTable->Rows->Count;
 					 
@@ -560,6 +569,7 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 					 map<string,set<string>> courseAllotmentLeft;
 					 map<string, set<string>> labAllotmentLeft;
 					 map<string, set<string>> proffessorsAlloted;
+					 map<string, vector<int>> slotToRoomMapping;
 					 set<string> morning;
 					 set<string> evening;
 					 set<string> morninglab;
@@ -600,6 +610,20 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 					 labAllotmentLeft.insert({ "6", eveninglab });
 					 labAllotmentLeft.insert({ "8", morninglab });
 
+					 slotToRoomMapping.insert({ "A", { 1, 1,2,2 } });
+					 slotToRoomMapping.insert({ "A1", { 1, 1,2,2 } });
+					 slotToRoomMapping.insert({ "B", { 1, 1, 2, 2 } });
+					 slotToRoomMapping.insert({ "B1", { 1, 1, 2, 2 } });
+					 slotToRoomMapping.insert({ "C", { 1, 1, 2, 2 } });
+					 slotToRoomMapping.insert({ "C1", { 1, 1, 2, 2 } });
+					 slotToRoomMapping.insert({ "D", { 8, 8, 9, 9 } });
+					 slotToRoomMapping.insert({ "D1", { 8, 8, 9, 9 } });
+					 slotToRoomMapping.insert({ "F", { 8, 8, 9, 9 } });
+					 slotToRoomMapping.insert({ "F1", { 8, 8, 9, 9 } });
+					 slotToRoomMapping.insert({ "G", { 8, 8, 9, 9 } });
+					 slotToRoomMapping.insert({ "G1", { 8, 8, 9, 9 } });
+
+
 					//  For compulsoory courses
 
 					 for (int i = 0; i < n; i++)
@@ -637,6 +661,8 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 									(*proffessorsAlloted.find(ProfId)).second.insert(*slot);
 									//  row->BeginEdit();
 									 String^ tempslot = gcnew String((*slot).c_str());
+									 int roomid = slotToRoomMapping.find(*slot)->second[stoi(semOffered) / 2 - 1];
+									 row["room_ID"] = roomid;
 									 row["slot"] = tempslot;
 									//  row->EndEdit();
 									//  row->AcceptChanges();
@@ -652,6 +678,7 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 						 else if (row["is_compulsory"]->ToString() == "True" && row["is_lab"]->ToString() == "True")
 						 {
 							//  MessageBox::Show("Lab: "+ row["course_ID"]->ToString());
+							 row["room_ID"] = 10;
 							 string semOffered;
 							 string ProfId;
 							 MarshalString(row["sem_offered"]->ToString(), semOffered);
@@ -744,6 +771,8 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 									(*proffessorsAlloted.find(ProfId)).second.insert(*slot);
 									//  row->BeginEdit();
 									String^ tempslot = gcnew String((*slot).c_str());
+									int roomid = slotToRoomMapping.find(*slot)->second[stoi(sem) / 2 - 1];
+									row["room_ID"] = roomid;
 									// MessageBox::Show("Inserting Slot " + tempslot + " for " + row["course_ID"]->ToString());
 									row["slot"] = tempslot;
 									//  row->EndEdit();
@@ -759,6 +788,7 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 						 else if (row["is_compulsory"]->ToString() == "False" && row["is_lab"]->ToString() == "True")
 						 {
 							//   MessageBox::Show("Lab: "+ row["course_ID"]->ToString());
+							 row["room_ID"] = 10;
 							 string semOffered;
 							 string ProfId;
 							 MarshalString(row["sem_offered"]->ToString(), semOffered);
@@ -820,6 +850,8 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 
 					// Update the sql database with dataTable
 					 da->Update(dataTable);
+					 da2->Update(dataTable2);
+					
 					 cn->Close();
 					 MessageBox::Show("Updating Database Complete");
 
