@@ -484,27 +484,21 @@ namespace AcadSecManagementSystem {
 		return tokens;
 	}
 
-	// Function to read a CSV file and return its contents as a vector of vectors of strings
 	private: std::vector<std::vector<std::string>> readCSV(const std::string& filename) {
 		std::vector<std::vector<std::string>> data;
 
-		// Open the CSV file
 		std::ifstream file(filename);
 		if (!file.is_open()) {
 			return data;
 		}
 
-		// Read each line from the CSV file and split it into tokens
 		std::string line;
 		while (std::getline(file, line)) {
-			// Split the line into tokens using comma as the delimiter
 			std::vector<std::string> tokens = splitString(line, ',');
 
-			// Add the tokens to the data vector
 			data.push_back(tokens);
 		}
 
-		// Close the file
 		file.close();
 
 		return data;
@@ -565,28 +559,66 @@ namespace AcadSecManagementSystem {
 				 return 1;
 	}
 
+	bool isGradesSubmission(){
+		String^ query = "SELECT * FROM [Admin]";
+		try{
+			String^ connString = Constants::getdbConnString();
+			SqlConnection^ con = gcnew SqlConnection(connString);
+			con->Open();
+
+			SqlCommand^ command = gcnew SqlCommand(query, con);
+			SqlDataReader^ reader = command->ExecuteReader();
+			reader->Read();
+			if (reader["is_grade_submission"] == NULL){
+				con->Close();
+				return false;
+			}
+			else {
+				if (reader["is_grade_submission"]->Equals(true)){
+					MessageBox::Show(reader["is_grade_submission"]->ToString());
+					con->Close();
+					return true;
+				}
+				else{
+					con->Close();
+					return false;
+				}
+			}
+
+		}
+		catch (Exception^ ex){
+			MessageBox::Show(ex->Message);
+		}
+	}
+
 
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 				 if (comboBox1->SelectedItem != nullptr) {
-					 OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog();
+					 if (isGradesSubmission()==true){
 
-					 openFileDialog1->InitialDirectory = "c:\\";
-					 openFileDialog1->Filter = "CSV files (*.csv)|*.csv";
-					 openFileDialog1->FilterIndex = 2;
-					 openFileDialog1->RestoreDirectory = true;
+						OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog();
 
-					 if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
-						 try{
-							 std::vector<std::vector<std::string>> csvData = readCSV(Constants::StrCnvstr(openFileDialog1->FileName->ToString()));
-							 if (checkCSVContent(csvData)){
-								 updateGrades(csvData, this->comboBox1->SelectedItem->ToString());
-								 MessageBox::Show("Grades CSV Uploaded");
-							 }
-						 }
-						 catch(Exception^ ex){
-							 MessageBox::Show("Error reading file: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-						 }
-					 }
+						openFileDialog1->InitialDirectory = "c:\\";
+						openFileDialog1->Filter = "CSV files (*.csv)|*.csv";
+						openFileDialog1->FilterIndex = 2;
+						openFileDialog1->RestoreDirectory = true;
+
+						if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
+							try{
+								std::vector<std::vector<std::string>> csvData = readCSV(Constants::StrCnvstr(openFileDialog1->FileName->ToString()));
+								if (checkCSVContent(csvData)){
+									updateGrades(csvData, this->comboBox1->SelectedItem->ToString());
+									MessageBox::Show("Grades CSV Uploaded");
+								}
+							}
+							catch (Exception^ ex){
+								MessageBox::Show("Error reading file: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+							}
+						}
+					}
+					else{
+						MessageBox::Show("Course grades submission is not allowed now.");
+					}
 				 }
 				 else{
 					 MessageBox::Show("Please select a course from list.");
