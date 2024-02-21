@@ -550,7 +550,7 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 					//  adapter->Fill(dataTable);
 
 					 String^ updatequery = "UPDATE Courses SET slot = @slot, room_ID=@room_ID WHERE course_ID = @CourseCode";
-					 String^ updatequery2 = "UPDATE Admin SET view_timetable = True";
+					 String^ updatequery2 = "UPDATE Admin SET view_timetable = 'True'";
 					 DAUpdateCmd = gcnew SqlCommand(updatequery, da->SelectCommand->Connection);
 					 DAUpdateCmd2 = gcnew SqlCommand(updatequery2, da2->SelectCommand->Connection);
 					 DAUpdateCmd->Parameters->Add("@slot", SqlDbType::VarChar, 50, "slot");
