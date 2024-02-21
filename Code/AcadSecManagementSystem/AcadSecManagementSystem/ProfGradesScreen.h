@@ -341,6 +341,7 @@ namespace AcadSecManagementSystem {
 				 if (grade == "CD") return 5;
 				 if (grade == "DD") return 4;
 				 if (grade == "F") return 0;
+				 if (grade == "--") return 0;
 				 return -1;
 
 	}
@@ -536,7 +537,8 @@ namespace AcadSecManagementSystem {
 				 }
 				 for (int i = 0; i < csvData.size(); i++){
 					 if (csvData[i].size() != 2){
-						MessageBox::Show("file is different no of columns");
+						MessageBox::Show("file has different no of columns");
+						MessageBox::Show(csvData[i].size().ToString());
 						return 0;
 					}
 				 }

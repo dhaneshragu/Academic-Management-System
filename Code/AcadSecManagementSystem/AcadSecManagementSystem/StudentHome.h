@@ -517,7 +517,7 @@ namespace AcadSecManagementSystem {
 					 SqlConnection^ con = gcnew SqlConnection(connString);
 					 con->Open();
 					 String^ query = "SELECT Courses.[course_ID], Courses.[course_name], Courses.[LTPC], " +
-						 "(CASE WHEN (SELECT view_grades FROM Admin) = 1 THEN '--' ELSE [Courses Taken].[grades] END) AS grades " +
+						 "(CASE WHEN (SELECT view_grades FROM Admin) = 0 THEN '--' ELSE [Courses Taken].[grades] END) AS grades " +
 						 "FROM Courses " +
 						 "INNER JOIN [Courses Taken] ON Courses.course_ID = [Courses Taken].course_ID " +
 						 "WHERE [Courses Taken].roll_no = " + RollNumber;
