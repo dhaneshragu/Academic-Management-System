@@ -148,7 +148,7 @@ namespace AcadSecManagementSystem {
 			this->Fees_label->AutoSize = true;
 			this->Fees_label->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Fees_label->Location = System::Drawing::Point(193, 108);
+			this->Fees_label->Location = System::Drawing::Point(150, 108);
 			this->Fees_label->Name = L"Fees_label";
 			this->Fees_label->Size = System::Drawing::Size(134, 49);
 			this->Fees_label->TabIndex = 7;
@@ -354,7 +354,7 @@ namespace AcadSecManagementSystem {
 					 SqlCommand^ command = gcnew SqlCommand(query, cn);
 					 result = safe_cast<int>(command->ExecuteScalar());
 
-					 Fees_label->Text = result.ToString();
+					 Fees_label->Text = "Rs." + result.ToString();
 
 					 String^ query1 = "SELECT no_of_students FROM dbo.[Financial Records] WHERE year=" + year;
 					 SqlCommand^ command1 = gcnew SqlCommand(query1, cn);
@@ -389,7 +389,7 @@ namespace AcadSecManagementSystem {
 					 SqlCommand^ command = gcnew SqlCommand(query, cn);
 					 result = safe_cast<int>(command->ExecuteScalar());
 
-					 Fees_label->Text = result.ToString();
+					 Fees_label->Text = "Rs." + result.ToString();
 
 					 String^ query1 = "SELECT no_of_students FROM dbo.[Financial Records] WHERE year="+year;
 					 SqlCommand^ command1 = gcnew SqlCommand(query1, cn);
