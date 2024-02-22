@@ -575,7 +575,6 @@ namespace AcadSecManagementSystem {
 			}
 			else {
 				if (reader["is_grade_submission"]->Equals(true)){
-					MessageBox::Show(reader["is_grade_submission"]->ToString());
 					con->Close();
 					return true;
 				}
