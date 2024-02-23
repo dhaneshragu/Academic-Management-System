@@ -346,20 +346,20 @@ namespace AcadSecManagementSystem {
 					 MidSemExamSlotToDay["F1"] = getNextDate(MidSemStartDate, 5);
 					 MidSemExamSlotToDay["G"] = getNextDate(MidSemStartDate, 6);
 					 MidSemExamSlotToDay["G1"] = getNextDate(MidSemStartDate, 6);
-					 MidSemSlotToTime["A"] = "9 am - 11 am";
-					 MidSemSlotToTime["A1"] = "2 pm - 4 pm";
-					 MidSemSlotToTime["B"] = "9 am - 11 am";
-					 MidSemSlotToTime["B1"] = "2 pm - 4 pm";
-					 MidSemSlotToTime["C"] = "9 am - 11 am";
-					 MidSemSlotToTime["C1"] = "2 pm - 4 pm";
-					 MidSemSlotToTime["D"] = "9 am - 11 am";
-					 MidSemSlotToTime["D1"] = "2 pm - 4 pm";
-					 MidSemSlotToTime["E"] = "9 am - 11 am";
-					 MidSemSlotToTime["E1"] = "2 pm - 4 pm";
-					 MidSemSlotToTime["F"] = "9 am - 11 am";
-					 MidSemSlotToTime["F1"] = "2 pm - 4 pm";
-					 MidSemSlotToTime["G"] = "9 am - 11 am";
-					 MidSemSlotToTime["G1"] = "2 pm - 4 pm";
+					 MidSemSlotToTime["A"] = "9 AM - 11 AM";
+					 MidSemSlotToTime["A1"] = "2 PM - 4 PM";
+					 MidSemSlotToTime["B"] = "9 AM - 11 AM";
+					 MidSemSlotToTime["B1"] = "2 PM - 4 PM";
+					 MidSemSlotToTime["C"] = "9 AM - 11 AM";
+					 MidSemSlotToTime["C1"] = "2 PM - 4 PM";
+					 MidSemSlotToTime["D"] = "9 AM - 11 AM";
+					 MidSemSlotToTime["D1"] = "2 PM - 4 PM";
+					 MidSemSlotToTime["E"] = "9 AM - 11 AM";
+					 MidSemSlotToTime["E1"] = "2 PM - 4 PM";
+					 MidSemSlotToTime["F"] = "9 AM - 11 AM";
+					 MidSemSlotToTime["F1"] = "2 PM - 4 PM";
+					 MidSemSlotToTime["G"] = "9 AM - 11 AM";
+					 MidSemSlotToTime["G1"] = "2 PM - 4 PM";
 				 }
 				 
 				 if (EndSemStartDate.length())
@@ -378,20 +378,20 @@ namespace AcadSecManagementSystem {
 					 EndSemExamSlotToDay["F1"] = getNextDate(EndSemStartDate, 5);
 					 EndSemExamSlotToDay["G"] = getNextDate(EndSemStartDate, 6);
 					 EndSemExamSlotToDay["G1"] = getNextDate(EndSemStartDate, 6);
-					 EndSemSlotToTime["A"] = "9 am - 12 pm";
-					 EndSemSlotToTime["A1"] = "2 pm - 5 pm";
-					 EndSemSlotToTime["B"] = "9 am - 12 pm";
-					 EndSemSlotToTime["B1"] = "2 pm - 5 pm";
-					 EndSemSlotToTime["C"] = "9 am - 12 pm";
-					 EndSemSlotToTime["C1"] = "2 pm - 5 pm";
-					 EndSemSlotToTime["D"] = "9 am - 12 pm";
-					 EndSemSlotToTime["D1"] = "2 pm - 5 pm";
-					 EndSemSlotToTime["E"] = "9 am - 12 pm";
-					 EndSemSlotToTime["E1"] = "2 pm - 5 pm";
-					 EndSemSlotToTime["F"] = "9 am - 12 pm";
-					 EndSemSlotToTime["F1"] = "2 pm - 5 pm";
-					 EndSemSlotToTime["G"] = "9 am - 12 pm";
-					 EndSemSlotToTime["G1"] = "2 pm - 5 pm";
+					 EndSemSlotToTime["A"] = "9 AM - 12 PM";
+					 EndSemSlotToTime["A1"] = "2 PM - 5 PM";
+					 EndSemSlotToTime["B"] = "9 AM - 12 PM";
+					 EndSemSlotToTime["B1"] = "2 PM - 5 PM";
+					 EndSemSlotToTime["C"] = "9 AM - 12 PM";
+					 EndSemSlotToTime["C1"] = "2 PM - 5 PM";
+					 EndSemSlotToTime["D"] = "9 AM - 12 PM";
+					 EndSemSlotToTime["D1"] = "2 PM - 5 PM";
+					 EndSemSlotToTime["E"] = "9 AM - 12 PM";
+					 EndSemSlotToTime["E1"] = "2 PM - 5 PM";
+					 EndSemSlotToTime["F"] = "9 AM - 12 PM";
+					 EndSemSlotToTime["F1"] = "2 PM - 5 PM";
+					 EndSemSlotToTime["G"] = "9 AM - 12 PM";
+					 EndSemSlotToTime["G1"] = "2 PM - 5 PM";
 				 }
 
 				 
