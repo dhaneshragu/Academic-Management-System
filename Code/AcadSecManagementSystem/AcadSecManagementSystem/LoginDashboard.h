@@ -78,8 +78,8 @@ namespace AcadSecManagementSystem {
 			this->Button3 = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->childformpanel = (gcnew System::Windows::Forms::Panel());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panel2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->childformpanel->SuspendLayout();
@@ -213,18 +213,6 @@ namespace AcadSecManagementSystem {
 			this->childformpanel->TabIndex = 9;
 			this->childformpanel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &LoginDashboard::childformpanel_Paint);
 			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::Color::Indigo;
-			this->label1->Location = System::Drawing::Point(13, 11);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(991, 51);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"IIT Guwahati Academic Section Management Software";
-			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
@@ -236,6 +224,18 @@ namespace AcadSecManagementSystem {
 			this->label2->Size = System::Drawing::Size(233, 36);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"By: Group 10A";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::Indigo;
+			this->label1->Location = System::Drawing::Point(13, 11);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(991, 51);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"IIT Guwahati Academic Section Management Software";
 			// 
 			// LoginDashboard
 			// 

@@ -404,7 +404,7 @@ namespace AcadSecManagementSystem {
 					String^ connString = Constants::getdbConnString();
 					SqlConnection^ con = gcnew SqlConnection(connString);
 					con->Open();
-					String^ query = "SELECT [Courses].course_ID, slot FROM [Courses] JOIN [Courses Taken] ON [Courses].course_ID = [Courses Taken].course_ID JOIN [Room] ON [Room].room_ID = [Courses Taken].examination_venue where roll_no = '" + roll_no + "' AND is_lab = 'FALSE'";
+					String^ query = "SELECT [Courses].course_ID, slot FROM [Courses] JOIN [Courses Taken] ON [Courses].course_ID = [Courses Taken].course_ID JOIN [Room] ON [Room].room_ID = [Courses Taken].examination_venue where roll_no = '" + roll_no + "' AND is_lab = 'FALSE' Order by slot";
 					SqlCommand^ command = gcnew SqlCommand(query, con);
 					SqlDataReader^ reader = command->ExecuteReader();
 
@@ -450,7 +450,7 @@ namespace AcadSecManagementSystem {
 					String^ connString = Constants::getdbConnString();
 					SqlConnection^ con = gcnew SqlConnection(connString);
 					con->Open();
-					String^ query = "SELECT [Courses].course_ID as CID, course_name, slot, [Room].name as venue FROM [Courses] JOIN [Courses Taken] ON [Courses].course_ID = [Courses Taken].course_ID JOIN [Room] ON [Room].room_ID = [Courses Taken].examination_venue WHERE roll_no = '" + roll_no + "' AND is_lab = 'FALSE'";
+					String^ query = "SELECT [Courses].course_ID as CID, course_name, slot, [Room].name as venue FROM [Courses] JOIN [Courses Taken] ON [Courses].course_ID = [Courses Taken].course_ID JOIN [Room] ON [Room].room_ID = [Courses Taken].examination_venue WHERE roll_no = '" + roll_no + "' AND is_lab = 'FALSE' order by slot";
 					SqlCommand^ command = gcnew SqlCommand(query, con);
 					SqlDataReader^ reader = command->ExecuteReader();
 
