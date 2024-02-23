@@ -1062,7 +1062,7 @@ private: System::Void buttonReset_Click(System::Object^  sender, System::EventAr
 				 dateMidsem->Value = ParseDateString(detailsAd["midsem_start_date"]);
 			 if (detailsAd["endsem_start_date"].length())
 				 dateEndsem->Value = ParseDateString(detailsAd["endsem_start_date"]);
-			 if (detailsAd["is_grade_summision"] == "True")
+			 if (detailsAd["is_grade_submission"] == "True")
 			 {
 				 YesGradeCollection->Checked = true;
 			 }
