@@ -416,34 +416,18 @@ private: bool getisViewTimeTable()
 private: bool getisMidEndDateSet()
 {
 			 bool isMidEndDateSet = false;
-			 String^ queryString = "SELECT midsem_start_date FROM Admin";
-			 String^ queryString1 = "SELECT endsem_start_date FROM Admin";
+			 String^ queryString = "SELECT CASE WHEN midsem_start_date IS NOT NULL AND endsem_start_date IS NOT NULL THEN 1 else 0 END AS Result From [Admin]";
 			 String^ connString = Constants::getdbConnString();
 			 SqlConnection^ con = gcnew SqlConnection(connString);
 			 SqlCommand^ command = gcnew SqlCommand(queryString, con);
-			 SqlCommand^ command1 = gcnew SqlCommand(queryString1, con);
 
 			 try
 			 {
+				 con->Open();
 				 SqlDataReader^ reader = command->ExecuteReader();
 				 if (reader->Read())
 				 {
-					 if (reader->IsDBNull(0))
-					 {
-						 return false;
-					 }
-					 else
-					 {
-						 SqlDataReader^ reader1 = command1->ExecuteReader();
-						 if (reader1->IsDBNull(0))
-						 {
-							 return false;
-						 }
-						 else
-						 {
-							 return true;
-						 }
-					 }
+					 isMidEndDateSet = System::Convert::ToBoolean(reader["Result"]);
 				 }
 			 }
 			 catch (Exception^ ex)
