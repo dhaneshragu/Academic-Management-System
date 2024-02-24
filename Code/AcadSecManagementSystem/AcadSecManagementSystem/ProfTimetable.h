@@ -156,7 +156,7 @@ namespace AcadSecManagementSystem {
 			dataGridViewCellStyle6->ForeColor = System::Drawing::Color::Black;
 			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::Honeydew;
 			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
 			this->DataGridView1->DefaultCellStyle = dataGridViewCellStyle6;
 			this->DataGridView1->GridColor = System::Drawing::Color::DimGray;
 			this->DataGridView1->Location = System::Drawing::Point(98, 178);
@@ -249,7 +249,7 @@ namespace AcadSecManagementSystem {
 			});
 			this->comboBox1->Location = System::Drawing::Point(316, 97);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(540, 34);
+			this->comboBox1->Size = System::Drawing::Size(540, 31);
 			this->comboBox1->TabIndex = 4;
 			this->comboBox1->Text = L"Monday";
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &ProfTimetable::comboBox1_SelectedIndexChanged);
@@ -261,7 +261,7 @@ namespace AcadSecManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(161, 100);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(136, 32);
+			this->label2->Size = System::Drawing::Size(120, 27);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"Select Day";
 			this->label2->Click += gcnew System::EventHandler(this, &ProfTimetable::label2_Click);
@@ -286,7 +286,7 @@ namespace AcadSecManagementSystem {
 			// 
 			// ProfTimetable
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(12, 26);
+			this->AutoScaleDimensions = System::Drawing::SizeF(10, 23);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::AliceBlue;
 			this->ClientSize = System::Drawing::Size(1016, 557);
