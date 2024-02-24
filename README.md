@@ -14,10 +14,10 @@ Management (also include time table generation)
 grade generation, etc.).
 
 ## Contributors
-210101113 [Yash Raj Singh](https://github.com/Yash-jar)
-210101114 [Shivam Gupta](https://github.com/shivamgup0001)
-210101115 [Tanish](https://github.com/v-tanish012)
-210101116 [Pratyush R](https://github.com/p8324r)
-210101117 [Dhanesh V](https://github.com/dhaneshragu)
-210101118 [Ketan Singh](https://github.com/botketan)
-210101119 [Shivam Agrawal](https://github.com/Shivamagr1812)
+- 210101113 [Yash Raj Singh](https://github.com/Yash-jar)
+- 210101114 [Shivam Gupta](https://github.com/shivamgup0001)
+- 210101115 [Tanish](https://github.com/v-tanish012)
+- 210101116 [Pratyush R](https://github.com/p8324r)
+- 210101117 [Dhanesh V](https://github.com/dhaneshragu)
+- 210101118 [Ketan Singh](https://github.com/botketan)
+- 210101119 [Shivam Agrawal](https://github.com/Shivamagr1812)
