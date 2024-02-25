@@ -138,12 +138,12 @@ namespace AcadSecManagementSystem {
 			// 
 			this->Label5->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Label5->ForeColor = System::Drawing::Color::SeaGreen;
+			this->Label5->ForeColor = System::Drawing::Color::DarkOliveGreen;
 			this->Label5->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Label5->Location = System::Drawing::Point(8, 52);
+			this->Label5->Location = System::Drawing::Point(8, 65);
 			this->Label5->Margin = System::Windows::Forms::Padding(0, 0, 4, 0);
 			this->Label5->Name = L"Label5";
-			this->Label5->Size = System::Drawing::Size(222, 141);
+			this->Label5->Size = System::Drawing::Size(222, 127);
 			this->Label5->TabIndex = 9;
 			this->Label5->Text = L"{Name}";
 			// 
@@ -153,7 +153,7 @@ namespace AcadSecManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->Label3->ForeColor = System::Drawing::Color::SeaGreen;
 			this->Label3->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Label3->Location = System::Drawing::Point(8, 5);
+			this->Label3->Location = System::Drawing::Point(8, 15);
 			this->Label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->Label3->Name = L"Label3";
 			this->Label3->Size = System::Drawing::Size(164, 55);
@@ -229,7 +229,7 @@ namespace AcadSecManagementSystem {
 			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
 			this->DataGridView2->DefaultCellStyle = dataGridViewCellStyle3;
 			this->DataGridView2->GridColor = System::Drawing::Color::DimGray;
-			this->DataGridView2->Location = System::Drawing::Point(13, 340);
+			this->DataGridView2->Location = System::Drawing::Point(13, 343);
 			this->DataGridView2->Margin = System::Windows::Forms::Padding(4);
 			this->DataGridView2->Name = L"DataGridView2";
 			this->DataGridView2->ReadOnly = true;
@@ -519,7 +519,7 @@ namespace AcadSecManagementSystem {
 	private: System::Void StudentHome_Load(System::Object^  sender, System::EventArgs^  e) {
 
 				 // View DP
-				 FetchAndDisplayImage(RollNumber, this->pictureBox1);
+				 Constants::FetchAndDisplayImage(RollNumber, this->pictureBox1);
 				 // Make this visible only when grades are released from acad section
 				 Label5->Text = UserName;
 				 GradeReleasedPanel->Visible = false;
@@ -766,66 +766,6 @@ namespace AcadSecManagementSystem {
 				 }
 				 return isFeesPaid;
 	}
-
-	// to display image
-	void FetchAndDisplayImage(String^ rno, PictureBox^ pictureBox)
-	{
-		// Set up MSSQL Connection
-		String^ connectionString = Constants::getdbConnString();
-		SqlConnection^ connection = gcnew SqlConnection(connectionString);
-
-		try
-		{
-			// Open the connection
-			connection->Open();
-
-			// Create a command to fetch image data based on roll number
-			String^ commandText = "SELECT DP FROM [Student Database] WHERE roll_no = @RNo";
-			SqlCommand^ command = gcnew SqlCommand(commandText, connection);
-			command->Parameters->AddWithValue("@RNo", rno);
-
-			// Execute the command
-			SqlDataReader^ reader = command->ExecuteReader();
-
-			// Check if there is data
-			if (reader->Read())
-			{
-				if (reader->IsDBNull(reader->GetOrdinal("DP"))) return;
-				// Get the image data
-				array<Byte>^ imageData = safe_cast<array<Byte>^>(reader["DP"]);
-
-				// Check if the image data is not null
-				if (imageData != nullptr && imageData->Length > 0)
-				{
-					// Convert the image data to MemoryStream
-					System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(imageData);
-
-					// Create a Bitmap from the MemoryStream
-					Bitmap^ image = gcnew Bitmap(ms);
-
-					// Display the image in the PictureBox
-					pictureBox->Image = image;
-				}
-			}
-			else
-			{
-				// Handle the case where no data is found for the given roll number
-				MessageBox::Show("No data found for the given roll number.");
-			}
-		}
-		catch (SqlException^ ex)
-		{
-			// Handle SQL Server exception
-			MessageBox::Show(ex->Message);
-		}
-		finally
-		{
-			// Close the connection
-			if (connection->State == ConnectionState::Open)
-				connection->Close();
-		}
-	}
-
 
 
 private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {

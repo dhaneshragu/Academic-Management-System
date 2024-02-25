@@ -67,6 +67,7 @@
     <EmbeddedResource Include="ProfSetDates.resx" />
     <EmbeddedResource Include="ProfGradesScreen.resx" />
     <EmbeddedResource Include="DetailsUpdateForm.resx" />
+    <EmbeddedResource Include="FourthYearCourseReg.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.ico" />
@@ -75,7 +76,5 @@
   <ItemGroup>
     <Image Include="Calender.bmp" />
     <Image Include="..\..\..\..\..\..\..\..\..\..\Downloads\calender.jpg" />
-    <Image Include="label3.Image.png" />
-    <Image Include="label9.Image.jpg" />
   </ItemGroup>
 </Project>

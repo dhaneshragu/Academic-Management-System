@@ -9,7 +9,8 @@ from selenium.common.exceptions import NoSuchElementException
 import pyodbc
 import requests
 from io import BytesIO
-from PIL import Image
+from PIL import Image,ExifTags
+import matplotlib.pyplot as plt
 
 # If some error comes replace driver_version with the chrome version shown in cmdline
 driver = webdriver.Chrome(service=Service(ChromeDriverManager(driver_version='121.0.6167.161').install()))
@@ -87,14 +88,33 @@ for year in ['2021','2022']:
                         time.sleep(1)
                         # Resize the image to 100x100 pixels
                         image = Image.open(BytesIO(response.content))
+                        try:
+                            for orientation in ExifTags.TAGS.keys():
+                                if ExifTags.TAGS[orientation] == 'Orientation':
+                                    break
+                            exif = dict(image._getexif().items())
+
+                            if exif[orientation] == 3:
+                                image = image.rotate(180, expand=True)
+                            elif exif[orientation] == 6:
+                                image = image.rotate(270, expand=True)
+                            elif exif[orientation] == 8:
+                                image = image.rotate(90, expand=True)
+                        except (AttributeError, KeyError, IndexError):
+                            # Cases: image don't have getexif
+                            pass
                         resized_image = image.resize((100, 100))
                         resized_data = BytesIO()
                         resized_image.save(resized_data, format="JPEG")
+
+                        plt.imshow(resized_image)
+                        plt.title(f"Resized Image for {year}")
+                        plt.show()
                         
                         # Insert resized image data into the database
                         cursor.execute("UPDATE [Student Database] SET DP = ? WHERE roll_no = ?", pyodbc.Binary(resized_data.getvalue()), rno)
                         conn.commit()
-                    
+
                     except:
                         print("F")
 

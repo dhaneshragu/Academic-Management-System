@@ -86,6 +86,8 @@ namespace AcadSecManagementSystem {
 	internal: System::Windows::Forms::Label^  label10;
 	private:
 	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::PictureBox^  pictureBox2;
+	private: System::Windows::Forms::Button^  button2;
 	internal:
 	private:
 
@@ -132,18 +134,21 @@ namespace AcadSecManagementSystem {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// textBox1
 			// 
 			this->textBox1->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->textBox1->Location = System::Drawing::Point(424, 136);
+			this->textBox1->Location = System::Drawing::Point(395, 136);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->ReadOnly = true;
 			this->textBox1->Size = System::Drawing::Size(315, 28);
@@ -153,7 +158,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->label1->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(249, 139);
+			this->label1->Location = System::Drawing::Point(220, 139);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(98, 24);
 			this->label1->TabIndex = 14;
@@ -163,7 +168,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->label4->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(249, 306);
+			this->label4->Location = System::Drawing::Point(220, 306);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(92, 24);
 			this->label4->TabIndex = 17;
@@ -173,7 +178,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->label6->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(249, 259);
+			this->label6->Location = System::Drawing::Point(220, 259);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(79, 24);
 			this->label6->TabIndex = 18;
@@ -183,7 +188,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->label7->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(248, 220);
+			this->label7->Location = System::Drawing::Point(219, 220);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(127, 24);
 			this->label7->TabIndex = 19;
@@ -193,7 +198,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->label8->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(249, 352);
+			this->label8->Location = System::Drawing::Point(220, 352);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(102, 24);
 			this->label8->TabIndex = 20;
@@ -203,7 +208,7 @@ namespace AcadSecManagementSystem {
 			// textBox4
 			// 
 			this->textBox4->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->textBox4->Location = System::Drawing::Point(424, 259);
+			this->textBox4->Location = System::Drawing::Point(395, 259);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(315, 28);
 			this->textBox4->TabIndex = 22;
@@ -211,7 +216,7 @@ namespace AcadSecManagementSystem {
 			// textBox5
 			// 
 			this->textBox5->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->textBox5->Location = System::Drawing::Point(424, 302);
+			this->textBox5->Location = System::Drawing::Point(395, 302);
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->Size = System::Drawing::Size(315, 28);
 			this->textBox5->TabIndex = 23;
@@ -219,7 +224,7 @@ namespace AcadSecManagementSystem {
 			// textBox6
 			// 
 			this->textBox6->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->textBox6->Location = System::Drawing::Point(424, 348);
+			this->textBox6->Location = System::Drawing::Point(395, 348);
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(315, 28);
 			this->textBox6->TabIndex = 24;
@@ -228,7 +233,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->label9->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(249, 179);
+			this->label9->Location = System::Drawing::Point(220, 179);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(124, 24);
 			this->label9->TabIndex = 25;
@@ -237,7 +242,7 @@ namespace AcadSecManagementSystem {
 			// textBox7
 			// 
 			this->textBox7->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->textBox7->Location = System::Drawing::Point(424, 175);
+			this->textBox7->Location = System::Drawing::Point(395, 175);
 			this->textBox7->Name = L"textBox7";
 			this->textBox7->ReadOnly = true;
 			this->textBox7->Size = System::Drawing::Size(315, 28);
@@ -246,7 +251,7 @@ namespace AcadSecManagementSystem {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(216, 135);
+			this->pictureBox1->Location = System::Drawing::Point(187, 135);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(27, 28);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -256,7 +261,7 @@ namespace AcadSecManagementSystem {
 			// pictureBox3
 			// 
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(216, 348);
+			this->pictureBox3->Location = System::Drawing::Point(187, 348);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(27, 28);
 			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -266,7 +271,7 @@ namespace AcadSecManagementSystem {
 			// pictureBox4
 			// 
 			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
-			this->pictureBox4->Location = System::Drawing::Point(216, 216);
+			this->pictureBox4->Location = System::Drawing::Point(187, 216);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(27, 28);
 			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -276,7 +281,7 @@ namespace AcadSecManagementSystem {
 			// pictureBox5
 			// 
 			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
-			this->pictureBox5->Location = System::Drawing::Point(216, 259);
+			this->pictureBox5->Location = System::Drawing::Point(187, 259);
 			this->pictureBox5->Name = L"pictureBox5";
 			this->pictureBox5->Size = System::Drawing::Size(27, 28);
 			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -286,7 +291,7 @@ namespace AcadSecManagementSystem {
 			// pictureBox6
 			// 
 			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.Image")));
-			this->pictureBox6->Location = System::Drawing::Point(216, 302);
+			this->pictureBox6->Location = System::Drawing::Point(187, 302);
 			this->pictureBox6->Name = L"pictureBox6";
 			this->pictureBox6->Size = System::Drawing::Size(27, 28);
 			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -296,7 +301,7 @@ namespace AcadSecManagementSystem {
 			// pictureBox7
 			// 
 			this->pictureBox7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.Image")));
-			this->pictureBox7->Location = System::Drawing::Point(216, 179);
+			this->pictureBox7->Location = System::Drawing::Point(187, 179);
 			this->pictureBox7->Name = L"pictureBox7";
 			this->pictureBox7->Size = System::Drawing::Size(27, 28);
 			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -305,7 +310,7 @@ namespace AcadSecManagementSystem {
 			// 
 			// dateTimePicker2
 			// 
-			this->dateTimePicker2->Location = System::Drawing::Point(424, 220);
+			this->dateTimePicker2->Location = System::Drawing::Point(395, 220);
 			this->dateTimePicker2->Name = L"dateTimePicker2";
 			this->dateTimePicker2->Size = System::Drawing::Size(315, 28);
 			this->dateTimePicker2->TabIndex = 35;
@@ -315,7 +320,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->button1->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->button1->BackColor = System::Drawing::Color::LightBlue;
-			this->button1->Location = System::Drawing::Point(410, 409);
+			this->button1->Location = System::Drawing::Point(442, 409);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(184, 55);
 			this->button1->TabIndex = 36;
@@ -354,12 +359,39 @@ namespace AcadSecManagementSystem {
 			this->label3->TabIndex = 38;
 			this->label3->Text = L"Details";
 			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(781, 50);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(160, 198);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox2->TabIndex = 39;
+			this->pictureBox2->TabStop = false;
+			this->pictureBox2->Click += gcnew System::EventHandler(this, &DetailsUpdateForm::pictureBox2_Click);
+			// 
+			// button2
+			// 
+			this->button2->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->button2->BackColor = System::Drawing::Color::LightGreen;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->Location = System::Drawing::Point(781, 261);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(160, 37);
+			this->button2->TabIndex = 40;
+			this->button2->Text = L"Change Picture";
+			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &DetailsUpdateForm::button2_Click);
+			// 
 			// DetailsUpdateForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(10, 23);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::AliceBlue;
 			this->ClientSize = System::Drawing::Size(1016, 557);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label10);
 			this->Controls->Add(this->button1);
@@ -394,6 +426,7 @@ namespace AcadSecManagementSystem {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -412,6 +445,16 @@ namespace AcadSecManagementSystem {
 				textBox6->Text = ConvertStdStringToSystemString(details["PhoneNo"]);
 				if (details["DateOfBirth"].length())
 				dateTimePicker2->Value = ParseDateString(details["DateOfBirth"]);
+
+				// Show DP
+				if (Role == "Student")
+				{
+					Constants::FetchAndDisplayImage(rollnumber, this->pictureBox2);
+				}
+				else
+				{
+					Constants::FetchAndDisplayProfImage(rollnumber, this->pictureBox2);
+				}
 
 	}
 
@@ -448,7 +491,11 @@ namespace AcadSecManagementSystem {
 						 flag = 0;  // User clicked No, so do not proceed with the update
 					 }
 					 if (flag)
-					 updateUserDetails(rollnumber, address, password, phoneNo, dateOfBirth,Role);
+					 {
+						 // Get the image from the PictureBox
+						 Bitmap^ newImage = dynamic_cast<Bitmap^>(this->pictureBox2->Image);
+						 updateUserDetails(rollnumber, address, password, phoneNo, dateOfBirth, newImage, Role);
+					 }
 				 }
 				 
 
@@ -473,6 +520,21 @@ namespace AcadSecManagementSystem {
 	private: System::Void Button1_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 				 button1->BackColor = System::Drawing::Color::LightBlue;
 	}
-	};
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+				 OpenFileDialog^ openFileDialog = gcnew OpenFileDialog();
+				 openFileDialog->Filter = "Image Files (*.bmp;*.jpg;*.png)|*.bmp;*.jpg;*.png|All files (*.*)|*.*";
+				 openFileDialog->Title = "Select an Image";
+
+				 if (openFileDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+				 {
+					 String^ imagePath = openFileDialog->FileName;
+					 Bitmap^ selectedImage = gcnew Bitmap(imagePath);
+					 pictureBox2->Image = selectedImage;
+				 }
+				 
+	}
+private: System::Void pictureBox2_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+};
 
 }
