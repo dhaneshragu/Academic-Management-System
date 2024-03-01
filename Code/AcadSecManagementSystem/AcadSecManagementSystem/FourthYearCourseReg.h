@@ -395,6 +395,7 @@ namespace AcadSecManagementSystem {
 			this->fourthyearpanel->Name = L"fourthyearpanel";
 			this->fourthyearpanel->Size = System::Drawing::Size(950, 303);
 			this->fourthyearpanel->TabIndex = 20;
+			this->fourthyearpanel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FourthYearCourseReg::fourthyearpanel_Paint);
 			// 
 			// label15
 			// 
@@ -530,8 +531,8 @@ namespace AcadSecManagementSystem {
 					 SqlCommand^ command = gcnew SqlCommand(query, con);
 					 command->Parameters->AddWithValue("@RollNumber", roll_number);
 					 command->Parameters->AddWithValue("@CourseID", course_code);
-					 int val = safe_cast<int>(command->ExecuteScalar());
-					 return val;
+					 bool val = safe_cast<bool>(command->ExecuteScalar());
+					 return bool(val);
 				 }
 				 catch (Exception ^ex)
 				 {
@@ -1023,6 +1024,9 @@ namespace AcadSecManagementSystem {
 				 else if (clickedButton->Text == "Drop") clickedButton->Text = "Add";
 	}
 
+
+private: System::Void fourthyearpanel_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+}
 
 };
 }

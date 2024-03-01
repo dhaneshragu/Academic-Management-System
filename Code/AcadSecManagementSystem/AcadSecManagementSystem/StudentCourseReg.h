@@ -673,6 +673,7 @@ namespace AcadSecManagementSystem {
 				 }
 				 else
 				 {
+					 // Handle compulsory and elective courses for Semester 6 students.
 					 thirdyearpanel->Visible = true;
 					 setAvailableCoursesTable(Sem);
 					 handleThirdyearElectives();
@@ -724,7 +725,6 @@ namespace AcadSecManagementSystem {
 				 {
 
 					 // Get all the required columns from the table and set the datagrid view
-					 //MessageBox::Show(reader["Course Name"]->ToString());
 					 String ^ CourseName = reader["course_name"]->ToString();
 					 String ^ Instructor = reader["prof_name"]->ToString();
 					 String^ CourseCode = reader["course_ID"]->ToString();
@@ -739,7 +739,7 @@ namespace AcadSecManagementSystem {
 						 LabElectives->Add(CourseCode);
 						 
 					 }
-					 else
+					 else // If its a theory course
 					 {
 						 TheoryElectives->Add(CourseCode);
 						 
@@ -754,6 +754,8 @@ namespace AcadSecManagementSystem {
 			 {
 				 con->Close();
 			 }
+
+			 // To preselect the combobox with -1 index
 			 this->comboBox2->Items->AddRange(LabElectives->ToArray());
 			 this->comboBox2->SelectedIndex = -1;
 
@@ -764,21 +766,23 @@ namespace AcadSecManagementSystem {
 			 this->comboBox3->SelectedIndex = -1;
 }
 
+// Checks if an record exists in the DB with roll_number and given course_code
 private: bool doesRecordExist(int roll_number, String ^ course_code)
 {
 	String^ query = "SELECT COUNT(*) FROM [Courses Taken] WHERE roll_no = @RollNumber AND course_ID = @CourseID";
 	String^ connString = Constants::getdbConnString();
 	SqlConnection^ con = gcnew SqlConnection(connString);
 	try
-	{
+	{ 
+		// Running the SQL command
 		con->Open();
 		SqlCommand^ command = gcnew SqlCommand(query, con);
 		command->Parameters->AddWithValue("@RollNumber", roll_number);
 		command->Parameters->AddWithValue("@CourseID", course_code);
-		int val = safe_cast<int>(command->ExecuteScalar());
-		return val;
+		bool val = safe_cast<bool>(command->ExecuteScalar());
+		return bool(val);
 	}
-	catch (Exception ^ex)
+	catch (Exception ^ex) // Handling Exception
 	{
 		MessageBox::Show(ex->Message);
 	}
@@ -789,7 +793,10 @@ private: bool doesRecordExist(int roll_number, String ^ course_code)
 	return false;
 }
 
-private: String^ getColValue(String^ colReqd, String^ colOrig, String^ colVal){
+
+private: String^ getColValue(String^ colReqd, String^ colOrig, String^ colVal)
+{
+			 // Returns the required column value from Courses table with the specified value for some other column
 			 String^ query = "SELECT Courses.[" + colReqd + "] FROM Courses WHERE Courses.[" + colOrig + "] = '"+ colVal + "'";
 			 String^ connString = Constants::getdbConnString();
 			 SqlConnection^ con = gcnew SqlConnection(connString);
@@ -824,6 +831,7 @@ private: String^ getColValue(String^ colReqd, String^ colOrig, String^ colVal){
 
 private: bool checkCompatibility(String ^ course, String ^ Slot)
 {
+			 // Checks if a given course is compatible to be chosen in a Slot
 			 // Define the Conflicts for Labs - the courses we can't take if a lab of this kind is chosen or vice versa
 			 map<string, vector<string>>LabConflicts;
 			 LabConflicts["AL1"] = { "B1", "C1", "D1" };
@@ -881,6 +889,7 @@ private: bool checkCompatibility(String ^ course, String ^ Slot)
 
 private: void InsertIntoDB(int RollNo, String ^ cid)
 {
+	// Inserts the RollNo and CID into Courses Taken DB
 	String^ query = "INSERT INTO [Courses Taken] (roll_no, Course_ID, grades) VALUES (@RollNo, @CID, '--')";
 	String^ connString = Constants::getdbConnString();
 	SqlConnection^ con = gcnew SqlConnection(connString);
@@ -907,6 +916,7 @@ private: void InsertIntoDB(int RollNo, String ^ cid)
 
 private: void ClearDB(int RollNo)
 {
+			 // Clears the Courses Taken DB for a roll Number
 			 String^ connString = Constants::getdbConnString();
 			 SqlConnection^ con = gcnew SqlConnection(connString);
 			 String^ query = "DELETE FROM [Courses Taken] WHERE roll_no = @RollNo";
@@ -932,6 +942,7 @@ private: void ClearDB(int RollNo)
 
 private: void DeleteFromDB(int RollNo, String^ cid)
 {
+			 // Deletes a course taken from DB when a student drops a course
 		String^ connString = Constants::getdbConnString();
 		SqlConnection^ con = gcnew SqlConnection(connString);
 		String^ query = "DELETE FROM [Courses Taken] WHERE roll_no = @RollNo AND Course_ID = @CID";
@@ -958,6 +969,7 @@ private: void DeleteFromDB(int RollNo, String^ cid)
 
 private: System::Void CommonButtonClickHandler(System::Object^ sender, System::EventArgs^ e)
 {
+			 // Handles Add/Drop Clicking
 			 Button^ clickedButton = dynamic_cast<Button^>(sender);
 			 String ^ name = clickedButton->Name;
 			 String^ text = clickedButton->Text;
@@ -966,6 +978,8 @@ private: System::Void CommonButtonClickHandler(System::Object^ sender, System::E
 				if (comboBox1->SelectedItem != nullptr)
 				{
 					String^ slot = getColValue("slot", "course_ID", comboBox1->SelectedItem->ToString());
+
+					// Check for compatibility first, then add it, otherwise deselect the selection in combo box
 					if (text == "Add")
 					{
 						if (checkCompatibility(comboBox1->SelectedItem->ToString(),slot))
@@ -1140,7 +1154,8 @@ private: System::Void CommonButtonClickHandler(System::Object^ sender, System::E
 }
 
 private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-			 // To handle the changes
+			 // To handle the changes in combo box.
+			 // Displayes the Course Name and prof ID from the Table by using the SQL query in getColValue
 			 if (comboBox1->SelectedItem != nullptr) {
 				 String^ selectedItem = comboBox1->SelectedItem->ToString();
 				 string Item = Constants::StrCnvstr(selectedItem);
@@ -1150,7 +1165,8 @@ private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, Sy
 }
 
 private: System::Void comboBox3_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-			 // To handle the changes
+			 // To handle the changes in combo box.
+			 // Displayes the Course Name and prof ID from the Table by using the SQL query in getColValue
 			 if (comboBox3->SelectedItem != nullptr) {
 				 String^ selectedItem = comboBox3->SelectedItem->ToString();
 				 string Item = Constants::StrCnvstr(selectedItem);
@@ -1160,7 +1176,8 @@ private: System::Void comboBox3_SelectedIndexChanged(System::Object^  sender, Sy
 }
 
 private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-			 // To handle the changes
+			 // To handle the changes in combo box.
+			 // Displayes the Course Name and prof ID from the Table by using the SQL query in getColValue
 			 if (comboBox2->SelectedItem != nullptr) {
 				 String^ selectedItem = comboBox2->SelectedItem->ToString();
 				 string Item = Constants::StrCnvstr(selectedItem);

@@ -23,12 +23,12 @@ namespace AcadSecManagementSystem {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for ProfSetDates
+	/// Summary for AdminSetDates
 	/// </summary>
-	public ref class ProfSetDates : public System::Windows::Forms::Form
+	public ref class AdminSetDates : public System::Windows::Forms::Form
 	{
 	public:
-		ProfSetDates(void)
+		AdminSetDates(void)
 		{
 			InitializeComponent();
 			//
@@ -40,7 +40,7 @@ namespace AcadSecManagementSystem {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~ProfSetDates()
+		~AdminSetDates()
 		{
 			if (components)
 			{
@@ -116,7 +116,7 @@ namespace AcadSecManagementSystem {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(ProfSetDates::typeid));
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(AdminSetDates::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -320,7 +320,7 @@ namespace AcadSecManagementSystem {
 			this->buttonTT->TabIndex = 16;
 			this->buttonTT->Text = L"Generate";
 			this->buttonTT->UseVisualStyleBackColor = false;
-			this->buttonTT->Click += gcnew System::EventHandler(this, &ProfSetDates::buttonTT_Click);
+			this->buttonTT->Click += gcnew System::EventHandler(this, &AdminSetDates::buttonTT_Click);
 			// 
 			// buttonExamTT
 			// 
@@ -332,7 +332,7 @@ namespace AcadSecManagementSystem {
 			this->buttonExamTT->TabIndex = 19;
 			this->buttonExamTT->Text = L"Generate";
 			this->buttonExamTT->UseVisualStyleBackColor = false;
-			this->buttonExamTT->Click += gcnew System::EventHandler(this, &ProfSetDates::buttonExamTT_Click);
+			this->buttonExamTT->Click += gcnew System::EventHandler(this, &AdminSetDates::buttonExamTT_Click);
 			// 
 			// NoFeePayment
 			// 
@@ -369,7 +369,7 @@ namespace AcadSecManagementSystem {
 			this->label9->Size = System::Drawing::Size(247, 36);
 			this->label9->TabIndex = 22;
 			this->label9->Text = L"       Set Dates";
-			this->label9->Click += gcnew System::EventHandler(this, &ProfSetDates::label9_Click);
+			this->label9->Click += gcnew System::EventHandler(this, &AdminSetDates::label9_Click);
 			// 
 			// buttonSave
 			// 
@@ -380,7 +380,7 @@ namespace AcadSecManagementSystem {
 			this->buttonSave->TabIndex = 23;
 			this->buttonSave->Text = L"Save";
 			this->buttonSave->UseVisualStyleBackColor = false;
-			this->buttonSave->Click += gcnew System::EventHandler(this, &ProfSetDates::buttonSave_Click);
+			this->buttonSave->Click += gcnew System::EventHandler(this, &AdminSetDates::buttonSave_Click);
 			// 
 			// buttonReset
 			// 
@@ -391,7 +391,7 @@ namespace AcadSecManagementSystem {
 			this->buttonReset->TabIndex = 24;
 			this->buttonReset->Text = L"Reset";
 			this->buttonReset->UseVisualStyleBackColor = false;
-			this->buttonReset->Click += gcnew System::EventHandler(this, &ProfSetDates::buttonReset_Click);
+			this->buttonReset->Click += gcnew System::EventHandler(this, &AdminSetDates::buttonReset_Click);
 			// 
 			// groupBox1
 			// 
@@ -457,7 +457,7 @@ namespace AcadSecManagementSystem {
 			this->checkBox2->Text = L"Set";
 			this->checkBox2->UseVisualStyleBackColor = true;
 			// 
-			// ProfSetDates
+			// AdminSetDates
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(10, 23);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -488,9 +488,9 @@ namespace AcadSecManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(4);
-			this->Name = L"ProfSetDates";
-			this->Text = L"ProfSetDates";
-			this->Load += gcnew System::EventHandler(this, &ProfSetDates::ProfSetDates_Load);
+			this->Name = L"AdminSetDates";
+			this->Text = L"AdminSetDates";
+			this->Load += gcnew System::EventHandler(this, &AdminSetDates::ProfSetDates_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox4->ResumeLayout(false);
