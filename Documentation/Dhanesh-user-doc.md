@@ -2,7 +2,7 @@
 This form allows the Student to Register for Course or Electives according to IITG CSE syllabus.
 
 ## Access Scope
-Any Student registered with the Institute.
+Any B.Tech. CSE Student registered with the Institute.
 
 ## Usage Instructions
 
