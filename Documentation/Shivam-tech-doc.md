@@ -285,7 +285,12 @@ Retrieves the date value of the `midsem_start_date` field and `endsem_start_date
 ### Query 1: Check midsem_start_date and endsem_start_date for NOT NULL
 
 ```sql
-SELECT CASE WHEN midsem_start_date IS NOT NULL AND endsem_start_date IS NOT NULL THEN 1 else 0 END AS Result From [Admin];
+SELECT CASE
+WHEN midsem_start_date IS NOT NULL
+AND endsem_start_date IS NOT NULL
+THEN 1 else 0
+END
+AS Result From [Admin];
 ```
 
 ## Function Name: `getisViewTimeTable`
