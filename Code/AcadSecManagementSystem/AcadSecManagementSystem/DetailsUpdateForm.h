@@ -466,51 +466,61 @@ namespace AcadSecManagementSystem {
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
-				 String ^dateOfBirth;
-				 String ^address;
-				 String ^password;
-				 String ^ phoneNo;
+				 // Extracting user details from the UI controls
+				 String^ dateOfBirth;
+				 String^ address;
+				 String^ password;
+				 String^ phoneNo;
 				 dateOfBirth = dateTimePicker2->Value.ToString("yyyy-MM-dd");
-				 address = textBox4->Text ;
-				 password = textBox5->Text ;
-				 phoneNo = textBox6->Text ;
+				 address = textBox4->Text;
+				 password = textBox5->Text;
+				 phoneNo = textBox6->Text;
 				 bool flag = 1;
+
+				 // Validation checks for password and phone number
 				 if (String::IsNullOrEmpty(password)) {
 					 MessageBox::Show("Password cannot be empty.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 					 flag = 0;
 				 }
-				 if (!IsValidPhoneNumber(phoneNo) && phoneNo != "Null")
-				 {
+
+				 // Check if phone number is valid using custom function IsValidPhoneNumber
+				 if (!IsValidPhoneNumber(phoneNo) && phoneNo != "Null") {
 					 MessageBox::Show("Invalid Phone Number.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 					 flag = 0;
 				 }
-				 if (flag)
-				 {
+
+				 // Proceed if all validations passed
+				 if (flag) {
+					 // Confirmation dialog before updating user details
 					 System::Windows::Forms::DialogResult result = MessageBox::Show("Are you sure you want to update user details?", "Confirmation", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+
+					 // Check user's choice in the confirmation dialog
 					 if (result == System::Windows::Forms::DialogResult::No) {
 						 flag = 0;  // User clicked No, so do not proceed with the update
 					 }
-					 if (flag)
-					 {
+
+					 // Update user details if user confirmed
+					 if (flag) {
 						 // Get the image from the PictureBox
 						 Bitmap^ newImage = dynamic_cast<Bitmap^>(this->pictureBox2->Image);
 						 updateUserDetails(rollnumber, address, password, phoneNo, dateOfBirth, newImage, Role);
 					 }
 				 }
-				 
 
-				 // Access Details From DB
-				 std::map<std::string, std::string>details = FetchDetailsByRollNumber(rollnumber,Role);
+				 // Access details from the database using the FetchDetailsByRollNumber function
+				 std::map<std::string, std::string> details = FetchDetailsByRollNumber(rollnumber, Role);
 
-
-				 // Show Details
+				 // Show fetched details in the UI controls
 				 textBox1->Text = ConvertStdStringToSystemString(details["name"]);
 				 textBox7->Text = ConvertStdStringToSystemString(details["Department"]);
 				 textBox4->Text = ConvertStdStringToSystemString(details["Address"]);
 				 textBox5->Text = ConvertStdStringToSystemString(details["password"]);
 				 textBox6->Text = ConvertStdStringToSystemString(details["PhoneNo"]);
+
+				 // Set date of birth in the DateTimePicker control if available
 				 if (details["DateOfBirth"].length())
 					 dateTimePicker2->Value = ParseDateString(details["DateOfBirth"]);
+
 
 	}
 	private: System::Void Button1_MouseEnter(System::Object^ sender, System::EventArgs^ e) {

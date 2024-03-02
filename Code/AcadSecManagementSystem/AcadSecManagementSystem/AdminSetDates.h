@@ -873,16 +873,23 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 }
 private: System::Void ProfSetDates_Load(System::Object^  sender, System::EventArgs^  e) {
 			 
+			 // Load details from the Admin table
 			 detailsAd = getDetails();
+
+			 // Set the value of dateMidsem based on midsem_start_date from detailsAd
 			 if (detailsAd["midsem_start_date"].length())
 				 dateMidsem->Value = ParseDateString(detailsAd["midsem_start_date"]);
 			 else
 				 MarshalString(dateMidsem->Value.ToString(), detailsAd["midsem_start_date"]);
+
+			 // Set the value of dateEndsem based on endsem_start_date from detailsAd
 			 if (detailsAd["endsem_start_date"].length())
-			 dateEndsem->Value = ParseDateString(detailsAd["endsem_start_date"]);
+				 dateEndsem->Value = ParseDateString(detailsAd["endsem_start_date"]);
 			 else
 				 MarshalString(dateEndsem->Value.ToString(), detailsAd["endsem_start_date"]);
-			 if (detailsAd["is_grade_submission"]=="True")
+
+			 // Check the appropriate radio button for grade submission based on is_grade_submission from detailsAd
+			 if (detailsAd["is_grade_submission"] == "True")
 			 {
 				 YesGradeCollection->Checked = true;
 			 }
@@ -890,6 +897,8 @@ private: System::Void ProfSetDates_Load(System::Object^  sender, System::EventAr
 			 {
 				 NoGradeCollection->Checked = true;
 			 }
+
+			 // Check the appropriate radio button for grade view based on view_grades from detailsAd
 			 if (detailsAd["view_grades"] == "True")
 			 {
 				 YesViewGrades->Checked = true;
@@ -898,6 +907,8 @@ private: System::Void ProfSetDates_Load(System::Object^  sender, System::EventAr
 			 {
 				 NoViewGrades->Checked = true;
 			 }
+
+			 // Check the appropriate radio button for course registration based on is_course_registration from detailsAd
 			 if (detailsAd["is_course_registration"] == "True")
 			 {
 				 YesCourseEnr->Checked = true;
@@ -906,6 +917,8 @@ private: System::Void ProfSetDates_Load(System::Object^  sender, System::EventAr
 			 {
 				 NoCourseEnr->Checked = true;
 			 }
+
+			 // Check the appropriate radio button for fee payment based on start_fee_payment from detailsAd
 			 if (detailsAd["start_fee_payment"] == "True")
 			 {
 				 YesFeePayment->Checked = true;
@@ -913,66 +926,97 @@ private: System::Void ProfSetDates_Load(System::Object^  sender, System::EventAr
 			 else
 			 {
 				 NoFeePayment->Checked = true;
-			 }		 
+			 }
 			 
 
 }
 	
-private: std::map<std::string,std::string> getDetails()
+private: std::map<std::string, std::string> getDetails()
 {
+			 // SQL query to retrieve all columns from the Admin table
 			 String^ queryString = "SELECT * FROM Admin";
+
+			 // Get the database connection string
 			 String^ connString = Constants::getdbConnString();
+
+			 // Create a SqlConnection using the connection string
 			 SqlConnection^ con = gcnew SqlConnection(connString);
+
+			 // Create a SqlCommand with the query and connection
 			 SqlCommand^ command = gcnew SqlCommand(queryString, con);
-			 std::map<string, string>details;
+
+			 // Create a std::map to store details from the database
+			 std::map<std::string, std::string> details;
+
 			 try
 			 {
+				 // Open the database connection
 				 con->Open();
 
+				 // Execute the SQL query and retrieve the results
 				 SqlDataReader^ reader = command->ExecuteReader();
+
+				 // Check if there are rows in the result set
 				 if (reader->Read())
 				 {
-					 for (int i = 0; i < reader->FieldCount; ++i) {
-
-
+					 // Loop through each column in the result set
+					 for (int i = 0; i < reader->FieldCount; ++i)
+					 {
+						 // Get the name and value of the current column
 						 String^ columnName = reader->GetName(i);
 						 int columnIndex = reader->GetOrdinal(columnName);
 						 Object^ columnValue = reader->GetSqlValue(columnIndex);
 						 String^ columnValueStr = columnValue->ToString();
-						 //Convert String^ to String (remove the ^)
+
+						 // Convert String^ to native std::string
 						 string columnNameStr;
 						 string columnValueStrNative;
 						 MarshalString(columnName, columnNameStr);
 						 MarshalString(columnValueStr, columnValueStrNative);
-						 // Insert into std::map
+
+						 // Insert the column name and value into the std::map
 						 details.insert({ columnNameStr, columnValueStrNative });
 					 }
 				 }
 			 }
 			 catch (Exception^ ex)
 			 {
+				 // Display a message box with the exception message if an error occurs
 				 MessageBox::Show(ex->Message);
 			 }
 			 finally
 			 {
+				 // Close the database connection in the finally block to ensure it happens regardless of exceptions
 				 con->Close();
 			 }
+
+			 // Return the std::map containing details from the database
 			 return details;
 }
-private: System::Void buttonSave_Click(System::Object^  sender, System::EventArgs^  e) {
+
+private: System::Void buttonSave_Click(System::Object^ sender, System::EventArgs^ e) {
+			 // Initialize flag to indicate whether to proceed with the update
 			 bool flag = 1;
+
+			 // Show a confirmation message box and get the user's response
 			 System::Windows::Forms::DialogResult result = MessageBox::Show("Are you sure you want to make these changes?", "Confirmation", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+
+			 // Check if the user clicked No, set flag to 0 to prevent the update
 			 if (result == System::Windows::Forms::DialogResult::No) {
-				 flag = 0;  // User clicked No, so do not proceed with the update
+				 flag = 0;
 			 }
-			 if (flag)
-			 {
-				 String ^gradeCollection="False";
-				 String ^courseReg="False";
-				 String ^feePayment="False";
-				 String ^gradeView="False";
-				 String ^midSemDate ="NULL";
-				 String ^endSemDate ="NULL";
+
+			 // Check if the update should proceed
+			 if (flag) {
+				 // Initialize variables to default values
+				 String^ gradeCollection = "False";
+				 String^ courseReg = "False";
+				 String^ feePayment = "False";
+				 String^ gradeView = "False";
+				 String^ midSemDate = "NULL";
+				 String^ endSemDate = "NULL";
+
+				 // Update variables based on the state of checkboxes and date pickers
 				 if (YesGradeCollection->Checked)
 					 gradeCollection = "True";
 				 if (YesFeePayment->Checked)
@@ -985,117 +1029,136 @@ private: System::Void buttonSave_Click(System::Object^  sender, System::EventArg
 					 midSemDate = dateMidsem->Value.ToString("yyyy-MM-dd");
 				 if (checkBox2->Checked)
 					 endSemDate = dateEndsem->Value.ToString("yyyy-MM-dd");
-				 updateAdminDetails(gradeCollection,courseReg,feePayment,gradeView,midSemDate,endSemDate);
+
+				 // Call the updateAdminDetails function with the updated values
+				 updateAdminDetails(gradeCollection, courseReg, feePayment, gradeView, midSemDate, endSemDate);
 			 }
+
+			 // Retrieve updated details from the database
 			 detailsAd = getDetails();
+
+			 // Update UI elements based on the retrieved details
 			 if (detailsAd["midsem_start_date"].length())
 				 dateMidsem->Value = ParseDateString(detailsAd["midsem_start_date"]);
 			 else
 				 MarshalString(dateMidsem->Value.ToString(), detailsAd["midsem_start_date"]);
+
 			 if (detailsAd["endsem_start_date"].length())
 				 dateEndsem->Value = ParseDateString(detailsAd["endsem_start_date"]);
 			 else
 				 MarshalString(dateEndsem->Value.ToString(), detailsAd["endsem_start_date"]);
+
 			 if (detailsAd["is_grade_submission"] == "True")
-			 {
 				 YesGradeCollection->Checked = true;
-			 }
 			 else
-			 {
 				 NoGradeCollection->Checked = true;
-			 }
+
 			 if (detailsAd["view_grades"] == "True")
-			 {
 				 YesViewGrades->Checked = true;
-			 }
 			 else
-			 {
 				 NoViewGrades->Checked = true;
-			 }
+
 			 if (detailsAd["is_course_registration"] == "True")
-			 {
 				 YesCourseEnr->Checked = true;
-			 }
 			 else
-			 {
 				 NoCourseEnr->Checked = true;
-			 }
+
 			 if (detailsAd["start_fee_payment"] == "True")
-			 {
 				 YesFeePayment->Checked = true;
-			 }
 			 else
-			 {
 				 NoFeePayment->Checked = true;
-			 }
 }
-private: void updateAdminDetails(String ^gradeCollection, String ^ courseReg, String ^feePayment, String ^gradeView, String ^ midSemDate, String ^endSemDate)
+
+private: void updateAdminDetails(String^ gradeCollection, String^ courseReg, String^ feePayment, String^ gradeView, String^ midSemDate, String^ endSemDate)
 {
+			 // SQL query for updating Admin details based on the provided parameters
 			 String^ queryString = "UPDATE [Admin] SET is_course_registration = @courseReg, is_grade_submission = @gradeCollection, view_grades = @gradeView, start_fee_payment = @feePayment";
+
+			 // Check if midSemDate is not "NULL" and append it to the query
 			 if (midSemDate != "NULL")
-				 queryString += ",midsem_start_date = @midSemDate";
+				 queryString += ", midsem_start_date = @midSemDate";
+
+			 // Check if endSemDate is not "NULL" and append it to the query
 			 if (endSemDate != "NULL")
-				 queryString += ",endsem_start_date = @endSemDate";
+				 queryString += ", endsem_start_date = @endSemDate";
+
+			 // Get the database connection string
 			 String^ connString = Constants::getdbConnString();
 			 SqlConnection^ con = gcnew SqlConnection(connString);
+
+			 // Create a SQL command with the query and connection
 			 SqlCommand^ command = gcnew SqlCommand(queryString, con);
+
+			 // Add parameters to the command for each variable
 			 command->Parameters->AddWithValue("@gradeCollection", gradeCollection);
 			 command->Parameters->AddWithValue("@courseReg", courseReg);
 			 command->Parameters->AddWithValue("@feePayment", feePayment);
 			 command->Parameters->AddWithValue("@gradeView", gradeView);
 			 command->Parameters->AddWithValue("@midSemDate", midSemDate);
 			 command->Parameters->AddWithValue("@endSemDate", endSemDate);
+
 			 try {
+				 // Open the database connection
 				 con->Open();
+
+				 // Execute the SQL command to update the Admin details
 				 command->ExecuteNonQuery();
+
+				 // Display a success message in the console
 				 Console::WriteLine("User details updated successfully.");
 			 }
 			 catch (Exception^ ex) {
+				 // Display an error message in the console
 				 Console::WriteLine("Error: " + ex->Message);
-				 System::Windows::Forms::DialogResult result = MessageBox::Show("Are you sure you want to make these changes?"+ex->Message, "Confirmation", MessageBoxButtons::OK, MessageBoxIcon::Question);
-			 }
-			 con->Close();
 
+				 // Show a confirmation message box with the error message
+				 System::Windows::Forms::DialogResult result = MessageBox::Show("Are you sure you want to make these changes? " + ex->Message, "Confirmation", MessageBoxButtons::OK, MessageBoxIcon::Question);
+			 }
+
+			 // Close the database connection
+			 con->Close();
 }
-private: System::Void buttonReset_Click(System::Object^  sender, System::EventArgs^  e) {
+
+private: System::Void buttonReset_Click(System::Object^ sender, System::EventArgs^ e) {
+			 // Check if midsem_start_date is available in the detailsAd map and update the dateMidsem accordingly
 			 if (detailsAd["midsem_start_date"].length())
 				 dateMidsem->Value = ParseDateString(detailsAd["midsem_start_date"]);
+
+			 // Check if endsem_start_date is available in the detailsAd map and update the dateEndsem accordingly
 			 if (detailsAd["endsem_start_date"].length())
 				 dateEndsem->Value = ParseDateString(detailsAd["endsem_start_date"]);
-			 if (detailsAd["is_grade_submission"] == "True")
-			 {
+
+			 // Check if is_grade_submission is "True" in the detailsAd map and update the appropriate RadioButton
+			 if (detailsAd["is_grade_submission"] == "True") {
 				 YesGradeCollection->Checked = true;
 			 }
-			 else
-			 {
+			 else {
 				 NoGradeCollection->Checked = true;
 			 }
-			 if (detailsAd["view_grades"] == "True")
-			 {
+
+			 // Check if view_grades is "True" in the detailsAd map and update the appropriate RadioButton
+			 if (detailsAd["view_grades"] == "True") {
 				 YesViewGrades->Checked = true;
 			 }
-			 else
-			 {
+			 else {
 				 NoViewGrades->Checked = true;
 			 }
-			 if (detailsAd["is_course_registration"] == "True")
-			 {
+
+			 // Check if is_course_registration is "True" in the detailsAd map and update the appropriate RadioButton
+			 if (detailsAd["is_course_registration"] == "True") {
 				 YesCourseEnr->Checked = true;
 			 }
-			 else
-			 {
+			 else {
 				 NoCourseEnr->Checked = true;
 			 }
-			 if (detailsAd["start_fee_payment"] == "True")
-			 {
+
+			 // Check if start_fee_payment is "True" in the detailsAd map and update the appropriate RadioButton
+			 if (detailsAd["start_fee_payment"] == "True") {
 				 YesFeePayment->Checked = true;
 			 }
-			 else
-			 {
+			 else {
 				 NoFeePayment->Checked = true;
 			 }
-
-
 }
 	// Exam room allocation generation
 	private: System::Void buttonExamTT_Click(System::Object^  sender, System::EventArgs^  e) {

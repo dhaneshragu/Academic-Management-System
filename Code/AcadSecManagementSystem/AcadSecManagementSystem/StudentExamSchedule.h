@@ -288,48 +288,67 @@ namespace AcadSecManagementSystem {
 		}
 #pragma endregion
 	private: System::Void StudentExamSchedule_Load(System::Object^  sender, System::EventArgs^  e) {
-				 
-				 // extract midsem-endsem date
+
+				 // Try block to handle potential exceptions
 				 try
 				 {
-					 
+					 // Establish database connection
 					 String^ connString = Constants::getdbConnString();
 					 SqlConnection^ con = gcnew SqlConnection(connString);
+
+					 // Open the database connection
 					 con->Open();
-					 String^ query = "SELECT midsem_start_date,endsem_start_date from [Admin]";
+
+					 // SQL query to fetch midsem and endsem start dates
+					 String^ query = "SELECT midsem_start_date, endsem_start_date FROM [Admin]";
 					 SqlCommand^ command = gcnew SqlCommand(query, con);
+
+					 // Execute the SQL query and retrieve the result set
 					 SqlDataReader^ reader = command->ExecuteReader();
+
+					 // Check if there is a row in the result set
 					 if (reader->Read()) {
-
+						 // Loop through each field in the result set
 						 for (int i = 0; i < reader->FieldCount; ++i) {
+							 // Get the name of the current column
+							 String^ columnName = reader->GetName(i);
 
-								 String^ columnName = reader->GetName(i);
-								 int columnIndex = reader->GetOrdinal(columnName);
-								 Object^ columnValue = reader->GetSqlValue(columnIndex);
-								 String^ columnValueStr = columnValue->ToString();
-								 //Convert String^ to String (remove the ^)
-								 string columnValueStrNative;
-								 MarshalString(columnValueStr, columnValueStrNative);
-								 if (columnName == "midsem_start_date")
-								 {
-									 MidSemStartDate = splitStringAndReturnFirstPart(columnValueStrNative);
-								 }
-								 
-								 if (columnName == "endsem_start_date")
-									 EndSemStartDate = splitStringAndReturnFirstPart(columnValueStrNative);
-								 // Insert into std::map
+							 // Get the index of the current column
+							 int columnIndex = reader->GetOrdinal(columnName);
+
+							 // Get the value of the current column
+							 Object^ columnValue = reader->GetSqlValue(columnIndex);
+
+							 // Convert String^ to std::string (remove the ^)
+							 String^ columnValueStr = columnValue->ToString();
+							 string columnValueStrNative;
+							 MarshalString(columnValueStr, columnValueStrNative);
+
+							 // Check the column name and update corresponding variables
+							 if (columnName == "midsem_start_date") {
+								 // Extract and store the midsem start date
+								 MidSemStartDate = splitStringAndReturnFirstPart(columnValueStrNative);
+							 }
+
+							 if (columnName == "endsem_start_date") {
+								 // Extract and store the endsem start date
+								 EndSemStartDate = splitStringAndReturnFirstPart(columnValueStrNative);
+							 }
 						 }
 					 }
 
+					 // Close the reader and database connection
 					 reader->Close();
 					 con->Close();
 				 }
-				 
+				 // Catch block to handle exceptions and display an error message
 				 catch (Exception^ ex)
 				 {
-					 MessageBox::Show(ex->Message); 
-
+					 // Show an error message if an exception occurs
+					 MessageBox::Show(ex->Message);
 				 }
+
+				 // set midsem endsem day and time
 				 if (MidSemStartDate.length())
 				 {
 					 MidSemExamSlotToDay["A"] = getNextDate(MidSemStartDate, 0);
@@ -361,7 +380,7 @@ namespace AcadSecManagementSystem {
 					 MidSemSlotToTime["G"] = "9 AM - 11 AM";
 					 MidSemSlotToTime["G1"] = "2 PM - 4 PM";
 				 }
-				 
+
 				 if (EndSemStartDate.length())
 				 {
 					 EndSemExamSlotToDay["A"] = getNextDate(EndSemStartDate, 0);
@@ -394,103 +413,124 @@ namespace AcadSecManagementSystem {
 					 EndSemSlotToTime["G1"] = "2 PM - 5 PM";
 				 }
 
-				 
 
 
-				 
-		
-				try
-				{
-					String^ connString = Constants::getdbConnString();
-					SqlConnection^ con = gcnew SqlConnection(connString);
-					con->Open();
-					String^ query = "SELECT [Courses].course_ID, slot FROM [Courses] JOIN [Courses Taken] ON [Courses].course_ID = [Courses Taken].course_ID JOIN [Room] ON [Room].room_ID = [Courses Taken].examination_venue where roll_no = '" + roll_no + "' AND is_lab = 'FALSE' Order by slot";
-					SqlCommand^ command = gcnew SqlCommand(query, con);
-					SqlDataReader^ reader = command->ExecuteReader();
 
-					// Assuming that course_ID is stored in the first column (index 0) and slot in the second column (index 1
-					while (reader->Read()) {
-						
-						String^ courseId = reader->GetString(0);
-						String^ courseSlot = reader->GetString(1);
 
-						string courseID_str;
-						string courseSlot_str;
-						MarshalString(courseId, courseID_str);
-						MarshalString(courseSlot, courseSlot_str);
-						// Store course slot information in the CourseIdtoSlot map
-						courseIDtoSlot[courseID_str] = courseSlot_str;
-					}
 
-					reader->Close();
-					con->Close();
-				}
-				catch (Exception^ ex)
-				{
-					MessageBox::Show(ex->Message);
-				}
+				 // Try block to handle potential exceptions while retrieving course information
+				 try
+				 {
+					 // Establish a database connection
+					 String^ connString = Constants::getdbConnString();
+					 SqlConnection^ con = gcnew SqlConnection(connString);
 
-				DataTable^ dataTable = gcnew DataTable();
-				DataGridView1->Columns[0]->DataPropertyName = "Course ID";
-				DataGridView1->Columns[1]->DataPropertyName = "Course Name";
-				DataGridView1->Columns[2]->DataPropertyName = "Venue";
-				DataGridView1->Columns[3]->DataPropertyName = "MidsemDate";
-				DataGridView1->Columns[4]->DataPropertyName = "MidsemTime";
-				DataGridView1->Columns[5]->DataPropertyName = "EndsemDate";
-				DataGridView1->Columns[6]->DataPropertyName = "EndsemTime";
-				dataTable->Columns->Add("Course ID", String::typeid);
-				dataTable->Columns->Add("Course Name", String::typeid);
-				dataTable->Columns->Add("Venue", String::typeid);
-				dataTable->Columns->Add("MidsemDate", String::typeid);
-				dataTable->Columns->Add("MidsemTime", String::typeid);
-				dataTable->Columns->Add("EndsemDate", String::typeid);
-				dataTable->Columns->Add("EndsemTime", String::typeid);
-				try
-				{
-					String^ connString = Constants::getdbConnString();
-					SqlConnection^ con = gcnew SqlConnection(connString);
-					con->Open();
-					String^ query = "SELECT [Courses].course_ID as CID, course_name, slot, [Room].name as venue FROM [Courses] JOIN [Courses Taken] ON [Courses].course_ID = [Courses Taken].course_ID JOIN [Room] ON [Room].room_ID = [Courses Taken].examination_venue WHERE roll_no = '" + roll_no + "' AND is_lab = 'FALSE' order by slot";
-					SqlCommand^ command = gcnew SqlCommand(query, con);
-					SqlDataReader^ reader = command->ExecuteReader();
+					 // Open the database connection
+					 con->Open();
 
-					// Assuming that course_ID is stored in the first column (index 0) and slot in the second column (index 1
-					while (reader->Read()) {
-						String^ courseId = reader->GetString(0);
-						String^ coursename = reader->GetString(1);
-						String^ slot = reader->GetString(2);
-						String^ venue = reader->GetString(3);
-						string courseIdstr;
-						MarshalString(courseId, courseIdstr);
-						String^ courseSloT = ConvertStdStringToSystemString(courseIDtoSlot[courseIdstr]);
-						string courseSlot;
-						MarshalString(courseSloT, courseSlot);
-						// Assuming that your maps contain the necessary information for the given course slot
-						String^ midSemDate = ConvertStdStringToSystemString(MidSemExamSlotToDay[courseSlot]);
-						String^ midSemTime = ConvertStdStringToSystemString(MidSemSlotToTime[courseSlot]);
-						String^ endSemDate = ConvertStdStringToSystemString(EndSemExamSlotToDay[courseSlot]);
-						String^ endSemTime = ConvertStdStringToSystemString(EndSemSlotToTime[courseSlot]);
+					 // SQL query to fetch course_ID and slot information for non-lab courses
+					 String^ query = "SELECT [Courses].course_ID, slot FROM [Courses] JOIN [Courses Taken] ON [Courses].course_ID = [Courses Taken].course_ID JOIN [Room] ON [Room].room_ID = [Courses Taken].examination_venue WHERE roll_no = '" + roll_no + "' AND is_lab = 'FALSE' ORDER BY slot";
+					 SqlCommand^ command = gcnew SqlCommand(query, con);
 
-						// Create a DataTable with the same structure as the existing columns
-						
-						DataRow^ row = dataTable->NewRow();
-						row["Course ID"] = courseId;
-						row["Course Name"] = coursename;
-						row["Venue"] = "    "+venue;
-						row["MidsemDate"] = "  "+midSemDate;
-						row["MidsemTime"] = midSemTime;
-						row["EndsemDate"] = "  "+endSemDate;
-						row["EndsemTime"] = endSemTime;
-						dataTable->Rows->Add(row);
-						
-					}
-					con->Close();
-				}
-				catch (Exception^ ex)
-				{
-					MessageBox::Show(ex->Message);
-				}
-				DataGridView1->DataSource = dataTable;
+					 // Execute the SQL query and retrieve the result set
+					 SqlDataReader^ reader = command->ExecuteReader();
+
+					 // Assuming that course_ID is stored in the first column (index 0) and slot in the second column (index 1)
+					 while (reader->Read()) {
+						 // Extract course information from the result set
+						 String^ courseId = reader->GetString(0);
+						 String^ courseSlot = reader->GetString(1);
+
+						 // Convert String^ to std::string (remove the ^)
+						 string courseID_str;
+						 string courseSlot_str;
+						 MarshalString(courseId, courseID_str);
+						 MarshalString(courseSlot, courseSlot_str);
+
+						 // Store course slot information in the courseIDtoSlot map
+						 courseIDtoSlot[courseID_str] = courseSlot_str;
+					 }
+
+					 // Close the reader and database connection
+					 reader->Close();
+					 con->Close();
+				 }
+				 // Catch block to handle exceptions and display an error message
+				 catch (Exception^ ex)
+				 {
+					 // Show an error message if an exception occurs during course information retrieval
+					 MessageBox::Show(ex->Message);
+				 }
+
+				 // Create a DataTable for displaying course information in a DataGridView
+				 DataTable^ dataTable = gcnew DataTable();
+
+				 // Set up the columns of the DataGridView
+				 // ...
+
+				 // Try block to handle potential exceptions while retrieving detailed course information
+				 try
+				 {
+					 // Establish a database connection
+					 String^ connString = Constants::getdbConnString();
+					 SqlConnection^ con = gcnew SqlConnection(connString);
+
+					 // Open the database connection
+					 con->Open();
+
+					 // SQL query to fetch detailed course information including course name and venue
+					 String^ query = "SELECT [Courses].course_ID as CID, course_name, slot, [Room].name as venue FROM [Courses] JOIN [Courses Taken] ON [Courses].course_ID = [Courses Taken].course_ID JOIN [Room] ON [Room].room_ID = [Courses Taken].examination_venue WHERE roll_no = '" + roll_no + "' AND is_lab = 'FALSE' ORDER BY slot";
+					 SqlCommand^ command = gcnew SqlCommand(query, con);
+
+					 // Execute the SQL query and retrieve the result set
+					 SqlDataReader^ reader = command->ExecuteReader();
+
+					 // Assuming that course_ID is stored in the first column (index 0) and slot in the second column (index 1)
+					 while (reader->Read()) {
+						 // Extract detailed course information from the result set
+						 String^ courseId = reader->GetString(0);
+						 String^ coursename = reader->GetString(1);
+						 String^ slot = reader->GetString(2);
+						 String^ venue = reader->GetString(3);
+
+						 // Convert String^ to std::string (remove the ^) and retrieve additional information from maps
+						 string courseIdstr;
+						 MarshalString(courseId, courseIdstr);
+						 String^ courseSloT = ConvertStdStringToSystemString(courseIDtoSlot[courseIdstr]);
+						 string courseSlot;
+						 MarshalString(courseSloT, courseSlot);
+
+						 // Retrieve information from maps (MidSemExamSlotToDay, MidSemSlotToTime, EndSemExamSlotToDay, EndSemSlotToTime)
+						 String^ midSemDate = ConvertStdStringToSystemString(MidSemExamSlotToDay[courseSlot]);
+						 String^ midSemTime = ConvertStdStringToSystemString(MidSemSlotToTime[courseSlot]);
+						 String^ endSemDate = ConvertStdStringToSystemString(EndSemExamSlotToDay[courseSlot]);
+						 String^ endSemTime = ConvertStdStringToSystemString(EndSemSlotToTime[courseSlot]);
+
+						 // Create a new row for the DataTable and add it to the DataTable
+						 DataRow^ row = dataTable->NewRow();
+						 row["Course ID"] = courseId;
+						 row["Course Name"] = coursename;
+						 row["Venue"] = "    " + venue;
+						 row["MidsemDate"] = "  " + midSemDate;
+						 row["MidsemTime"] = midSemTime;
+						 row["EndsemDate"] = "  " + endSemDate;
+						 row["EndsemTime"] = endSemTime;
+						 dataTable->Rows->Add(row);
+					 }
+
+					 // Close the reader and database connection
+					 con->Close();
+				 }
+				 // Catch block to handle exceptions and display an error message
+				 catch (Exception^ ex)
+				 {
+					 // Show an error message if an exception occurs during detailed course information retrieval
+					 MessageBox::Show(ex->Message);
+				 }
+
+				 // Set the DataTable as the data source for the DataGridView
+				 DataGridView1->DataSource = dataTable;
+
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 	}
@@ -498,5 +538,5 @@ namespace AcadSecManagementSystem {
 	}
 	private: System::Void DataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 	}
-};
+	};
 }

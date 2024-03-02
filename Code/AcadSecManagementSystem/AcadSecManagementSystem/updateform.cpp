@@ -8,11 +8,7 @@
 #include <iomanip>
 using namespace std;
 
-
-//#include <msclr/marshal_cppstd.h>
-
-// Write all your functions detailed here that were defined in header files, DONT USE int main()
-
+// Function to marshal a System::String to std::string
 void MarshalString(String ^ s, string& os) {
 	using namespace Runtime::InteropServices;
 	const char* chars =
@@ -20,18 +16,20 @@ void MarshalString(String ^ s, string& os) {
 	os = chars;
 	Marshal::FreeHGlobal(IntPtr((void*)chars));
 }
+
+// Function to convert a std::string to System::String
 String^ ConvertStdStringToSystemString(const std::string& stdString) {
 	array<Byte>^ byteArray = gcnew array<Byte>(stdString.length());
 	System::Runtime::InteropServices::Marshal::Copy(IntPtr((void*)stdString.c_str()), byteArray, 0, stdString.length());
 	return System::Text::Encoding::UTF8->GetString(byteArray);
 }
-std::map<string, string> FetchDetailsByRollNumber(String^ rollNumber,String ^ Role) {
 
+// Function to fetch details by roll number and role
+std::map<string, string> FetchDetailsByRollNumber(String^ rollNumber, String ^ Role) {
 	std::map<string, string> details;
 	String^ connectionString = Constants::getdbConnString();
 
-	if (Role == "Student")
-	{
+	if (Role == "Student") {
 		try {
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			connection->Open();
@@ -44,8 +42,6 @@ std::map<string, string> FetchDetailsByRollNumber(String^ rollNumber,String ^ Ro
 			if (reader->Read()) {
 				// Get column names
 				for (int i = 0; i < reader->FieldCount; ++i) {
-
-
 					String^ columnName = reader->GetName(i);
 					int columnIndex = reader->GetOrdinal(columnName);
 					Object^ columnValue = reader->GetSqlValue(columnIndex);
@@ -68,8 +64,7 @@ std::map<string, string> FetchDetailsByRollNumber(String^ rollNumber,String ^ Ro
 		}
 	}
 
-	if (Role == "Professor")
-	{
+	if (Role == "Professor") {
 		try {
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			connection->Open();
@@ -82,8 +77,6 @@ std::map<string, string> FetchDetailsByRollNumber(String^ rollNumber,String ^ Ro
 			if (reader->Read()) {
 				// Get column names
 				for (int i = 0; i < reader->FieldCount; ++i) {
-
-
 					String^ columnName = reader->GetName(i);
 					int columnIndex = reader->GetOrdinal(columnName);
 					Object^ columnValue = reader->GetSqlValue(columnIndex);
@@ -108,7 +101,8 @@ std::map<string, string> FetchDetailsByRollNumber(String^ rollNumber,String ^ Ro
 	return details;
 }
 
-System::DateTime ParseDateString(std :: string dateString) {
+// Function to parse a date string into System::DateTime
+System::DateTime ParseDateString(std::string dateString) {
 	// Convert System::String^ to std::string
 
 	// Parse the string into a DateTime object
@@ -117,26 +111,23 @@ System::DateTime ParseDateString(std :: string dateString) {
 	return dateTime;
 }
 
-
 // Function to convert Bitmap to Byte array
-array<Byte>^ ImageToBytes(Bitmap^ image)
-{
+array<Byte>^ ImageToBytes(Bitmap^ image) {
 	System::IO::MemoryStream^ stream = gcnew System::IO::MemoryStream();
 	image->Save(stream, System::Drawing::Imaging::ImageFormat::Jpeg);
 	return stream->ToArray();
 }
 
-void updateUserDetails(String ^rollnumber, String ^ address, String ^password, String ^phoneNo, String ^dateOfBirth, Bitmap^ Image, String ^ Role)
-{
-	String^ connectionString = Constants:: getdbConnString(); // Replace with your actual connection string
+// Function to update user details
+void updateUserDetails(String ^rollnumber, String ^ address, String ^password, String ^phoneNo, String ^dateOfBirth, Bitmap^ Image, String ^ Role) {
+	String^ connectionString = Constants::getdbConnString(); // Replace with your actual connection string
 
 	// Convert Bitmap to Byte array
 	array<Byte>^ imageBytes = ImageToBytes(Image);
 
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);
 	connection->Open();
-	if (Role == "Student")
-	{
+	if (Role == "Student") {
 		String^ query = "UPDATE [Student Database] SET Address = @Address, password = @Password, PhoneNo = @PhoneNo, DateOfBirth = @DateOfBirth, DP = @Image WHERE roll_no = @RollNumber";
 		SqlCommand^ command = gcnew SqlCommand(query, connection);
 		command->Parameters->AddWithValue("@RollNumber", rollnumber);
@@ -156,8 +147,7 @@ void updateUserDetails(String ^rollnumber, String ^ address, String ^password, S
 
 		connection->Close();
 	}
-	if (Role == "Professor")
-	{
+	if (Role == "Professor") {
 		String^ query = "UPDATE [Faculty] SET Address = @Address, password = @Password, PhoneNo = @PhoneNo, DateOfBirth = @DateOfBirth, DP = @Image WHERE faculty_ID = @RollNumber";
 		SqlCommand^ command = gcnew SqlCommand(query, connection);
 		command->Parameters->AddWithValue("@RollNumber", rollnumber);
@@ -178,6 +168,8 @@ void updateUserDetails(String ^rollnumber, String ^ address, String ^password, S
 		connection->Close();
 	}
 }
+
+// Function to check if a phone number is valid
 bool IsValidPhoneNumber(String^ phoneNo) {
 	if (phoneNo == nullptr)
 		return true;
@@ -188,6 +180,8 @@ bool IsValidPhoneNumber(String^ phoneNo) {
 
 	return std::regex_match(phoneNoStr, pattern);
 }
+
+// Function to split a string and return the first part before a space
 std::string splitStringAndReturnFirstPart(const std::string& inputString) {
 	// Find the position of the first space in the input string
 	size_t spacePosition = inputString.find(' ');
@@ -202,10 +196,13 @@ std::string splitStringAndReturnFirstPart(const std::string& inputString) {
 		return inputString;
 	}
 }
+
+// Function to check if a year is a leap year
 bool isLeapYear(int year) {
 	return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
+// Function to check if a date is valid
 bool isValidDate(int day, int month, int year) {
 	if (month < 1 || month > 12 || day < 1) {
 		return false;
@@ -220,6 +217,7 @@ bool isValidDate(int day, int month, int year) {
 	return day <= daysInMonth[month];
 }
 
+// Function to get the next date given a current date and days ahead
 std::string getNextDate(const std::string &currentDate, int daysAhead) {
 	std::istringstream dateStream(currentDate);
 	char dash;
