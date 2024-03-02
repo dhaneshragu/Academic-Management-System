@@ -308,34 +308,35 @@ namespace AcadSecManagementSystem {
 
 		}
 #pragma endregion
-		// Geting std::string from String^
-		void MarshalString(String ^ s, string& os) {
-			using namespace Runtime::InteropServices;
-			const char* chars =
-				(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
-			os = chars;
-			Marshal::FreeHGlobal(IntPtr((void*)chars));
-		}
-		// Getting String^ from std::string
-		String^ ConvertToSystemString(const std::string& str) {
-			return gcnew String(str.c_str());
-		}
+	// Geting std::string from String^
+	void MarshalString(String ^ s, string& os) {
+		using namespace Runtime::InteropServices;
+		const char* chars =
+			(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+		os = chars;
+		Marshal::FreeHGlobal(IntPtr((void*)chars));
+	}
 
-		// Chronological sort
-		static bool chronoSort(tuple<string, string, string, string>&a, tuple<string, string, string, string>&b){
-			string time1 = get<0>(a);
-			string time2 = get<0>(b);
-			int sizeTime1 = time1.size();
-			int sizeTime2 = time2.size();
-			if (time1[sizeTime1 - 2] != time2[sizeTime2 - 2]) return time1[sizeTime1 - 2] < time2[sizeTime2 - 2];
-			if (time1[sizeTime1 - 2] == 'A') return time1 < time2;
-			if (time1[0] == '1' && time1[1] == '2') return true;
-			if (time2[0] == '1' && time2[1] == '2') return false;
-			return time1 < time2;
-		}
+	// Getting String^ from std::string
+	String^ ConvertToSystemString(const std::string& str) {
+		return gcnew String(str.c_str());
+	}
 
-		// Remove the automatic sort through header click.
-		void RemoveAutoSorting(DataGridView^ dataGridView) {
+	// Chronological sort
+	static bool chronoSort(tuple<string, string, string, string>&a, tuple<string, string, string, string>&b){
+		string time1 = get<0>(a);
+		string time2 = get<0>(b);
+		int sizeTime1 = time1.size();
+		int sizeTime2 = time2.size();
+		if (time1[sizeTime1 - 2] != time2[sizeTime2 - 2]) return time1[sizeTime1 - 2] < time2[sizeTime2 - 2];
+		if (time1[sizeTime1 - 2] == 'A') return time1 < time2;
+		if (time1[0] == '1' && time1[1] == '2') return true;
+		if (time2[0] == '1' && time2[1] == '2') return false;
+		return time1 < time2;
+	}
+
+	// Remove the automatic sort through header click.
+	void RemoveAutoSorting(DataGridView^ dataGridView) {
 			for each (DataGridViewColumn^ column in dataGridView->Columns) 
 			{
 				column->SortMode = DataGridViewColumnSortMode::NotSortable;
@@ -459,6 +460,7 @@ namespace AcadSecManagementSystem {
 		}
 	}
 
+	// Update the screen with selected day's timetable.
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 		// Day wise slot to Timings map.
 		map<string, map<string, string>> DayWiseSlotToTime;
@@ -617,15 +619,17 @@ namespace AcadSecManagementSystem {
 		}
 
 	}
+
 	// Disabling typing in the dropdown field.
 	private: System::Void comboBox1_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e){
 		e->Handled = true;
 	}
+
 	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-private: System::Void DataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
-}
-private: System::Void label3_Click(System::Object^  sender, System::EventArgs^  e) {
-}
+	private: System::Void DataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+	}
+	private: System::Void label3_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
 };
 }

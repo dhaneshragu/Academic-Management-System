@@ -316,6 +316,7 @@ namespace AcadSecManagementSystem {
 		os = chars;
 		Marshal::FreeHGlobal(IntPtr((void*)chars));
 	}
+
 	// Getting String^ from std::string
 	String^ ConvertToSystemString(const std::string& str) {
 		return gcnew String(str.c_str());
@@ -444,7 +445,6 @@ namespace AcadSecManagementSystem {
 			MessageBox::Show(ex->Message);
 		}
 	}
-	
 
 	// Remove all rows of Data grid.
 	void ClearDataGridView(DataGridView^ dataGridView) {
@@ -456,6 +456,8 @@ namespace AcadSecManagementSystem {
 			}
 		}
 	}
+
+	// Update the screen with selected day's timetable.
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 		// Day wise slot to Timings map.
 		map<string, map<string, string>> DayWiseSlotToTime;
@@ -615,10 +617,12 @@ namespace AcadSecManagementSystem {
 			MessageBox::Show(ex->Message);
 		}
 	}
+	
 	// Disabling typing in the dropdown field.
 	private: System::Void comboBox1_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e){
 		e->Handled = true;
 	}
+
 	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 	private: System::Void DataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
