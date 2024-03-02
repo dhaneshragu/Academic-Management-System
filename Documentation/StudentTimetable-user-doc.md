@@ -1,4 +1,4 @@
-# Timetable screen
+# Time table screen
 This screen allows the Student to view the day-wise schedule of the Courses they have currently opted for, which includes the respective time slot (in chronologically ascending order) and venues in addition to course information for a day.
 
 ## Usage Instructions
