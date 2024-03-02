@@ -400,30 +400,18 @@ namespace AcadSecManagementSystem {
 		}
 #pragma endregion
 	private: System::Void DetailsUpdateForm_Load(System::Object^ sender, System::EventArgs^ e) {
-				 // Access user details from the database based on roll number and role
-				 std::map<std::string, std::string> details = FetchDetailsByRollNumber(rollnumber, Role);
+				 // Access Details From DB
+				 std :: map<std::string,std::string>details = FetchDetailsByRollNumber(rollnumber,Role);
 
-				 // Display user details in corresponding textboxes
-				 // Convert the name from the retrieved details and set it in textBox1
-				 textBox1->Text = ConvertStdStringToSystemString(details["name"]);
-
-				 // Convert the department from the retrieved details and set it in textBox7
-				 textBox7->Text = ConvertStdStringToSystemString(details["Department"]);
-
-				 // Convert the address from the retrieved details and set it in textBox4
-				 textBox4->Text = ConvertStdStringToSystemString(details["Address"]);
-
-				 // Convert the password from the retrieved details and set it in textBox5
-				 textBox5->Text = ConvertStdStringToSystemString(details["password"]);
-
-				 // Convert the phone number from the retrieved details and set it in textBox6
-				 textBox6->Text = ConvertStdStringToSystemString(details["PhoneNo"]);
-
-				 // Check if DateOfBirth is not empty in the retrieved details
-				 if (details["DateOfBirth"].length())
-					 // Parse the DateOfBirth and set the DateTimePicker value
-					 dateTimePicker2->Value = ParseDateString(details["DateOfBirth"]);
-
+				 
+				 // Show Details
+				textBox1->Text = ConvertStdStringToSystemString(details["name"]);
+				textBox7->Text = ConvertStdStringToSystemString(details["Department"]);
+				textBox4->Text = ConvertStdStringToSystemString(details["Address"]);
+				textBox5->Text = ConvertStdStringToSystemString(details["password"]);
+				textBox6->Text = ConvertStdStringToSystemString(details["PhoneNo"]);
+				if (details["DateOfBirth"].length())
+				dateTimePicker2->Value = ParseDateString(details["DateOfBirth"]);
 
 	}
 
@@ -435,69 +423,51 @@ namespace AcadSecManagementSystem {
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
-				 // Declare variables to store user information
 				 String ^dateOfBirth;
 				 String ^address;
 				 String ^password;
-				 String ^phoneNo;
-
-				 // Convert DateTimePicker value to string in the "yyyy-MM-dd" format
+				 String ^ phoneNo;
 				 dateOfBirth = dateTimePicker2->Value.ToString("yyyy-MM-dd");
-
-				 // Retrieve user input from textboxes
-				 address = textBox4->Text;
-				 password = textBox5->Text;
-				 phoneNo = textBox6->Text;
-
-				 // Initialize a flag to track validation status
+				 address = textBox4->Text ;
+				 password = textBox5->Text ;
+				 phoneNo = textBox6->Text ;
 				 bool flag = 1;
-
-				 // Check if the password is null or empty
 				 if (String::IsNullOrEmpty(password)) {
 					 MessageBox::Show("Password cannot be empty.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-					 flag = 0; // Set flag to 0 to indicate an error
+					 flag = 0;
 				 }
-
-				 // Check if the phone number is valid using a custom validation function
-				 // Also, ensure the phone number is not equal to the string "Null"
-				 if (!IsValidPhoneNumber(phoneNo) && phoneNo != "Null") {
+				 if (!IsValidPhoneNumber(phoneNo) && phoneNo != "Null")
+				 {
 					 MessageBox::Show("Invalid Phone Number.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-					 flag = 0; // Set flag to 0 to indicate an error
+					 flag = 0;
 				 }
-
-				 // If all validations pass, proceed with updating user details
-				 if (flag) {
-					 // Display a confirmation dialog before updating user details
+				 if (flag)
+				 {
 					 System::Windows::Forms::DialogResult result = MessageBox::Show("Are you sure you want to update user details?", "Confirmation", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-
-					 // Check the user's response
 					 if (result == System::Windows::Forms::DialogResult::No) {
-						 flag = 0; // User clicked No, so do not proceed with the update
+						 flag = 0;  // User clicked No, so do not proceed with the update
 					 }
-
-					 // If the user clicked Yes, update user details
 					 if (flag)
-						 updateUserDetails(rollnumber, address, password, phoneNo, dateOfBirth, Role);
+					 updateUserDetails(rollnumber, address, password, phoneNo, dateOfBirth,Role);
 				 }
+				 
 
-				 // Access user details from the database based on roll number and role
-				 std::map<std::string, std::string> details = FetchDetailsByRollNumber(rollnumber, Role);
+				 // Access Details From DB
+				 std::map<std::string, std::string>details = FetchDetailsByRollNumber(rollnumber,Role);
 
-				 // Display user details in corresponding textboxes
+
+				 // Show Details
 				 textBox1->Text = ConvertStdStringToSystemString(details["name"]);
 				 textBox7->Text = ConvertStdStringToSystemString(details["Department"]);
 				 textBox4->Text = ConvertStdStringToSystemString(details["Address"]);
 				 textBox5->Text = ConvertStdStringToSystemString(details["password"]);
 				 textBox6->Text = ConvertStdStringToSystemString(details["PhoneNo"]);
-
-				 // If DateOfBirth is not empty in the retrieved details, parse and set the DateTimePicker value
 				 if (details["DateOfBirth"].length())
 					 dateTimePicker2->Value = ParseDateString(details["DateOfBirth"]);
 
-
 	}
 	private: System::Void Button1_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-				 button1->BackColor = System::Drawing::Color::RoyalBlue; 
+				 button1->BackColor = System::Drawing::Color::RoyalBlue; // Replace with the desired hover color
 	}
 
 	private: System::Void Button1_MouseLeave(System::Object^ sender, System::EventArgs^ e) {

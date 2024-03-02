@@ -257,94 +257,95 @@ private: System::Void Button1_MouseLeave(System::Object^ sender, System::EventAr
     }
 private: System::Void Label5_Click_1(System::Object^  sender, System::EventArgs^  e) {
 		 }
-private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
+		
+		 String^ EmptyError =   "      Field(s) cannot be empty";
+		 String^ InvalidError = "      Invalid Username/Password";
+		
+		if (Role == "Admin") {
+			String^ adminID = textBox1->Text;
+			String^ password = textBox2->Text;
+			if (String::IsNullOrEmpty(adminID) || String::IsNullOrEmpty(password)) {
+				
+				label4->Text = EmptyError;
+				label4->Visible = true;
+				return; // Stop further processing
+			}
+			
+			if (ValidateLogin(adminID, password, Role)) {
+				
+				obj->Hide();
+				label4->Visible = false;
+				AdminDashboard^ adminDashboard = gcnew AdminDashboard(obj);
+				adminDashboard->adminID = adminID;
+				adminDashboard->Show();
+				
+			}
+			else {
+				label4->Text = InvalidError;
+				label4->Visible = true;
+				return; // Stop further processing
+			}
+        }
+        else if (Role == "Professor") {	
+			// login handle
+			String^ facultyID = textBox1->Text;
+			String^ password =  textBox2->Text;
 
-			 // Error messages for empty and invalid input
-			 String^ EmptyError = "      Field(s) cannot be empty";
-			 String^ InvalidError = "      Invalid Username/Password";
+			if (String::IsNullOrEmpty(facultyID) || String::IsNullOrEmpty(password)) {
 
-			 if (Role == "Admin") {
-				 // Admin login handling
-				 String^ adminID = textBox1->Text;
-				 String^ password = textBox2->Text;
+				label4->Text = EmptyError;
+				label4->Visible = true;
+				return; // Stop further processing
+			}
 
-				 // Check for empty fields
-				 if (String::IsNullOrEmpty(adminID) || String::IsNullOrEmpty(password)) {
-					 label4->Text = EmptyError;
-					 label4->Visible = true;
-					 return; // Stop further processing
-				 }
+			// Perform database query to validate faculty login
+			if (ValidateLogin(facultyID, password,Role)) {
+				// Login successful, open ProfDashboard
+				obj->Hide();
+				label4->Visible = false;
+				ProfDashboard^ profDashboard = gcnew ProfDashboard(obj);
+				profDashboard->Name = GetUserName(facultyID, Role);
+				profDashboard->Faculty_ID = facultyID;
+				profDashboard->Show();
+			}
+			else {
+				label4->Text = InvalidError;
+				label4->Visible = true; 
+				
+			}
+		
+        }
+		else if (Role == "Student") {
 
-				 // Validate admin login
-				 if (ValidateLogin(adminID, password, Role)) {
-					 obj->Hide();
-					 label4->Visible = false;
-					 AdminDashboard^ adminDashboard = gcnew AdminDashboard(obj);
-					 adminDashboard->adminID = adminID;
-					 adminDashboard->Show();
-				 }
-				 else {
-					 label4->Text = InvalidError;
-					 label4->Visible = true;
-					 return; // Stop further processing
-				 }
-			 }
-			 else if (Role == "Professor") {
-				 // Professor login handling
-				 String^ facultyID = textBox1->Text;
-				 String^ password = textBox2->Text;
+			String^ studentID = textBox1->Text;
+			String^ password = textBox2->Text;
+			
+			if (String::IsNullOrEmpty(studentID) || String::IsNullOrEmpty(password)) {
 
-				 // Check for empty fields
-				 if (String::IsNullOrEmpty(facultyID) || String::IsNullOrEmpty(password)) {
-					 label4->Text = EmptyError;
-					 label4->Visible = true;
-					 return; // Stop further processing
-				 }
+				label4->Text = EmptyError;
+				label4->Visible = true;
+				return; // Stop further processing
+			}
 
-				 // Validate faculty login
-				 if (ValidateLogin(facultyID, password, Role)) {
-					 // Login successful, open ProfDashboard
-					 obj->Hide();
-					 label4->Visible = false;
-					 ProfDashboard^ profDashboard = gcnew ProfDashboard(obj);
-					 profDashboard->Name = GetUserName(facultyID, Role);
-					 profDashboard->Faculty_ID = facultyID;
-					 profDashboard->Show();
-				 }
-				 else {
-					 label4->Text = InvalidError;
-					 label4->Visible = true;
-				 }
-			 }
-			 else if (Role == "Student") {
-				 // Student login handling
-				 String^ studentID = textBox1->Text;
-				 String^ password = textBox2->Text;
+			if (ValidateLogin(studentID, password, Role)) {
+				obj->Hide();
+				label4->Visible = false;
+				StudentDashboard^ studDashboard = gcnew StudentDashboard(obj);
+				studDashboard->UserName = GetUserName(studentID, Role);
+				studDashboard->RollNumber = GetRoll(studentID);
+				studDashboard->year = GetUserYear(studentID, Role);
+				studDashboard->Show();
+			}
+			else {
+				label4->Text = InvalidError;
+				label4->Visible = true;
 
-				 // Check for empty fields
-				 if (String::IsNullOrEmpty(studentID) || String::IsNullOrEmpty(password)) {
-					 label4->Text = EmptyError;
-					 label4->Visible = true;
-					 return; // Stop further processing
-				 }
+			}
+		}
 
-				 // Validate student login
-				 if (ValidateLogin(studentID, password, Role)) {
-					 obj->Hide();
-					 label4->Visible = false;
-					 StudentDashboard^ studDashboard = gcnew StudentDashboard(obj);
-					 studDashboard->UserName = GetUserName(studentID, Role);
-					 studDashboard->RollNumber = GetRoll(studentID);
-					 studDashboard->year = GetUserYear(studentID, Role);
-					 studDashboard->Show();
-				 }
-				 else {
-					 label4->Text = InvalidError;
-					 label4->Visible = true;
-				 }
-			 }
-}
 
+	}
 };
 
 }
