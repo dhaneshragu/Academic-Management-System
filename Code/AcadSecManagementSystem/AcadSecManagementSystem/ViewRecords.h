@@ -280,6 +280,7 @@ namespace AcadSecManagementSystem {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->DropDownStyle = ComboBoxStyle::DropDownList;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2020", L"2021", L"2022", L"2023" });
 			this->comboBox1->Location = System::Drawing::Point(290, 49);
 			this->comboBox1->Name = L"comboBox1";
