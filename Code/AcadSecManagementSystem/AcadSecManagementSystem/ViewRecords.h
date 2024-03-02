@@ -280,7 +280,6 @@ namespace AcadSecManagementSystem {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->DropDownStyle = ComboBoxStyle::DropDownList;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2020", L"2021", L"2022", L"2023" });
 			this->comboBox1->Location = System::Drawing::Point(290, 49);
 			this->comboBox1->Name = L"comboBox1";
@@ -288,6 +287,7 @@ namespace AcadSecManagementSystem {
 			this->comboBox1->TabIndex = 18;
 			this->comboBox1->SelectedIndex = 0;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &ViewRecords::comboBox1_SelectedIndexChanged);
+			this->comboBox1->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &ViewRecords::comboBox1_KeyPress);
 			// 
 			// label2
 			// 
@@ -409,5 +409,10 @@ namespace AcadSecManagementSystem {
 					 MessageBox::Show(ex->Message);
 				 }
 	}
+
+			 private: System::Void comboBox1_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^  e)
+			 {
+				 e->Handled = true;
+			 }
 };
 }
