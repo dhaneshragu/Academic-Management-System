@@ -7,10 +7,10 @@ Only the Admin of Indian Institute of Technology, Guwahati.
 ## Usage Instructions
 
 - The screen which will load will show the currently selected options.
-![alt-syntax](../assets/SetDatesLandingPage.png)
+![alt-syntax](./assets/SetDatesLandingPage.png)
 
 - The admin can make changes and click on save button which will ask for confirmation.
-![alt-syntax](../assets/SetDatesSaveButton.png)
+![alt-syntax](./assets/SetDatesSaveButton.png)
 
 > **NOTE:** 
 Student can navigate from `Student Home` to `Student Time Table` screen only if admin has generated the course timetable and student has paid the fees.
