@@ -23,12 +23,12 @@ namespace AcadSecManagementSystem {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for ProfSetDates
+	/// Summary for AdminSetDates
 	/// </summary>
-	public ref class ProfSetDates : public System::Windows::Forms::Form
+	public ref class AdminSetDates : public System::Windows::Forms::Form
 	{
 	public:
-		ProfSetDates(void)
+		AdminSetDates(void)
 		{
 			InitializeComponent();
 			//
@@ -40,7 +40,7 @@ namespace AcadSecManagementSystem {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~ProfSetDates()
+		~AdminSetDates()
 		{
 			if (components)
 			{
@@ -116,7 +116,7 @@ namespace AcadSecManagementSystem {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(ProfSetDates::typeid));
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(AdminSetDates::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -320,7 +320,7 @@ namespace AcadSecManagementSystem {
 			this->buttonTT->TabIndex = 16;
 			this->buttonTT->Text = L"Generate";
 			this->buttonTT->UseVisualStyleBackColor = false;
-			this->buttonTT->Click += gcnew System::EventHandler(this, &ProfSetDates::buttonTT_Click);
+			this->buttonTT->Click += gcnew System::EventHandler(this, &AdminSetDates::buttonTT_Click);
 			// 
 			// buttonExamTT
 			// 
@@ -332,7 +332,7 @@ namespace AcadSecManagementSystem {
 			this->buttonExamTT->TabIndex = 19;
 			this->buttonExamTT->Text = L"Generate";
 			this->buttonExamTT->UseVisualStyleBackColor = false;
-			this->buttonExamTT->Click += gcnew System::EventHandler(this, &ProfSetDates::buttonExamTT_Click);
+			this->buttonExamTT->Click += gcnew System::EventHandler(this, &AdminSetDates::buttonExamTT_Click);
 			// 
 			// NoFeePayment
 			// 
@@ -369,7 +369,7 @@ namespace AcadSecManagementSystem {
 			this->label9->Size = System::Drawing::Size(247, 36);
 			this->label9->TabIndex = 22;
 			this->label9->Text = L"       Set Dates";
-			this->label9->Click += gcnew System::EventHandler(this, &ProfSetDates::label9_Click);
+			this->label9->Click += gcnew System::EventHandler(this, &AdminSetDates::label9_Click);
 			// 
 			// buttonSave
 			// 
@@ -380,7 +380,7 @@ namespace AcadSecManagementSystem {
 			this->buttonSave->TabIndex = 23;
 			this->buttonSave->Text = L"Save";
 			this->buttonSave->UseVisualStyleBackColor = false;
-			this->buttonSave->Click += gcnew System::EventHandler(this, &ProfSetDates::buttonSave_Click);
+			this->buttonSave->Click += gcnew System::EventHandler(this, &AdminSetDates::buttonSave_Click);
 			// 
 			// buttonReset
 			// 
@@ -391,7 +391,7 @@ namespace AcadSecManagementSystem {
 			this->buttonReset->TabIndex = 24;
 			this->buttonReset->Text = L"Reset";
 			this->buttonReset->UseVisualStyleBackColor = false;
-			this->buttonReset->Click += gcnew System::EventHandler(this, &ProfSetDates::buttonReset_Click);
+			this->buttonReset->Click += gcnew System::EventHandler(this, &AdminSetDates::buttonReset_Click);
 			// 
 			// groupBox1
 			// 
@@ -457,7 +457,7 @@ namespace AcadSecManagementSystem {
 			this->checkBox2->Text = L"Set";
 			this->checkBox2->UseVisualStyleBackColor = true;
 			// 
-			// ProfSetDates
+			// AdminSetDates
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(10, 23);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -488,9 +488,9 @@ namespace AcadSecManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(4);
-			this->Name = L"ProfSetDates";
-			this->Text = L"ProfSetDates";
-			this->Load += gcnew System::EventHandler(this, &ProfSetDates::ProfSetDates_Load);
+			this->Name = L"AdminSetDates";
+			this->Text = L"AdminSetDates";
+			this->Load += gcnew System::EventHandler(this, &AdminSetDates::ProfSetDates_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox4->ResumeLayout(false);
@@ -1099,105 +1099,115 @@ private: System::Void buttonReset_Click(System::Object^  sender, System::EventAr
 }
 	// Exam room allocation generation
 	private: System::Void buttonExamTT_Click(System::Object^  sender, System::EventArgs^  e) {
-				 try {
-					 // Usual connection setup/management process.
-					 String^ connString = Constants::getdbConnString();
-					 SqlConnection con(connString);
-					 con.Open();
+		try 
+		{
+			// Usual connection setup/management process.
+			String^ connString = Constants::getdbConnString();
+			SqlConnection con(connString);
+			con.Open();
 					 
-					 // Loading the Available Room information with the respective capacities.
-					 String^ query = "SELECT room_ID,capacity FROM [Room] ORDER BY capacity;";
+			// Loading the Available Room information with the respective capacities.
+			String^ query = "SELECT room_ID,capacity FROM [Room] ORDER BY capacity;";
 
-					 // Executing the query and filling up the local Data Table
-					 SqlCommand cmd(query, %con);
-					 DataTable^ roomIDCapacityTable = gcnew DataTable();
-					 SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
-					 adapter->Fill(roomIDCapacityTable);
+			// Executing the query and filling up the local Data Table
+			SqlCommand cmd(query, %con);
+			DataTable^ roomIDCapacityTable = gcnew DataTable();
+			SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
+			adapter->Fill(roomIDCapacityTable);
 
-					 // Now we assume that no more than 4 rooms will ever be required for exam 
-					 // (derived from the assumptions we have made till now)
-					 // and no more than 2 courses are in the same slot. (By observing the data)
+			// Now we assume that no more than 4 rooms will ever be required for exam 
+			// (derived from the assumptions we have made till now)
+			// and no more than 2 courses are in the same slot. (By observing the data)
 
-					 // A course can (will) have multiple rooms alloted to it for exam as students need to be distributed.
-					 // The distribution also has to take care of the physical capacities of the room.
-					 // Since we have two courses, we are taking half of any room to be empty. (In Actual Exams we have much empty spaces...)
-					 // In the rest half space, since max to max only 2 courses per slot are there, It has been divided into two (so, quarter of total)
-					 // and then start allocating from first student to first room onwards. If a student is not fitted into current room,
-					 // with the current constraint, switch to next room.
+			// A course can (will) have multiple rooms alloted to it for exam as students need to be distributed.
+			// The distribution also has to take care of the physical capacities of the room.
+			// Since we have two courses, we are taking half of any room to be empty. (In Actual Exams we have much empty spaces...)
+			// In the rest half space, since max to max only 2 courses per slot are there, It has been divided into two (so, quarter of total)
+			// and then start allocating from first student to first room onwards. If a student is not fitted into current room,
+			// with the current constraint, switch to next room.
 
-					 // Course to Room ID with alloted capacities mapping.
-					 map<string, vector<pair<int, int>>> courseToAvailRoomCapMap;
+			// Course to Room ID with alloted capacities mapping.
+			map<string, vector<pair<int, int>>> courseToAvailRoomCapMap;
 
-					 // Filling up a local map from the DB Table. 
-					 // Contains the room ID - capacity info.
-					 vector<pair<int, int>> roomIDCapacityMap;
-					 for (int i = 0; i < roomIDCapacityTable->Rows->Count; ++i){
-						 DataRow^ row = roomIDCapacityTable->Rows[i];
-						 int resRoomID = Convert::ToInt32(row->ItemArray->GetValue(0));
-						 int resCapacity = Convert::ToInt32(row->ItemArray->GetValue(1));
-						 roomIDCapacityMap.push_back(make_pair( resRoomID, resCapacity / 4 ));
-					 }
+			// Filling up a local map from the DB Table. 
+			// Contains the room ID - capacity info.
+			vector<pair<int, int>> roomIDCapacityMap;
+			for (int i = 0; i < roomIDCapacityTable->Rows->Count; ++i)
+			{
+				DataRow^ row = roomIDCapacityTable->Rows[i];
+				int resRoomID = Convert::ToInt32(row->ItemArray->GetValue(0));
+				int resCapacity = Convert::ToInt32(row->ItemArray->GetValue(1));
+				roomIDCapacityMap.push_back(make_pair( resRoomID, resCapacity / 4 ));
+			}
 
-					 // Table of students with their respective courses.
-					 // Allot directly to a student instead of a course the room where they will give exam.
-					 // Usual filling up of tables.
-					 String^ query2 = "SELECT * FROM [Courses Taken];";
-					 SqlCommand cmd2(query2, %con);
-					 DataTable^ coursesTakenTable = gcnew DataTable();
-					 SqlDataAdapter^ adapter2 = gcnew SqlDataAdapter(%cmd2);
-					 adapter2->Fill(coursesTakenTable);
+			// Table of students with their respective courses.
+			// Allot directly to a student instead of a course the room where they will give exam.
+			// Usual filling up of tables.
+			String^ query2 = "SELECT * FROM [Courses Taken];";
+			SqlCommand cmd2(query2, %con);
+			DataTable^ coursesTakenTable = gcnew DataTable();
+			SqlDataAdapter^ adapter2 = gcnew SqlDataAdapter(%cmd2);
+			adapter2->Fill(coursesTakenTable);
 
-					 // Allocation process
-					 for (int i = 0; i < coursesTakenTable->Rows->Count; ++i){
-						 DataRow^ row = coursesTakenTable->Rows[i];
-						 String^ courseIDstr = safe_cast<String^>(row->ItemArray->GetValue(1));
-						 string courseIDcppstr;
-						 MarshalString(courseIDstr, courseIDcppstr);
+			// Allocation process
+			for (int i = 0; i < coursesTakenTable->Rows->Count; ++i)
+			{
+				DataRow^ row = coursesTakenTable->Rows[i];
+				String^ courseIDstr = safe_cast<String^>(row->ItemArray->GetValue(1));
+				string courseIDcppstr;
+				MarshalString(courseIDstr, courseIDcppstr);
 
-						 // If the course was not seen till now, it means there were no allotments to it untill this point,
-						 // So for this course we will have fresh allotments starting, with all capacities for this course full.
-						 if (courseToAvailRoomCapMap.find(courseIDcppstr) == courseToAvailRoomCapMap.end()) {
-							 courseToAvailRoomCapMap[courseIDcppstr] = roomIDCapacityMap;
-						 }
-						 int roomIDAlloc = 0;
+				// If the course was not seen till now, it means there were no allotments to it untill this point,
+				// So for this course we will have fresh allotments starting, with all capacities for this course full.
+				if (courseToAvailRoomCapMap.find(courseIDcppstr) == courseToAvailRoomCapMap.end()) 
+				{
+					courseToAvailRoomCapMap[courseIDcppstr] = roomIDCapacityMap;
+				}
+				int roomIDAlloc = 0;
 
-						 // For this particular student, find the first available room where their exam can be scheduled.
-						 for (auto& pair : courseToAvailRoomCapMap[courseIDcppstr]){
-							 if (pair.second > 0) {
-								 roomIDAlloc = pair.first;
-								 pair.second--;
-								 break;
-							 }
-						 }
+				// For this particular student, find the first available room where their exam can be scheduled.
+				for (auto& pair : courseToAvailRoomCapMap[courseIDcppstr])
+				{
+					if (pair.second > 0) 
+					{
+						roomIDAlloc = pair.first;
+						pair.second--;
+						break;
+					}
+				}
 
-						 // The current allocation policy fails, when even after giving quarter capacity of all available rooms, 
-						 // not all students were allocated a room.
-						 if (roomIDAlloc == 0) {
-							 MessageBox::Show("Exam room allocation can not be done under current constraints of maximum of room capacity / 4 people in one room for one course.");
-						 }
-						 else{
-							 // Else just set the venue to this room. (i.e. scheduled)
-							 row["examination_venue"] = roomIDAlloc;
-						 }
-					 }
+				// The current allocation policy fails, when even after giving quarter capacity of all available rooms, 
+				// not all students were allocated a room.
+				if (roomIDAlloc == 0) 
+				{
+					MessageBox::Show("Exam room allocation can not be done under current constraints of maximum of room capacity / 4 people in one room for one course.");
+				}
+				else
+				{
+					// Else just set the venue to this room. (i.e. scheduled)
+					row["examination_venue"] = roomIDAlloc;
+				}
+			}
 
-					 // Updating the database after allocations.
-					 SqlCommandBuilder^ builder = gcnew SqlCommandBuilder(adapter2);
-					 try {
-						 adapter2->Update(coursesTakenTable);
-						 MessageBox::Show("Exam Schedule Generated");
-					 }
-					 catch (SqlException^ e) {
-						MessageBox::Show("Update failed: {0}", e->Message);
-					 }
+			// Updating the database after allocations.
+			SqlCommandBuilder^ builder = gcnew SqlCommandBuilder(adapter2);
+			try 
+			{
+				adapter2->Update(coursesTakenTable);
+				MessageBox::Show("Exam Schedule Generated");
+			}
+			catch (SqlException^ e) 
+			{
+			MessageBox::Show("Update failed: {0}", e->Message);
+			}
 		
-					 // Usual connection closing/management process.
-					 con.Close();
-				 }
-				 catch (Exception^ ex)
-				 {
-					 MessageBox::Show(ex->Message);
-				 }
+			// Usual connection closing/management process.
+			con.Close();
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+		}
 	}
 };
 }

@@ -117,21 +117,34 @@ System::DateTime ParseDateString(std :: string dateString) {
 	return dateTime;
 }
 
-void updateUserDetails(String ^rollnumber, String ^ address, String ^password, String ^phoneNo, String ^dateOfBirth,String ^ Role)
+
+// Function to convert Bitmap to Byte array
+array<Byte>^ ImageToBytes(Bitmap^ image)
+{
+	System::IO::MemoryStream^ stream = gcnew System::IO::MemoryStream();
+	image->Save(stream, System::Drawing::Imaging::ImageFormat::Jpeg);
+	return stream->ToArray();
+}
+
+void updateUserDetails(String ^rollnumber, String ^ address, String ^password, String ^phoneNo, String ^dateOfBirth, Bitmap^ Image, String ^ Role)
 {
 	String^ connectionString = Constants:: getdbConnString(); // Replace with your actual connection string
+
+	// Convert Bitmap to Byte array
+	array<Byte>^ imageBytes = ImageToBytes(Image);
 
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);
 	connection->Open();
 	if (Role == "Student")
 	{
-		String^ query = "UPDATE [Student Database] SET Address = @Address, password = @Password, PhoneNo = @PhoneNo, DateOfBirth = @DateOfBirth WHERE roll_no = @RollNumber";
+		String^ query = "UPDATE [Student Database] SET Address = @Address, password = @Password, PhoneNo = @PhoneNo, DateOfBirth = @DateOfBirth, DP = @Image WHERE roll_no = @RollNumber";
 		SqlCommand^ command = gcnew SqlCommand(query, connection);
 		command->Parameters->AddWithValue("@RollNumber", rollnumber);
 		command->Parameters->AddWithValue("@Address", address);
 		command->Parameters->AddWithValue("@Password", password);
 		command->Parameters->AddWithValue("@PhoneNo", phoneNo);
 		command->Parameters->AddWithValue("@DateOfBirth", dateOfBirth);
+		command->Parameters->AddWithValue("@Image", imageBytes);
 
 		try {
 			command->ExecuteNonQuery();
@@ -145,13 +158,14 @@ void updateUserDetails(String ^rollnumber, String ^ address, String ^password, S
 	}
 	if (Role == "Professor")
 	{
-		String^ query = "UPDATE [Faculty] SET Address = @Address, password = @Password, PhoneNo = @PhoneNo, DateOfBirth = @DateOfBirth WHERE faculty_ID = @RollNumber";
+		String^ query = "UPDATE [Faculty] SET Address = @Address, password = @Password, PhoneNo = @PhoneNo, DateOfBirth = @DateOfBirth, DP = @Image WHERE faculty_ID = @RollNumber";
 		SqlCommand^ command = gcnew SqlCommand(query, connection);
 		command->Parameters->AddWithValue("@RollNumber", rollnumber);
 		command->Parameters->AddWithValue("@Address", address);
 		command->Parameters->AddWithValue("@Password", password);
 		command->Parameters->AddWithValue("@PhoneNo", phoneNo);
 		command->Parameters->AddWithValue("@DateOfBirth", dateOfBirth);
+		command->Parameters->AddWithValue("@Image", imageBytes);
 
 		try {
 			command->ExecuteNonQuery();

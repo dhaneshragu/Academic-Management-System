@@ -18,6 +18,8 @@ namespace Constants
 
 	std::string StrCnvstr(System::String ^ x);
 	System::String ^ strCnvStr(std::string x);
+	void FetchAndDisplayImage(String^ rno, PictureBox^ pictureBox);
+	void FetchAndDisplayProfImage(String ^ fac_id, PictureBox^ pictureBox);
 }
 
 #endif

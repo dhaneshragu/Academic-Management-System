@@ -98,7 +98,6 @@
     <ClCompile Include="loginHandle.cpp" />
     <ClCompile Include="ProfGradesScreen.cpp" />
     <ClCompile Include="ProfDashboard.cpp" />
-    <ClCompile Include="ProfSetDates.cpp" />
     <ClCompile Include="ProfTimetable.cpp" />
     <ClCompile Include="LoginDashboard.cpp" />
     <ClCompile Include="LoginInnerScreen.cpp" />
@@ -137,7 +136,7 @@
     <ClInclude Include="ProfDashboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="ProfSetDates.h">
+    <ClInclude Include="AdminSetDates.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ProfTimetable.h">
@@ -185,8 +184,8 @@
       <DependentUpon>ProfDashboard.h</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProfSetDates.resx">
-      <DependentUpon>ProfSetDates.h</DependentUpon>
+    <EmbeddedResource Include="AdminSetDates.resx">
+      <DependentUpon>AdminSetDates.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfTimetable.resx">
       <DependentUpon>ProfTimetable.h</DependentUpon>
@@ -224,8 +223,6 @@
   <ItemGroup>
     <Image Include="..\..\..\..\..\..\..\..\..\..\Downloads\calender.jpg" />
     <Image Include="Calender.bmp" />
-    <Image Include="label3.Image.png" />
-    <Image Include="label9.Image.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

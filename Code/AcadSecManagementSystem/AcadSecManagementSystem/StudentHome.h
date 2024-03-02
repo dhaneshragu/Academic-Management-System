@@ -68,6 +68,8 @@ namespace AcadSecManagementSystem {
 	internal: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
 	internal: System::Windows::Forms::Panel^  GradeReleasedPanel;
 	internal: System::Windows::Forms::Label^  Label4;
+	private: System::Windows::Forms::PictureBox^  pictureBox1;
+	internal:
 
 	private:
 		/// <summary>
@@ -95,8 +97,8 @@ namespace AcadSecManagementSystem {
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->Panel1 = (gcnew System::Windows::Forms::Panel());
-			this->Label3 = (gcnew System::Windows::Forms::Label());
 			this->Label5 = (gcnew System::Windows::Forms::Label());
+			this->Label3 = (gcnew System::Windows::Forms::Label());
 			this->Label2 = (gcnew System::Windows::Forms::Label());
 			this->Button2 = (gcnew System::Windows::Forms::Button());
 			this->DataGridView2 = (gcnew System::Windows::Forms::DataGridView());
@@ -113,48 +115,50 @@ namespace AcadSecManagementSystem {
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->Panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataGridView2))->BeginInit();
 			this->Panel2->SuspendLayout();
 			this->GradeReleasedPanel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Panel1
 			// 
 			this->Panel1->BackColor = System::Drawing::Color::Transparent;
-			this->Panel1->Controls->Add(this->Label3);
 			this->Panel1->Controls->Add(this->Label5);
-			this->Panel1->Location = System::Drawing::Point(21, 22);
+			this->Panel1->Controls->Add(this->Label3);
+			this->Panel1->Location = System::Drawing::Point(178, 7);
 			this->Panel1->Name = L"Panel1";
-			this->Panel1->Size = System::Drawing::Size(377, 127);
+			this->Panel1->Size = System::Drawing::Size(235, 198);
 			this->Panel1->TabIndex = 11;
-			// 
-			// Label3
-			// 
-			this->Label3->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->Label3->ForeColor = System::Drawing::Color::SeaGreen;
-			this->Label3->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Label3->Location = System::Drawing::Point(4, 10);
-			this->Label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->Label3->Name = L"Label3";
-			this->Label3->Size = System::Drawing::Size(306, 55);
-			this->Label3->TabIndex = 7;
-			this->Label3->Text = L"Welcome";
 			// 
 			// Label5
 			// 
-			this->Label5->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->Label5->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Label5->ForeColor = System::Drawing::Color::SeaGreen;
+			this->Label5->ForeColor = System::Drawing::Color::DarkOliveGreen;
 			this->Label5->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Label5->Location = System::Drawing::Point(4, 60);
+			this->Label5->Location = System::Drawing::Point(8, 65);
 			this->Label5->Margin = System::Windows::Forms::Padding(0, 0, 4, 0);
 			this->Label5->Name = L"Label5";
-			this->Label5->Size = System::Drawing::Size(369, 67);
+			this->Label5->Size = System::Drawing::Size(222, 127);
 			this->Label5->TabIndex = 9;
-			this->Label5->Text = L"{Name}!";
+			this->Label5->Text = L"{Name}";
+			// 
+			// Label3
+			// 
+			this->Label3->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Label3->ForeColor = System::Drawing::Color::SeaGreen;
+			this->Label3->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->Label3->Location = System::Drawing::Point(8, 15);
+			this->Label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->Label3->Name = L"Label3";
+			this->Label3->Size = System::Drawing::Size(164, 55);
+			this->Label3->TabIndex = 7;
+			this->Label3->Text = L"Welcome";
 			// 
 			// Label2
 			// 
@@ -164,7 +168,7 @@ namespace AcadSecManagementSystem {
 			this->Label2->ForeColor = System::Drawing::Color::DarkCyan;
 			this->Label2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Label2.Image")));
 			this->Label2->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Label2->Location = System::Drawing::Point(64, 212);
+			this->Label2->Location = System::Drawing::Point(87, 222);
 			this->Label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->Label2->Name = L"Label2";
 			this->Label2->Padding = System::Windows::Forms::Padding(0, 0, 0, 6);
@@ -179,7 +183,7 @@ namespace AcadSecManagementSystem {
 			this->Button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->Button2->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Button2->Location = System::Drawing::Point(92, 270);
+			this->Button2->Location = System::Drawing::Point(109, 280);
 			this->Button2->Margin = System::Windows::Forms::Padding(4);
 			this->Button2->Name = L"Button2";
 			this->Button2->Size = System::Drawing::Size(202, 41);
@@ -225,7 +229,7 @@ namespace AcadSecManagementSystem {
 			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
 			this->DataGridView2->DefaultCellStyle = dataGridViewCellStyle3;
 			this->DataGridView2->GridColor = System::Drawing::Color::DimGray;
-			this->DataGridView2->Location = System::Drawing::Point(11, 330);
+			this->DataGridView2->Location = System::Drawing::Point(13, 343);
 			this->DataGridView2->Margin = System::Windows::Forms::Padding(4);
 			this->DataGridView2->Name = L"DataGridView2";
 			this->DataGridView2->ReadOnly = true;
@@ -248,7 +252,7 @@ namespace AcadSecManagementSystem {
 			this->DataGridView2->RowTemplate->DividerHeight = 1;
 			this->DataGridView2->RowTemplate->Height = 30;
 			this->DataGridView2->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->DataGridView2->Size = System::Drawing::Size(400, 155);
+			this->DataGridView2->Size = System::Drawing::Size(400, 114);
 			this->DataGridView2->TabIndex = 14;
 			// 
 			// DataGridViewTextBoxColumn4
@@ -283,10 +287,10 @@ namespace AcadSecManagementSystem {
 			this->Panel2->Controls->Add(this->Button3);
 			this->Panel2->Controls->Add(this->Label1);
 			this->Panel2->Controls->Add(this->DataGridView1);
-			this->Panel2->Location = System::Drawing::Point(421, 13);
+			this->Panel2->Location = System::Drawing::Point(421, 4);
 			this->Panel2->Margin = System::Windows::Forms::Padding(4);
 			this->Panel2->Name = L"Panel2";
-			this->Panel2->Size = System::Drawing::Size(582, 532);
+			this->Panel2->Size = System::Drawing::Size(582, 551);
 			this->Panel2->TabIndex = 15;
 			// 
 			// GradeReleasedPanel
@@ -296,10 +300,11 @@ namespace AcadSecManagementSystem {
 			this->GradeReleasedPanel->Controls->Add(this->Label4);
 			this->GradeReleasedPanel->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->GradeReleasedPanel->Location = System::Drawing::Point(100, 19);
+			this->GradeReleasedPanel->Location = System::Drawing::Point(105, 8);
 			this->GradeReleasedPanel->Name = L"GradeReleasedPanel";
 			this->GradeReleasedPanel->Size = System::Drawing::Size(394, 62);
 			this->GradeReleasedPanel->TabIndex = 9;
+			this->GradeReleasedPanel->Visible = false;
 			// 
 			// Label4
 			// 
@@ -309,10 +314,10 @@ namespace AcadSecManagementSystem {
 			this->Label4->ForeColor = System::Drawing::Color::Crimson;
 			this->Label4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Label4.Image")));
 			this->Label4->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Label4->Location = System::Drawing::Point(13, 5);
+			this->Label4->Location = System::Drawing::Point(13, 6);
 			this->Label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->Label4->Name = L"Label4";
-			this->Label4->Size = System::Drawing::Size(384, 48);
+			this->Label4->Size = System::Drawing::Size(372, 48);
 			this->Label4->TabIndex = 9;
 			this->Label4->Text = L"  Grades have been released !!";
 			this->Label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -323,7 +328,7 @@ namespace AcadSecManagementSystem {
 			this->Button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->Button3->Font = (gcnew System::Drawing::Font(L"Trebuchet MS", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Button3->Location = System::Drawing::Point(193, 149);
+			this->Button3->Location = System::Drawing::Point(175, 61);
 			this->Button3->Margin = System::Windows::Forms::Padding(4);
 			this->Button3->Name = L"Button3";
 			this->Button3->Size = System::Drawing::Size(243, 41);
@@ -340,7 +345,7 @@ namespace AcadSecManagementSystem {
 			this->Label1->ForeColor = System::Drawing::Color::DarkCyan;
 			this->Label1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Label1.Image")));
 			this->Label1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->Label1->Location = System::Drawing::Point(102, 94);
+			this->Label1->Location = System::Drawing::Point(99, 14);
 			this->Label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->Label1->Name = L"Label1";
 			this->Label1->Padding = System::Windows::Forms::Padding(0, 0, 0, 6);
@@ -388,7 +393,7 @@ namespace AcadSecManagementSystem {
 			dataGridViewCellStyle10->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
 			this->DataGridView1->DefaultCellStyle = dataGridViewCellStyle10;
 			this->DataGridView1->GridColor = System::Drawing::Color::DimGray;
-			this->DataGridView1->Location = System::Drawing::Point(4, 210);
+			this->DataGridView1->Location = System::Drawing::Point(5, 114);
 			this->DataGridView1->Margin = System::Windows::Forms::Padding(4);
 			this->DataGridView1->Name = L"DataGridView1";
 			this->DataGridView1->ReadOnly = true;
@@ -411,7 +416,7 @@ namespace AcadSecManagementSystem {
 			this->DataGridView1->RowTemplate->DividerHeight = 1;
 			this->DataGridView1->RowTemplate->Height = 30;
 			this->DataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->DataGridView1->Size = System::Drawing::Size(574, 318);
+			this->DataGridView1->Size = System::Drawing::Size(574, 433);
 			this->DataGridView1->TabIndex = 3;
 			// 
 			// Column1
@@ -470,12 +475,23 @@ namespace AcadSecManagementSystem {
 			this->Column4->Name = L"Column4";
 			this->Column4->ReadOnly = true;
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(10, 7);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(160, 198);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox1->TabIndex = 16;
+			this->pictureBox1->TabStop = false;
+			// 
 			// StudentHome
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(10, 23);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::AliceBlue;
 			this->ClientSize = System::Drawing::Size(1016, 557);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->Panel2);
 			this->Controls->Add(this->DataGridView2);
 			this->Controls->Add(this->Button2);
@@ -494,12 +510,16 @@ namespace AcadSecManagementSystem {
 			this->Panel2->PerformLayout();
 			this->GradeReleasedPanel->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
 	private: System::Void StudentHome_Load(System::Object^  sender, System::EventArgs^  e) {
+
+				 // View DP
+				 Constants::FetchAndDisplayImage(RollNumber, this->pictureBox1);
 				 // Make this visible only when grades are released from acad section
 				 Label5->Text = UserName;
 				 GradeReleasedPanel->Visible = false;
@@ -509,7 +529,17 @@ namespace AcadSecManagementSystem {
 				 Button2->Enabled = false;
 
 				 bool isViewGrades = getisGradesViewing();
-				 if (isViewGrades) GradeReleasedPanel->Visible = true;
+				 if (isViewGrades) 
+				 {
+					 // If grades can be viewed, show the Grade Released Panel Notification
+					 this->DataGridView1->Location = System::Drawing::Point(4, 210);
+					 this->DataGridView1->Size = System::Drawing::Size(574, 341);
+					 this->Label1->Location = System::Drawing::Point(102, 94);
+					 this->Button3->Location = System::Drawing::Point(193, 149);
+					 this->GradeReleasedPanel->Location = System::Drawing::Point(105, 8);
+					 GradeReleasedPanel->Visible = true;
+
+				 }
 
 				 try
 				 {
@@ -736,6 +766,7 @@ namespace AcadSecManagementSystem {
 				 }
 				 return isFeesPaid;
 	}
+
 
 private: System::Void Button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 if (getisFeesPaid())
