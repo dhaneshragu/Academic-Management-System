@@ -4,34 +4,32 @@
 #include <regex>
 #include <iostream>
 #include <sstream>
-#include <ctime>	
+#include <ctime>
 #include <iomanip>
 using namespace std;
 
-
-//#include <msclr/marshal_cppstd.h>
-
-// Write all your functions detailed here that were defined in header files, DONT USE int main()
-
-void MarshalString(String ^ s, string& os) {
+// Function to convert System::String^ to std::string
+void MarshalString(String^ s, string& os) {
 	using namespace Runtime::InteropServices;
 	const char* chars =
 		(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
 	os = chars;
 	Marshal::FreeHGlobal(IntPtr((void*)chars));
 }
+
+// Function to convert std::string to System::String^
 String^ ConvertStdStringToSystemString(const std::string& stdString) {
 	array<Byte>^ byteArray = gcnew array<Byte>(stdString.length());
 	System::Runtime::InteropServices::Marshal::Copy(IntPtr((void*)stdString.c_str()), byteArray, 0, stdString.length());
 	return System::Text::Encoding::UTF8->GetString(byteArray);
 }
-std::map<string, string> FetchDetailsByRollNumber(String^ rollNumber,String ^ Role) {
 
+// Function to fetch user details by roll number based on the role (Student/Professor)
+std::map<string, string> FetchDetailsByRollNumber(String^ rollNumber, String^ Role) {
 	std::map<string, string> details;
 	String^ connectionString = Constants::getdbConnString();
 
-	if (Role == "Student")
-	{
+	if (Role == "Student") {
 		try {
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			connection->Open();
@@ -42,19 +40,18 @@ std::map<string, string> FetchDetailsByRollNumber(String^ rollNumber,String ^ Ro
 
 			SqlDataReader^ reader = command->ExecuteReader();
 			if (reader->Read()) {
-				// Get column names
+				// Get column names and values
 				for (int i = 0; i < reader->FieldCount; ++i) {
-
-
 					String^ columnName = reader->GetName(i);
 					int columnIndex = reader->GetOrdinal(columnName);
 					Object^ columnValue = reader->GetSqlValue(columnIndex);
 					String^ columnValueStr = columnValue->ToString();
-					//Convert String^ to String (remove the ^)
-					string columnNameStr;
-					string columnValueStrNative;
+
+					// Convert System::String^ to std::string
+					string columnNameStr, columnValueStrNative;
 					MarshalString(columnName, columnNameStr);
 					MarshalString(columnValueStr, columnValueStrNative);
+
 					// Insert into std::map
 					details.insert({ columnNameStr, columnValueStrNative });
 				}
@@ -68,8 +65,7 @@ std::map<string, string> FetchDetailsByRollNumber(String^ rollNumber,String ^ Ro
 		}
 	}
 
-	if (Role == "Professor")
-	{
+	if (Role == "Professor") {
 		try {
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			connection->Open();
@@ -80,19 +76,18 @@ std::map<string, string> FetchDetailsByRollNumber(String^ rollNumber,String ^ Ro
 
 			SqlDataReader^ reader = command->ExecuteReader();
 			if (reader->Read()) {
-				// Get column names
+				// Get column names and values
 				for (int i = 0; i < reader->FieldCount; ++i) {
-
-
 					String^ columnName = reader->GetName(i);
 					int columnIndex = reader->GetOrdinal(columnName);
 					Object^ columnValue = reader->GetSqlValue(columnIndex);
 					String^ columnValueStr = columnValue->ToString();
-					//Convert String^ to String (remove the ^)
-					string columnNameStr;
-					string columnValueStrNative;
+
+					// Convert System::String^ to std::string
+					string columnNameStr, columnValueStrNative;
 					MarshalString(columnName, columnNameStr);
 					MarshalString(columnValueStr, columnValueStrNative);
+
 					// Insert into std::map
 					details.insert({ columnNameStr, columnValueStrNative });
 				}
@@ -108,23 +103,26 @@ std::map<string, string> FetchDetailsByRollNumber(String^ rollNumber,String ^ Ro
 	return details;
 }
 
-System::DateTime ParseDateString(std :: string dateString) {
+// Function to parse a date string into a System::DateTime object
+System::DateTime ParseDateString(std::string dateString) {
 	// Convert System::String^ to std::string
+	String^ systemDateString = ConvertStdStringToSystemString(dateString);
 
 	// Parse the string into a DateTime object
-	System::DateTime dateTime = System::DateTime::Parse(gcnew String(dateString.c_str()));
+	System::DateTime dateTime = System::DateTime::Parse(systemDateString);
 
 	return dateTime;
 }
 
-void updateUserDetails(String ^rollnumber, String ^ address, String ^password, String ^phoneNo, String ^dateOfBirth,String ^ Role)
-{
-	String^ connectionString = Constants:: getdbConnString(); // Replace with your actual connection string
+// Function to update user details in the database
+void updateUserDetails(String^ rollnumber, String^ address, String^ password, String^ phoneNo, String^ dateOfBirth, String^ Role) {
+	String^ connectionString = Constants::getdbConnString(); // Replace with your actual connection string
 
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);
 	connection->Open();
-	if (Role == "Student")
-	{
+
+	if (Role == "Student") {
+		// Update student details
 		String^ query = "UPDATE [Student Database] SET Address = @Address, password = @Password, PhoneNo = @PhoneNo, DateOfBirth = @DateOfBirth WHERE roll_no = @RollNumber";
 		SqlCommand^ command = gcnew SqlCommand(query, connection);
 		command->Parameters->AddWithValue("@RollNumber", rollnumber);
@@ -143,8 +141,9 @@ void updateUserDetails(String ^rollnumber, String ^ address, String ^password, S
 
 		connection->Close();
 	}
-	if (Role == "Professor")
-	{
+
+	if (Role == "Professor") {
+		// Update professor details
 		String^ query = "UPDATE [Faculty] SET Address = @Address, password = @Password, PhoneNo = @PhoneNo, DateOfBirth = @DateOfBirth WHERE faculty_ID = @RollNumber";
 		SqlCommand^ command = gcnew SqlCommand(query, connection);
 		command->Parameters->AddWithValue("@RollNumber", rollnumber);
@@ -164,6 +163,8 @@ void updateUserDetails(String ^rollnumber, String ^ address, String ^password, S
 		connection->Close();
 	}
 }
+
+// Function to check if a phone number is in a valid format
 bool IsValidPhoneNumber(String^ phoneNo) {
 	if (phoneNo == nullptr)
 		return true;
@@ -174,6 +175,8 @@ bool IsValidPhoneNumber(String^ phoneNo) {
 
 	return std::regex_match(phoneNoStr, pattern);
 }
+
+// Function to split a string and return the first part
 std::string splitStringAndReturnFirstPart(const std::string& inputString) {
 	// Find the position of the first space in the input string
 	size_t spacePosition = inputString.find(' ');
@@ -188,10 +191,13 @@ std::string splitStringAndReturnFirstPart(const std::string& inputString) {
 		return inputString;
 	}
 }
+
+// Function to check if a year is a leap year
 bool isLeapYear(int year) {
 	return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
+// Function to check if a date is valid
 bool isValidDate(int day, int month, int year) {
 	if (month < 1 || month > 12 || day < 1) {
 		return false;
@@ -206,6 +212,7 @@ bool isValidDate(int day, int month, int year) {
 	return day <= daysInMonth[month];
 }
 
+// Function to get the next date based on the current date and number of days ahead
 std::string getNextDate(const std::string &currentDate, int daysAhead) {
 	std::istringstream dateStream(currentDate);
 	char dash;
