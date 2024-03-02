@@ -2,7 +2,7 @@
 This form allows the Student to Register for Course or Electives according to IITG CSE syllabus.
 
 ## Access Scope
-Any B.Tech. CSE Student registered with the Institute.
+Any Student currently enrolled in an Undergraduate program of Computer Science and Engineering Department at Indian Institute of Technology, Guwahati.
 
 ## Usage Instructions
 

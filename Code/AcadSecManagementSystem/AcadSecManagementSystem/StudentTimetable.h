@@ -254,6 +254,7 @@ namespace AcadSecManagementSystem {
 			this->comboBox1->TabIndex = 4;
 			this->comboBox1->Text = L"Monday";
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &StudentTimetable::comboBox1_SelectedIndexChanged);
+			this->comboBox1->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &StudentTimetable::comboBox1_KeyPress);
 			// 
 			// label2
 			// 
@@ -335,7 +336,8 @@ namespace AcadSecManagementSystem {
 
 	// Remove the automatic sort through header click.
 	void RemoveAutoSorting(DataGridView^ dataGridView) {
-		for each (DataGridViewColumn^ column in dataGridView->Columns) {
+		for each (DataGridViewColumn^ column in dataGridView->Columns) 
+		{
 			column->SortMode = DataGridViewColumnSortMode::NotSortable;
 		}
 	}
@@ -343,6 +345,7 @@ namespace AcadSecManagementSystem {
 	// First Load of the inner panel
 	private: System::Void StudentTimetable_Load(System::Object^  sender, System::EventArgs^  e) {
 
+		// Default sorting is lexicographic, we want chronological order, so remove the automatic sort rule.
 		RemoveAutoSorting(DataGridView1);
 
 		// Try testing the connection to Database here itself.For the first time, Monday time table will be shown.
@@ -377,7 +380,8 @@ namespace AcadSecManagementSystem {
 			SqlDataReader^ readerForRoom = commandForRoom->ExecuteReader();
 
 			// Map ID to name
-			while (readerForRoom->Read()){
+			while (readerForRoom->Read())
+			{
 				String^ room_ID = readerForRoom["room_ID"]->ToString();
 				String^ roomName = readerForRoom["name"]->ToString();
 				String^ roomLocation = readerForRoom["location"]->ToString();
@@ -401,10 +405,9 @@ namespace AcadSecManagementSystem {
 			SqlDataReader^ reader = command->ExecuteReader();
 			vector<tuple<string, string, string, string> > dailyScheduleList;
 			
-			// Mapping Slot to time.
-			// @TODO : Map RoomID to room name.
-			// Plan : Create another query to fetch [Room] from DB and store required info in local map, then directly map.
-			while (reader->Read()){
+			// Mapping Slot to time, and room number (id) to name.
+			while (reader->Read())
+			{
 				String^ courseID = reader["course_ID"]->ToString();
 				String^ course_name = reader["course_name"]->ToString();
 				String^ slot = reader["slot"]->ToString();
@@ -427,7 +430,8 @@ namespace AcadSecManagementSystem {
 			sort(dailyScheduleList.begin(), dailyScheduleList.end(), chronoSort);
 
 			// Updating the view.
-			for (auto i : dailyScheduleList){
+			for (auto i : dailyScheduleList)
+			{
 				array<String^>^ row = { ConvertToSystemString(get<0>(i)), ConvertToSystemString(get<1>(i)), ConvertToSystemString(get<2>(i)), ConvertToSystemString(get<3>(i)) };
 				DataGridView1->Rows->Add(row);
 			}
@@ -444,8 +448,10 @@ namespace AcadSecManagementSystem {
 
 	// Remove all rows of Data grid.
 	void ClearDataGridView(DataGridView^ dataGridView) {
-		if (dataGridView->RowCount > 0) {
-			for (int i = dataGridView->RowCount - 1; i >= 0; i--) {
+		if (dataGridView->RowCount > 0) 
+		{
+			for (int i = dataGridView->RowCount - 1; i >= 0; i--) 
+			{
 				dataGridView->Rows->RemoveAt(i);
 			}
 		}
@@ -522,6 +528,7 @@ namespace AcadSecManagementSystem {
 			// Extracting the selected value from the dropdown list.
 			ComboBox^ combobox = dynamic_cast<ComboBox^>(sender);
 			String^ selectedValue = safe_cast<String^>(combobox->SelectedItem);
+			combobox->SelectionLength = 0;
 			string selectedVal;
 			MarshalString(selectedValue, selectedVal);
 
@@ -543,7 +550,8 @@ namespace AcadSecManagementSystem {
 			SqlDataReader^ readerForRoom = commandForRoom->ExecuteReader();
 
 			// Map ID to name
-			while (readerForRoom->Read()){
+			while (readerForRoom->Read())
+			{
 				String^ room_ID = readerForRoom["room_ID"]->ToString();
 				String^ roomName = readerForRoom["name"]->ToString();
 				String^ roomLocation = readerForRoom["location"]->ToString();
@@ -565,10 +573,9 @@ namespace AcadSecManagementSystem {
 			SqlDataReader^ reader = command->ExecuteReader();
 			vector<tuple<string, string, string, string> > dailyScheduleList;
 			
-			// Mapping Slot to time.
-			// @TODO : Map RoomID to room name.
-			// Plan : Create another query to fetch [Room] from DB and store required info in local map, then directly map.
-			while (reader->Read()){
+			// Mapping Slot to time, and room number (id) to name.
+			while (reader->Read())
+			{
 				String^ courseID = reader["course_ID"]->ToString();
 				String^ course_name = reader["course_name"]->ToString();
 				String^ slot = reader["slot"]->ToString();
@@ -594,7 +601,8 @@ namespace AcadSecManagementSystem {
 			ClearDataGridView(DataGridView1);
 			
 			// Updating the view.
-			for (auto i : dailyScheduleList){
+			for (auto i : dailyScheduleList)
+			{
 				array<String^>^ row = { ConvertToSystemString(get<0>(i)), ConvertToSystemString(get<1>(i)), ConvertToSystemString(get<2>(i)), ConvertToSystemString(get<3>(i)) };
 				DataGridView1->Rows->Add(row);
 			}
@@ -606,6 +614,10 @@ namespace AcadSecManagementSystem {
 		{
 			MessageBox::Show(ex->Message);
 		}
+	}
+	// Disabling typing in the dropdown field.
+	private: System::Void comboBox1_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e){
+		e->Handled = true;
 	}
 	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
