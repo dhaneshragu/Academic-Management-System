@@ -352,7 +352,7 @@ File: `Constants.cpp`
 None
 
 ## Description 
-1. Fetches the student's profile picture from the database based on the roll number and displays it in the specified PictureBox.
+1. Fetches the student's profile picture from the database based on the roll number and displays it in the specified PictureBox, the images are scraped from `IITG CSE` website.
 2. Converts the image data to a `MemoryStream` and creates a `Bitmap` from it.
 3. A similar function is `fetchAndDisplayProfImage` which displays the image of professor.
 
@@ -360,9 +360,9 @@ None
 
 The following is the SQL query used in this function:
 
-### Query 1: To fetch professor's profile picture from Faculty Table.
+### Query 1: To fetch Student's profile picture from "Student Database" Table.
 
 ```sql
 SELECT DP FROM [Student Database] WHERE roll_number = @rno
 ```
-Fetches the `VARBINARY` encoded image from DB.
+Fetches the `VARBINARY` encoded image from DB, which is then post processed in Visual C++.
