@@ -4,6 +4,6 @@ This screen allows the Student to view the examination schedule of the mid-semes
 ## Usage Instructions
 
 - The immediately visible screen, by default, will display the examination schedule as mentioned above.
-![alt-syntax](./assets//exam-schedule-student.png)
+![alt-syntax](./assets/exam-schedule-student.png)
 
 [//]: # (Author: Pratyush R)
