@@ -1,9 +1,6 @@
 // AcadSecManagementSystem.cpp : main project file.
 
 #include "stdafx.h"
-#include "StudentDashboard.h"
-#include "AdminDashboard.h"
-#include "ProfDashboard.h"
 #include "LoginDashboard.h"
 
 using namespace AcadSecManagementSystem;
