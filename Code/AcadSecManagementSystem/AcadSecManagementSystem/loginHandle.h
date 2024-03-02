@@ -1,8 +1,9 @@
-#ifndef LOGINHANDLE_H  // Make it end with _H
+#ifndef LOGINHANDLE_H  // Include guards to prevent multiple header inclusion
 #define LOGINHANDLE_H
 
-// Add any #include<map> or any libraries u want
+#include <map>  // Add any #include<map> or any libraries you want
 
+// Importing necessary namespaces
 using namespace System;
 using namespace System::ComponentModel;
 using namespace System::Collections;
@@ -11,11 +12,21 @@ using namespace System::Data;
 using namespace System::Data::SqlClient;
 using namespace System::Drawing;
 
+// Function Signatures for functions defined in SampleHeader.cpp
 
-// IMPORTANT: Function Signatures of all the functions you are making it in the SampleHeader.cpp file
-bool ValidateLogin(String^ ID, String^ password,String^ role);
-String^ GetUserName(String^ ID, String ^role);
-int GetUserYear(String^ ID, String ^role);
+// Validate user login based on role
+bool ValidateLogin(String^ ID, String^ password, String^ role);
+
+// Get user name based on role
+String^ GetUserName(String^ ID, String^ role);
+
+// Get user academic year based on role
+int GetUserYear(String^ ID, String^ role);
+
+// Check if the string contains non-numeric characters
 bool ContainsNonNumericCharacters(String^ str);
+
+// Get user roll number
 String^ GetRoll(String^ ID);
-#endif
+
+#endif  // End of include guard
