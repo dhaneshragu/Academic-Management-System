@@ -464,10 +464,20 @@ namespace AcadSecManagementSystem {
 
 				 // Create a DataTable for displaying course information in a DataGridView
 				 DataTable^ dataTable = gcnew DataTable();
-
-				 // Set up the columns of the DataGridView
-				 // ...
-
+				 DataGridView1->Columns[0]->DataPropertyName = "Course ID";
+				 DataGridView1->Columns[1]->DataPropertyName = "Course Name";
+				 DataGridView1->Columns[2]->DataPropertyName = "Venue";
+				 DataGridView1->Columns[3]->DataPropertyName = "MidsemDate";
+				 DataGridView1->Columns[4]->DataPropertyName = "MidsemTime";
+				 DataGridView1->Columns[5]->DataPropertyName = "EndsemDate";
+				 DataGridView1->Columns[6]->DataPropertyName = "EndsemTime";
+				 dataTable->Columns->Add("Course ID", String::typeid);
+				 dataTable->Columns->Add("Course Name", String::typeid);
+				 dataTable->Columns->Add("Venue", String::typeid);
+				 dataTable->Columns->Add("MidsemDate", String::typeid);
+				 dataTable->Columns->Add("MidsemTime", String::typeid);
+				 dataTable->Columns->Add("EndsemDate", String::typeid);
+				 dataTable->Columns->Add("EndsemTime", String::typeid);
 				 // Try block to handle potential exceptions while retrieving detailed course information
 				 try
 				 {
