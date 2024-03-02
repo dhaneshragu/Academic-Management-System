@@ -16,7 +16,7 @@ This screen appears when user opens the application. Users can login into their 
 
 - Add your details and click the `Login` button
 ![alt text](./assets/click_login.png)
-- You will be redirected to your homepage
+- You will be redirected to your homepage. Click on `Logout` button to go back to the login screen.
 ![alt text](./assets/loggedin.png)
 
 - If details are incorrect/left empty you will get an error message.
