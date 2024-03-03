@@ -372,7 +372,7 @@ Returns a `std::map<std::string, std::string>` containing details from the Admin
 
 ```sql
 SELECT * FROM Admin
-
+```
 ## Function Name: `ViewRecords_Load`
 
 ### Location
@@ -381,10 +381,10 @@ File: `ViewRecords.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
+|           Parameter           |           Description            |
+| :---------------------------: | :------------------------------: |
 | **`System::Object^  sender`** | The object that raises the event |
-| **`System::EventArgs^  e`** | Event data |
+|  **`System::EventArgs^  e`**  |            Event data            |
 
 ## Output Parameters
 
@@ -424,10 +424,10 @@ File: `ViewRecords.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
+|           Parameter           |           Description            |
+| :---------------------------: | :------------------------------: |
 | **`System::Object^  sender`** | The object that raises the event |
-| **`System::EventArgs^  e`** | Event data |
+|  **`System::EventArgs^  e`**  |            Event data            |
 
 ## Output Parameters
 
@@ -471,9 +471,9 @@ None
 
 ## Output Parameters
 
-| Parameter               | Description                                      |
-|-------------------------|--------------------------------------------------|
-| **`bool`**              | Returns `true` if Fee Payment has started, `false` otherwise.|
+| Parameter  | Description                                                   |
+| ---------- | ------------------------------------------------------------- |
+| **`bool`** | Returns `true` if Fee Payment has started, `false` otherwise. |
 
 ## Description 
 
@@ -499,9 +499,9 @@ None
 
 ## Output Parameters
 
-| Parameter               | Description                                      |
-|-------------------------|--------------------------------------------------|
-| **`bool`**              | Returns `true` if Course Registration has started, `false` otherwise.|
+| Parameter  | Description                                                           |
+| ---------- | --------------------------------------------------------------------- |
+| **`bool`** | Returns `true` if Course Registration has started, `false` otherwise. |
 
 ## Description 
 
@@ -527,9 +527,9 @@ None
 
 ## Output Parameters
 
-| Parameter               | Description                                      |
-|-------------------------|--------------------------------------------------|
-| **`bool`**              | Returns `true` if student has paid the fees, `false` otherwise.|
+| Parameter  | Description                                                     |
+| ---------- | --------------------------------------------------------------- |
+| **`bool`** | Returns `true` if student has paid the fees, `false` otherwise. |
 
 ## Description 
 
@@ -551,10 +551,10 @@ File: `StudentHome.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
+|           Parameter           |           Description            |
+| :---------------------------: | :------------------------------: |
 | **`System::Object^  sender`** | The object that raises the event |
-| **`System::EventArgs^  e`** | Event data |
+|  **`System::EventArgs^  e`**  |            Event data            |
 
 ## Output Parameters
 
@@ -572,10 +572,10 @@ File: `StudentHome.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
+|           Parameter           |           Description            |
+| :---------------------------: | :------------------------------: |
 | **`System::Object^  sender`** | The object that raises the event |
-| **`System::EventArgs^  e`** | Event data |
+|  **`System::EventArgs^  e`**  |            Event data            |
 
 ## Output Parameters
 
@@ -619,9 +619,9 @@ None
 
 ## Output Parameters
 
-| Parameter               | Description                                      |
-|-------------------------|--------------------------------------------------|
-| **`bool`**              | Returns `true` if admin has generated the timetable, `false` otherwise.|
+| Parameter  | Description                                                             |
+| ---------- | ----------------------------------------------------------------------- |
+| **`bool`** | Returns `true` if admin has generated the timetable, `false` otherwise. |
 
 ## Description 
 
@@ -647,9 +647,9 @@ None
 
 ## Output Parameters
 
-| Parameter               | Description                                      |
-|-------------------------|--------------------------------------------------|
-| **`bool`**              | Returns `true` if admin has set the midsem and endsem date, `false` otherwise.|
+| Parameter  | Description                                                                    |
+| ---------- | ------------------------------------------------------------------------------ |
+| **`bool`** | Returns `true` if admin has set the midsem and endsem date, `false` otherwise. |
 
 ## Description 
 
@@ -680,9 +680,9 @@ None
 
 ## Output Parameters
 
-| Parameter               | Description                                      |
-|-------------------------|--------------------------------------------------|
-| **`bool`**              | Returns `true` if admin has generated the timetable, `false` otherwise.|
+| Parameter  | Description                                                             |
+| ---------- | ----------------------------------------------------------------------- |
+| **`bool`** | Returns `true` if admin has generated the timetable, `false` otherwise. |
 
 ## Description 
 
@@ -708,9 +708,9 @@ None
 
 ## Output Parameters
 
-| Parameter               | Description                                      |
-|-------------------------|--------------------------------------------------|
-| **`bool`**              | Returns `true` if student has paid the fees, `false` otherwise.|
+| Parameter  | Description                                                     |
+| ---------- | --------------------------------------------------------------- |
+| **`bool`** | Returns `true` if student has paid the fees, `false` otherwise. |
 
 ## Description 
 
@@ -732,10 +732,10 @@ File: `StudentDashboard.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
+|           Parameter           |           Description            |
+| :---------------------------: | :------------------------------: |
 | **`System::Object^  sender`** | The object that raises the event |
-| **`System::EventArgs^  e`** | Event data |
+|  **`System::EventArgs^  e`**  |            Event data            |
 
 ## Output Parameters
 
@@ -753,10 +753,10 @@ File: `StudentDashboard.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
+|           Parameter           |           Description            |
+| :---------------------------: | :------------------------------: |
 | **`System::Object^  sender`** | The object that raises the event |
-| **`System::EventArgs^  e`** | Event data |
+|  **`System::EventArgs^  e`**  |            Event data            |
 
 ## Output Parameters
 
