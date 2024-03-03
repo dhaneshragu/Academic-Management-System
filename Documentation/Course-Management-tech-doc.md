@@ -1,3 +1,7 @@
+# Course Management
+
+This file is the technical Documentation for Course Management Module as a part of `Academic System Management Software` by Team 10A.
+
 ## Function Name: `setAvailableCoursesTable`
 
 ### Location
