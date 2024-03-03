@@ -21,6 +21,7 @@ None
 2. It's a heuristic-based timetable generator aiming to minimize conflicts between compulsory and elective courses. The algorithm ensures that no two compulsory courses for the same batch or two courses for the same professor are assigned the same slot.
 3. The heuristic in play here is that compulsory courses are alloted starting from A to then G slot.
 However electives are alloted starting from G to then A slot. Hence minimising the conflicts. It also considers different scheduling patterns for morning and afternoon classes for different years.
+4. Slots are alloted room each wise i.e. each batch will have a different room for the same slot thus ensuring no clash between them.
 
 ## SQL Queries
 
