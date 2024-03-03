@@ -1,7 +1,9 @@
 # Form Name
+
 Short Description
 
-## Access Scope : 
+## Access Scope
+
 Student/Prof/Admin only or Common etc.
 
 ## Usage Instructions
@@ -12,7 +14,6 @@ Change the path of image in assets accordingly to your working directory.
 
 - More steps with images...
 ![alt-syntax](../assets/clash.png)
-
 
 > **NOTE:**  
 > Highlights information that users should take into account, even when skimming.

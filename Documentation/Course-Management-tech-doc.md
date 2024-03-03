@@ -1,3 +1,7 @@
+# Course Management
+
+This file is the technical Documentation for Course Management Module as a part of `Academic System Management Software` by Team 10A.
+
 ## Function Name: `setAvailableCoursesTable`
 
 ### Location
@@ -367,47 +371,224 @@ SELECT DP FROM [Student Database] WHERE roll_number = @rno
 ```
 Fetches the `VARBINARY` encoded image from DB, which is then post processed in Visual C++.
 
-
-## Function Name: `CalcSPI(DataGridView^ dataGridView)`
+## Function Name: `StudentTimetable_Load`
 
 ### Location
 
-File: `StudentHome.h`
+File: `StudentTimetable.h`
 
 ## Input Parameters
 
-| Parameter                | Description                                       |
-|--------------------------|---------------------------------------------------|
-| **`DataGridView^ dataGridView`**     | DataGridView representing the courses taken along with grade that has been fetched from the Database.        |
+| Parameter  | Description                              |
+|:----------:|:----------------------------------------:|
+| **`System::Object^  sender`** | The object that raises the event |
+| **`System::EventArgs^  e`** | Event data|
 
 ## Output Parameters
 
-| Parameter                | Description                                               |
-|--------------------------|-----------------------------------------------------------|
-| **`double`**               | Returns `-1` if some grades are not released, `Semester Point Index` otherwise.|
+Returns `System::Void`
 
 ## Description 
 
-1. The Semester Point Index (SPI) is calculated using the following formula:
+1. Renders the dropdown for selecting day and the timetable for Monday by default on load of the screen.
 
-\[ SPI = \frac{\text{Total Weighted Points}}{\text{Total Credits}} \]
+## SQL Queries
 
-Where:
-- **Total Weighted Points**: Sum of (Subject Credits * Grade Points) for all subjects taken in the semester.
-- **Total Credits**: Sum of Subject Credits for all subjects taken in the semester.
+The following are the SQL queries used in this function:
 
-## Grade Mapping:
+### Query 1: To fetch the room id to name and location mapping information from the Room Table. 
 
-The grades are mapped to numerical points as follows:
+```sql
+SELECT room_ID,name,location FROM [Room];
+```
 
-- **AA or AS**: 10
-- **AB**: 9
-- **BB**: 8
-- **BC**: 7
-- **CC**: 6
-- **CD**: 5
-- **DD**: 4
-- **F**: 0
+### Query 2: To fetch the information about the current users' (student) courses from the 'Courses Taken' Table. 
 
-> **NOTE :** If some grade has not been uploaded by the prof (i.e. it is --), this function returns -1 which results in SPI being displayed as NA.
+```sql
+SELECT course_ID,course_name,slot,room_ID
+FROM [Courses] 
+WHERE course_ID IN 
+(
+    SELECT course_ID 
+    FROM [Courses Taken] 
+    WHERE [Courses Taken].roll_no = roll_no
+);
+```
 
+
+## Function Name: `comboBox1_SelectedIndexChanged`
+
+### Location
+
+File: `StudentTimetable.h`
+
+## Input Parameters
+
+| Parameter  | Description                              |
+|:----------:|:----------------------------------------:|
+| **`System::Object^  sender`** | The object that raises the event |
+| **`System::EventArgs^  e`** | Event data|
+
+## Output Parameters
+
+Returns `System::Void`
+
+## Description 
+
+1. Updates the screen according to selected day from the dropdown, displaying the schedule for the selected day.
+
+## SQL Queries
+
+The following are the SQL queries used in this function:
+
+### Query 1: To fetch the room id to name and location mapping information from the Room Table. 
+
+```sql
+SELECT room_ID,name,location FROM [Room];
+```
+
+### Query 2: To fetch the information about the current users' (student) courses from the 'Courses Taken' Table. 
+
+```sql
+SELECT course_ID,course_name,slot,room_ID
+FROM [Courses] 
+WHERE course_ID IN 
+(
+    SELECT course_ID 
+    FROM [Courses Taken] 
+    WHERE [Courses Taken].roll_no = roll_no
+);
+```
+
+## Function Name: `chronoSort`
+
+### Location
+
+File: `StudentTimetable.h`
+
+## Input Parameters
+
+| Parameter  | Description                              |
+|:----------:|:----------------------------------------:|
+| **`tuple<string, string, string, string>& a`** | A reference to a tuple representing a row of the timetable |
+| **`tuple<string, string, string, string>& b`** | A reference to a  tuple representing a row of the timetable|
+
+## Output Parameters
+
+| Parameter  | Description                              |
+|:----------:|:----------------------------------------:|
+| **`bool`** | `true` if `a` should be placed before `b` in a chronological order, otherwise `false`|
+
+## Description 
+
+1. Custom sorts the rows of the time table in chronologically ascending order, as the default sorting is lexicographic.
+
+> Note: The function is declared `static` to avoid conflicts between managed (garbage collected) versions and native versions of functions, data types and data structures provided by C++.
+
+## Function Name: `ProfTimetable_Load`
+
+### Location
+
+File: `ProfTimetable.h`
+
+## Input Parameters
+
+| Parameter  | Description                              |
+|:----------:|:----------------------------------------:|
+| **`System::Object^  sender`** | The object that raises the event |
+| **`System::EventArgs^  e`** | Event data|
+
+## Output Parameters
+
+Returns `System::Void`
+
+## Description 
+
+1. Renders the dropdown for selecting day and the timetable for Monday by default on load of the screen.
+
+## SQL Queries
+
+The following are the SQL queries used in this function:
+
+### Query 1: To fetch the room id to name and location mapping information from the Room Table. 
+
+```sql
+SELECT room_ID,name,location FROM [Room];
+```
+
+### Query 2: To fetch the information about the current users' (faculty) courses from the Courses Table. 
+
+```sql
+SELECT slot,course_ID,course_name,room_ID 
+FROM [Courses] 
+WHERE prof_ID = faculty_ID;
+```
+
+
+## Function Name: `comboBox1_SelectedIndexChanged`
+
+### Location
+
+File: `ProfTimetable.h`
+
+## Input Parameters
+
+| Parameter  | Description                              |
+|:----------:|:----------------------------------------:|
+| **`System::Object^  sender`** | The object that raises the event |
+| **`System::EventArgs^  e`** | Event data|
+
+## Output Parameters
+
+Returns `System::Void`
+
+## Description 
+
+1. Updates the screen according to selected day from the dropdown, displaying the schedule for the selected day.
+
+## SQL Queries
+
+The following are the SQL queries used in this function:
+
+### Query 1: To fetch the room id to name and location mapping information from the Room Table. 
+
+```sql
+SELECT room_ID,name,location FROM [Room];
+```
+
+### Query 2: To fetch the information about the current users' (faculty) courses from the Courses Table. 
+
+```sql
+SELECT slot,course_ID,course_name,room_ID 
+FROM [Courses] 
+WHERE prof_ID = faculty_ID;
+```
+
+## Function Name: `chronoSort`
+
+### Location
+
+File: `ProfTimetable.h`
+
+## Input Parameters
+
+| Parameter  | Description                              |
+|:----------:|:----------------------------------------:|
+| **`tuple<string, string, string, string>& a`** | A reference to a tuple representing a row of the timetable |
+| **`tuple<string, string, string, string>& b`** | A reference to a  tuple representing a row of the timetable|
+
+## Output Parameters
+
+| Parameter  | Description                              |
+|:----------:|:----------------------------------------:|
+| **`bool`** | `true` if `a` should be placed before `b` in a chronological order, otherwise `false`|
+
+## Description 
+
+1. Custom sorts the rows of the time table in chronologically ascending order, as the default sorting is lexicographic.
+
+> Note: The function is declared `static` to avoid conflicts between managed (garbage collected) versions and native versions of functions, data types and data structures provided by C++.
+
+> Note: In both `ProfTimetable.h` and `StudentTimetable.h` there are two additional functions which operate on a `DataGridView`, which are `ClearDataGridView` and `RemoveAutoSorting`, which, as their names suggest, clears the `DataGridView` and removes the automatic (default) sorting (here, lexicographic) on columns of `DataGridView`, respectively.
+
+> Note: Many functions as well as data and its structure in both `ProfTimetable.h` and `StudentTimetable.h` are common, raising the question that they could be abstracted out of these two files and reused everywhere as common functions or common data, however, the issues between the managed runtime and native C++ prevented that.
