@@ -21,7 +21,7 @@ Any Student currently enrolled in an Undergraduate program of Computer Science a
 - If you belong to First Year (2nd Semester), you will have to register for all compulsory courses.
 ![alt-syntax](./assets/firstyear-coursereg.png)
 
-- Note that you can't add an elective if it clashes with the already choosen elective slot or compulsory courses. You will be prompted by the message box if you do so.
+- Note that you can't add an elective iPf it clashes with the already choosen elective slot or compulsory courses. You will be prompted by the message box if you do so.
 ![alt text](./assets/clash.png)
 
 - Once done, you can safely navigate to any other forms as you wish.
