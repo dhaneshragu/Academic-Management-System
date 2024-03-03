@@ -235,18 +235,18 @@ namespace AcadSecManagementSystem {
 			this->label7->AutoSize = true;
 			this->label7->Location = System::Drawing::Point(220, 129);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(66, 24);
+			this->label7->Size = System::Drawing::Size(17, 24);
 			this->label7->TabIndex = 36;
-			this->label7->Text = L"{Num}";
+			this->label7->Text = L"-";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(223, 175);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(66, 24);
+			this->label5->Size = System::Drawing::Size(17, 24);
 			this->label5->TabIndex = 34;
-			this->label5->Text = L"{Num}";
+			this->label5->Text = L"-";
 			// 
 			// label2
 			// 

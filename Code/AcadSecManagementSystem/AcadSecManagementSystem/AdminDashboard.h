@@ -106,9 +106,11 @@ namespace AcadSecManagementSystem {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(1157, 7);
+			this->label3->Font = (gcnew System::Drawing::Font(L"Tahoma", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(1159, 8);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(96, 21);
+			this->label3->Size = System::Drawing::Size(113, 21);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"{Admin ID}";
 			// 
@@ -222,6 +224,7 @@ namespace AcadSecManagementSystem {
 			this->Controls->Add(this->panel2);
 			this->Font = (gcnew System::Drawing::Font(L"Tahoma", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
