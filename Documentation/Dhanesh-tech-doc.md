@@ -330,7 +330,7 @@ None
 
 1. Displays the user's DP using a method from the `Constants` class.
 2. Initializes UI elements, sets labels, and disables buttons.
-3. Checks if grades can be viewed using a method named `getisGradesViewing`.
+3. Checks if grades can be viewed using a method named `getisGradesViewing`, displayes the SPI also.
 4. Adjusts UI elements based on grades viewing status.
 5. Retrieves and displays course details in DataGridView1.
 6. Retrieves and displays fee payment status in DataGridView2.
@@ -366,3 +366,48 @@ The following is the SQL query used in this function:
 SELECT DP FROM [Student Database] WHERE roll_number = @rno
 ```
 Fetches the `VARBINARY` encoded image from DB, which is then post processed in Visual C++.
+
+
+## Function Name: `CalcSPI(DataGridView^ dataGridView)`
+
+### Location
+
+File: `StudentHome.h`
+
+## Input Parameters
+
+| Parameter                | Description                                       |
+|--------------------------|---------------------------------------------------|
+| **`DataGridView^ dataGridView`**     | DataGridView representing the courses taken along with grade that has been fetched from the Database.        |
+
+## Output Parameters
+
+| Parameter                | Description                                               |
+|--------------------------|-----------------------------------------------------------|
+| **`double`**               | Returns `-1` if some grades are not released, `Semester Point Index` otherwise.|
+
+## Description 
+
+1. The Semester Point Index (SPI) is calculated using the following formula:
+
+\[ SPI = \frac{\text{Total Weighted Points}}{\text{Total Credits}} \]
+
+Where:
+- **Total Weighted Points**: Sum of (Subject Credits * Grade Points) for all subjects taken in the semester.
+- **Total Credits**: Sum of Subject Credits for all subjects taken in the semester.
+
+## Grade Mapping:
+
+The grades are mapped to numerical points as follows:
+
+- **AA or AS**: 10
+- **AB**: 9
+- **BB**: 8
+- **BC**: 7
+- **CC**: 6
+- **CD**: 5
+- **DD**: 4
+- **F**: 0
+
+> **NOTE :** If some grade has not been uploaded by the prof (i.e. it is --), this function returns -1 which results in SPI being displayed as NA.
+
