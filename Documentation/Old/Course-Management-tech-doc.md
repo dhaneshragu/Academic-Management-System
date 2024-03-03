@@ -10,8 +10,8 @@ File: `StudentCourseReg.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
+|        Parameter        |                  Description                  |
+| :---------------------: | :-------------------------------------------: |
 | **`String ^ semester`** | Semester for which courses have to be fetched |
 
 ## Output Parameters
@@ -49,10 +49,10 @@ File: `StudentCourseReg.h`
 
 ## Input Parameters
 
-| Parameter             | Description                                                  |
-|-----------------------|--------------------------------------------------------------|
-| **`System::Object^ sender`** | The object that raises the event.                             |
-| **`System::Windows::Forms::DataGridViewCellEventArgs^ e`**      | Information about the event data (DataGridViewCellEventArgs).|
+| Parameter                                                   | Description                                                   |
+| ----------------------------------------------------------- | ------------------------------------------------------------- |
+| **`System::Object^ sender`**                                | The object that raises the event.                             |
+| **`System::Windows::Forms:: DataGridViewCellEventArgs^ e`** | Information about the event data (DataGridViewCellEventArgs). |
 
 ## Output Parameters
 
@@ -74,10 +74,10 @@ File: `StudentCourseReg.h`
 
 ## Input Parameters
 
-| Parameter       | Description                                              |
-|-----------------|----------------------------------------------------------|
-| **`int RollNo`** | Roll number of the student.                               |
-| **`String^ cid`**| Course ID to be deleted from the student's records.       |
+| Parameter         | Description                                         |
+| ----------------- | --------------------------------------------------- |
+| **`int RollNo`**  | Roll number of the student.                         |
+| **`String^ cid`** | Course ID to be deleted from the student's records. |
 
 ## Output Parameters
 
@@ -109,10 +109,10 @@ File: `StudentCourseReg.h`
 
 ## Input Parameters
 
-| Parameter             | Description                                                  |
-|-----------------------|--------------------------------------------------------------|
-| **`System::Object^ sender`** | The object that raises the event.                             |
-| **`System::EventArgs^ e`**    | Information about the event data.                              |
+| Parameter                    | Description                       |
+| ---------------------------- | --------------------------------- |
+| **`System::Object^ sender`** | The object that raises the event. |
+| **`System::EventArgs^ e`**   | Information about the event data. |
 
 ## Output Parameters
 
@@ -167,17 +167,17 @@ File: `StudentCourseReg.h`
 
 ## Input Parameters
 
-| Parameter            | Description                                       |
-|----------------------|---------------------------------------------------|
-| **`String^ colReqd`**| The column whose value is required.               |
-| **`String^ colOrig`**| The column to match the specified value against.  |
-| **`String^ colVal`** | The specified value to match against.             |
+| Parameter             | Description                                      |
+| --------------------- | ------------------------------------------------ |
+| **`String^ colReqd`** | The column whose value is required.              |
+| **`String^ colOrig`** | The column to match the specified value against. |
+| **`String^ colVal`**  | The specified value to match against.            |
 
 ## Output Parameters
 
-| Parameter              | Description                                               |
-|------------------------|-----------------------------------------------------------|
-| **`String^`**          | The value of the specified column based on the condition. |
+| Parameter     | Description                                               |
+| ------------- | --------------------------------------------------------- |
+| **`String^`** | The value of the specified column based on the condition. |
 
 ## Description 
 
@@ -202,16 +202,16 @@ File: `StudentCourseReg.h`
 
 ## Input Parameters
 
-| Parameter                | Description                                       |
-|--------------------------|---------------------------------------------------|
-| **`String^ course`**     | The course to be checked for compatibility.        |
-| **`String^ Slot`**       | The slot to check compatibility with the course.  |
+| Parameter            | Description                                      |
+| -------------------- | ------------------------------------------------ |
+| **`String^ course`** | The course to be checked for compatibility.      |
+| **`String^ Slot`**   | The slot to check compatibility with the course. |
 
 ## Output Parameters
 
-| Parameter                | Description                                               |
-|--------------------------|-----------------------------------------------------------|
-| **`bool`**               | Returns `true` if the course is compatible, `false` otherwise.|
+| Parameter  | Description                                                    |
+| ---------- | -------------------------------------------------------------- |
+| **`bool`** | Returns `true` if the course is compatible, `false` otherwise. |
 
 ## Description 
 
@@ -229,10 +229,10 @@ File: `StudentCourseReg.h`
 
 ## Input Parameters
 
-| Parameter                     | Description                                           |
-|-------------------------------|-------------------------------------------------------|
-| **`System::Object^ sender`**  | The object that raises the event.                      |
-| **`System::EventArgs^ e`**     | Information about the event data.                      |
+| Parameter                    | Description                       |
+| ---------------------------- | --------------------------------- |
+| **`System::Object^ sender`** | The object that raises the event. |
+| **`System::EventArgs^ e`**   | Information about the event data. |
 
 ## Output Parameters
 
@@ -268,10 +268,10 @@ File: `StudentCourseReg.h`
 
 ## Input Parameters
 
-| Parameter                     | Description                                           |
-|-------------------------------|-------------------------------------------------------|
-| **`System::Object^ sender`**  | The object that raises the event.                      |
-| **`System::EventArgs^ e`**     | Information about the event data.                      |
+| Parameter                    | Description                       |
+| ---------------------------- | --------------------------------- |
+| **`System::Object^ sender`** | The object that raises the event. |
+| **`System::EventArgs^ e`**   | Information about the event data. |
 
 ## Output Parameters
 
@@ -296,9 +296,9 @@ None
 
 ## Output Parameters
 
-| Parameter               | Description                                      |
-|-------------------------|--------------------------------------------------|
-| **`bool`**              | Returns `true` if Grades viewing has started, `false` otherwise.|
+| Parameter  | Description                                                      |
+| ---------- | ---------------------------------------------------------------- |
+| **`bool`** | Returns `true` if Grades viewing has started, `false` otherwise. |
 
 ## Description 
 
@@ -379,10 +379,10 @@ File: `StudentTimetable.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
+|           Parameter           |           Description            |
+| :---------------------------: | :------------------------------: |
 | **`System::Object^  sender`** | The object that raises the event |
-| **`System::EventArgs^  e`** | Event data|
+|  **`System::EventArgs^  e`**  |            Event data            |
 
 ## Output Parameters
 
@@ -424,10 +424,10 @@ File: `StudentTimetable.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
+|           Parameter           |           Description            |
+| :---------------------------: | :------------------------------: |
 | **`System::Object^  sender`** | The object that raises the event |
-| **`System::EventArgs^  e`** | Event data|
+|  **`System::EventArgs^  e`**  |            Event data            |
 
 ## Output Parameters
 
@@ -468,16 +468,16 @@ File: `StudentTimetable.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
-| **`tuple<string, string, string, string>& a`** | A reference to a tuple representing a row of the timetable |
-| **`tuple<string, string, string, string>& b`** | A reference to a  tuple representing a row of the timetable|
+|                   Parameter                    |                         Description                         |
+| :--------------------------------------------: | :---------------------------------------------------------: |
+| **`tuple<string, string, string, string>& a`** | A reference to a tuple representing a row of the timetable  |
+| **`tuple<string, string, string, string>& b`** | A reference to a  tuple representing a row of the timetable |
 
 ## Output Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
-| **`bool`** | `true` if `a` should be placed before `b` in a chronological order, otherwise `false`|
+| Parameter  |                                      Description                                      |
+| :--------: | :-----------------------------------------------------------------------------------: |
+| **`bool`** | `true` if `a` should be placed before `b` in a chronological order, otherwise `false` |
 
 ## Description 
 
@@ -493,10 +493,10 @@ File: `ProfTimetable.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
+|           Parameter           |           Description            |
+| :---------------------------: | :------------------------------: |
 | **`System::Object^  sender`** | The object that raises the event |
-| **`System::EventArgs^  e`** | Event data|
+|  **`System::EventArgs^  e`**  |            Event data            |
 
 ## Output Parameters
 
@@ -533,10 +533,10 @@ File: `ProfTimetable.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
+|           Parameter           |           Description            |
+| :---------------------------: | :------------------------------: |
 | **`System::Object^  sender`** | The object that raises the event |
-| **`System::EventArgs^  e`** | Event data|
+|  **`System::EventArgs^  e`**  |            Event data            |
 
 ## Output Parameters
 
@@ -572,16 +572,16 @@ File: `ProfTimetable.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
-| **`tuple<string, string, string, string>& a`** | A reference to a tuple representing a row of the timetable |
-| **`tuple<string, string, string, string>& b`** | A reference to a  tuple representing a row of the timetable|
+|                   Parameter                    |                         Description                         |
+| :--------------------------------------------: | :---------------------------------------------------------: |
+| **`tuple<string, string, string, string>& a`** | A reference to a tuple representing a row of the timetable  |
+| **`tuple<string, string, string, string>& b`** | A reference to a  tuple representing a row of the timetable |
 
 ## Output Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
-| **`bool`** | `true` if `a` should be placed before `b` in a chronological order, otherwise `false`|
+| Parameter  |                                      Description                                      |
+| :--------: | :-----------------------------------------------------------------------------------: |
+| **`bool`** | `true` if `a` should be placed before `b` in a chronological order, otherwise `false` |
 
 ## Description 
 
@@ -602,10 +602,10 @@ File: `AdminSetdates.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
+|  Parameter   |                Description                 |
+| :----------: | :----------------------------------------: |
 | **`sender`** | Object, the control that raised the event. |
-| **`e`** | EventArgs, the event data.|
+|   **`e`**    |         EventArgs, the event data.         |
 
 ## Output Parameters
 
@@ -660,15 +660,15 @@ File: `AdminSetdates.h`
 
 ## Input Parameters
 
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
-| **`s`** | Managed String to be marshaled |
-| **`os`** | Reference to a C++ string to store the marshaled result |
+| Parameter |                       Description                       |
+| :-------: | :-----------------------------------------------------: |
+|  **`s`**  |             Managed String to be marshaled              |
+| **`os`**  | Reference to a C++ string to store the marshaled result |
 
 ## Output Parameters
 
-| Output  | Description                                    |
-|:-------:|:-----------------------------------------------:|
+|  Output  |                        Description                        |
+| :------: | :-------------------------------------------------------: |
 | **`os`** | Reference to a C++ string containing the marshaled result |
 
 ## Description 
