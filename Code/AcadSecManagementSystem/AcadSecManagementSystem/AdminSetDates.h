@@ -872,13 +872,38 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 
 					// Update the sql database with dataTable
 					 da->Update(dataTable);
-					 da2->Update(dataTable2);
-					
+
+					 
+					// Updating view_timetable in database	 
+					 String^ queryString = "UPDATE Admin SET view_timetable = @true";
+					 String^ view = "True";
+					 // Get the database connection string
+					 String^ connString1 = Constants::getdbConnString();
+					 // Create a SqlConnection using the connection string
+					 SqlConnection^ con = gcnew SqlConnection(connString1);
+					 // Create a SqlCommand with the query and connection
+					 SqlCommand^ command = gcnew SqlCommand(queryString, con);
+					 command->Parameters->AddWithValue("@true", view);
+					 try
+					 {
+						 // Open the database connection
+						 con->Open();
+						 command->ExecuteNonQuery();
+					 }
+					 catch (Exception^ ex)
+					 {
+						 // Display a message box with the exception message if an error occurs
+						 MessageBox::Show(ex->Message);
+					 }
+					 finally
+					 {
+						 // Close the database connection in the finally block to ensure it happens regardless of exceptions
+						 con->Close();
+					 }
+
+					 //da2->Update(dataTable2);
 					 cn->Close();
 					 MessageBox::Show("Updating Database Complete");
-
-
-
 				 }
 				 catch (Exception^ ex)
 				 {
