@@ -1,3 +1,6 @@
+# Examination Management
+This file contains the technical documentation for Examination Management module as a part of `Academic System Managament Software` by Group 10A.
+
 ## Function Name: `buttonExamTT_Click`
 
 ### Location
