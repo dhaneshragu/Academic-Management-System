@@ -13,18 +13,16 @@ This screen appears when user opens the application. Users can login into their 
 ![alt-syntax](./assets/login_default.png)
 
 - Then you need to select your role.
-![alt-syntax](./assets/select_role_login.png)
+![alt text](assets/admin_LoginScreen.png)
 
 - Add your details and click the `Login` button
-![alt text](./assets/click_login.png)
+![alt text](assets/admin_CorrectLogin.png)
 - You will be redirected to your homepage. Click on `Logout` button to go back to the login screen.
-![alt text](./assets/loggedin.png)
+![alt text](assets/admin_Dashboard.png)
 
 - If details are incorrect/left empty you will get an error message.
-![alt text](./assets/invalid_login.png)
-![alt text](./assets/empty_login.png)
-  
-
+![alt text](assets/admin_LoginEmptyPassword.png)  
+![alt text](assets/admin_LoginWrongPassword.png)
 
 > **NOTE:** 
 Once the login button is clicked, the current form closes and new form ,User dashboard, will be opened. This might take some time.
@@ -87,4 +85,8 @@ Student can navigate from `Student Home` to `Student Exam Schedule` screen only 
 Professor can navigate from `Update Details` to `Professor Time Table` screen only if admin has generated the course timetable.
 Student has to pay the fees in order to do Course Registration on `Student Home` screen even if the course registration process is started by admin.
 
-[//]: # (Author: Shivam Gupta)
+## Database Credentials
+- servername : sql5075.sitenow.net
+- username: db_aa52db_mainacaddb_admin
+- password: swelab@123
+

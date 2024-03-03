@@ -133,7 +133,6 @@ This screen allows user (`student`/`professor`) to change their personal details
 
 - This screen will display your personal details.
 ![alt-syntax](./assets/user-details.png)
-![alt-syntax](./assets/prof-details.png)
 
 
 - To update your details, replace the corresponding field value with your new value and click on `Save Changes` button.

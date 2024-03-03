@@ -13,17 +13,16 @@ This screen appears when user opens the application. Users can login into their 
 ![alt-syntax](./assets/login_default.png)
 
 - Then you need to select your role.
-![alt-syntax](./assets/select_role_login.png)
+![alt-syntax](./assets/proffessor_login.png)
 
 - Add your details and click the `Login` button
-![alt text](./assets/click_login.png)
+![alt text](./assets/professor_correctLogin.png)
 - You will be redirected to your homepage. Click on `Logout` button to go back to the login screen.
-![alt text](./assets/loggedin.png)
+![alt text](./assets/prof-details.png)
 
 - If details are incorrect/left empty you will get an error message.
-![alt text](./assets/invalid_login.png)
-![alt text](./assets/empty_login.png)
-  
+![alt text](assets/proffesor_emptyLogin.png)
+![alt text](assets/Proffessor_wrongLogin.png)  
 
 
 > **NOTE:** 
@@ -42,21 +41,19 @@ This screen allows user (`student`/`professor`) to change their personal details
 ## Usage Instructions
 
 - This screen will display your personal details.
-![alt-syntax](./assets/user-details.png)
 ![alt-syntax](./assets/prof-details.png)
 
 
 - To update your details, replace the corresponding field value with your new value and click on `Save Changes` button.
-![alt-syntax](./assets/save-changes-user-details.png)
+![alt text](assets/Prof_ChangeDetails.png)
 
 - To update your profile photo click on `Change Picture` browse and select new picture.
-![alt text](./assets/change-pic1.png)
-![alt text](./assets/change-pic2.png)
+![alt text](assets/Prof_ImageChange.png)
+![alt text](assets/Prof_ImageChanged.png)
 
 - You cannot keep an empty password / invalid phone number. 
-![alt text](./assets/empty-pass.png)
-![alt text](./assets/invalid-phone.png)
-
+![alt text](assets/Prof_EmptyPassword.png)
+![alt text](assets/Prof_InvalidPhoneNumber.png)
 
 
 > **NOTE:** 
