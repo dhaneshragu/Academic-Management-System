@@ -212,7 +212,7 @@ File: `StudentCourseReg.h`
 ## Description 
 
 1. Checks if a given course is compatible to be chosen in a specified slot. 
-2. It considers conflicts based on the type of lab and other chosen elective slots.
+2. It considers conflicts based on the type of lab and other chosen elective slots, which are maintained in a set called `chosenElectiveslots`.
 3. Uses map and common time table slot logic to output the boolean value.
 
 > **NOTE :** This implementation considers that A course cant be taken if any of its slot clashes with a Lab and also assumes clash with compulsory courses mandatorily irrespective of whether the student has registered for that or not.
