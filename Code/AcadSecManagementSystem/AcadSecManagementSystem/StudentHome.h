@@ -69,6 +69,7 @@ namespace AcadSecManagementSystem {
 	internal: System::Windows::Forms::Panel^  GradeReleasedPanel;
 	internal: System::Windows::Forms::Label^  Label4;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
+	private: System::Windows::Forms::Label^  label6;
 	internal:
 
 	private:
@@ -116,6 +117,7 @@ namespace AcadSecManagementSystem {
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->Panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataGridView2))->BeginInit();
 			this->Panel2->SuspendLayout();
@@ -283,6 +285,7 @@ namespace AcadSecManagementSystem {
 			// 
 			this->Panel2->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->Panel2->BackColor = System::Drawing::Color::AliceBlue;
+			this->Panel2->Controls->Add(this->label6);
 			this->Panel2->Controls->Add(this->GradeReleasedPanel);
 			this->Panel2->Controls->Add(this->Button3);
 			this->Panel2->Controls->Add(this->Label1);
@@ -485,6 +488,19 @@ namespace AcadSecManagementSystem {
 			this->pictureBox1->TabIndex = 16;
 			this->pictureBox1->TabStop = false;
 			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->ForeColor = System::Drawing::Color::Blue;
+			this->label6->Location = System::Drawing::Point(11, 73);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(125, 25);
+			this->label6->TabIndex = 10;
+			this->label6->Text = L"SPI - 0.00";
+			this->label6->Visible = false;
+			// 
 			// StudentHome
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(10, 23);
@@ -516,6 +532,67 @@ namespace AcadSecManagementSystem {
 
 		}
 #pragma endregion
+
+	private:
+	// Map grades to points
+	double MapGradeToPoints(String^ grade)
+	{
+				 if (grade == "AA" || grade == "AS")
+					 return 10;
+				 else if (grade == "AB")
+					 return 9;
+				 else if (grade == "BB")
+					 return 8;
+				 else if (grade == "BC")
+					 return 7;
+				 else if (grade == "CC")
+					 return 6;
+				 else if (grade == "CD")
+					 return 5;
+				 else if (grade == "DD")
+					 return 4;
+				 else if (grade == "F")
+					 return 0;
+				 return -1;
+	}
+
+	private: 
+		// Calculate the Semester Point Index - returns -1 if some grades are '--'
+		double CalcSPI(DataGridView^ dataGridView)
+		{
+			double totalCredits = 0;
+			double totalWeightedPoints = 0;
+
+			// Loop through each row in the DataGridView
+			for (int i = 0; i < dataGridView->Rows->Count; i++)
+			{
+				// Extract values from DataGridView
+				String^ ltpc = dataGridView->Rows[i]->Cells[2]->Value->ToString();
+				String^ grade = dataGridView->Rows[i]->Cells[3]->Value->ToString();
+
+				// Parse subjectCredits from the last element of LTPC
+				int subjectCredits = Convert::ToInt32(ltpc->Split(' ')[ltpc->Split(' ')->Length - 1]);
+
+				// Update totalCredits
+				totalCredits += subjectCredits;
+
+				// Map grade to points
+				double gradePoints = MapGradeToPoints(grade);
+
+				if (gradePoints == -1) // If some grades are not released, then grades are witheld
+				{
+					return -1;
+				}
+
+				// Update totalWeightedPoints based on the grade
+				totalWeightedPoints += gradePoints * subjectCredits;
+			}
+
+			// Calculate SPI
+			double spi = (totalWeightedPoints / totalCredits);
+
+			return spi;
+		}
 	private: System::Void StudentHome_Load(System::Object^  sender, System::EventArgs^  e) {
 
 				 // View DP
@@ -523,6 +600,7 @@ namespace AcadSecManagementSystem {
 				 // Make this visible only when grades are released from acad section
 				 Label5->Text = UserName;
 				 GradeReleasedPanel->Visible = false;
+				 this->label6->Visible = false;
 				 
 				 //Disable the FeePayment button and Course Registration button
 				 Button3->Enabled = false;
@@ -536,8 +614,10 @@ namespace AcadSecManagementSystem {
 					 this->DataGridView1->Size = System::Drawing::Size(574, 341);
 					 this->Label1->Location = System::Drawing::Point(102, 94);
 					 this->Button3->Location = System::Drawing::Point(193, 149);
+					 this->label6->Location = System::Drawing::Point(17, 157);
 					 this->GradeReleasedPanel->Location = System::Drawing::Point(105, 8);
 					 GradeReleasedPanel->Visible = true;
+					 this->label6->Visible = true;
 
 				 }
 
@@ -561,7 +641,7 @@ namespace AcadSecManagementSystem {
 					 SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
 					 adapter->Fill(dataTable);
 
-					 // IMPORTANT: Specify the Column Mappings from DataGridView to SQL Table
+					 // Specify the Column Mappings from DataGridView to SQL Table
 					 DataGridView1->AutoGenerateColumns = false;
 					 DataGridView1->Columns[0]->DataPropertyName = "course_ID";
 					 DataGridView1->Columns[1]->DataPropertyName = "course_name";
@@ -570,6 +650,25 @@ namespace AcadSecManagementSystem {
 
 					 // use the 'dataTable' as data source
 					 DataGridView1->DataSource = dataTable;
+
+					 if (isViewGrades) // Calculate SPI also
+					 {
+						 // Call CalcSPI function
+						 double semesterSPI = CalcSPI(DataGridView1);
+
+						 // Update Label 6 based on the result
+						 if (semesterSPI == -1)
+						 {
+							 // Some grades are '--', indicating result withheld
+							 label6->Text = "SPI: NA";
+							 label6->ForeColor = System::Drawing::Color::Red;
+						 }
+						 else
+						 {
+							 // Update Label 6 with rounded SPI value
+							 label6->Text = "SPI: " + Math::Round(semesterSPI, 2);
+						 }
+					 }
 					 con->Close();
 				 }
 				 catch (Exception^ ex)

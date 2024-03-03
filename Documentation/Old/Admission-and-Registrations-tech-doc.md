@@ -1,3 +1,7 @@
+# Admissions and Registration
+
+This file is the technical Documentation for Admissions and Registration Module as a part of `Academic System Management Software` by Team 10A.
+
 ## Function Name: `ValidateLogin`
 
 ### Location

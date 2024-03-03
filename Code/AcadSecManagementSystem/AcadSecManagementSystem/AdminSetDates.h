@@ -513,68 +513,87 @@ private: System::Void label9_Click(System::Object^  sender, System::EventArgs^  
 			 os = chars;
 			 Marshal::FreeHGlobal(IntPtr((void*)chars));
 		 }
-private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^  e) 
+private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^  e) //Time Table Generation
 {
-				 
+			 // This TimeTable generation function is triggered when the admin clicks on button.
+			 // This is a Heuristic based Timetable generator which aims to reduce conflicts between compulsory courses and elective courses.
+			 // Here the problem reduces to alloting each course a slot as we assume timetable follows the same pattern as existing timetable with slots.
+			 // This function ensures that no 2 compulsory courses for same batch are given same slot 
+			 // This function ensures that no 2 courses for same proffessor are given same slot
+			 // The heuristic in play here is that compulsory courses are alloted starting from A to then G slot.
+			 // However electives are alloted starting from G to then A slot. Hence minimising the conflicts 
+			 // The 1st and 3rd years have classes in morning and labs in afternoon whereas 2nd and 4th year have classes in afternoon and labs in morning.
+			 // The same heuristic is followed for lab scheduling. 
 				 try
 				 {
+					 //Connection string for SQL database
 					 String^ connString = Constants::getdbConnString();
-					//  SqlConnection con(connString);
-					//  con.Open();
+
+					 //Query for data from courses and admin
 					 String^ query = "SELECT * FROM Courses";
 					 String^ query2 = "SELECT * FROM Admin";
 
+					 //Usefull variables for sql
 					 SqlConnection^ cn = gcnew SqlConnection();
-					//  DataSet *CustomersDataSet = new DataSet();
 					 SqlDataAdapter^ da;
 					 SqlDataAdapter^ da2;
 					 SqlCommand^ DAUpdateCmd;
 					 SqlCommand^ DAUpdateCmd2;
 
+					 //Opening up the Connection
 					 cn->ConnectionString = connString;
 					 cn->Open();
 
+					 //Creating SQLDataAdapter
 					 da = gcnew SqlDataAdapter(query, cn);
 					 da2 = gcnew SqlDataAdapter(query2, cn);
-					 // Create a SqlCommand
-					//  SqlCommand cmd(query, %con);
 
-					//  cmdBuilder = gcnew SqlCommandBuilder(da);
-
-					 // Create a DataTable
+					 // Creating datatable
 					 DataTable^ dataTable = gcnew DataTable();
 					 DataTable^ dataTable2 = gcnew DataTable();
 
-					 // Create a SqlDataAdapter and fill the DataTable
-					//  SqlDataAdapter^ adapter = gcnew SqlDataAdapter(%cmd);
-					//  adapter->Fill(dataTable);
-
+					 //Update Query for both databases
 					 String^ updatequery = "UPDATE Courses SET slot = @slot, room_ID=@room_ID WHERE course_ID = @CourseCode";
 					 String^ updatequery2 = "UPDATE Admin SET view_timetable = 'True'";
+
+					 //Setting update Query
 					 DAUpdateCmd = gcnew SqlCommand(updatequery, da->SelectCommand->Connection);
 					 DAUpdateCmd2 = gcnew SqlCommand(updatequery2, da2->SelectCommand->Connection);
+
+					 //Adding parameters to be updated i.e. Slot CourseCode and RoomID
 					 DAUpdateCmd->Parameters->Add("@slot", SqlDbType::VarChar, 50, "slot");
 					 DAUpdateCmd->Parameters->Add("@CourseCode", SqlDbType::VarChar, 50, "course_ID");
 					 DAUpdateCmd->Parameters->Add("@room_ID", SqlDbType::VarChar, 50, "room_ID");
 					 
-
+					 //Setting update Command
 					 da->UpdateCommand = DAUpdateCmd;
 					 da2->UpdateCommand = DAUpdateCmd2;
 
+					 //Recieving Data
 					 da->Fill(dataTable);
 					 da2->Fill(dataTable2);
 
+					 //Number of Rows
 					 int n = dataTable->Rows->Count;
 					 
-					 DataRow^ row = dataTable->Rows[n-1];
+					 //Maps to store mapping
+
+					 //Maps each semester to it's courseAllotmentLeft
 					 map<string,set<string>> courseAllotmentLeft;
+					 //Maps each year to it's labAllotmentLeft
 					 map<string, set<string>> labAllotmentLeft;
+					 //Maps each proffessor to all it's Alloted slots
 					 map<string, set<string>> proffessorsAlloted;
+					 //Maps each Slot to it room mapping
 					 map<string, vector<int>> slotToRoomMapping;
+
+					 //Initial sets to contain all slots name
 					 set<string> morning;
 					 set<string> evening;
 					 set<string> morninglab;
 					 set<string> eveninglab;
+
+					 //Populating Sets with slot names
 					 morning.insert("A");
 					 morning.insert("B");
 					 morning.insert("C");
@@ -601,16 +620,20 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 					 eveninglab.insert("AL4");
 					 eveninglab.insert("AL5");
 					 
+					 //Initialising courseAllotmentLeft with full sets as all slots are left and can be used
 					 courseAllotmentLeft.insert({ "2", morning });
 					 courseAllotmentLeft.insert({ "4", evening });
 					 courseAllotmentLeft.insert({ "6", morning });
 					 courseAllotmentLeft.insert({ "8", evening });
 
+					 //Initialising labAllotmentLeft with full sets as all slots are left and can be used
 					 labAllotmentLeft.insert({ "2", eveninglab });
 					 labAllotmentLeft.insert({ "4", morninglab });
 					 labAllotmentLeft.insert({ "6", eveninglab });
 					 labAllotmentLeft.insert({ "8", morninglab });
 
+					 //Mapping slots to vector of RoomIDs. Each batch's room is index of this vector.
+					 //For example for vector { 1, 1,2,2 }, 1st year's roomID will be 1 whereas 4th year's roomID will be 2.
 					 slotToRoomMapping.insert({ "A", { 1, 1,2,2 } });
 					 slotToRoomMapping.insert({ "A1", { 1, 1,2,2 } });
 					 slotToRoomMapping.insert({ "B", { 1, 1, 2, 2 } });
@@ -629,48 +652,60 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 
 					 for (int i = 0; i < n; i++)
 					 {
+						 //ith row of Data
 						 DataRow^ row = dataTable->Rows[i];
-						//  MessageBox::Show("Course: " + row["course_ID"]->ToString() + " : " + row["is_compulsory"]->ToString() + " : " + row["is_lab"]->ToString());
+
+						 //Variables to store semester and prof taking that course
+						 string semOffered;
+						 string ProfId;
+
+						 //Helper function to convert the row data to normal string in c++
+						 MarshalString(row["sem_offered"]->ToString(), semOffered);
+						 MarshalString(row["prof_ID"]->ToString(), ProfId);
+
+						 //If the proffessor doesnt exist in mapping insert prof id with an empty set
+						 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
+						 {
+							 set<string> st;
+							 proffessorsAlloted.insert({ ProfId, st });
+						 }
+
+						 //Checking if this is a compulsory course and not a lab course
 						 if (row["is_compulsory"]->ToString() == "True" && row["is_lab"]->ToString() == "False")
 						 {
-							//  MessageBox::Show("Course: " + row["course_ID"]->ToString());
-							 string semOffered;
-							 string ProfId;
-							 MarshalString(row["sem_offered"]->ToString(), semOffered);
-							 MarshalString(row["prof_ID"]->ToString(), ProfId);
-							 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
-							 {
-								//  MessageBox::Show("Inserting For Prof");
-								 set<string> st;
-								 proffessorsAlloted.insert({ ProfId, st });
-							 }
+							 
+							 //If the semester has used all it's available show a error 
 							 if (courseAllotmentLeft.find(semOffered) == courseAllotmentLeft.end())
 							 {
 								 MessageBox::Show("No allotment Found");
 								 String^ str2 = gcnew String(semOffered.c_str());
 								 MessageBox::Show(str2);
 							 }
+
+							 //Find the first available slot in increasing order of available slots as in in order A-G
 							 auto slot = (*courseAllotmentLeft.find(semOffered)).second.begin();
+
+							 //Loop till all available slots
 							 while (slot != (*courseAllotmentLeft.find(semOffered)).second.end())
 							 {
-								 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
-								 {
-									 MessageBox::Show("prof_ID Not Found");
-								 }
+								 //Check if the proffessor is free in this slot and if he is free assign this slot to this course
 								 if ((*proffessorsAlloted.find(ProfId)).second.find(*slot) == (*proffessorsAlloted.find(ProfId)).second.end())
 								 {
+									 //Insert this slot in proffessor's map
 									(*proffessorsAlloted.find(ProfId)).second.insert(*slot);
-									//  row->BeginEdit();
+									
+									 // Update the roomID and slot for course
 									 String^ tempslot = gcnew String((*slot).c_str());
 									 int roomid = slotToRoomMapping.find(*slot)->second[stoi(semOffered) / 2 - 1];
 									 row["room_ID"] = roomid;
 									 row["slot"] = tempslot;
-									//  row->EndEdit();
-									//  row->AcceptChanges();
+									
+									 //Remove this slot from available slot
 									 courseAllotmentLeft.find(semOffered)->second.erase(slot);
-									//  MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
+									 //Break out of loop
 									 break;
 								 }
+								 //If proffessor was not free move onto next slot
 								 slot++;
 							 }
 
@@ -678,44 +713,39 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 
 						 else if (row["is_compulsory"]->ToString() == "True" && row["is_lab"]->ToString() == "True")
 						 {
-							//  MessageBox::Show("Lab: "+ row["course_ID"]->ToString());
+							 //Same room i.e CSE Lab for all lab courses
 							 row["room_ID"] = 10;
-							 string semOffered;
-							 string ProfId;
-							 MarshalString(row["sem_offered"]->ToString(), semOffered);
-							 MarshalString(row["prof_ID"]->ToString(), ProfId);
-							 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
-							 {
-								//  MessageBox::Show("Inserting For Prof");
-								 set<string> st;
-								 proffessorsAlloted.insert({ ProfId, st });
-							 }
+
+
+							 //If the semester has used all it's available lab slots show a error 
 							 if (labAllotmentLeft.find(semOffered) == labAllotmentLeft.end())
 							 {
 								 MessageBox::Show("No allotment Found");
 								 String^ str2 = gcnew String(semOffered.c_str());
 								 MessageBox::Show(str2);
 							 }
-							//  find the last slot available for the prof
+							 //Find the first available slot in increasing order of available slots as in in order A-G
 							 auto slot = (*labAllotmentLeft.find(semOffered)).second.begin();
+
+							 //Loop till all available slots
 							 while (slot != (*labAllotmentLeft.find(semOffered)).second.end())
 							 {
-								 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
-								 {
-									 MessageBox::Show("prof_ID Not Found");
-								 }
+								 //Check if the proffessor is free in this slot and if he is free assign this slot to this course
 								 if ((*proffessorsAlloted.find(ProfId)).second.find(*slot) == (*proffessorsAlloted.find(ProfId)).second.end())
 								 {
+									 //Insert this slot in proffessor's map
 									 (*proffessorsAlloted.find(ProfId)).second.insert(*slot);
-									 //  row->BeginEdit();
+									 
+									 // Update the slot for course
 									 String^ tempslot = gcnew String((*slot).c_str());
 									 row["slot"] = tempslot;
-									 //  row->EndEdit();
-									 //  row->AcceptChanges();
+									 
+									 //Remove this slot from available slot
 									 labAllotmentLeft.find(semOffered)->second.erase(slot);
-									 //  MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
+									 //Break out of loop
 									 break;
 								 }
+								 //If proffessor was not free move onto next slot
 								 slot++;
 							 }
 						 }
@@ -726,11 +756,13 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 
 					 for (int i = 0; i < n; i++)
 					 {
+						 //ith row of Data
 						 DataRow^ row = dataTable->Rows[i];
-						//  MessageBox::Show("Course: " + row["course_ID"]->ToString() + " : " + row["is_compulsory"]->ToString() + " : " + row["is_lab"]->ToString());
+						 
+						 //Checking if this is a elective course and not a lab course
 						 if (row["is_compulsory"]->ToString() == "False" && row["is_lab"]->ToString() == "False") 
 						 {
-							 //  MessageBox::Show("Course: " + row["course_ID"]->ToString());
+							
 							 string semOffered;
 							 string ProfId;
 							 MarshalString(row["sem_offered"]->ToString(), semOffered);
@@ -741,16 +773,15 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 							//  check if slot is available for the sem
 							if ((*courseAllotmentLeft.find(sem)).second.size() == 0)
 							{
-								// MessageBox::Show("No allotment Found for sem: " + gcnew String(sem.c_str()));
-								// MessageBox::Show("Trying for sem: " + gcnew String(semOffered.c_str()));
+								
 								sem = semOffered;
 								sem = sem.substr(0, 1);
 							}
 							
-							//  MessageBox::Show("Sem: " + gcnew String(sem.c_str()) + " Course: " + row["course_ID"]->ToString());
+							
 							if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
 							{
-								// MessageBox::Show("Inserting For Prof");
+								
 								set<string> st;
 								proffessorsAlloted.insert({ ProfId, st });
 							}
@@ -770,16 +801,15 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 								if ((*proffessorsAlloted.find(ProfId)).second.find(*slot) == (*proffessorsAlloted.find(ProfId)).second.end())
 								{
 									(*proffessorsAlloted.find(ProfId)).second.insert(*slot);
-									//  row->BeginEdit();
+									
 									String^ tempslot = gcnew String((*slot).c_str());
 									int roomid = slotToRoomMapping.find(*slot)->second[stoi(sem) / 2 - 1];
 									row["room_ID"] = roomid;
-									// MessageBox::Show("Inserting Slot " + tempslot + " for " + row["course_ID"]->ToString());
+									
 									row["slot"] = tempslot;
-									//  row->EndEdit();
-									//  row->AcceptChanges();
+									
 									courseAllotmentLeft.find(sem)->second.erase(courseAllotmentLeft.find(sem)->second.find(*slot));
-									//  MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
+									
 									break;
 								}
 								slot++;
@@ -788,7 +818,7 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 
 						 else if (row["is_compulsory"]->ToString() == "False" && row["is_lab"]->ToString() == "True")
 						 {
-							//   MessageBox::Show("Lab: "+ row["course_ID"]->ToString());
+							
 							 row["room_ID"] = 10;
 							 string semOffered;
 							 string ProfId;
@@ -803,10 +833,10 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 								 sem = sem.substr(sem.length() - 1, 1);
 							 }
 
-							//  MessageBox::Show("Sem: " + gcnew String(sem.c_str()));
+							
 							 if (proffessorsAlloted.find(ProfId) == proffessorsAlloted.end())
 							 {
-								 // MessageBox::Show("Inserting For Prof");
+								 
 								 set<string> st;
 								 proffessorsAlloted.insert({ ProfId, st });
 							 }
@@ -827,27 +857,18 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 								 if ((*proffessorsAlloted.find(ProfId)).second.find(*slot) == (*proffessorsAlloted.find(ProfId)).second.end())
 								 {
 									 (*proffessorsAlloted.find(ProfId)).second.insert(*slot);
-									 //  row->BeginEdit();
+									 
 									 String^ tempslot = gcnew String((*slot).c_str());
-									//  MessageBox::Show("Inserting Slot " + tempslot + " for " + row["course_ID"]->ToString());
+									
 									 row["slot"] = tempslot;
-									 //  row->EndEdit();
-									 //  row->AcceptChanges();
-									 // labAllotmentLeft.find(sem)->second.erase(labAllotmentLeft.find(sem)->second.find(*slot));
-									//   MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
+									 
 									 break;
 								 }
 								 slot++;
 							 }
 						 } 
 					 }
-					//  dataTable->AcceptChanges();
-					//  print the updated data
-					//  for (int i = 0; i < n; i++)
-					//  {
-					// 	 DataRow^ row = dataTable->Rows[i];
-					// 	 MessageBox::Show(row["course_ID"]->ToString() + " : " + row["slot"]->ToString());
-					//  }
+					
 
 					// Update the sql database with dataTable
 					 da->Update(dataTable);
@@ -857,13 +878,6 @@ private: System::Void buttonTT_Click(System::Object^  sender, System::EventArgs^
 					 MessageBox::Show("Updating Database Complete");
 
 
-
-					 //cout << (row.Item["course_ID"].ToString()) << endl;
-					 //cout << row["course_ID"]->ToString() << endl;
-					 //printf("%s\n", row["course_ID"]->ToString());
-					 //OutputDebugString(L"My output string.");
-					 //Console::WriteLine("In console %s\n", row["course_ID"]->ToString());
-					 //buttonTT->Text = row["course_ID"]->ToString();
 
 				 }
 				 catch (Exception^ ex)
