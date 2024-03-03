@@ -12,11 +12,11 @@ File: `ProfGradesScreen.h`
 
 ## Output Parameters
 
-Return Grade in letters like AA, AB.
+Return Grade in letters like `AA`, `AB`.
 
 ## Description 
 
-The getGrades function translates letter grades into numerical equivalents. It returns corresponding numerical values for grades ranging from "AS" (10) to "F" or "--" (0), with -1 for invalid inputs.
+The getGrades function translates letter grades into numerical equivalents. It returns corresponding numerical values for grades ranging from `AS` (10) to `F` or `--` (0), with -1 for invalid inputs.
 
 
 
@@ -55,40 +55,6 @@ SELECT * FROM [Courses] WHERE prof_id = prof_id
 
 
 
-
-
-
-
-## Function Name: `doubleToStringWithPrecision`
-
-### Location
-
-File: `ProfGradesScreen.h`
-
-## Input Parameters
-
-| Parameter  | Description                              |
-|:----------:|:----------------------------------------:|
-| **`double value`** | The double-precision floating-point number that needs to be converted to a string. |
-| **`int precision`** | The number of decimal places to include in the string representation of the double value. |
-
-## Output Parameters
-
-The function returns the .NET String^ representation of the double value with the specified precision.
-
-## Description 
-
-1. It begins by creating an output string stream (std::ostringstream) named stream. This stream will be used to construct the string representation of the double value.
-2. Using the stream manipulators std::fixed and std::setprecision, it sets the stream's format to fixed-point notation and specifies the precision (number of decimal places) to be used when converting the double value to a string.
-3. The double value value is inserted into the stream using the << operator, applying the specified formatting.
-4. Finally, the function converts the content of the output stream stream to a standard C++ string using the str() method, and then converts that C++ string to a .NET String^ using a helper function Constants::strCnvStr() (presumably for interop with managed code).
-
-
-
-
-
-
-
 ## Function Name: `setChart`
 
 ### Location
@@ -108,11 +74,11 @@ The function does not return a value.
 ## Description 
 
 1. It begins by constructing a SQL query to retrieve grade statistics for the specified course from a database. The query selects the grades and their respective counts from the "Courses Taken" table, grouped by grade.
-2. Inside a try-catch block, it establishes a database connection using the connection string obtained from Constants::getdbConnString().
+2. Inside a try-catch block, it establishes a database connection using the connection string obtained from `Constants::getdbConnString()`.
 3. It then creates a SQL command object (SqlCommand) with the constructed query and opens the database connection.
 4. The function prepares the SQL command by adding a parameter (@Course_ID) with the provided course identifier to prevent SQL injection attacks.
 5. It executes the SQL command to retrieve the grade statistics and iterates over the result set using a SqlDataReader.
-6. While iterating, it updates the chart control (grades_stats) with data points representing the number of students who received each grade. It also accumulates the total number of students and calculates the total grade for further statistical analysis.
+6. While iterating, it updates the chart control (`grades_stats`) with data points representing the number of students who received each grade. It also accumulates the total number of students and calculates the total grade for further statistical analysis.
 7. Additionally, it handles the case where grades are not assigned ("--") separately and keeps track of the count of such cases.
 8. After processing all records, it adds a data point to the chart for the count of students with grades not assigned.
 9. It updates UI elements (label7 and label5) to display the total number of students and the average grade respectively.
@@ -186,7 +152,7 @@ Notifies the user with a message box upon successful download of the CSV file.
 
 1. This function generates a CSV file containing data from a database table.
 2. It constructs an SQL query to retrieve data based on the provided course_id.
-3. The retrieved data is formatted into a CSV file with "Roll No" and "Grade" headers.
+3. The retrieved data is formatted into a CSV file with `Roll No` and `Grade` headers.
 4. It establishes a database connection and executes the query.
 5. If the CSV file doesn't exist, it creates one; otherwise, it truncates the existing file.
 6. Data from the database is written to the CSV file.
@@ -230,7 +196,7 @@ The function does not return a value.
 ## Description 
 
 1. Executes when the form associated with this function loads.
-2. Invokes the setTakenCourses function, passing the Faculty_ID as an argument, likely to populate the form with relevant data.
+2. Invokes the `setTakenCourses` function, passing the `Faculty_ID` as an argument, likely to populate the form with relevant data.
 
 
 
@@ -255,8 +221,8 @@ The function does not return a value.
 
 ## Description 
 
-1. This function is triggered when button1 is clicked.
-2. It first checks if an item is selected in comboBox1.
+1. This function is triggered when `button1` is clicked.
+2. It first checks if an item is selected in `comboBox1`.
 3. If an item is selected, it calls the setChart function with the selected item as an argument.
 4. If no item is selected, it displays a message box instructing the user to select a course from the list.
 
@@ -348,8 +314,8 @@ Returns noting.
 1. Constructs an SQL query to update grades in the database table [Courses Taken].
 2. Iterates through each row of the csvData.
 3. Constructs and executes an SQL command for each row to update the corresponding grade in the database.
-4. Uses the Constants::getdbConnString() method to obtain the database connection string.
-5. Utilizes Constants::strCnvStr() to convert C++ string data to .NET String^.
+4. Uses the `Constants::getdbConnString()` method to obtain the database connection string.
+5. Utilizes `Constants::strCnvStr()` to convert C++ string data to .NET String^.
 6. Catches and displays any exceptions that occur during database operations using a message box.
 
 
@@ -389,11 +355,11 @@ Returns a bool weather the content and format of CSV data is correct or not.
 ## Description 
 
 1. Checks the content of the provided CSV data to ensure its validity.
-2. Verifies that the CSV file is not empty and contains the expected number of columns (two columns: "Roll No" and "Grade").
-3. Ensures that the column names are correct ("Roll No" and "Grade").
+2. Verifies that the CSV file is not empty and contains the expected number of columns (two columns: `Roll No` and `Grade`).
+3. Ensures that the column names are correct (`Roll No` and `Grade`).
 4. Validates the format and data integrity of each row:
 5. Checks if the grade value is valid by calling the getGrades function with the grade value.
-6. Verifies that the "Roll No" field contains exactly 9 characters and consists only of numerical digits.
+6. Verifies that the `Roll No` field contains exactly 9 characters and consists only of numerical digits.
 7. Displays appropriate error messages using message boxes if any issues are detected.
 
 
@@ -421,8 +387,8 @@ Returns bool weather grades are submitted successfully or not.
 1. Provides a mechanism to determine whether the system currently allows grade submissions.
 2. Helps control access to the grade submission functionality based on the system configuration.
 3. Queries the database to check whether the system allows grade submissions.
-4. Retrieves the value of the is_grade_submission field from the [Admin] table.
-5. Returns true if grade submission is enabled (is_grade_submission equals true), otherwise returns false.
+4. Retrieves the value of the `is_grade_submission` field from the [Admin] table.
+5. Returns true if grade submission is enabled (`is_grade_submission` equals true), otherwise returns false.
 6. Catches any exceptions that may occur during database access and displays an error message using a message box.
 
 
@@ -467,9 +433,9 @@ Returns noting.
 2. Checks if a course is selected from the comboBox1.
 3. Calls the isGradesSubmission function to determine if grade submission is allowed.
 4. If grade submission is allowed:
-5. Opens a file dialog (OpenFileDialog) to select a CSV file containing grade data.
-6. Reads the selected CSV file using the readCSV function.
-7. Validates the content of the CSV file using the checkCSVContent function.
+5. Opens a file dialog (`OpenFileDialog`) to select a CSV file containing grade data.
+6. Reads the selected CSV file using the `readCSV` function.
+7. Validates the content of the CSV file using the `checkCSVContent` function.
 8. If the CSV file content is valid:
 9. Updates the grades in the database using the updateGrades function.
 10. Displays a message box indicating successful upload of the grades CSV.
@@ -503,10 +469,10 @@ Returns noting.
 
 ## Description 
 
-1. Handles the click event of button2.
-2. Checks if a course is selected from the comboBox1.
+1. Handles the click event of `button2`.
+2. Checks if a course is selected from the `comboBox1`.
 3. If a course is selected:
-4. Calls the downloadCSV function to generate and download a CSV file containing grade data for the selected course.
+4. Calls the `downloadCSV` function to generate and download a CSV file containing grade data for the selected course.
 5. If no course is selected from the list, displays a message box prompting the user to select a course.
 
 
