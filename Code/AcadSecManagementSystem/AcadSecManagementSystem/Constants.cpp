@@ -18,7 +18,7 @@ namespace Constants
 {
 	String^ getdbConnString()
 	{
-		String^ f = "Data Source=sql5075.site4now.net;Initial Catalog=db_aa52db_mainacaddb;Persist Security Info=True;User ID=db_aa52db_mainacaddb_admin;Password=swelab@123;Connect Timeout=60";
+		String^ f = "Data Source=DSOURCE;Initial Catalog=DBNAME;Persist Security Info=True;User ID=UID;Password=PWD;Connect Timeout=60";
 		return f;
 	}
 
