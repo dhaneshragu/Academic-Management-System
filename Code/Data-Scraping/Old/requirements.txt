@@ -1,5 +1,0 @@
-selenium
-ghostscript==0.7
-camelot-py==0.10.1
-pandas
-PyPDF2~=2.12.1
